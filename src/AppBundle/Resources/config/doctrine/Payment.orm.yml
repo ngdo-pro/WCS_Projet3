@@ -1,0 +1,26 @@
+AppBundle\Entity\Payment:
+    type: entity
+    table: null
+    repositoryClass: AppBundle\Repository\PaymentRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        firstName:
+            type: string
+            length: 255
+        lastName:
+            type: string
+            length: 255
+        productName:
+            type: string
+            length: 255
+        status:
+            type: string
+            length: 255
+        confirmationSent:
+            type: boolean
+    lifecycleCallbacks: {  }
