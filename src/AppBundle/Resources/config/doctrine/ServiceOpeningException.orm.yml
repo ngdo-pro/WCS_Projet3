@@ -1,0 +1,16 @@
+AppBundle\Entity\ServiceOpeningException:
+    type: entity
+    table: null
+    repositoryClass: AppBundle\Repository\ServiceOpeningExceptionRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        date:
+            type: date
+        status:
+            type: integer
+    lifecycleCallbacks: {  }
