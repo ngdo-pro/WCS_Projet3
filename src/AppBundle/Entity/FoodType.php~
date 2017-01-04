@@ -3,9 +3,9 @@
 namespace AppBundle\Entity;
 
 /**
- * Price
+ * FoodType
  */
-class Price
+class FoodType
 {
     /**
      * @var int
@@ -13,9 +13,9 @@ class Price
     private $id;
 
     /**
-     * @var float
+     * @var string
      */
-    private $value;
+    private $name;
 
 
     /**
@@ -29,26 +29,27 @@ class Price
     }
 
     /**
-     * Set value
+     * Set name
      *
-     * @param float $value
+     * @param string $name
      *
-     * @return Price
+     * @return FoodType
      */
-    public function setValue($value)
+    public function setName($name)
     {
-        $this->value = $value;
+        $this->name = $name;
 
         return $this;
     }
 
     /**
-     * Get value
+     * Get name
      *
-     * @return float
+     * @return string
      */
-    public function getValue()
+    public function getName()
     {
-        return $this->value;
+        return $this->name;
     }
 }
+

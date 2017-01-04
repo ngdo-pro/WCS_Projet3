@@ -52,4 +52,3 @@ class Product
         return $this->name;
     }
 }
-
