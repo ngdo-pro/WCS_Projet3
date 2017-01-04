@@ -110,4 +110,3 @@ class Baptem
         return $this->places;
     }
 }
-

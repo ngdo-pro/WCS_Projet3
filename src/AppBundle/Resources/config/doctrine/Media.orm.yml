@@ -1,0 +1,25 @@
+AppBundle\Entity\Media:
+    type: entity
+    table: null
+    repositoryClass: AppBundle\Repository\MediaRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: 255
+        createdAt:
+            type: datetime
+        lastUpdatedAt:
+            type: datetime
+        context:
+            type: string
+            length: 255
+        type:
+            type: string
+            length: 255
+    lifecycleCallbacks: {  }
