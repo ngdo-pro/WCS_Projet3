@@ -1,0 +1,58 @@
+AppBundle\Entity\Restaurant:
+    type: entity
+    table: null
+    repositoryClass: AppBundle\Repository\RestaurantRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: 255
+        description:
+            type: string
+            length: 255
+        openingDate:
+            type: date
+        address:
+            type: string
+            length: 255
+        status:
+            type: string
+            length: 255
+        webUrl:
+            type: string
+            length: 255
+        tripAdvisorUrl:
+            type: string
+            length: 255
+        facebookUrl:
+            type: string
+            length: 255
+        phone:
+            type: string
+            length: '40'
+        phone2:
+            type: string
+            length: '40'
+            nullable: true
+        email:
+            type: string
+            length: 255
+        slug:
+            type: string
+            length: 255
+            unique: true
+        postalCode:
+            type: string
+            length: '20'
+        city:
+            type: string
+            length: 255
+        foodType:
+            type: string
+            length: 255
+    lifecycleCallbacks: {  }
