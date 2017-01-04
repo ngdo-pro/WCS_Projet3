@@ -1,0 +1,14 @@
+AppBundle\Entity\Price:
+    type: entity
+    table: null
+    repositoryClass: AppBundle\Repository\PriceRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        value:
+            type: float
+    lifecycleCallbacks: {  }
