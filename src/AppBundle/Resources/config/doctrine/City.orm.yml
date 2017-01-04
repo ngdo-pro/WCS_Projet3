@@ -1,0 +1,18 @@
+AppBundle\Entity\City:
+    type: entity
+    table: null
+    repositoryClass: AppBundle\Repository\CityRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: 255
+        postalCode:
+            type: string
+            length: '20'
+    lifecycleCallbacks: {  }
