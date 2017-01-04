@@ -1,0 +1,18 @@
+AppBundle\Entity\Baptem:
+    type: entity
+    table: null
+    repositoryClass: AppBundle\Repository\BaptemRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        status:
+            type: boolean
+        date:
+            type: date
+        places:
+            type: integer
+    lifecycleCallbacks: {  }
