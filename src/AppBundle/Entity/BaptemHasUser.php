@@ -51,4 +51,33 @@ class BaptemHasUser
     {
         return $this->role;
     }
+    /**
+     * @var \AppBundle\Entity\Baptem
+     */
+    private $baptem;
+
+
+    /**
+     * Set baptem
+     *
+     * @param \AppBundle\Entity\Baptem $baptem
+     *
+     * @return BaptemHasUser
+     */
+    public function setBaptem(\AppBundle\Entity\Baptem $baptem = null)
+    {
+        $this->baptem = $baptem;
+
+        return $this;
+    }
+
+    /**
+     * Get baptem
+     *
+     * @return \AppBundle\Entity\Baptem
+     */
+    public function getBaptem()
+    {
+        return $this->baptem;
+    }
 }
