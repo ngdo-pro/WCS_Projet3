@@ -18,4 +18,10 @@ AppBundle\Entity\BaptemHasUser:
             joinColumn:
                 name: baptem_id
                 referencedColumnName: id
+        user:
+            targetEntity: UserBundle\Entity\User
+            inversedBy: baptemsHasUser
+            joinColumn:
+                name: user_id
+                referencedColumnName: id
     lifecycleCallbacks: {  }

@@ -37,4 +37,8 @@ UserBundle\Entity\User:
         profession:
             type: string
             length: 255
+    oneToMany:
+        baptemsHasUser:
+            targetEntity: AppBundle\Entity\BaptemHasUser
+            mappedBy: user
     lifecycleCallbacks: {  }
