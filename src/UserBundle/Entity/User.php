@@ -422,4 +422,82 @@ class User extends BaseUser
     {
         return $this->payments;
     }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $medias;
+
+
+    /**
+     * Add media
+     *
+     * @param \AppBundle\Entity\Media $media
+     *
+     * @return User
+     */
+    public function addMedia(\AppBundle\Entity\Media $media)
+    {
+        $this->medias[] = $media;
+
+        return $this;
+    }
+
+    /**
+     * Remove media
+     *
+     * @param \AppBundle\Entity\Media $media
+     */
+    public function removeMedia(\AppBundle\Entity\Media $media)
+    {
+        $this->medias->removeElement($media);
+    }
+
+    /**
+     * Get medias
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getMedias()
+    {
+        return $this->medias;
+    }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $restaurants;
+
+
+    /**
+     * Add restaurant
+     *
+     * @param \AppBundle\Entity\Restaurant $restaurant
+     *
+     * @return User
+     */
+    public function addRestaurant(\AppBundle\Entity\Restaurant $restaurant)
+    {
+        $this->restaurants[] = $restaurant;
+
+        return $this;
+    }
+
+    /**
+     * Remove restaurant
+     *
+     * @param \AppBundle\Entity\Restaurant $restaurant
+     */
+    public function removeRestaurant(\AppBundle\Entity\Restaurant $restaurant)
+    {
+        $this->restaurants->removeElement($restaurant);
+    }
+
+    /**
+     * Get restaurants
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getRestaurants()
+    {
+        return $this->restaurants;
+    }
 }

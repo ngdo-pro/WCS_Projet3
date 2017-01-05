@@ -22,4 +22,11 @@ AppBundle\Entity\Media:
         type:
             type: string
             length: 255
+    manyToOne:
+        user:
+            targetEntity: UserBundle\Entity\User
+            inversedBy: medias
+            joinColumn:
+                name: owner_id
+                referencedColumnName: id
     lifecycleCallbacks: {  }

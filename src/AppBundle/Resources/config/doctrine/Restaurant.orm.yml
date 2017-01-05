@@ -55,4 +55,11 @@ AppBundle\Entity\Restaurant:
         foodType:
             type: string
             length: 255
+    manyToOne:
+        user:
+            targetEntity: UserBundle\Entity\User
+            inversedBy: restaurants
+            joinColumn:
+                name: user_id
+                referencedColumnName: id
     lifecycleCallbacks: {  }
