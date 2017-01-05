@@ -22,4 +22,8 @@ AppBundle\Entity\Baptem:
             joinColumn:
                 name: service_id
                 referencedColumnName: id
+    oneToMany:
+        payments:
+            targetEntity: AppBundle\Entity\Payment
+            mappedBy: baptem
     lifecycleCallbacks: {  }

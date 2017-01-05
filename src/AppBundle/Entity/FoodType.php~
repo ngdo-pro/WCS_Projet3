@@ -52,4 +52,3 @@ class FoodType
         return $this->name;
     }
 }
-

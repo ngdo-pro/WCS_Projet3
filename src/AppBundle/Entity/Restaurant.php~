@@ -458,4 +458,3 @@ class Restaurant
         return $this->foodType;
     }
 }
-

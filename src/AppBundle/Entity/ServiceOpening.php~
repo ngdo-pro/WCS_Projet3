@@ -43,7 +43,7 @@ class ServiceOpening
     private $saturday;
 
     /**
-     * @var string
+     * @var int
      */
     private $sunday;
 
@@ -205,7 +205,7 @@ class ServiceOpening
     /**
      * Set sunday
      *
-     * @param string $sunday
+     * @param int $sunday
      *
      * @return ServiceOpening
      */
@@ -219,11 +219,10 @@ class ServiceOpening
     /**
      * Get sunday
      *
-     * @return string
+     * @return int
      */
     public function getSunday()
     {
         return $this->sunday;
     }
 }
-

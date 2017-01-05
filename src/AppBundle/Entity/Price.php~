@@ -52,4 +52,3 @@ class Price
         return $this->value;
     }
 }
-

@@ -23,4 +23,11 @@ AppBundle\Entity\Payment:
             length: 255
         confirmationSent:
             type: boolean
+    manyToOne:
+        baptem:
+            targetEntity: AppBundle\Entity\Baptem
+            inversedBy: payments
+            joinColumn:
+                name: baptem_id
+                referencedColumnName: id
     lifecycleCallbacks: {  }
