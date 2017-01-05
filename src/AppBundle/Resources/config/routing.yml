@@ -1,3 +1,7 @@
 app_homepage:
     path:     /
     defaults: { _controller: AppBundle:Main:index }
+
+app_baptism:
+    path:     /baptism
+    defaults: { _controller: AppBundle:Main:baptism }
