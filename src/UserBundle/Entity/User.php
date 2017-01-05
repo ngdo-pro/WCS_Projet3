@@ -344,4 +344,82 @@ class User extends BaseUser
     {
         return $this->profession;
     }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $baptemsHasUser;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $payments;
+
+
+    /**
+     * Add baptemsHasUser
+     *
+     * @param \AppBundle\Entity\BaptemHasUser $baptemsHasUser
+     *
+     * @return User
+     */
+    public function addBaptemsHasUser(\AppBundle\Entity\BaptemHasUser $baptemsHasUser)
+    {
+        $this->baptemsHasUser[] = $baptemsHasUser;
+
+        return $this;
+    }
+
+    /**
+     * Remove baptemsHasUser
+     *
+     * @param \AppBundle\Entity\BaptemHasUser $baptemsHasUser
+     */
+    public function removeBaptemsHasUser(\AppBundle\Entity\BaptemHasUser $baptemsHasUser)
+    {
+        $this->baptemsHasUser->removeElement($baptemsHasUser);
+    }
+
+    /**
+     * Get baptemsHasUser
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getBaptemsHasUser()
+    {
+        return $this->baptemsHasUser;
+    }
+
+    /**
+     * Add payment
+     *
+     * @param \AppBundle\Entity\Payment $payment
+     *
+     * @return User
+     */
+    public function addPayment(\AppBundle\Entity\Payment $payment)
+    {
+        $this->payments[] = $payment;
+
+        return $this;
+    }
+
+    /**
+     * Remove payment
+     *
+     * @param \AppBundle\Entity\Payment $payment
+     */
+    public function removePayment(\AppBundle\Entity\Payment $payment)
+    {
+        $this->payments->removeElement($payment);
+    }
+
+    /**
+     * Get payments
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPayments()
+    {
+        return $this->payments;
+    }
 }

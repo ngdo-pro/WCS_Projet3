@@ -41,4 +41,7 @@ UserBundle\Entity\User:
         baptemsHasUser:
             targetEntity: AppBundle\Entity\BaptemHasUser
             mappedBy: user
+        payments:
+            targetEntity: AppBundle\Entity\Payment
+            mappedBy: user
     lifecycleCallbacks: {  }

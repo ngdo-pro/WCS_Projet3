@@ -30,4 +30,10 @@ AppBundle\Entity\Payment:
             joinColumn:
                 name: baptem_id
                 referencedColumnName: id
+        user:
+            targetEntity: UserBundle\Entity\User
+            inversedBy: payments
+            joinColumn:
+                name: user_id
+                referencedColumnName: id
     lifecycleCallbacks: {  }
