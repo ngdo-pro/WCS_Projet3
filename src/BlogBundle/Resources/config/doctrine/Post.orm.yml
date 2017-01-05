@@ -30,4 +30,16 @@ BlogBundle\Entity\Post:
             type: datetime
         lastUpdatedAt:
             type: datetime
+
+    manyToOne:
+        category:
+            targetEntity: BlogBundle\Entity\Category
+            inversedBy: posts
+            joinColumn:
+                name: category_id
+                referencedColumnName: id
+    manyToMany:
+        tags:
+            targetEntity: BlogBundle\Entity\Tag
+            inversedBy: blogPosts
     lifecycleCallbacks: {  }
