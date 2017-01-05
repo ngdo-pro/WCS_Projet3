@@ -1,0 +1,14 @@
+AppBundle\Entity\BaptemHasUser:
+    type: entity
+    table: null
+    repositoryClass: AppBundle\Repository\BaptemHasUserRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        role:
+            type: boolean
+    lifecycleCallbacks: {  }
