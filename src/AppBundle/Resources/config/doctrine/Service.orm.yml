@@ -12,4 +12,8 @@ AppBundle\Entity\Service:
         name:
             type: string
             length: 255
+    oneToMany:
+        baptems:
+            targetEntity: AppBundle\Entity\Baptem
+            mappedBy: service
     lifecycleCallbacks: {  }

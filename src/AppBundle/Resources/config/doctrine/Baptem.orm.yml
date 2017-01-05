@@ -15,4 +15,11 @@ AppBundle\Entity\Baptem:
             type: date
         places:
             type: integer
+    manyToOne:
+        service:
+            targetEntity: AppBundle\Entity\Service
+            inversedBy: baptems
+            joinColumn:
+                name: service_id
+                referencedColumnName: id
     lifecycleCallbacks: {  }
