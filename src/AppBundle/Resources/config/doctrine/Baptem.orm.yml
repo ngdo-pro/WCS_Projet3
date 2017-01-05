@@ -26,4 +26,7 @@ AppBundle\Entity\Baptem:
         payments:
             targetEntity: AppBundle\Entity\Payment
             mappedBy: baptem
+        baptemsHasUser:
+            targetEntity: AppBundle\Entity\BaptemHasUser
+            mappedBy: baptem
     lifecycleCallbacks: {  }

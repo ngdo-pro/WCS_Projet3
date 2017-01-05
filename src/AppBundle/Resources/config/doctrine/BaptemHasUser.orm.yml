@@ -11,4 +11,11 @@ AppBundle\Entity\BaptemHasUser:
     fields:
         role:
             type: boolean
+    manyToOne:
+        baptem:
+            targetEntity: AppBundle\Entity\Baptem
+            inversedBy: baptemsHasUser
+            joinColumn:
+                name: baptem_id
+                referencedColumnName: id
     lifecycleCallbacks: {  }
