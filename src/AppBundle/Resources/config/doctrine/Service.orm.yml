@@ -16,4 +16,10 @@ AppBundle\Entity\Service:
         baptems:
             targetEntity: AppBundle\Entity\Baptem
             mappedBy: service
+        serviceOpenings:
+            targetEntity: AppBundle\Entity\ServiceOpening
+            mappedBy: service
+        serviceOpeningExceptions:
+            targetEntity: AppBundle\Entity\ServiceOpeningException
+            mappedBy: service
     lifecycleCallbacks: {  }
