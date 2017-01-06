@@ -11,4 +11,11 @@ AppBundle\Entity\Price:
     fields:
         value:
             type: float
+    manyToOne:
+        product:
+            targetEntity: AppBundle\Entity\Product
+            inversedBy: prices
+            joinColumn:
+                name: product_id
+                referencedColumnName: id
     lifecycleCallbacks: {  }

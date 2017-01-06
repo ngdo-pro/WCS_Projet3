@@ -3,18 +3,18 @@
  * Created by PhpStorm.
  * User: nicolas
  * Date: 06/01/17
- * Time: 10:25
+ * Time: 10:29
  */
 
 namespace AppBundle\DataFixtures\ORM;
 
 
-use AppBundle\Entity\Price;
+use AppBundle\Entity\Product;
 use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 
-class LoadPriceData extends AbstractFixture implements OrderedFixtureInterface
+class LoadProductData extends AbstractFixture implements OrderedFixtureInterface
 {
 
     /**
@@ -24,21 +24,22 @@ class LoadPriceData extends AbstractFixture implements OrderedFixtureInterface
      */
     public function load(ObjectManager $manager)
     {
-        $prices = array(
+        $products = array(
             array(
-                "value" => 99.99,
-                "product" => "1"
+                "name" => "bapteme",
+                "reference" => "1"
             )
         );
 
-        foreach($prices as $price){
-            $priceObj = new Price();
-            $priceObj->setValue($price["value"]);
-            $priceObj->setProduct($this->getReference("product-" . $price["product"]));
-            $manager->persist($priceObj);
+        foreach ($products as $product){
+            $productObj = new Product();
+            $productObj->setName($product["name"]);
+            $manager->persist($productObj);
+            $this->addReference("product-" . $product["reference"], $productObj);
         }
 
         $manager->flush();
+
     }
 
     /**
@@ -48,6 +49,6 @@ class LoadPriceData extends AbstractFixture implements OrderedFixtureInterface
      */
     public function getOrder()
     {
-        return 11;
+        return 10;
     }
 }
