@@ -254,4 +254,33 @@ class ServiceOpening
     {
         return $this->service;
     }
+    /**
+     * @var \AppBundle\Entity\Restaurant
+     */
+    private $restaurant;
+
+
+    /**
+     * Set restaurant
+     *
+     * @param \AppBundle\Entity\Restaurant $restaurant
+     *
+     * @return ServiceOpening
+     */
+    public function setRestaurant(\AppBundle\Entity\Restaurant $restaurant = null)
+    {
+        $this->restaurant = $restaurant;
+
+        return $this;
+    }
+
+    /**
+     * Get restaurant
+     *
+     * @return \AppBundle\Entity\Restaurant
+     */
+    public function getRestaurant()
+    {
+        return $this->restaurant;
+    }
 }

@@ -30,4 +30,10 @@ AppBundle\Entity\ServiceOpening:
             joinColumn:
                 name: service_id
                 referencedColumnName: id
+        restaurant:
+            targetEntity: AppBundle\Entity\Restaurant
+            inversedBy: serviceOpenings
+            joinColumn:
+                name: restaurant_id
+                referencedColumnName: id
     lifecycleCallbacks: {  }

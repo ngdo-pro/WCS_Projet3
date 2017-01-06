@@ -20,4 +20,10 @@ AppBundle\Entity\ServiceOpeningException:
             joinColumn:
                 name: service_id
                 referencedColumnName: id
+        restaurant:
+            targetEntity: AppBundle\Entity\Restaurant
+            inversedBy: serviceOpeningExceptions
+            joinColumn:
+                name: restaurant_id
+                referencedColumnName: id
     lifecycleCallbacks: {  }
