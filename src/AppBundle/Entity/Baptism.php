@@ -3,9 +3,9 @@
 namespace AppBundle\Entity;
 
 /**
- * Baptem
+ * Baptism
  */
-class Baptem
+class Baptism
 {
     /**
      * @var int
@@ -43,7 +43,7 @@ class Baptem
      *
      * @param boolean $status
      *
-     * @return Baptem
+     * @return Baptism
      */
     public function setStatus($status)
     {
@@ -67,7 +67,7 @@ class Baptem
      *
      * @param \DateTime $date
      *
-     * @return Baptem
+     * @return Baptism
      */
     public function setDate($date)
     {
@@ -91,7 +91,7 @@ class Baptem
      *
      * @param integer $places
      *
-     * @return Baptem
+     * @return Baptism
      */
     public function setPlaces($places)
     {
@@ -120,7 +120,7 @@ class Baptem
      *
      * @param \AppBundle\Entity\Service $service
      *
-     * @return Baptem
+     * @return Baptism
      */
     public function setService(\AppBundle\Entity\Service $service = null)
     {
@@ -156,7 +156,7 @@ class Baptem
      *
      * @param \AppBundle\Entity\Payment $payment
      *
-     * @return Baptem
+     * @return Baptism
      */
     public function addPayment(\AppBundle\Entity\Payment $payment)
     {
@@ -187,40 +187,40 @@ class Baptem
     /**
      * @var \Doctrine\Common\Collections\Collection
      */
-    private $baptemsHasUser;
+    private $baptismsHasUser;
 
 
     /**
-     * Add baptemsHasUser
+     * Add baptismsHasUser
      *
-     * @param \AppBundle\Entity\BaptemHasUser $baptemsHasUser
+     * @param \AppBundle\Entity\BaptismHasUser $baptismsHasUser
      *
-     * @return Baptem
+     * @return Baptism
      */
-    public function addBaptemsHasUser(\AppBundle\Entity\BaptemHasUser $baptemsHasUser)
+    public function addBaptismsHasUser(\AppBundle\Entity\BaptismHasUser $baptismsHasUser)
     {
-        $this->baptemsHasUser[] = $baptemsHasUser;
+        $this->baptismsHasUser[] = $baptismsHasUser;
 
         return $this;
     }
 
     /**
-     * Remove baptemsHasUser
+     * Remove baptismsHasUser
      *
-     * @param \AppBundle\Entity\BaptemHasUser $baptemsHasUser
+     * @param \AppBundle\Entity\BaptismHasUser $baptismsHasUser
      */
-    public function removeBaptemsHasUser(\AppBundle\Entity\BaptemHasUser $baptemsHasUser)
+    public function removeBaptismsHasUser(\AppBundle\Entity\BaptismHasUser $baptismsHasUser)
     {
-        $this->baptemsHasUser->removeElement($baptemsHasUser);
+        $this->baptismsHasUser->removeElement($baptismsHasUser);
     }
 
     /**
-     * Get baptemsHasUser
+     * Get baptismsHasUser
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getBaptemsHasUser()
+    public function getBaptismsHasUser()
     {
-        return $this->baptemsHasUser;
+        return $this->baptismsHasUser;
     }
 }

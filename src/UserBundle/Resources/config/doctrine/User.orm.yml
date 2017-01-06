@@ -38,8 +38,8 @@ UserBundle\Entity\User:
             type: string
             length: 255
     oneToMany:
-        baptemsHasUser:
-            targetEntity: AppBundle\Entity\BaptemHasUser
+        baptismsHasUser:
+            targetEntity: AppBundle\Entity\BaptismHasUser
             mappedBy: user
         payments:
             targetEntity: AppBundle\Entity\Payment

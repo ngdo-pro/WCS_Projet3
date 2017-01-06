@@ -24,11 +24,11 @@ AppBundle\Entity\Payment:
         confirmationSent:
             type: boolean
     manyToOne:
-        baptem:
-            targetEntity: AppBundle\Entity\Baptem
+        baptism:
+            targetEntity: AppBundle\Entity\Baptism
             inversedBy: payments
             joinColumn:
-                name: baptem_id
+                name: baptism_id
                 referencedColumnName: id
         user:
             targetEntity: UserBundle\Entity\User

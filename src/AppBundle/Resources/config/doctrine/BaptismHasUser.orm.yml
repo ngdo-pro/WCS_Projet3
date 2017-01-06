@@ -1,7 +1,7 @@
-AppBundle\Entity\BaptemHasUser:
+AppBundle\Entity\BaptismHasUser:
     type: entity
     table: null
-    repositoryClass: AppBundle\Repository\BaptemHasUserRepository
+    repositoryClass: AppBundle\Repository\BaptismHasUserRepository
     id:
         id:
             type: integer
@@ -12,15 +12,15 @@ AppBundle\Entity\BaptemHasUser:
         role:
             type: boolean
     manyToOne:
-        baptem:
-            targetEntity: AppBundle\Entity\Baptem
-            inversedBy: baptemsHasUser
+        baptism:
+            targetEntity: AppBundle\Entity\Baptism
+            inversedBy: baptismsHasUser
             joinColumn:
-                name: baptem_id
+                name: baptism_id
                 referencedColumnName: id
         user:
             targetEntity: UserBundle\Entity\User
-            inversedBy: baptemsHasUser
+            inversedBy: baptismsHasUser
             joinColumn:
                 name: user_id
                 referencedColumnName: id

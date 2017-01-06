@@ -9,12 +9,12 @@
 namespace AppBundle\DataFixtures\ORM;
 
 
-use AppBundle\Entity\BaptemHasUser;
+use AppBundle\Entity\BaptismHasUser;
 use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 
-class LoadBaptemHasUserData extends AbstractFixture implements OrderedFixtureInterface
+class LoadBaptismHasUserData extends AbstractFixture implements OrderedFixtureInterface
 {
 
     /**
@@ -24,20 +24,20 @@ class LoadBaptemHasUserData extends AbstractFixture implements OrderedFixtureInt
      */
     public function load(ObjectManager $manager)
     {
-        $baptemHasUsers = array(
+        $baptismHasUsers = array(
             array(
                 "role" => true,
-                "baptemId" => "1",
+                "baptismId" => "1",
                 "userSlug" => "jean-michel-dupont",
             )
         );
 
-        foreach ($baptemHasUsers as $baptemHasUser){
-            $baptemHasUserObject = new BaptemHasUser();
-            $baptemHasUserObject->setRole($baptemHasUser["role"]);
-            $baptemHasUserObject->setBaptem($this->getReference("baptem-".$baptemHasUser["baptemId"]));
-            $baptemHasUserObject->setUser($this->getReference("user-" . $baptemHasUser["userSlug"]));
-            $manager->persist($baptemHasUserObject);
+        foreach ($baptismHasUsers as $baptismHasUser){
+            $baptismHasUserObject = new BaptismHasUser();
+            $baptismHasUserObject->setRole($baptismHasUser["role"]);
+            $baptismHasUserObject->setBaptism($this->getReference("baptism-".$baptismHasUser["baptismId"]));
+            $baptismHasUserObject->setUser($this->getReference("user-" . $baptismHasUser["userSlug"]));
+            $manager->persist($baptismHasUserObject);
         }
 
         $manager->flush();

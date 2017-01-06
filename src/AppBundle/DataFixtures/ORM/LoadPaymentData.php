@@ -28,10 +28,10 @@ class LoadPaymentData extends AbstractFixture implements OrderedFixtureInterface
             array(
                 "firstName" => "jean-michel",
                 "lastName" => "dupont",
-                "productName" => "baptem",
+                "productName" => "baptism",
                 "status" => "confirmed",
                 "confirmationSent" => true,
-                "baptemId" => "1",
+                "baptismId" => "1",
                 "userSlug" => "jean-michel-dupont",
                 "reference" => "1"
             )
@@ -44,7 +44,7 @@ class LoadPaymentData extends AbstractFixture implements OrderedFixtureInterface
             $paymentObj->setProductName($payment["productName"]);
             $paymentObj->setStatus($payment["status"]);
             $paymentObj->setConfirmationSent($payment["confirmationSent"]);
-            $paymentObj->setBaptem($this->getReference("baptem-" . $payment["baptemId"]));
+            $paymentObj->setBaptism($this->getReference("baptism-" . $payment["baptismId"]));
             $paymentObj->setUser($this->getReference("user-" . $payment["userSlug"]));
             $manager->persist($paymentObj);
             $this->addReference("payment-" . $payment["reference"], $paymentObj);

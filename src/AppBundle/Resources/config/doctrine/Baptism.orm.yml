@@ -1,7 +1,7 @@
-AppBundle\Entity\Baptem:
+AppBundle\Entity\Baptism:
     type: entity
     table: null
-    repositoryClass: AppBundle\Repository\BaptemRepository
+    repositoryClass: AppBundle\Repository\BaptismRepository
     id:
         id:
             type: integer
@@ -18,15 +18,15 @@ AppBundle\Entity\Baptem:
     manyToOne:
         service:
             targetEntity: AppBundle\Entity\Service
-            inversedBy: baptems
+            inversedBy: baptisms
             joinColumn:
                 name: service_id
                 referencedColumnName: id
     oneToMany:
         payments:
             targetEntity: AppBundle\Entity\Payment
-            mappedBy: baptem
-        baptemsHasUser:
-            targetEntity: AppBundle\Entity\BaptemHasUser
-            mappedBy: baptem
+            mappedBy: baptism
+        baptismsHasUser:
+            targetEntity: AppBundle\Entity\BaptismHasUser
+            mappedBy: baptism
     lifecycleCallbacks: {  }

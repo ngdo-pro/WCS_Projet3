@@ -13,8 +13,8 @@ AppBundle\Entity\Service:
             type: string
             length: 255
     oneToMany:
-        baptems:
-            targetEntity: AppBundle\Entity\Baptem
+        baptisms:
+            targetEntity: AppBundle\Entity\Baptism
             mappedBy: service
         serviceOpenings:
             targetEntity: AppBundle\Entity\ServiceOpening
