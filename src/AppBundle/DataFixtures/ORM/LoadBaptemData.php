@@ -29,13 +29,15 @@ class LoadBaptemData extends AbstractFixture implements OrderedFixtureInterface
                 "status" => true,
                 "date" => new \DateTime("2017-01-10"),
                 "places" => 2,
-                "service" => "midi"
+                "service" => "midi",
+                "reference" => "1"
             ),
             array(
                 "status" => true,
                 "date" => new \DateTime("2017-01-20"),
                 "places" => 1,
-                "service" => "soir"
+                "service" => "soir",
+                "reference" => "2"
             )
         );
 
@@ -46,6 +48,7 @@ class LoadBaptemData extends AbstractFixture implements OrderedFixtureInterface
             $baptemObject->setPlaces($baptem["places"]);
             $baptemObject->setService($this->getReference("service-".$baptem["service"]));
             $manager->persist($baptemObject);
+            $this->addReference("baptem-".$baptem["reference"], $baptemObject);
         }
         $manager->flush();
     }
