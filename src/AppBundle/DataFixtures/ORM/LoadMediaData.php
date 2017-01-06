@@ -52,7 +52,7 @@ class LoadMediaData extends AbstractFixture implements OrderedFixtureInterface
             $mediaObj->setType($media["type"]);
             if(isset($media["restaurantSlug"])){
                 $mediaObj->setRestaurant($this->getReference("restaurant-" . $media["restaurantSlug"]));
-            }elseif($media["userSlug"]){
+            }elseif(isset($media["userSlug"])){
                 $mediaObj->setUser($this->getReference("user-" . $media["userSlug"]));
             }
             $manager->persist($mediaObj);

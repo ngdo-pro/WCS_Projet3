@@ -27,12 +27,12 @@ AppBundle\Entity\Media:
             targetEntity: UserBundle\Entity\User
             inversedBy: medias
             joinColumn:
-                name: owner_id
+                name: user_id
                 referencedColumnName: id
         restaurant:
             targetEntity: AppBundle\Entity\Restaurant
             inversedBy: medias
             joinColumn:
-                name: owner_id
+                name: restaurant_id
                 referencedColumnName: id
     lifecycleCallbacks: {  }

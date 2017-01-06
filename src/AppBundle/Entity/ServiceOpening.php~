@@ -225,4 +225,33 @@ class ServiceOpening
     {
         return $this->sunday;
     }
+    /**
+     * @var \AppBundle\Entity\Service
+     */
+    private $service;
+
+
+    /**
+     * Set service
+     *
+     * @param \AppBundle\Entity\Service $service
+     *
+     * @return ServiceOpening
+     */
+    public function setService(\AppBundle\Entity\Service $service = null)
+    {
+        $this->service = $service;
+
+        return $this;
+    }
+
+    /**
+     * Get service
+     *
+     * @return \AppBundle\Entity\Service
+     */
+    public function getService()
+    {
+        return $this->service;
+    }
 }
