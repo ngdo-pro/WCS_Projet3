@@ -45,7 +45,7 @@ class LoadPaymentData extends AbstractFixture implements OrderedFixtureInterface
             $paymentObj->setStatus($payment["status"]);
             $paymentObj->setConfirmationSent($payment["confirmationSent"]);
             $paymentObj->setBaptem($this->getReference("baptem-" . $payment["baptemId"]));
-            $paymentObj->setUser($this->getReference($payment["userSlug"]));
+            $paymentObj->setUser($this->getReference("user-" . $payment["userSlug"]));
             $manager->persist($paymentObj);
             $this->addReference("payment-" . $payment["reference"], $paymentObj);
         }

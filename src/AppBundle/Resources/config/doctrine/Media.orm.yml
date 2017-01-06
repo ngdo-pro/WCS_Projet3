@@ -29,4 +29,10 @@ AppBundle\Entity\Media:
             joinColumn:
                 name: owner_id
                 referencedColumnName: id
+        restaurant:
+            targetEntity: AppBundle\Entity\Restaurant
+            inversedBy: medias
+            joinColumn:
+                name: owner_id
+                referencedColumnName: id
     lifecycleCallbacks: {  }

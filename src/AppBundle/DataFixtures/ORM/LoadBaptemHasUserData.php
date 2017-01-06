@@ -36,7 +36,7 @@ class LoadBaptemHasUserData extends AbstractFixture implements OrderedFixtureInt
             $baptemHasUserObject = new BaptemHasUser();
             $baptemHasUserObject->setRole($baptemHasUser["role"]);
             $baptemHasUserObject->setBaptem($this->getReference("baptem-".$baptemHasUser["baptemId"]));
-            $baptemHasUserObject->setUser($this->getReference($baptemHasUser["userSlug"]));
+            $baptemHasUserObject->setUser($this->getReference("user-" . $baptemHasUser["userSlug"]));
             $manager->persist($baptemHasUserObject);
         }
 

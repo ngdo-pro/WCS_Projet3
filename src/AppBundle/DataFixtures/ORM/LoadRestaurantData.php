@@ -62,9 +62,9 @@ class LoadRestaurantData extends AbstractFixture implements OrderedFixtureInterf
             $restaurantObj->setPostalCode($restaurant["postalCode"]);
             $restaurantObj->setCity($restaurant["city"]);
             $restaurantObj->setFoodType($restaurant["foodType"]);
-            $restaurantObj->setUser($this->getReference($restaurant["userSlug"]));
+            $restaurantObj->setUser($this->getReference("user-" . $restaurant["userSlug"]));
             $manager->persist($restaurantObj);
-            $this->addReference($restaurantObj->getSlug(), $restaurantObj);
+            $this->addReference("restaurant-" . $restaurantObj->getSlug(), $restaurantObj);
         }
 
         $manager->flush();

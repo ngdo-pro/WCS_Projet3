@@ -75,7 +75,7 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface
             $userObj->setParticipation($user["participation"]);
             $userObj->setProfession($user["profession"]);
             $manager->persist($userObj);
-            $this->addReference($userObj->getSlug(), $userObj);
+            $this->addReference("user-" . $userObj->getSlug(), $userObj);
         }
         $manager->flush();
     }
