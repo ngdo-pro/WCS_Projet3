@@ -13,6 +13,6 @@
 
     {{ form_start(baptismSearchType,{'action': path('app_baptism')}) }}
     {{ form_widget(baptismSearchType) }}
-
+    <button>{{ 'baptism.search.submit' | trans }}</button>
     {{ form_end(baptismSearchType) }}
 {% endblock %}
