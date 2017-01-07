@@ -1,0 +1,32 @@
+AppBundle\Entity\Baptism:
+    type: entity
+    table: null
+    repositoryClass: AppBundle\Repository\BaptismRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        status:
+            type: boolean
+        date:
+            type: date
+        places:
+            type: integer
+    manyToOne:
+        service:
+            targetEntity: AppBundle\Entity\Service
+            inversedBy: baptisms
+            joinColumn:
+                name: service_id
+                referencedColumnName: id
+    oneToMany:
+        payments:
+            targetEntity: AppBundle\Entity\Payment
+            mappedBy: baptism
+        baptismsHasUser:
+            targetEntity: AppBundle\Entity\BaptismHasUser
+            mappedBy: baptism
+    lifecycleCallbacks: {  }

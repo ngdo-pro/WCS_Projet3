@@ -1,0 +1,25 @@
+AppBundle\Entity\Service:
+    type: entity
+    table: null
+    repositoryClass: AppBundle\Repository\ServiceRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: 255
+    oneToMany:
+        baptisms:
+            targetEntity: AppBundle\Entity\Baptism
+            mappedBy: service
+        serviceOpenings:
+            targetEntity: AppBundle\Entity\ServiceOpening
+            mappedBy: service
+        serviceOpeningExceptions:
+            targetEntity: AppBundle\Entity\ServiceOpeningException
+            mappedBy: service
+    lifecycleCallbacks: {  }

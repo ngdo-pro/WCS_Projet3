@@ -1,8 +1,53 @@
 UserBundle\Entity\User:
     type:  entity
-    table: fos_user
+    table: user
     id:
         id:
             type: integer
             generator:
                 strategy: AUTO
+    fields:
+        firstName:
+            type: string
+            length: 255
+        lastName:
+            type: string
+            length: 255
+        slug:
+            type: string
+            length: 255
+            unique: true
+        birthDate:
+            type: date
+            nullable: true
+        biography:
+            type: text
+        signatureDish:
+            type: string
+            length: 255
+        rating:
+            type: float
+        phone:
+            type: string
+            length: 40
+        level:
+            type: integer
+        participation:
+            type: integer
+        profession:
+            type: string
+            length: 255
+    oneToMany:
+        baptismsHasUser:
+            targetEntity: AppBundle\Entity\BaptismHasUser
+            mappedBy: user
+        payments:
+            targetEntity: AppBundle\Entity\Payment
+            mappedBy: user
+        medias:
+            targetEntity: AppBundle\Entity\Media
+            mappedBy: user
+        restaurants:
+            targetEntity: AppBundle\Entity\Restaurant
+            mappedBy: user
+    lifecycleCallbacks: {  }
