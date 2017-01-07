@@ -347,7 +347,7 @@ class User extends BaseUser
     /**
      * @var \Doctrine\Common\Collections\Collection
      */
-    private $baptemsHasUser;
+    private $baptismsHasUser;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -356,37 +356,37 @@ class User extends BaseUser
 
 
     /**
-     * Add baptemsHasUser
+     * Add baptismsHasUser
      *
-     * @param \AppBundle\Entity\BaptemHasUser $baptemsHasUser
+     * @param \AppBundle\Entity\BaptismHasUser $baptismsHasUser
      *
      * @return User
      */
-    public function addBaptemsHasUser(\AppBundle\Entity\BaptemHasUser $baptemsHasUser)
+    public function addBaptismsHasUser(\AppBundle\Entity\BaptismHasUser $baptismsHasUser)
     {
-        $this->baptemsHasUser[] = $baptemsHasUser;
+        $this->baptismsHasUser[] = $baptismsHasUser;
 
         return $this;
     }
 
     /**
-     * Remove baptemsHasUser
+     * Remove baptismsHasUser
      *
-     * @param \AppBundle\Entity\BaptemHasUser $baptemsHasUser
+     * @param \AppBundle\Entity\BaptismHasUser $baptismsHasUser
      */
-    public function removeBaptemsHasUser(\AppBundle\Entity\BaptemHasUser $baptemsHasUser)
+    public function removeBaptismsHasUser(\AppBundle\Entity\BaptismHasUser $baptismsHasUser)
     {
-        $this->baptemsHasUser->removeElement($baptemsHasUser);
+        $this->baptismsHasUser->removeElement($baptismsHasUser);
     }
 
     /**
-     * Get baptemsHasUser
+     * Get baptismsHasUser
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getBaptemsHasUser()
+    public function getBaptismsHasUser()
     {
-        return $this->baptemsHasUser;
+        return $this->baptismsHasUser;
     }
 
     /**
@@ -460,5 +460,44 @@ class User extends BaseUser
     public function getMedias()
     {
         return $this->medias;
+    }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $restaurants;
+
+
+    /**
+     * Add restaurant
+     *
+     * @param \AppBundle\Entity\Restaurant $restaurant
+     *
+     * @return User
+     */
+    public function addRestaurant(\AppBundle\Entity\Restaurant $restaurant)
+    {
+        $this->restaurants[] = $restaurant;
+
+        return $this;
+    }
+
+    /**
+     * Remove restaurant
+     *
+     * @param \AppBundle\Entity\Restaurant $restaurant
+     */
+    public function removeRestaurant(\AppBundle\Entity\Restaurant $restaurant)
+    {
+        $this->restaurants->removeElement($restaurant);
+    }
+
+    /**
+     * Get restaurants
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getRestaurants()
+    {
+        return $this->restaurants;
     }
 }
