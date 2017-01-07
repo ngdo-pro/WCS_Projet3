@@ -25,7 +25,7 @@ class MainController extends Controller
     public function  baptismAction()
     {
         return $this->render('app/main/baptism.html.twig',array(
-            'baptismSearchType' => $this->createForm(new BaptismSearchType())->createView(),
+            'baptismSearchType' => $this->createForm(BaptismSearchType::class)->createView(),
         ));
     }
 }
