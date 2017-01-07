@@ -23,4 +23,17 @@ AppBundle\Entity\ServiceOpening:
             type: integer
         sunday:
             type: integer
+    manyToOne:
+        service:
+            targetEntity: AppBundle\Entity\Service
+            inversedBy: serviceOpenings
+            joinColumn:
+                name: service_id
+                referencedColumnName: id
+        restaurant:
+            targetEntity: AppBundle\Entity\Restaurant
+            inversedBy: serviceOpenings
+            joinColumn:
+                name: restaurant_id
+                referencedColumnName: id
     lifecycleCallbacks: {  }

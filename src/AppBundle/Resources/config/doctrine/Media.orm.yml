@@ -22,4 +22,17 @@ AppBundle\Entity\Media:
         type:
             type: string
             length: 255
+    manyToOne:
+        user:
+            targetEntity: UserBundle\Entity\User
+            inversedBy: medias
+            joinColumn:
+                name: user_id
+                referencedColumnName: id
+        restaurant:
+            targetEntity: AppBundle\Entity\Restaurant
+            inversedBy: medias
+            joinColumn:
+                name: restaurant_id
+                referencedColumnName: id
     lifecycleCallbacks: {  }

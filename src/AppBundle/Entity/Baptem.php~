@@ -184,4 +184,43 @@ class Baptem
     {
         return $this->payments;
     }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $baptemsHasUser;
+
+
+    /**
+     * Add baptemsHasUser
+     *
+     * @param \AppBundle\Entity\BaptemHasUser $baptemsHasUser
+     *
+     * @return Baptem
+     */
+    public function addBaptemsHasUser(\AppBundle\Entity\BaptemHasUser $baptemsHasUser)
+    {
+        $this->baptemsHasUser[] = $baptemsHasUser;
+
+        return $this;
+    }
+
+    /**
+     * Remove baptemsHasUser
+     *
+     * @param \AppBundle\Entity\BaptemHasUser $baptemsHasUser
+     */
+    public function removeBaptemsHasUser(\AppBundle\Entity\BaptemHasUser $baptemsHasUser)
+    {
+        $this->baptemsHasUser->removeElement($baptemsHasUser);
+    }
+
+    /**
+     * Get baptemsHasUser
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getBaptemsHasUser()
+    {
+        return $this->baptemsHasUser;
+    }
 }

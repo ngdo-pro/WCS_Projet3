@@ -1,7 +1,7 @@
-AppBundle\Entity\Payment:
+AppBundle\Entity\BaptismHasUser:
     type: entity
     table: null
-    repositoryClass: AppBundle\Repository\PaymentRepository
+    repositoryClass: AppBundle\Repository\BaptismHasUserRepository
     id:
         id:
             type: integer
@@ -9,30 +9,18 @@ AppBundle\Entity\Payment:
             generator:
                 strategy: AUTO
     fields:
-        firstName:
-            type: string
-            length: 255
-        lastName:
-            type: string
-            length: 255
-        productName:
-            type: string
-            length: 255
-        status:
-            type: string
-            length: 255
-        confirmationSent:
+        role:
             type: boolean
     manyToOne:
         baptism:
             targetEntity: AppBundle\Entity\Baptism
-            inversedBy: payments
+            inversedBy: baptismsHasUser
             joinColumn:
                 name: baptism_id
                 referencedColumnName: id
         user:
             targetEntity: UserBundle\Entity\User
-            inversedBy: payments
+            inversedBy: baptismsHasUser
             joinColumn:
                 name: user_id
                 referencedColumnName: id

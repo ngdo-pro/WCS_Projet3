@@ -9,12 +9,12 @@
 namespace AppBundle\DataFixtures\ORM;
 
 
-use AppBundle\Entity\Baptem;
+use AppBundle\Entity\Baptism;
 use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 
-class LoadBaptemData extends AbstractFixture implements OrderedFixtureInterface
+class LoadBaptismData extends AbstractFixture implements OrderedFixtureInterface
 {
 
     /**
@@ -24,28 +24,31 @@ class LoadBaptemData extends AbstractFixture implements OrderedFixtureInterface
      */
     public function load(ObjectManager $manager)
     {
-        $baptems = array(
+        $baptisms = array(
             array(
                 "status" => true,
                 "date" => new \DateTime("2017-01-10"),
                 "places" => 2,
-                "service" => "midi"
+                "service" => "midi",
+                "reference" => "1"
             ),
             array(
                 "status" => true,
                 "date" => new \DateTime("2017-01-20"),
                 "places" => 1,
-                "service" => "soir"
+                "service" => "soir",
+                "reference" => "2"
             )
         );
 
-        foreach($baptems as $baptem){
-            $baptemObject = new Baptem();
-            $baptemObject->setStatus($baptem["status"]);
-            $baptemObject->setDate($baptem["date"]);
-            $baptemObject->setPlaces($baptem["places"]);
-            $baptemObject->setService($this->getReference("service-".$baptem["service"]));
-            $manager->persist($baptemObject);
+        foreach($baptisms as $baptism){
+            $baptismObject = new Baptism();
+            $baptismObject->setStatus($baptism["status"]);
+            $baptismObject->setDate($baptism["date"]);
+            $baptismObject->setPlaces($baptism["places"]);
+            $baptismObject->setService($this->getReference("service-".$baptism["service"]));
+            $manager->persist($baptismObject);
+            $this->addReference("baptism-".$baptism["reference"], $baptismObject);
         }
         $manager->flush();
     }

@@ -13,4 +13,17 @@ AppBundle\Entity\ServiceOpeningException:
             type: date
         status:
             type: integer
+    manyToOne:
+        service:
+            targetEntity: AppBundle\Entity\Service
+            inversedBy: serviceOpeningExceptions
+            joinColumn:
+                name: service_id
+                referencedColumnName: id
+        restaurant:
+            targetEntity: AppBundle\Entity\Restaurant
+            inversedBy: serviceOpeningExceptions
+            joinColumn:
+                name: restaurant_id
+                referencedColumnName: id
     lifecycleCallbacks: {  }

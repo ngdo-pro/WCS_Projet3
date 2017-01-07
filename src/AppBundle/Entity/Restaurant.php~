@@ -457,4 +457,157 @@ class Restaurant
     {
         return $this->foodType;
     }
+    /**
+     * @var \UserBundle\Entity\User
+     */
+    private $user;
+
+
+    /**
+     * Set user
+     *
+     * @param \UserBundle\Entity\User $user
+     *
+     * @return Restaurant
+     */
+    public function setUser(\UserBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \UserBundle\Entity\User
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $medias;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->medias = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add media
+     *
+     * @param \AppBundle\Entity\Media $media
+     *
+     * @return Restaurant
+     */
+    public function addMedia(\AppBundle\Entity\Media $media)
+    {
+        $this->medias[] = $media;
+
+        return $this;
+    }
+
+    /**
+     * Remove media
+     *
+     * @param \AppBundle\Entity\Media $media
+     */
+    public function removeMedia(\AppBundle\Entity\Media $media)
+    {
+        $this->medias->removeElement($media);
+    }
+
+    /**
+     * Get medias
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getMedias()
+    {
+        return $this->medias;
+    }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $serviceOpenings;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $serviceOpeningExceptions;
+
+
+    /**
+     * Add serviceOpening
+     *
+     * @param \AppBundle\Entity\ServiceOpening $serviceOpening
+     *
+     * @return Restaurant
+     */
+    public function addServiceOpening(\AppBundle\Entity\ServiceOpening $serviceOpening)
+    {
+        $this->serviceOpenings[] = $serviceOpening;
+
+        return $this;
+    }
+
+    /**
+     * Remove serviceOpening
+     *
+     * @param \AppBundle\Entity\ServiceOpening $serviceOpening
+     */
+    public function removeServiceOpening(\AppBundle\Entity\ServiceOpening $serviceOpening)
+    {
+        $this->serviceOpenings->removeElement($serviceOpening);
+    }
+
+    /**
+     * Get serviceOpenings
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getServiceOpenings()
+    {
+        return $this->serviceOpenings;
+    }
+
+    /**
+     * Add serviceOpeningException
+     *
+     * @param \AppBundle\Entity\ServiceOpeningException $serviceOpeningException
+     *
+     * @return Restaurant
+     */
+    public function addServiceOpeningException(\AppBundle\Entity\ServiceOpeningException $serviceOpeningException)
+    {
+        $this->serviceOpeningExceptions[] = $serviceOpeningException;
+
+        return $this;
+    }
+
+    /**
+     * Remove serviceOpeningException
+     *
+     * @param \AppBundle\Entity\ServiceOpeningException $serviceOpeningException
+     */
+    public function removeServiceOpeningException(\AppBundle\Entity\ServiceOpeningException $serviceOpeningException)
+    {
+        $this->serviceOpeningExceptions->removeElement($serviceOpeningException);
+    }
+
+    /**
+     * Get serviceOpeningExceptions
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getServiceOpeningExceptions()
+    {
+        return $this->serviceOpeningExceptions;
+    }
 }

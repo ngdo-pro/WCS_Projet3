@@ -37,4 +37,17 @@ UserBundle\Entity\User:
         profession:
             type: string
             length: 255
+    oneToMany:
+        baptismsHasUser:
+            targetEntity: AppBundle\Entity\BaptismHasUser
+            mappedBy: user
+        payments:
+            targetEntity: AppBundle\Entity\Payment
+            mappedBy: user
+        medias:
+            targetEntity: AppBundle\Entity\Media
+            mappedBy: user
+        restaurants:
+            targetEntity: AppBundle\Entity\Restaurant
+            mappedBy: user
     lifecycleCallbacks: {  }
