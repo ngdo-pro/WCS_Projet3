@@ -56,6 +56,7 @@ class LoadMediaData extends AbstractFixture implements OrderedFixtureInterface
                 $mediaObj->setUser($this->getReference("user-" . $media["userSlug"]));
             }
             $manager->persist($mediaObj);
+            $this->addReference($media["name"], $mediaObj);
         }
 
         $manager->flush();

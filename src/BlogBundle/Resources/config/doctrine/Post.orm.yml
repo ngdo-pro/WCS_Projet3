@@ -51,4 +51,16 @@ BlogBundle\Entity\Post:
                     tag_id:
                         referencedColumnName: id
 
+        medias:
+            targetEntity: AppBundle\Entity\Media
+            inversedBy: postsMedias
+            joinTable:
+                name: post_has_media
+                joinColumns:
+                    post_id:
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    media_id:
+                        referencedColumnName: id
+
     lifecycleCallbacks: {  }

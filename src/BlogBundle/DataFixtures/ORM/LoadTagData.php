@@ -26,6 +26,10 @@ class LoadTagData extends AbstractFixture implements OrderedFixtureInterface
             array(
                 "title" => "frite",
                 "slug" => "frite",
+            ),
+            array(
+                "title" => "cuisine",
+                "slug" => "cuisine",
             )
         );
 
@@ -46,6 +50,6 @@ class LoadTagData extends AbstractFixture implements OrderedFixtureInterface
      */
     public function getOrder()
     {
-        return 4;
+        return 15;
     }
 }

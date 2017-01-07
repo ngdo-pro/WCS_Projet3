@@ -29,7 +29,8 @@ class LoadPostData extends AbstractFixture implements OrderedFixtureInterface
                 "create_at" => new \DateTime("2017-01-10"),
                 "last_update_at" => new \DateTime("2017-01-10"),
                 "category_name" => "western",
-                "tag_title" => "aloa"
+                "tag_title" => "frite",
+                "media_name" => "jean-michel d.jpg"
             ),
             array(
                 "title" => "bonjour",
@@ -41,7 +42,8 @@ class LoadPostData extends AbstractFixture implements OrderedFixtureInterface
                 "create_at" => new \DateTime("2017-01-10"),
                 "last_update_at" => new \DateTime("2017-01-10"),
                 "category_name" => "pokemon",
-                "tag_title" => "frite"
+                "tag_title" => "cuisine",
+                "media_name" => "wild first floor"
             )
         );
 
@@ -58,6 +60,7 @@ class LoadPostData extends AbstractFixture implements OrderedFixtureInterface
             $postObject->setCategory($this->getReference($post["category_name"]));
             // many to many fixtures
             $postObject->addTag($this->getReference($post["tag_title"]));
+            $postObject->addMedia($this->getReference($post["media_name"]));
             $manager->persist($postObject);
             $this->addReference($post["title"], $postObject);
         }
@@ -71,6 +74,6 @@ class LoadPostData extends AbstractFixture implements OrderedFixtureInterface
      */
     public function getOrder()
     {
-        return 5;
+        return 16;
     }
 }

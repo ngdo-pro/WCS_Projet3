@@ -35,4 +35,9 @@ AppBundle\Entity\Media:
             joinColumn:
                 name: restaurant_id
                 referencedColumnName: id
+
+    manyToMany:
+        postsMedias:
+            targetEntity: BlogBundle\Entity\Post
+            mappedBy: medias
     lifecycleCallbacks: {  }

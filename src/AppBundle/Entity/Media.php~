@@ -225,4 +225,50 @@ class Media
     {
         return $this->restaurant;
     }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $postsMedias;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->postsMedias = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add postsMedia
+     *
+     * @param \BlogBundle\Entity\Post $postsMedia
+     *
+     * @return Media
+     */
+    public function addPostsMedia(\BlogBundle\Entity\Post $postsMedia)
+    {
+        $this->postsMedias[] = $postsMedia;
+
+        return $this;
+    }
+
+    /**
+     * Remove postsMedia
+     *
+     * @param \BlogBundle\Entity\Post $postsMedia
+     */
+    public function removePostsMedia(\BlogBundle\Entity\Post $postsMedia)
+    {
+        $this->postsMedias->removeElement($postsMedia);
+    }
+
+    /**
+     * Get postsMedias
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPostsMedias()
+    {
+        return $this->postsMedias;
+    }
 }

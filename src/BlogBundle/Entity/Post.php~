@@ -329,4 +329,43 @@ class Post
     {
         return $this->tags;
     }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $medias;
+
+
+    /**
+     * Add media
+     *
+     * @param \AppBundle\Entity\Media $media
+     *
+     * @return Post
+     */
+    public function addMedia(\AppBundle\Entity\Media $media)
+    {
+        $this->medias[] = $media;
+
+        return $this;
+    }
+
+    /**
+     * Remove media
+     *
+     * @param \AppBundle\Entity\Media $media
+     */
+    public function removeMedia(\AppBundle\Entity\Media $media)
+    {
+        $this->medias->removeElement($media);
+    }
+
+    /**
+     * Get medias
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getMedias()
+    {
+        return $this->medias;
+    }
 }

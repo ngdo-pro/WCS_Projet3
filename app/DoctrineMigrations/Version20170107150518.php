@@ -8,7 +8,7 @@ use Doctrine\DBAL\Schema\Schema;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-class Version20170107112934 extends AbstractMigration
+class Version20170107150518 extends AbstractMigration
 {
     /**
      * @param Schema $schema
@@ -18,9 +18,9 @@ class Version20170107112934 extends AbstractMigration
         // this up() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() != 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('CREATE TABLE baptism_has_user (id INT AUTO_INCREMENT NOT NULL, baptism_id INT DEFAULT NULL, user_id INT DEFAULT NULL, role TINYINT(1) NOT NULL, INDEX IDX_D799699E832BB05 (baptism_id), INDEX IDX_D799699EA76ED395 (user_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE = InnoDB');
-        $this->addSql('ALTER TABLE baptism_has_user ADD CONSTRAINT FK_D799699E832BB05 FOREIGN KEY (baptism_id) REFERENCES baptism (id)');
-        $this->addSql('ALTER TABLE baptism_has_user ADD CONSTRAINT FK_D799699EA76ED395 FOREIGN KEY (user_id) REFERENCES user (id)');
+        $this->addSql('CREATE TABLE post_has_media (post_id INT NOT NULL, media_id INT NOT NULL, INDEX IDX_30CBCF454B89032C (post_id), INDEX IDX_30CBCF45EA9FDD75 (media_id), PRIMARY KEY(post_id, media_id)) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE = InnoDB');
+        $this->addSql('ALTER TABLE post_has_media ADD CONSTRAINT FK_30CBCF454B89032C FOREIGN KEY (post_id) REFERENCES post (id)');
+        $this->addSql('ALTER TABLE post_has_media ADD CONSTRAINT FK_30CBCF45EA9FDD75 FOREIGN KEY (media_id) REFERENCES media (id)');
     }
 
     /**
@@ -31,6 +31,6 @@ class Version20170107112934 extends AbstractMigration
         // this down() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() != 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('DROP TABLE baptism_has_user');
+        $this->addSql('DROP TABLE post_has_media');
     }
 }
