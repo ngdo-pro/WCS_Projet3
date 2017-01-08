@@ -42,7 +42,7 @@ class LoadPostData extends AbstractFixture implements OrderedFixtureInterface
                 "last_update_at" => new \DateTime("2017-01-10"),
                 "category_name" => "vegan",
                 "tag_title" => "vegetable",
-                "media_slug" => "middle-cook"
+                "reference" => "middle-cook"
             )
         );
 
@@ -59,8 +59,8 @@ class LoadPostData extends AbstractFixture implements OrderedFixtureInterface
             $postObject->setCategory($this->getReference($post["category_name"]));
             // many to many fixtures
             $postObject->addTag($this->getReference($post["tag_title"]));
-            if(isset($post["media_slug"])){
-                $postObject->addMedia($this->getReference("post-" . $post["media_slug"]));
+            if(isset($post["reference"])){
+                $postObject->addMedia($this->getReference("post-" . $post["reference"]));
             }
             $manager->persist($postObject);
             $this->addReference($post["title"], $postObject);
