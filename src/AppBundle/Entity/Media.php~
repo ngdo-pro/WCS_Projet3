@@ -271,4 +271,43 @@ class Media
     {
         return $this->postsMedias;
     }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $posts;
+
+
+    /**
+     * Add post
+     *
+     * @param \BlogBundle\Entity\Post $post
+     *
+     * @return Media
+     */
+    public function addPost(\BlogBundle\Entity\Post $post)
+    {
+        $this->posts[] = $post;
+
+        return $this;
+    }
+
+    /**
+     * Remove post
+     *
+     * @param \BlogBundle\Entity\Post $post
+     */
+    public function removePost(\BlogBundle\Entity\Post $post)
+    {
+        $this->posts->removeElement($post);
+    }
+
+    /**
+     * Get posts
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPosts()
+    {
+        return $this->posts;
+    }
 }

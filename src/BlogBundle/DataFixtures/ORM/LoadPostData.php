@@ -60,7 +60,7 @@ class LoadPostData extends AbstractFixture implements OrderedFixtureInterface
             // many to many fixtures
             $postObject->addTag($this->getReference($post["tag_title"]));
             if(isset($post["media_slug"])){
-                $postObject->addMedia($this->getReference($post["media_slug"]));
+                $postObject->addMedia($this->getReference("post-" . $post["media_slug"]));
             }
             $manager->persist($postObject);
             $this->addReference($post["title"], $postObject);

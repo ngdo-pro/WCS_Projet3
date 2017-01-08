@@ -37,7 +37,7 @@ AppBundle\Entity\Media:
                 referencedColumnName: id
 
     manyToMany:
-        postsMedias:
+        posts:
             targetEntity: BlogBundle\Entity\Post
             mappedBy: medias
     lifecycleCallbacks: {  }

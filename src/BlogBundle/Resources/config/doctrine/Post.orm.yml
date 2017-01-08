@@ -53,7 +53,7 @@ BlogBundle\Entity\Post:
 
         medias:
             targetEntity: AppBundle\Entity\Media
-            inversedBy: postsMedias
+            inversedBy: posts
             joinTable:
                 name: post_has_media
                 joinColumns:
