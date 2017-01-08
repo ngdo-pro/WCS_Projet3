@@ -20,16 +20,16 @@ class LoadTagData extends AbstractFixture implements OrderedFixtureInterface
     {
         $tags = array(
             array(
-                "title" => "aloa",
-                "slug" => "aloa",
+                "title" => "pizza",
+                "slug" => "pizza",
             ),
             array(
-                "title" => "frite",
-                "slug" => "frite",
+                "title" => "vegetable",
+                "slug" => "vegetable",
             ),
             array(
-                "title" => "cuisine",
-                "slug" => "cuisine",
+                "title" => "speed",
+                "slug" => "speed",
             )
         );
 

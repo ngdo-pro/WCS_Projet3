@@ -20,30 +20,29 @@ class LoadPostData extends AbstractFixture implements OrderedFixtureInterface
     {
         $posts = array(
             array(
-                "title" => "hello",
-                "description" => "blablabla",
-                "keyword" => "alpha",
-                "content" => "Mega bla bla bla...",
+                "title" => "Italian restaurant",
+                "description" => "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ac.",
+                "keyword" => "italian",
+                "content" => "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ac.",
                 "views" => 7,
                 "visibility" => "ok",
                 "create_at" => new \DateTime("2017-01-10"),
                 "last_update_at" => new \DateTime("2017-01-10"),
-                "category_name" => "western",
-                "tag_title" => "frite",
-                "media_name" => "jean-michel d.jpg"
+                "category_name" => "italian",
+                "tag_title" => "pizza"
             ),
             array(
-                "title" => "bonjour",
-                "description" => "blablabla",
-                "keyword" => "alpha",
-                "content" => "Mega bla bla bla...",
+                "title" => "Vegetable cook",
+                "description" => "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ac.",
+                "keyword" => "vegan",
+                "content" => "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ac.",
                 "views" => 14,
                 "visibility" => "ok",
                 "create_at" => new \DateTime("2017-01-10"),
                 "last_update_at" => new \DateTime("2017-01-10"),
-                "category_name" => "pokemon",
-                "tag_title" => "cuisine",
-                "media_name" => "wild first floor"
+                "category_name" => "vegan",
+                "tag_title" => "vegetable",
+                "media_slug" => "middle-cook"
             )
         );
 
@@ -60,7 +59,9 @@ class LoadPostData extends AbstractFixture implements OrderedFixtureInterface
             $postObject->setCategory($this->getReference($post["category_name"]));
             // many to many fixtures
             $postObject->addTag($this->getReference($post["tag_title"]));
-            $postObject->addMedia($this->getReference($post["media_name"]));
+            if(isset($post["media_slug"])){
+                $postObject->addMedia($this->getReference($post["media_slug"]));
+            }
             $manager->persist($postObject);
             $this->addReference($post["title"], $postObject);
         }

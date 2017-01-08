@@ -20,12 +20,12 @@ class LoadCategoryData extends AbstractFixture implements OrderedFixtureInterfac
     {
         $categorys = array(
             array(
-                "name" => "western",
-                "slug" => "heu"
+                "name" => "vegan",
+                "slug" => "vegan"
             ),
             array(
-                "name" => "pokemon",
-                "slug" => "what ?"
+                "name" => "italian",
+                "slug" => "italian"
             )
         );
 

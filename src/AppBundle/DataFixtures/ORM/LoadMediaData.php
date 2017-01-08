@@ -47,7 +47,7 @@ class LoadMediaData extends AbstractFixture implements OrderedFixtureInterface
                 "lastUpdatedAt" => new \DateTime(),
                 "context" => "cook",
                 "type" => "img",
-                "restaurantSlug" => "middle-cook"
+                "postSlug" => "middle-cook"
             )
         );
 
@@ -62,9 +62,10 @@ class LoadMediaData extends AbstractFixture implements OrderedFixtureInterface
                 $mediaObj->setRestaurant($this->getReference("restaurant-" . $media["restaurantSlug"]));
             }elseif(isset($media["userSlug"])){
                 $mediaObj->setUser($this->getReference("user-" . $media["userSlug"]));
+            }elseif(isset($media["postSlug"])){
+                $this->addReference($media["postSlug"], $mediaObj);
             }
             $manager->persist($mediaObj);
-            $this->addReference($media["name"], $mediaObj);
         }
 
         $manager->flush();
