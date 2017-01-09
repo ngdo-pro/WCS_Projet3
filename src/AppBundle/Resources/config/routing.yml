@@ -1,3 +1,7 @@
+app_baptism_info:
+    resource: "@AppBundle/Resources/config/routing/baptism.yml"
+    prefix:   /baptism/info
+
 app_homepage:
     path:     /
     defaults: { _controller: AppBundle:Main:index }

@@ -1,0 +1,24 @@
+baptism_info_index:
+    path:     /
+    defaults: { _controller: "AppBundle:Baptism:index" }
+    methods:  GET
+
+baptism_info_show:
+    path:     /{id}/show
+    defaults: { _controller: "AppBundle:Baptism:show" }
+    methods:  GET
+
+baptism_info_new:
+    path:     /new
+    defaults: { _controller: "AppBundle:Baptism:new" }
+    methods:  [GET, POST]
+
+baptism_info_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AppBundle:Baptism:edit" }
+    methods:  [GET, POST]
+
+baptism_info_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AppBundle:Baptism:delete" }
+    methods:  DELETE

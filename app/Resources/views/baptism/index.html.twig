@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Baptisms list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Status</th>
+                <th>Date</th>
+                <th>Places</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for baptism in baptisms %}
+            <tr>
+                <td><a href="{{ path('baptism_info_show', { 'id': baptism.id }) }}">{{ baptism.id }}</a></td>
+                <td>{% if baptism.status %}Yes{% else %}No{% endif %}</td>
+                <td>{% if baptism.date %}{{ baptism.date|date('Y-m-d') }}{% endif %}</td>
+                <td>{{ baptism.places }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('baptism_info_show', { 'id': baptism.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('baptism_info_edit', { 'id': baptism.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('baptism_info_new') }}">Create a new baptism</a>
+        </li>
+    </ul>
+{% endblock %}
