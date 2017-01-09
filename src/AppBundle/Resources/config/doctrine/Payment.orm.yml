@@ -24,16 +24,17 @@ AppBundle\Entity\Payment:
         confirmationSent:
             type: boolean
     manyToOne:
-        baptism:
-            targetEntity: AppBundle\Entity\Baptism
-            inversedBy: payments
-            joinColumn:
-                name: baptism_id
-                referencedColumnName: id
         user:
             targetEntity: UserBundle\Entity\User
             inversedBy: payments
             joinColumn:
                 name: user_id
+                referencedColumnName: id
+    oneToOne:
+        baptism_has_user:
+            targetEntity: AppBundle\Entity\BaptismHasUser
+            inversedBy: payments
+            joinColumn:
+                name: baptism_has_user_id
                 referencedColumnName: id
     lifecycleCallbacks: {  }

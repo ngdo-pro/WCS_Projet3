@@ -225,4 +225,33 @@ class Payment
     {
         return $this->user;
     }
+    /**
+     * @var \AppBundle\Entity\BaptismHasUser
+     */
+    private $baptism_has_user;
+
+
+    /**
+     * Set baptismHasUser
+     *
+     * @param \AppBundle\Entity\BaptismHasUser $baptismHasUser
+     *
+     * @return Payment
+     */
+    public function setBaptismHasUser(\AppBundle\Entity\BaptismHasUser $baptismHasUser = null)
+    {
+        $this->baptism_has_user = $baptismHasUser;
+
+        return $this;
+    }
+
+    /**
+     * Get baptismHasUser
+     *
+     * @return \AppBundle\Entity\BaptismHasUser
+     */
+    public function getBaptismHasUser()
+    {
+        return $this->baptism_has_user;
+    }
 }
