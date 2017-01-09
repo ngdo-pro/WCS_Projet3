@@ -23,7 +23,7 @@ class BaptismController extends Controller
             ->getForm();
         $form->handleRequest($request);
 
-        if($form->isSubmitted() && $form->isValid()){
+        if($form->isSubmitted()){
             /** @var array $baptismParams contains the parameters of the selected baptism */
             $baptismParams = array(
                 "cityId" => 1,
@@ -32,11 +32,19 @@ class BaptismController extends Controller
                 "date" => new \DateTime("2017-01-20"),
                 "places" => 2
             );
-            $this->redirectToRoute("baptism_purchase", array("params" => $baptismParams));
+            return $this->forward("AppBundle:Baptism:purchase", array("params" => $baptismParams));
         }
 
         return $this->render('app/baptism/select.html.twig', array(
             'form' => $form->createView()
+        ));
+    }
+
+    public function purchaseAction(array $params = null)
+    {
+        var_dump($params);
+        return $this->render('app/baptism/purchase.html.twig', array(
+            'params' => $params
         ));
     }
 
