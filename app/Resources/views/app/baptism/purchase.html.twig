@@ -4,6 +4,10 @@
 
     <h2>Purchase Part</h2>
     <h3>Context: Baptism have been selected, here the user will purchase it</h3>
-    {{ params.date |date }}
-
+    {% if params != null %}
+        {{ params.date |date }}
+    {% endif %}
+    {% if baptism != null %}
+        {{ baptism.service.name }}
+    {% endif %}
 {% endblock %}

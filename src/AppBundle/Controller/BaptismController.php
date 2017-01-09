@@ -9,6 +9,7 @@
 namespace AppBundle\Controller;
 
 
+use AppBundle\Entity\Baptism;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
@@ -25,14 +26,13 @@ class BaptismController extends Controller
 
         if($form->isSubmitted()){
             /** @var array $baptismParams contains the parameters of the selected baptism */
-            $baptismParams = array(
-                "cityId" => 1,
-                "serviceId" => 1,
-                "restaurantId" => 1,
-                "date" => new \DateTime("2017-01-20"),
-                "places" => 2
-            );
-            return $this->forward("AppBundle:Baptism:purchase", array("params" => $baptismParams));
+            $baptism = new Baptism();
+            $baptism->setStatus("open");
+            $baptism->setDate(new \DateTime("2017-01-20"));
+            $baptism->setPlaces(2);
+            $service = $this->getDoctrine()->getManager()->getRepository("AppBundle:Service")->find(1);
+            $baptism->setService($service);
+            return $this->forward("AppBundle:Baptism:purchase", array("baptism" => $baptism));
         }
 
         return $this->render('app/baptism/select.html.twig', array(
@@ -40,8 +40,15 @@ class BaptismController extends Controller
         ));
     }
 
-    public function purchaseAction(Request $request, array $params = null)
+    public function purchaseAction(Request $request, array $params = null, Baptism $baptism = null)
     {
+        if(!null === $params){
+
+        }elseif(!null === $baptism){
+
+        }else{
+
+        }
         $form = $this->createFormBuilder()
             ->add("confirm", SubmitType::class)
             ->getForm();
@@ -52,7 +59,8 @@ class BaptismController extends Controller
         }
 
         return $this->render('app/baptism/purchase.html.twig', array(
-            'params' => $params
+            'params' => $params,
+            'baptism' => $baptism
         ));
     }
 
