@@ -1,0 +1,129 @@
+SogenactifBundle\Entity\Transaction:
+    type: entity
+    table: null
+    repositoryClass: SogenactifBundle\Repository\TransactionRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        amount:
+            type: integer
+        authorisationId:
+            type: string
+            length: 255
+        bankResponseCode:
+            type: string
+            length: 255
+        caddie:
+            type: string
+            length: 255
+        captureDay:
+            type: string
+            length: 255
+        captureMode:
+            type: string
+            length: 255
+        cardNumber:
+            type: string
+            length: 255
+        cardValidity:
+            type: string
+            length: 255
+        code:
+            type: string
+            length: 255
+        complementaryCode:
+            type: string
+            length: 255
+        complementaryInfo:
+            type: string
+            length: 255
+        created:
+            type: datetime
+        currencyCode:
+            type: integer
+        customerEmail:
+            type: string
+            length: 255
+        customerId:
+            type: string
+            length: 255
+        customerIpAddress:
+            type: string
+            length: 255
+        cvvFlag:
+            type: string
+            length: 255
+        cvvResponseCode:
+            type: string
+            length: 255
+        data:
+            type: string
+            length: 255
+        error:
+            type: string
+            length: 255
+        language:
+            type: string
+            length: 255
+        merchantCountry:
+            type: string
+            length: 255
+        merchantId:
+            type: string
+            length: 255
+        merchantLanguage:
+            type: string
+            length: 255
+        orderId:
+            type: string
+            length: 255
+        orderValidity:
+            type: string
+            length: 255
+        paymentCertificate:
+            type: string
+            length: 255
+        paymentDate:
+            type: datetime
+        paymentMeans:
+            type: string
+            length: 255
+        receiptComplement:
+            type: string
+            length: 255
+        responseCode:
+            type: string
+            length: 255
+        returnContext:
+            type: string
+            length: 255
+        scoreColor:
+            type: string
+            length: 255
+        scoreInfo:
+            type: string
+            length: 255
+        scoreProfile:
+            type: string
+            length: 255
+        scoreThreshold:
+            type: string
+            length: 255
+        scoreValue:
+            type: string
+            length: 255
+        statementReference:
+            type: string
+            length: 255
+        transactionCondition:
+            type: string
+            length: 255
+        transmissionDate:
+            type: datetime
+        updated:
+            type: datetime
+    lifecycleCallbacks: {  }
