@@ -30,4 +30,37 @@ BlogBundle\Entity\Post:
             type: datetime
         lastUpdatedAt:
             type: datetime
+
+    manyToOne:
+        category:
+            targetEntity: BlogBundle\Entity\Category
+            inversedBy: posts
+            joinColumn:
+                name: category_id
+                referencedColumnName: id
+    manyToMany:
+        tags:
+            targetEntity: BlogBundle\Entity\Tag
+            inversedBy: blogPosts
+            joinTable:
+                name: post_has_tag
+                joinColumns:
+                    post_id:
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    tag_id:
+                        referencedColumnName: id
+
+        medias:
+            targetEntity: AppBundle\Entity\Media
+            inversedBy: posts
+            joinTable:
+                name: post_has_media
+                joinColumns:
+                    post_id:
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    media_id:
+                        referencedColumnName: id
+
     lifecycleCallbacks: {  }

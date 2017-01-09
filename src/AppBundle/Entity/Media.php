@@ -225,4 +225,89 @@ class Media
     {
         return $this->restaurant;
     }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $postsMedias;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->postsMedias = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add postsMedia
+     *
+     * @param \BlogBundle\Entity\Post $postsMedia
+     *
+     * @return Media
+     */
+    public function addPostsMedia(\BlogBundle\Entity\Post $postsMedia)
+    {
+        $this->postsMedias[] = $postsMedia;
+
+        return $this;
+    }
+
+    /**
+     * Remove postsMedia
+     *
+     * @param \BlogBundle\Entity\Post $postsMedia
+     */
+    public function removePostsMedia(\BlogBundle\Entity\Post $postsMedia)
+    {
+        $this->postsMedias->removeElement($postsMedia);
+    }
+
+    /**
+     * Get postsMedias
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPostsMedias()
+    {
+        return $this->postsMedias;
+    }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $posts;
+
+
+    /**
+     * Add post
+     *
+     * @param \BlogBundle\Entity\Post $post
+     *
+     * @return Media
+     */
+    public function addPost(\BlogBundle\Entity\Post $post)
+    {
+        $this->posts[] = $post;
+
+        return $this;
+    }
+
+    /**
+     * Remove post
+     *
+     * @param \BlogBundle\Entity\Post $post
+     */
+    public function removePost(\BlogBundle\Entity\Post $post)
+    {
+        $this->posts->removeElement($post);
+    }
+
+    /**
+     * Get posts
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPosts()
+    {
+        return $this->posts;
+    }
 }

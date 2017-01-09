@@ -168,33 +168,33 @@ class Payment
         return $this->confirmationSent;
     }
     /**
-     * @var \AppBundle\Entity\Baptem
+     * @var \AppBundle\Entity\Baptism
      */
-    private $baptem;
+    private $baptism;
 
 
     /**
-     * Set baptem
+     * Set baptism
      *
-     * @param \AppBundle\Entity\Baptem $baptem
+     * @param \AppBundle\Entity\Baptism $baptism
      *
      * @return Payment
      */
-    public function setBaptem(\AppBundle\Entity\Baptem $baptem = null)
+    public function setBaptism(\AppBundle\Entity\Baptism $baptism = null)
     {
-        $this->baptem = $baptem;
+        $this->baptism = $baptism;
 
         return $this;
     }
 
     /**
-     * Get baptem
+     * Get baptism
      *
-     * @return \AppBundle\Entity\Baptem
+     * @return \AppBundle\Entity\Baptism
      */
-    public function getBaptem()
+    public function getBaptism()
     {
-        return $this->baptem;
+        return $this->baptism;
     }
     /**
      * @var \UserBundle\Entity\User
