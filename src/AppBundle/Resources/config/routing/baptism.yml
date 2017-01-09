@@ -1,8 +1,8 @@
 baptism_select:
-    path:       /
+    path:       /selection
     defaults:   { _controller: AppBundle:Baptism:select }
 
 baptism_purchase:
-    path:       /acheter-un-bapteme
+    path:       /acheter
     defaults:   { _controller: AppBundle:Baptism:purchase }
     methods: POST
