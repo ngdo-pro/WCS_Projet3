@@ -7,8 +7,9 @@ namespace AppBundle\Entity;
  */
 class Payment
 {
+
     /**
-     * @var int
+     * @var integer
      */
     private $id;
 
@@ -33,15 +34,25 @@ class Payment
     private $status;
 
     /**
-     * @var bool
+     * @var boolean
      */
     private $confirmationSent;
+
+    /**
+     * @var \AppBundle\Entity\BaptismHasUser
+     */
+    private $baptism_has_user;
+
+    /**
+     * @var \UserBundle\Entity\User
+     */
+    private $user;
 
 
     /**
      * Get id
      *
-     * @return int
+     * @return integer
      */
     public function getId()
     {
@@ -161,75 +172,12 @@ class Payment
     /**
      * Get confirmationSent
      *
-     * @return bool
+     * @return boolean
      */
     public function getConfirmationSent()
     {
         return $this->confirmationSent;
     }
-    /**
-     * @var \AppBundle\Entity\Baptism
-     */
-    private $baptism;
-
-
-    /**
-     * Set baptism
-     *
-     * @param \AppBundle\Entity\Baptism $baptism
-     *
-     * @return Payment
-     */
-    public function setBaptism(\AppBundle\Entity\Baptism $baptism = null)
-    {
-        $this->baptism = $baptism;
-
-        return $this;
-    }
-
-    /**
-     * Get baptism
-     *
-     * @return \AppBundle\Entity\Baptism
-     */
-    public function getBaptism()
-    {
-        return $this->baptism;
-    }
-    /**
-     * @var \UserBundle\Entity\User
-     */
-    private $user;
-
-
-    /**
-     * Set user
-     *
-     * @param \UserBundle\Entity\User $user
-     *
-     * @return Payment
-     */
-    public function setUser(\UserBundle\Entity\User $user = null)
-    {
-        $this->user = $user;
-
-        return $this;
-    }
-
-    /**
-     * Get user
-     *
-     * @return \UserBundle\Entity\User
-     */
-    public function getUser()
-    {
-        return $this->user;
-    }
-    /**
-     * @var \AppBundle\Entity\BaptismHasUser
-     */
-    private $baptism_has_user;
-
 
     /**
      * Set baptismHasUser
@@ -253,5 +201,29 @@ class Payment
     public function getBaptismHasUser()
     {
         return $this->baptism_has_user;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \UserBundle\Entity\User $user
+     *
+     * @return Payment
+     */
+    public function setUser(\UserBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \UserBundle\Entity\User
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 }
