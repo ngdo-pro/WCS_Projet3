@@ -1,0 +1,3 @@
+sogenactif_homepage:
+    path:     /
+    defaults: { _controller: SogenactifBundle:Default:index }

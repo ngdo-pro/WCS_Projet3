@@ -7,6 +7,7 @@ imports:
     - { resource: vendors/fos-user-bundle_config.yml }
     - { resource: vendors/easy-admin_config.yml }
     - { resource: "@BlogBundle/Resources/config/services.yml" }
+    - { resource: "@SogenactifBundle/Resources/config/services.yml" }
 
 # Put parameters here that don't need to change on each machine where the app is deployed
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
