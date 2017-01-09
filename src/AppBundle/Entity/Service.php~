@@ -54,48 +54,48 @@ class Service
     /**
      * @var \Doctrine\Common\Collections\Collection
      */
-    private $baptems;
+    private $baptisms;
 
     /**
      * Constructor
      */
     public function __construct()
     {
-        $this->baptems = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->baptisms = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
-     * Add baptem
+     * Add baptism
      *
-     * @param \AppBundle\Entity\Baptem $baptem
+     * @param \AppBundle\Entity\Baptism $baptism
      *
      * @return Service
      */
-    public function addBaptem(\AppBundle\Entity\Baptem $baptem)
+    public function addBaptism(\AppBundle\Entity\Baptism $baptism)
     {
-        $this->baptems[] = $baptem;
+        $this->baptisms[] = $baptism;
 
         return $this;
     }
 
     /**
-     * Remove baptem
+     * Remove baptism
      *
-     * @param \AppBundle\Entity\Baptem $baptem
+     * @param \AppBundle\Entity\Baptism $baptism
      */
-    public function removeBaptem(\AppBundle\Entity\Baptem $baptem)
+    public function removeBaptism(\AppBundle\Entity\Baptism $baptism)
     {
-        $this->baptems->removeElement($baptem);
+        $this->baptisms->removeElement($baptism);
     }
 
     /**
-     * Get baptems
+     * Get baptisms
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getBaptems()
+    public function getBaptisms()
     {
-        return $this->baptems;
+        return $this->baptisms;
     }
     /**
      * @var \Doctrine\Common\Collections\Collection

@@ -17,4 +17,9 @@ BlogBundle\Entity\Category:
             type: string
             length: 255
             unique: true
+
+    oneToMany:
+        posts:
+            targetEntity: BlogBundle\Entity\Post
+            mappedBy: category
     lifecycleCallbacks: {  }

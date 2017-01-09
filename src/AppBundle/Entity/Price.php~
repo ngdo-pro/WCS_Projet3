@@ -51,4 +51,33 @@ class Price
     {
         return $this->value;
     }
+    /**
+     * @var \AppBundle\Entity\Product
+     */
+    private $product;
+
+
+    /**
+     * Set product
+     *
+     * @param \AppBundle\Entity\Product $product
+     *
+     * @return Price
+     */
+    public function setProduct(\AppBundle\Entity\Product $product = null)
+    {
+        $this->product = $product;
+
+        return $this;
+    }
+
+    /**
+     * Get product
+     *
+     * @return \AppBundle\Entity\Product
+     */
+    public function getProduct()
+    {
+        return $this->product;
+    }
 }
