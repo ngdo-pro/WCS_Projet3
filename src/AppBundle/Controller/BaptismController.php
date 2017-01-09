@@ -40,9 +40,17 @@ class BaptismController extends Controller
         ));
     }
 
-    public function purchaseAction(array $params = null)
+    public function purchaseAction(Request $request, array $params = null)
     {
-        var_dump($params);
+        $form = $this->createFormBuilder()
+            ->add("confirm", SubmitType::class)
+            ->getForm();
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()){
+            return $this->forward("");
+        }
+
         return $this->render('app/baptism/purchase.html.twig', array(
             'params' => $params
         ));
