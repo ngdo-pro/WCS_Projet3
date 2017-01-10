@@ -25,7 +25,7 @@ class TransactionController extends Controller
         $merchantId     = $this->getParameter('merchant_id');
         $merchantCountry= $this->getParameter('merchant_country');
         $currencyCode   = $this->getParameter('currency_code');
-
+        $normalUrl = $this->generateUrl('sogenactif_normal', array(), true);
         $session = $request->getSession();
 
         /** @var Transaction $transaction */
@@ -47,8 +47,8 @@ class TransactionController extends Controller
         // 		Les valeurs proposées ne sont que des exemples
         // 		Les champs et leur utilisation sont expliqués dans le Dictionnaire des données
         //
-        // 		$parm="$parm normal_return_url=http://www.maboutique.fr/cgi-bin/call_response.php";
-        //		$parm="$parm cancel_return_url=http://www.maboutique.fr/cgi-bin/call_response.php";
+        $parm="$parm normal_return_url=$normalUrl";
+        $parm="$parm cancel_return_url=$normalUrl";
         //		$parm="$parm automatic_response_url=http://www.maboutique.fr/cgi-bin/call_autoresponse.php";
         //		$parm="$parm language=fr";
         $parm           ="$parm payment_means=CB,2,VISA,2,MASTERCARD,2";
@@ -122,6 +122,75 @@ class TransactionController extends Controller
             'code' => $code,
             'error' => $error,
             'message' => $message
+        ));
+    }
+
+    public function normalResponseAction(Request $request){
+
+        $projectPath        = $this->getParameter('project_path');
+        $pathfilePath       = $projectPath . 'src/SogenactifBundle/Api/params/pathfile';
+        $responsePath       = $projectPath . 'src/SogenactifBundle/Api/bin/response';
+        $data               = $request->request->get('DATA');
+
+        $message            = "message=$data";
+        $pathfile           = "pathfile=$pathfilePath";
+        $path_bin           = "$responsePath";
+
+        // Appel du binaire response
+        $message            = escapeshellcmd($message);
+        $result             = exec("$path_bin $pathfile $message");
+
+        $tableau            = explode ("!", $result);
+var_dump($tableau);
+        $em = $this->getDoctrine()->getManager();
+
+        /** @var Transaction $transaction */
+        $transaction = $em->getRepository("SogenactifBundle:Transaction")->find($tableau[6]);
+        $transaction->setAuthorisationId($tableau[13]);
+        $transaction->setBankResponseCode($tableau[18]);
+        $transaction->setCaddie($tableau[22]);
+        $transaction->setCaptureDay($tableau[30]);
+        $transaction->setCaptureMode($tableau[31]);
+        $transaction->setCardNumber($tableau[15]);
+        $transaction->setCardValidity($tableau[36]);
+        $transaction->setCode($tableau[1]);
+        $transaction->setComplementaryCode($tableau[19]);
+        $transaction->setComplementaryInfo($tableau[20]);
+        $transaction->setCustomerIpAddress($tableau[29]);
+        $transaction->setCvvFlag($tableau[16]);
+        $transaction->setCvvResponseCode($tableau[17]);
+        $transaction->setData($tableau[32]);
+        $transaction->setError($tableau[2]);
+        $transaction->setLanguage($tableau[25]);
+        $transaction->setMerchantCountry($tableau[4]);
+        $transaction->setMerchantId($tableau[3]);
+        $transaction->setMerchantLanguage($tableau[24]);
+        $transaction->setOrderId($tableau[27]);
+        $transaction->setOrderValidity($tableau[33]);
+        $transaction->setPaymentCertificate($tableau[12]);
+        $transaction->setPaymentDate(\DateTime::createFromFormat('Ymd', $tableau[10]));
+        $transaction->setPaymentMeans($tableau[7]);
+        $transaction->setReceiptComplement($tableau[23]);
+        $transaction->setResponseCode($tableau[11]);
+        $transaction->setReturnContext($tableau[21]);
+        $transaction->setScoreColor($tableau[38]);
+        $transaction->setScoreInfo($tableau[39]);
+        $transaction->setScoreProfile($tableau[41]);
+        $transaction->setScoreThreshold($tableau[40]);
+        $transaction->setScoreValue($tableau[37]);
+        $transaction->setStatementReference($tableau[35]);
+        $transaction->setTransactionCondition($tableau[34]);
+        $transaction->setTransmissionDate(\DateTime::createFromFormat('YmdHis', $tableau[8]));
+        $transaction->setUpdated(new \DateTime());
+
+        $em->persist($transaction);
+        $em->flush();
+
+        return $this->render("sogenactif/index.html.twig", array(
+            'tableau'   => $tableau,
+            'message'   => $message,
+            'code'      => $tableau[1],
+            'error'     => $tableau[2]
         ));
     }
 }
