@@ -17,3 +17,10 @@ parameters:
 
     # A secret key that's used to generate certain security-related tokens
     secret:            ThisTokenIsNotSoSecretChangeIt
+
+    # Paths to Sogenactif params files
+
+    sogenactif_pathfile : /var/www/html/food_and_you/src/SogenactifBundle/Api/params/pathfile
+    sogenactif_bin_request: /var/www/html/food_and_you/src/SogenactifBundle/Api/bin/request
+    sogenactif_bin_response: /var/www/html/food_and_you/src/SogenactifBundle/Api/bin/response
+
