@@ -1,0 +1,3 @@
+sogenactif_sending:
+    path:     /
+    defaults: { _controller: SogenactifBundle:Transaction:sending }
