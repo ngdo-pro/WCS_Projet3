@@ -1,10 +1,10 @@
 sogenactif:
     resource: "@SogenactifBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /acheter
 
 blog:
     resource: "@BlogBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /blog
 
 app:
     resource: "@AppBundle/Resources/config/routing.yml"
