@@ -91,6 +91,6 @@ form:
     last_name: 'Lastname'
     birth_date: 'Birth date'
     biography: 'Biography'
-    signature_dish: ''
+    signature_dish: 'Signature dish'
     phone: 'Phone'
     profession: 'Profession'

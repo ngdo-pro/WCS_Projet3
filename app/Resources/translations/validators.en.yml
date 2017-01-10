@@ -23,6 +23,12 @@ fos_user:
         blank: 'Please enter a name.'
         short: 'The name is too short.'
         long: 'The name is too long.'
+    first_name:
+        blank: 'Please enter your firstname.'
+    last_name:
+        blank: 'Please enter your lastname.'
+    birth_date:
+        blank: 'Please enter your birth date.'
 fos_group:
     name:
         already_used: 'The name is already used.'

@@ -79,10 +79,10 @@ form:
     password_confirmation: 'Répéter le mot de passe'
     new_password: 'Nouveau mot de passe'
     new_password_confirmation: 'Répéter le nouveau mot de passe'
-    first_name:
-    last_name:
-    birth_date:
-    biography:
-    signature_dish:
-    phone:
-    profession:
+    first_name: 'Prénom'
+    last_name: 'Nom'
+    birth_date: 'Date de naissance'
+    biography: 'Biographie'
+    signature_dish: 'Plat signature'
+    phone: 'Téléphone'
+    profession: 'Profession'

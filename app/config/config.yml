@@ -76,8 +76,3 @@ doctrine_migrations:
     namespace: Application\Migrations
     table_name: migration_versions
     name: Application Migrations
-
-fos_user:
-    registration:
-        form:
-            type: app_user_registration
