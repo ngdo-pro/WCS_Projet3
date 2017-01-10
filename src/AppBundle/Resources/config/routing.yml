@@ -1,6 +1,6 @@
 app_baptism_info:
     resource: "@AppBundle/Resources/config/routing/baptism.yml"
-    prefix:   /baptism/info
+    prefix:   /baptism/
 
 app_homepage:
     path:     /

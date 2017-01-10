@@ -121,4 +121,38 @@ class BaptismController extends Controller
             ->getForm()
         ;
     }
+
+    /**
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     */
+    public function SelectAction(Request $request)
+    {
+        $baptism = new Baptism();
+        $editForm = $this->createForm('AppBundle\Form\BaptismType', $baptism);
+        $em = $this->getDoctrine()->getManager();
+
+        $baptisms = $em->getRepository('AppBundle:Baptism')->findAll();
+
+        return $this->render('baptism/select.html.twig', array(
+            'baptisms' => $baptisms,
+            'edit_form' => $editForm->createView(),
+        ));
+
+    }
+
+    /**
+     * Finds and displays a baptism entity.
+     *
+     */
+    public function purchaseAction(Request $request)
+    {
+        //$deleteForm = $this->createDeleteForm($baptism);
+        $baptism = new Baptism();
+
+        return $this->render('baptism/show.html.twig', array(
+            'baptism' => $baptism,
+            //'delete_form' => $deleteForm->createView(),
+        ));
+    }
 }
