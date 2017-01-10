@@ -12,3 +12,5 @@
 /composer.phar
 /node_modules
 /web/vendors
+/web/assets
+/payment
