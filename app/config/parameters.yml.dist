@@ -20,5 +20,8 @@ parameters:
 
     # Paths to Sogenactif params files
 
-    project_path : /var/www/html/food_and_you/
+    project_path:       /var/www/html/food_and_you/
+    merchant_id:        "014213245611111"
+    merchant_country:   fr
+    currency_code:      978
 
