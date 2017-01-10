@@ -28,6 +28,10 @@ class LoadPriceData extends AbstractFixture implements OrderedFixtureInterface
             array(
                 "value" => 99.99,
                 "product" => "1"
+            ),
+            array(
+                "value" => 59.99,
+                "product" => "2"
             )
         );
 
