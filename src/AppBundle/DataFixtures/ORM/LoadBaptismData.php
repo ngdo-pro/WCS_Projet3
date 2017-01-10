@@ -30,6 +30,7 @@ class LoadBaptismData extends AbstractFixture implements OrderedFixtureInterface
                 "date" => new \DateTime("2017-01-10"),
                 "places" => 2,
                 "service" => "midi",
+                "restaurantSlug" => "wild-restaurant",
                 "reference" => "1"
             ),
             array(
@@ -37,6 +38,7 @@ class LoadBaptismData extends AbstractFixture implements OrderedFixtureInterface
                 "date" => new \DateTime("2017-01-20"),
                 "places" => 1,
                 "service" => "soir",
+                "restaurantSlug" => "wild-restaurant",
                 "reference" => "2"
             )
         );
@@ -46,7 +48,8 @@ class LoadBaptismData extends AbstractFixture implements OrderedFixtureInterface
             $baptismObject->setStatus($baptism["status"]);
             $baptismObject->setDate($baptism["date"]);
             $baptismObject->setPlaces($baptism["places"]);
-            $baptismObject->setService($this->getReference("service-".$baptism["service"]));
+            $baptismObject->setService($this->getReference("service-" . $baptism["service"]));
+            $baptismObject->setRestaurant($this->getReference("restaurant-" . $baptism["restaurantSlug"]));
             $manager->persist($baptismObject);
             $this->addReference("baptism-".$baptism["reference"], $baptismObject);
         }
@@ -60,6 +63,6 @@ class LoadBaptismData extends AbstractFixture implements OrderedFixtureInterface
      */
     public function getOrder()
     {
-        return 2;
+        return 4;
     }
 }

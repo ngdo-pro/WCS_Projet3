@@ -22,10 +22,13 @@ AppBundle\Entity\Baptism:
             joinColumn:
                 name: service_id
                 referencedColumnName: id
+        restaurant:
+            targetEntity: AppBundle\Entity\Restaurant
+            inversedBy: baptisms
+            joinColumn:
+                name: restaurant_id
+                referencedColumnName: id
     oneToMany:
-        payments:
-            targetEntity: AppBundle\Entity\Payment
-            mappedBy: baptism
         baptismsHasUser:
             targetEntity: AppBundle\Entity\BaptismHasUser
             mappedBy: baptism
