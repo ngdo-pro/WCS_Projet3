@@ -78,6 +78,6 @@ class LoadRestaurantData extends AbstractFixture implements OrderedFixtureInterf
      */
     public function getOrder()
     {
-        return 6;
+        return 3;
     }
 }
