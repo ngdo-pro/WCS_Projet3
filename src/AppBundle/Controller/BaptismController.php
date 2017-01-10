@@ -28,17 +28,16 @@ class BaptismController extends Controller
         $form->handleRequest($request);
 
         if($form->isSubmitted()){
-            /** @var array $baptismParams contains the parameters of the selected baptism */
-            $baptism = new Baptism();
-            $baptism->setDate(new \DateTime("2017-01-20"));
-            $baptism->setPlaces(2);
-            $restaurant = $this->getDoctrine()->getManager()->getRepository("AppBundle:Restaurant")->findOneBy(array("name" => "wild restaurant"));
-            $baptism->setRestaurant($restaurant);
-            $service = $this->getDoctrine()->getManager()->getRepository("AppBundle:Service")->findOneBy(array("name" => "midi"));
-            $baptism->setService($service);
+
+            $baptismParams = array();
+            $baptismParams["status"] = "pending";
+            $baptismParams["date"] = new \DateTime("2017-01-20");
+            $baptismParams["places"] = 2;
+            $baptismParams["restaurantName"] = "wild restaurant";
+            $baptismParams["serviceName"] = "midi";
 
             $session = $request->getSession();
-            $session->set('baptism', $baptism);
+            $session->set('baptism', $baptismParams);
             return $this->redirectToRoute("baptism_purchase");
         }
 
@@ -59,7 +58,7 @@ class BaptismController extends Controller
     public function purchaseAction(Request $request)
     {
         $session = $request->getSession();
-        $baptism = $session->get('baptism');
+        $baptismParams = $session->get('baptism');
 
         $form = $this->createFormBuilder()
             ->add("send", SubmitType::class)
@@ -67,15 +66,23 @@ class BaptismController extends Controller
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()){
+
             $em = $this->getDoctrine()->getManager();
 
-            $baptism->setStatus("pending");
-            $em->persist($baptism);
-
+            $restaurant = $em->getRepository("AppBundle:Restaurant")->findOneBy(array("name" => $baptismParams["restaurantName"]));
+            $service = $em->getRepository("AppBundle:Service")->findOneBy(array("name" => $baptismParams["serviceName"]));
             /** @var User $user */
             $user = $this->getUser();
 
-            /** creation of BaptismHasUser */
+            $baptism = new Baptism();
+            $baptism->setRestaurant($restaurant);
+            $baptism->setService($service);
+            $baptism->setStatus($baptismParams["status"]);
+            $baptism->setDate($baptismParams["date"]);
+            $baptism->setPlaces($baptismParams["places"]);
+
+            $em->persist($baptism);
+
             $baptismHasUser = new BaptismHasUser();
             $baptismHasUser->setBaptism($baptism);
             $baptismHasUser->setUser($user);
@@ -99,11 +106,11 @@ class BaptismController extends Controller
 
             $session->set('price', $price);
             $session->set('user', $user);
-            return $this->redirectToRoute("sogenactif_send");
+            return $this->redirectToRoute("sogenactif_sending");
         }
 
         return $this->render('app/baptism/purchase.html.twig', array(
-            'baptism' => $baptism,
+            'baptism' => $baptismParams,
             'form' => $form->createView()
         ));
     }
