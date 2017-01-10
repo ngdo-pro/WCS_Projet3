@@ -126,4 +126,8 @@ SogenactifBundle\Entity\Transaction:
             type: datetime
         updated:
             type: datetime
+    oneToOne:
+        payment:
+            targetEntity: AppBundle\Entity\Payment
+            mappedBy: transaction
     lifecycleCallbacks: {  }
