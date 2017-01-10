@@ -23,7 +23,7 @@ class RegistrationType extends AbstractType
             ))
             ->add('first_name', null, array('label' => 'form.first_name', 'translation_domain' => 'FOSUserBundle'))
             ->add('last_name', null, array('label' => 'form.last_name', 'translation_domain' => 'FOSUserBundle'))
-            ->add('birth_date', null, array('label' => 'form.birth_date', 'translation_domain' => 'FOSUserBundle'))
+            ->add('birth_date', 'date', array('widget' => 'single_text','label' => 'form.birth_date', 'translation_domain' => 'FOSUserBundle'))
             ->add('biography', null, array('label' => 'form.biography', 'translation_domain' => 'FOSUserBundle'))
             ->add('signature_dish', null, array('label' => 'form.signature_dish', 'translation_domain' => 'FOSUserBundle'))
             ->add('phone', null, array('label' => 'form.phone', 'translation_domain' => 'FOSUserBundle'))
@@ -40,5 +40,10 @@ class RegistrationType extends AbstractType
     public function getParent()
     {
         return 'fos_user_registration';
+    }
+    public function setEmail($email)
+    {
+        parent::setEmail($email);
+        $this->setUsername($email);
     }
 }

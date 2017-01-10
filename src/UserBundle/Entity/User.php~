@@ -115,6 +115,7 @@ class User extends BaseUser
     public function setLastName($lastName)
     {
         $this->lastName = $lastName;
+        $this->slug = $this->firstName.'-'.$lastName;
 
         return $this;
     }
@@ -136,9 +137,9 @@ class User extends BaseUser
      *
      * @return User
      */
-    public function setSlug($slug)
+    public function setSlug($firstName, $lastName)
     {
-        $this->slug = $slug;
+        $this->slug = $firstName.'-'.$lastName;
 
         return $this;
     }

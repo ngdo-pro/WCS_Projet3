@@ -22,21 +22,28 @@ UserBundle\Entity\User:
             nullable: true
         biography:
             type: text
+            nullable: true
         signatureDish:
             type: string
             length: 255
+            nullable: true
         rating:
             type: float
+            nullable: true
         phone:
             type: string
             length: 40
+            nullable: true
         level:
             type: integer
+            nullable: true
         participation:
             type: integer
+            nullable: true
         profession:
             type: string
             length: 255
+            nullable: true
     oneToMany:
         baptismsHasUser:
             targetEntity: AppBundle\Entity\BaptismHasUser

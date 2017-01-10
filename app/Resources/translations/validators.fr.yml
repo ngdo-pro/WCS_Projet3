@@ -25,8 +25,12 @@ fos_user:
         long: 'Le nom est trop long.'
     first_name:
         blank: 'Entrez votre prénom s''il vous plait.'
+        short: 'Le prénom est trop court.'
+        long: 'Le prénom est trop long.'
     last_name:
         blank: 'Entrez votre nom s''il vous plait.'
+        short: 'Le nom est trop court.'
+        long: 'Le nom est trop long.'
     birth_date:
         blank: 'Entrez votre date de naissance s''il vous plait.'
 fos_group:
