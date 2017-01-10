@@ -12,7 +12,6 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\Baptism;
 use AppBundle\Entity\BaptismHasUser;
 use AppBundle\Entity\Payment;
-use AppBundle\Entity\Price;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
@@ -37,7 +36,10 @@ class BaptismController extends Controller
             $baptism->setRestaurant($restaurant);
             $service = $this->getDoctrine()->getManager()->getRepository("AppBundle:Service")->findOneBy(array("name" => "midi"));
             $baptism->setService($service);
-            return $this->forward("AppBundle:Baptism:purchase", array("baptism" => $baptism));
+
+            $session = $request->getSession();
+            $session->set('baptism', $baptism);
+            return $this->redirectToRoute("baptism_purchase");
         }
 
         return $this->render('app/baptism/select.html.twig', array(
@@ -52,11 +54,13 @@ class BaptismController extends Controller
      *       baptismHasUser, then, it redirects to sogenactif payment page.
      *
      * @param Request $request
-     * @param Baptism $baptism
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function purchaseAction(Request $request, Baptism $baptism)
+    public function purchaseAction(Request $request)
     {
+        $session = $request->getSession();
+        $baptism = $session->get('baptism');
+
         $form = $this->createFormBuilder()
             ->add("send", SubmitType::class)
             ->getForm();
@@ -92,7 +96,10 @@ class BaptismController extends Controller
 
             $price = $em->getRepository("AppBundle:Price")->findByProduct("bapteme");
             $price = $price[0];
-            return $this->forward("SogenactifBundle:Transaction:sending", array("price" => $price, "user" => $user));
+
+            $session->set('price', $price);
+            $session->set('user', $user);
+            return $this->redirectToRoute("sogenactif_send");
         }
 
         return $this->render('app/baptism/purchase.html.twig', array(

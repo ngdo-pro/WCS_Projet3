@@ -5,4 +5,3 @@ baptism_select:
 baptism_purchase:
     path:       /acheter
     defaults:   { _controller: AppBundle:Baptism:purchase }
-    methods: POST
