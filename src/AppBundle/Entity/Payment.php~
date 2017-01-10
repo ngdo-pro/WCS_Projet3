@@ -7,8 +7,9 @@ namespace AppBundle\Entity;
  */
 class Payment
 {
+
     /**
-     * @var int
+     * @var integer
      */
     private $id;
 
@@ -33,15 +34,25 @@ class Payment
     private $status;
 
     /**
-     * @var bool
+     * @var boolean
      */
     private $confirmationSent;
+
+    /**
+     * @var \AppBundle\Entity\BaptismHasUser
+     */
+    private $baptism_has_user;
+
+    /**
+     * @var \UserBundle\Entity\User
+     */
+    private $user;
 
 
     /**
      * Get id
      *
-     * @return int
+     * @return integer
      */
     public function getId()
     {
@@ -161,46 +172,36 @@ class Payment
     /**
      * Get confirmationSent
      *
-     * @return bool
+     * @return boolean
      */
     public function getConfirmationSent()
     {
         return $this->confirmationSent;
     }
-    /**
-     * @var \AppBundle\Entity\Baptism
-     */
-    private $baptism;
-
 
     /**
-     * Set baptism
+     * Set baptismHasUser
      *
-     * @param \AppBundle\Entity\Baptism $baptism
+     * @param \AppBundle\Entity\BaptismHasUser $baptismHasUser
      *
      * @return Payment
      */
-    public function setBaptism(\AppBundle\Entity\Baptism $baptism = null)
+    public function setBaptismHasUser(\AppBundle\Entity\BaptismHasUser $baptismHasUser = null)
     {
-        $this->baptism = $baptism;
+        $this->baptism_has_user = $baptismHasUser;
 
         return $this;
     }
 
     /**
-     * Get baptism
+     * Get baptismHasUser
      *
-     * @return \AppBundle\Entity\Baptism
+     * @return \AppBundle\Entity\BaptismHasUser
      */
-    public function getBaptism()
+    public function getBaptismHasUser()
     {
-        return $this->baptism;
+        return $this->baptism_has_user;
     }
-    /**
-     * @var \UserBundle\Entity\User
-     */
-    private $user;
-
 
     /**
      * Set user

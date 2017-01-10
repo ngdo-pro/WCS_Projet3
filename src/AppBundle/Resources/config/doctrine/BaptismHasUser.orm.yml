@@ -24,4 +24,8 @@ AppBundle\Entity\BaptismHasUser:
             joinColumn:
                 name: user_id
                 referencedColumnName: id
+    oneToOne:
+        payments:
+            targetEntity: AppBundle\Entity\Payment
+            mappedBy: baptism_has_user
     lifecycleCallbacks: {  }
