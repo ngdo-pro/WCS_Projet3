@@ -12,6 +12,8 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\Baptism;
 use AppBundle\Entity\BaptismHasUser;
 use AppBundle\Entity\Payment;
+use AppBundle\Entity\Price;
+use SogenactifBundle\Entity\Transaction;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
@@ -89,6 +91,19 @@ class BaptismController extends Controller
             $baptismHasUser->setRole(true);
             $em->persist($baptismHasUser);
 
+
+            $prices = $em->getRepository("AppBundle:Price")->findByProduct("bapteme");
+            /** @var Price $price */
+            $price = $prices[0];
+
+            $transaction = new Transaction();
+            $transaction->setAmount($price->getValue() * 100);
+            $transaction->setCreated(new \DateTime());
+            $transaction->setCurrencyCode(978);
+            $transaction->setCustomerEmail($user->getEmail());
+            $transaction->setCustomerId($user->getId());
+            $em->persist($transaction);
+
             $payment = new Payment();
             $payment->setFirstName($user->getFirstName());
             $payment->setLastName($user->getLastName());
@@ -97,15 +112,13 @@ class BaptismController extends Controller
             $payment->setConfirmationSent(false);
             $payment->setBaptismHasUser($baptismHasUser);
             $payment->setUser($user);
+            $payment->setTransaction($transaction);
             $em->persist($payment);
 
             $em->flush();
+            $em->clear();
 
-            $price = $em->getRepository("AppBundle:Price")->findByProduct("bapteme");
-            $price = $price[0];
-
-            $session->set('price', $price);
-            $session->set('user', $user);
+            $session->set('transaction', $transaction);
             return $this->redirectToRoute("sogenactif_sending");
         }
 
