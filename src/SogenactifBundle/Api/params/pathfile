@@ -1,32 +1,32 @@
 #########################################################################
 #
-#	Pathfile généré à l'installation v2
+#	Pathfile gï¿½nï¿½rï¿½ ï¿½ l'installation v2
 #	Liste des fichiers parametres utilises par le module de paiement
 #
 #########################################################################
 #-------------------------------------------------------------------------
-# Activation (YES) / Désactivation (NO) du mode DEBUG
+# Activation (YES) / Dï¿½sactivation (NO) du mode DEBUG
 #-------------------------------------------------------------------------
-DEBUG!NO!
+DEBUG!YES!
 #
 # ------------------------------------------------------------------------
-# Chemin vers le répertoire des logos depuis le web alias  
-# Exemple pour le répertoire www.merchant.com/sogenactif/payment/logo/
+# Chemin vers le rï¿½pertoire des logos depuis le web alias  
+# Exemple pour le rï¿½pertoire www.merchant.com/sogenactif/payment/logo/
 # indiquer:/sogenactif/payment/logo/
 # ------------------------------------------------------------------------
-D_LOGO!/sogenactif/payment/logo/!
+D_LOGO!/logo_sogenactif_api/!
 #
 # --------------------------------------------------------------------------
 #  Fichiers parametres lies a l'api sogenactif paiement
 # --------------------------------------------------------------------------
 # fichier des  parametres sogenactif
-F_DEFAULT!C:\Users\nicol\Desktop\payment\param\parmcom.sogenactif!
+F_DEFAULT!/var/www/html/food_and_you/src/SogenactifBundle/Api/params/parmcom.sogenactif!
 #
 # fichier parametre commercant
-F_PARAM!C:\Users\nicol\Desktop\payment\param\parmcom!
+F_PARAM!/var/www/html/food_and_you/src/SogenactifBundle/Api/params/parmcom!
 #
 # certificat du commercant
-F_CERTIFICATE!C:\Users\nicol\Desktop\payment\param\certif!
+F_CERTIFICATE!/var/www/html/food_and_you/src/SogenactifBundle/Api/params/certif!
 F_CTYPE!php!
 #
 # --------------------------------------------------------------------------
