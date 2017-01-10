@@ -12,6 +12,7 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\Baptism;
 use AppBundle\Entity\BaptismHasUser;
 use AppBundle\Entity\Payment;
+use AppBundle\Entity\Price;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
@@ -88,6 +89,10 @@ class BaptismController extends Controller
             $em->persist($payment);
 
             $em->flush();
+
+            $price = $em->getRepository("AppBundle:Price")->findByProduct("bapteme");
+            $price = $price[0];
+            return $this->forward("SogenactifBundle:Transaction:sending", array("price" => $price, "user" => $user));
         }
 
         return $this->render('app/baptism/purchase.html.twig', array(

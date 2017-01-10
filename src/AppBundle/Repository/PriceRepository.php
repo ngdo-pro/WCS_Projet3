@@ -10,4 +10,16 @@ namespace AppBundle\Repository;
  */
 class PriceRepository extends \Doctrine\ORM\EntityRepository
 {
+
+    public function findByProduct($productName){
+        return $this
+            ->createQueryBuilder('price')
+            ->select('price')
+            ->innerjoin('price.product', 'product')
+            ->where('product.name = :productName')
+            ->setParameter("productName", $productName)
+            ->getQuery()
+            ->getResult();
+    }
+
 }
