@@ -223,4 +223,33 @@ class Baptism
     {
         return $this->baptismsHasUser;
     }
+    /**
+     * @var \AppBundle\Entity\Restaurant
+     */
+    private $restaurant;
+
+
+    /**
+     * Set restaurant
+     *
+     * @param \AppBundle\Entity\Restaurant $restaurant
+     *
+     * @return Baptism
+     */
+    public function setRestaurant(\AppBundle\Entity\Restaurant $restaurant = null)
+    {
+        $this->restaurant = $restaurant;
+
+        return $this;
+    }
+
+    /**
+     * Get restaurant
+     *
+     * @return \AppBundle\Entity\Restaurant
+     */
+    public function getRestaurant()
+    {
+        return $this->restaurant;
+    }
 }

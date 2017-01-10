@@ -72,4 +72,7 @@ AppBundle\Entity\Restaurant:
         serviceOpeningExceptions:
             targetEntity: AppBundle\Entity\ServiceOpeningException
             mappedBy: restaurant
+        baptisms:
+            targetEntity: AppBundle\Entity\Baptism
+            mappedBy: restaurant
     lifecycleCallbacks: {  }
