@@ -26,7 +26,7 @@ class LoadBaptismData extends AbstractFixture implements OrderedFixtureInterface
     {
         $baptisms = array(
             array(
-                "status" => true,
+                "status" => "open",
                 "date" => new \DateTime("2017-01-10"),
                 "places" => 2,
                 "service" => "midi",
@@ -34,7 +34,7 @@ class LoadBaptismData extends AbstractFixture implements OrderedFixtureInterface
                 "reference" => "1"
             ),
             array(
-                "status" => true,
+                "status" => "open",
                 "date" => new \DateTime("2017-01-20"),
                 "places" => 1,
                 "service" => "soir",

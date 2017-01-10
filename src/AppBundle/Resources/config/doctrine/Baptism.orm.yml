@@ -10,7 +10,8 @@ AppBundle\Entity\Baptism:
                 strategy: AUTO
     fields:
         status:
-            type: boolean
+            type: string
+            length: 255
         date:
             type: date
         places:
