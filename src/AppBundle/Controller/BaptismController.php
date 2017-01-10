@@ -12,6 +12,7 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\Baptism;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\Request;
 
 class BaptismController extends Controller
@@ -30,6 +31,8 @@ class BaptismController extends Controller
             $baptism->setStatus("open");
             $baptism->setDate(new \DateTime("2017-01-20"));
             $baptism->setPlaces(2);
+            $restaurant = $this->getDoctrine()->getManager()->getRepository("AppBundle:Restaurant")->find(1);
+            $baptism->setRestaurant($restaurant);
             $service = $this->getDoctrine()->getManager()->getRepository("AppBundle:Service")->find(1);
             $baptism->setService($service);
             return $this->forward("AppBundle:Baptism:purchase", array("baptism" => $baptism));
@@ -40,27 +43,24 @@ class BaptismController extends Controller
         ));
     }
 
-    public function purchaseAction(Request $request, array $params = null, Baptism $baptism = null)
+    public function purchaseAction(Request $request, Baptism $baptism)
     {
-        if(!null === $params){
-
-        }elseif(!null === $baptism){
-
-        }else{
-
-        }
         $form = $this->createFormBuilder()
-            ->add("confirm", SubmitType::class)
+            ->add("send", SubmitType::class)
             ->getForm();
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()){
-            return $this->forward("");
+            $em = $this->getDoctrine()->getManager();
+            $this->getUser();
+            var_dump($this->getUser());
+            //$em->persist($baptism);
+            //$em->flush();
         }
 
         return $this->render('app/baptism/purchase.html.twig', array(
-            'params' => $params,
-            'baptism' => $baptism
+            'baptism' => $baptism,
+            'form' => $form->createView()
         ));
     }
 

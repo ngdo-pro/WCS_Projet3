@@ -4,10 +4,14 @@
 
     <h2>Purchase Part</h2>
     <h3>Context: Baptism have been selected, here the user will purchase it</h3>
-    {% if params != null %}
-        {{ params.date |date }}
-    {% endif %}
-    {% if baptism != null %}
-        {{ baptism.service.name }}
-    {% endif %}
+    <p>There are {{ baptism.places }} places left.</p>
+    <p>The Baptism will take place on {{ baptism.date |date }}.</p>
+    <p>At the {{ baptism.restaurant.name }} on the {{ baptism.service.name }} service.</p>
+
+    {# This form can only be displayed if visitor is connected#}
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+    {{ form_end(form) }}
+    {# else, a sign in/ sign up button must appear, with an explanation#}
+
 {% endblock %}
