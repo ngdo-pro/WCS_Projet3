@@ -5,7 +5,7 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\Baptism;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use DateTime;
+
 
 /**
  * Baptism controller.
@@ -15,10 +15,14 @@ class BaptismController extends Controller
 {
 
     /**
+     * This is the start of the function use to show where we should have the result of the search
+     * for opportunity for a baptism
+     * //TODO : replace the findAll function of the repository by a new function of the repository
+     * //TODO : to select the right result for the opportunity
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
-    public function SelectAction(Request $request)
+    public function selectAction(Request $request)
     {
 
         $requestC = $request->request;
@@ -47,16 +51,15 @@ class BaptismController extends Controller
     }
 
     /**
-     * Finds and displays a baptism entity.
-     *
+     * //TODO : This is a fake function, need to be replaced with the real one
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function purchaseAction(Request $request)
     {
         $session = $request->getSession();
         $baptismArray = $session->get('baptism');
-        var_dump($baptismArray);
         $baptism = new Baptism();
-
 
         return $this->render('baptism/show.html.twig', array(
             'baptism' => $baptism,
