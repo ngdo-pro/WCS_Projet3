@@ -4,12 +4,12 @@
 {% trans_default_domain 'baptism' %}
 
 {% block title %}
-{{ 'baptism.title' | trans({}) }} %}
+{{ 'baptism.title' | trans() }} %}
 {% endblock %}
 
 {% block content %}
-    <H1>{{ 'baptism.title' | trans({}) }} </H1>
-    <p>{{ 'baptism.content' | trans({}) }}</p>
+    <H1>{{ 'baptism.title' | trans() }} </H1>
+    <p>{{ 'baptism.content' | trans() }}</p>
 
     {{ form_start(baptismSearchType,{'action': path('app_baptism')}) }}
     {{ form_widget(baptismSearchType) }}
