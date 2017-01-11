@@ -50,7 +50,7 @@ class TransactionController extends Controller
         //
         $parm="$parm normal_return_url=$normalUrl";
         $parm="$parm cancel_return_url=$normalUrl";
-        //		$parm="$parm automatic_response_url=http://www.maboutique.fr/cgi-bin/call_autoresponse.php";
+        $parm="$parm automatic_response_url=$normalUrl";
         //		$parm="$parm language=fr";
         $parm           ="$parm payment_means=CB,2,VISA,2,MASTERCARD,2";
         //		$parm="$parm header_flag=no";
@@ -147,7 +147,9 @@ class TransactionController extends Controller
 
         /** @var Transaction $transaction */
         $transaction = $em->getRepository("SogenactifBundle:Transaction")->find($array[6]);
+        var_dump($array);
         $transaction = $em->getRepository("SogenactifBundle:Transaction")->update($transaction, $array);
+
         $em->persist($transaction);
 
         /** @var Payment $payment */
@@ -162,6 +164,7 @@ class TransactionController extends Controller
             $baptism->setStatus("open");
         }else{
             $payment->setStatus("cancelled");
+            $payment->setBaptismHasUser(null);
             $em->remove($baptismHasUser);
             $baptismHasUserCount = $em->getRepository("AppBundle:BaptismHasUser")->findOtherByBaptism($baptism, $baptismHasUser->getUser());
             if ($baptismHasUserCount == 0){
@@ -169,7 +172,6 @@ class TransactionController extends Controller
             }else{
                 $baptism->setPlaces($baptism->getPlaces()+1);
             }
-            $em->persist($baptismHasUser);
         }
         $em->persist($payment);
         $em->persist($baptism);

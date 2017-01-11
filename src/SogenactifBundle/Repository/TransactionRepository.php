@@ -36,7 +36,7 @@ class TransactionRepository extends \Doctrine\ORM\EntityRepository
         $transaction->setOrderId($array[27]);
         $transaction->setOrderValidity($array[33]);
         $transaction->setPaymentCertificate($array[12]);
-        if(false === $array[10]){
+        if('' === $array[10]){
             $transaction->setPaymentDate(new \DateTime());
         }else{
             $transaction->setPaymentDate(\DateTime::createFromFormat('Ymd', $array[10]));

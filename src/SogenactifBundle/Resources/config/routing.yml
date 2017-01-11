@@ -4,5 +4,9 @@ sogenactif_sending:
 
 sogenactif_normal:
     path:     /normal
-    defaults: { _controller: SogenactifBundle:Transaction:normalResponse}
+    defaults: { _controller: SogenactifBundle:Transaction:normalResponse }
     methods: POST
+
+sogenactif_autoresponse:
+    path:     /autoresponse
+    defaults: { _controller: SogenactifBundle:Transaction:autoResponse }
