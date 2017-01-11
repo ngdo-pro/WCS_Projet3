@@ -10,4 +10,24 @@ namespace AppBundle\Repository;
  */
 class BaptismRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function findAllFree($city,$restaurant,$nb,$baptismDate,$service){
+
+        $select = " SELECT b.id, service_id, status, date, places , b.restaurant_id ";
+        $from = " FROM baptism b ";
+        if (is_null($nb)) {
+            $nb = 0;
+        }
+        $where = " WHERE (places -$nb)>= 0 ";
+
+        if (! is_null($city)) {
+            $from .= " INNER JOIN restaurant r on r.id= b.restaurant_id ";
+            $from .= " INNER JOIN city c on c.name= r.city or c.postal_code = r.postal_code ";
+            $where .= " AND r.city = '$city'" ;
+        }
+
+
+
+        $select2 = " SELECT -1 id, service_id, 'Pending', :date, 3, restaurant_id ";
+        $from2 = " FROM service_opening so ";
+    }
 }
