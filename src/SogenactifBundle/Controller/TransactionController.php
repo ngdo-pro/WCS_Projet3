@@ -108,15 +108,15 @@ class TransactionController extends Controller
         //	    - code=0	: la fonction génère une page html contenue dans la variable buffer
         //	    - code=-1 	: La fonction retourne un message d'erreur dans la variable error
 
-        //On separe les differents champs et on les met dans une variable tableau
+        //On separe les differents champs et on les met dans une variable array
 
-        $tableau        = explode ("!", "$result");
+        $array        = explode ("!", "$result");
 
         //	récupération des paramètres
 
-        $code           = $tableau[1];
-        $error          = $tableau[2];
-        $message        = $tableau[3];
+        $code           = $array[1];
+        $error          = $array[2];
+        $message        = $array[3];
 
         return $this->render("sogenactif/index.html.twig", array(
             'code' => $code,
@@ -140,57 +140,25 @@ class TransactionController extends Controller
         $message            = escapeshellcmd($message);
         $result             = exec("$path_bin $pathfile $message");
 
-        $tableau            = explode ("!", $result);
-var_dump($tableau);
+        $array            = explode ("!", $result);
+
         $em = $this->getDoctrine()->getManager();
 
         /** @var Transaction $transaction */
-        $transaction = $em->getRepository("SogenactifBundle:Transaction")->find($tableau[6]);
-        $transaction->setAuthorisationId($tableau[13]);
-        $transaction->setBankResponseCode($tableau[18]);
-        $transaction->setCaddie($tableau[22]);
-        $transaction->setCaptureDay($tableau[30]);
-        $transaction->setCaptureMode($tableau[31]);
-        $transaction->setCardNumber($tableau[15]);
-        $transaction->setCardValidity($tableau[36]);
-        $transaction->setCode($tableau[1]);
-        $transaction->setComplementaryCode($tableau[19]);
-        $transaction->setComplementaryInfo($tableau[20]);
-        $transaction->setCustomerIpAddress($tableau[29]);
-        $transaction->setCvvFlag($tableau[16]);
-        $transaction->setCvvResponseCode($tableau[17]);
-        $transaction->setData($tableau[32]);
-        $transaction->setError($tableau[2]);
-        $transaction->setLanguage($tableau[25]);
-        $transaction->setMerchantCountry($tableau[4]);
-        $transaction->setMerchantId($tableau[3]);
-        $transaction->setMerchantLanguage($tableau[24]);
-        $transaction->setOrderId($tableau[27]);
-        $transaction->setOrderValidity($tableau[33]);
-        $transaction->setPaymentCertificate($tableau[12]);
-        $transaction->setPaymentDate(\DateTime::createFromFormat('Ymd', $tableau[10]));
-        $transaction->setPaymentMeans($tableau[7]);
-        $transaction->setReceiptComplement($tableau[23]);
-        $transaction->setResponseCode($tableau[11]);
-        $transaction->setReturnContext($tableau[21]);
-        $transaction->setScoreColor($tableau[38]);
-        $transaction->setScoreInfo($tableau[39]);
-        $transaction->setScoreProfile($tableau[41]);
-        $transaction->setScoreThreshold($tableau[40]);
-        $transaction->setScoreValue($tableau[37]);
-        $transaction->setStatementReference($tableau[35]);
-        $transaction->setTransactionCondition($tableau[34]);
-        $transaction->setTransmissionDate(\DateTime::createFromFormat('YmdHis', $tableau[8]));
-        $transaction->setUpdated(new \DateTime());
-
+        $transaction = $em->getRepository("SogenactifBundle:Transaction")->find($array[6]);
+        $transaction = $em->getRepository("SogenactifBundle:Transaction")->update($transaction, $array);
         $em->persist($transaction);
+
+        $payment = $transaction->getPayment();
+        $payment = $em->getRepository("AppBundle:Payment")->find();
+        
         $em->flush();
 
         return $this->render("sogenactif/index.html.twig", array(
-            'tableau'   => $tableau,
+            'array'   => $array,
             'message'   => $message,
-            'code'      => $tableau[1],
-            'error'     => $tableau[2]
+            'code'      => $array[1],
+            'error'     => $array[2]
         ));
     }
 }
