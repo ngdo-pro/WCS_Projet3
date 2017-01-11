@@ -3,5 +3,6 @@ baptism_select:
     defaults:   { _controller: AppBundle:Baptism:select }
 
 baptism_purchase:
-    path:       /acheter
+    path:       /achat
     defaults:   { _controller: AppBundle:Baptism:purchase }
+

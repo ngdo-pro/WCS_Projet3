@@ -2,7 +2,14 @@
 <html>
     <head>
         <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta content="width=device-width, initial-scale=1.0, user-scalable=no" name="viewport">
+        <title>{% block title %}{{ 'homepage.title' | trans({}, 'seo') }}{% endblock %}</title>
+        <meta name="google" content="notranslate" />
+        <meta name="description" content="{% block description %}{{ 'homepage.description' | trans({}, 'seo') }}{% endblock %}">
+        <link type='text/css' href='{{ asset('assets/css/vendor.css') }}' rel='stylesheet' media='screen' />
+        <link type='text/css' href='{{ asset('assets/css/app.css') }}' rel='stylesheet' media='screen' />
+
         {% block stylesheets %}{% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
@@ -12,6 +19,8 @@
         <a href="{{ path('fos_user_security_login') }}">Login</a>
     {# End #}
         {% block body %}{% endblock %}
+        <script src="{{ asset('assets/js/vendor.js') }}"></script>
+        <script src="{{ asset('assets/js/app.js') }}"></script>
         {% block javascripts %}{% endblock %}
     </body>
 </html>

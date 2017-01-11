@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: nicolas
@@ -22,31 +23,38 @@ use UserBundle\Entity\User;
 class BaptismController extends Controller
 {
 
-    public function selectAction(Request $request){
-        // TODO: This is a fake function, need to be replaced with the real selectAction
-        $form = $this->createFormBuilder()
-            ->add("send", SubmitType::class)
-            ->getForm();
-        $form->handleRequest($request);
-
-        if($form->isSubmitted()){
-
-            $baptismParams = array();
-            $baptismParams["id"] = "";
-            $baptismParams["status"] = "pending";
-            $baptismParams["date"] = new \DateTime("2017-01-20");
-            $baptismParams["places"] = 2;
-            $baptismParams["restaurantName"] = "wild restaurant";
-            $baptismParams["serviceName"] = "midi";
+    /**
+     * This is the start of the function use to show where we should have the result of the search
+     * for opportunity for a baptism
+     * //TODO : replace the findAll function of the repository by a new function of the repository
+     * //TODO : to select the right result for the opportunity
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     */
+    public function selectAction(Request $request)
+    {
+        $requestC = $request->request;
+        $em = $this->getDoctrine()->getManager();
+        if ($requestC->get('origin','') === 'select') {
+            $baptism = array();
+            $baptism['id']              = $requestC->get('id');
+            $baptism['date']            = $requestC->get('date');
+            $baptism['status']          = $requestC->get('status');
+            $baptism['places']          = $requestC->get('places');
+            $baptism['restaurant_id']   = $requestC->get('restaurant_id');
+            $baptism['service']         = $requestC->get('service_id');
 
             $session = $request->getSession();
-            $session->set('baptism', $baptismParams);
-            return $this->redirectToRoute("baptism_purchase");
+            $session->set('baptism',$baptism);
+            return $this->redirectToRoute('baptism_purchase') ;
         }
 
-        return $this->render('app/baptism/select.html.twig', array(
-            'form' => $form->createView()
+        $baptisms = $em->getRepository('AppBundle:Baptism')->findAll();
+
+        return $this->render('baptism/select.html.twig', array(
+            'baptisms' => $baptisms,
         ));
+
     }
 
     /**
