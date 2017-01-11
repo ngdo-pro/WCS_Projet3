@@ -4,6 +4,7 @@ namespace UserBundle\Entity;
 
 
 use FOS\UserBundle\Model\User as BaseUser;
+use Cocur\Slugify\Slugify;
 
 /**
  * User
@@ -15,7 +16,7 @@ class User extends BaseUser
      */
     protected $id;
 
-
+    private static $slugnb = 0;
     /**
      * Get id
      *
@@ -80,6 +81,10 @@ class User extends BaseUser
      */
     private $profession;
 
+    public function __construct()
+    {
+        self::$slugnb++;
+    }
 
     /**
      * Set firstName
@@ -114,14 +119,13 @@ class User extends BaseUser
      */
     public function setLastName($lastName)
     {
+        $slugnb = $this->container->get('user.slugnumber');
         $this->lastName = $lastName;
-        $str = $this->firstName.'-'.$lastName;
-        $str = strtolower($str);
-        $this->slug = $str;
-
+        $slugify = new Slugify();
+        $slug = $slugify->slugify($this->firstName.'-'.$lastName.'-'.$slugnb->slugNb()); //TODO change it
+        $this->slug = $slug;
         return $this;
     }
-
     /**
      * Get lastName
      *
@@ -131,7 +135,6 @@ class User extends BaseUser
     {
         return $this->lastName;
     }
-
     /**
      * Set slug
      *
