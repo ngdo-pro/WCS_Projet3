@@ -1,1 +1,10 @@
 @import "views/base";
+
+.navbar{
+  &-menu {
+    color: $persian-green;
+    &--mobile {
+      color: $persian-green;
+    }
+  }
+}
