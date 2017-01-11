@@ -9,13 +9,12 @@
 namespace SogenactifBundle\Controller;
 
 
+use AppBundle\Entity\Baptism;
 use AppBundle\Entity\BaptismHasUser;
 use AppBundle\Entity\Payment;
-use AppBundle\Entity\Price;
 use SogenactifBundle\Entity\Transaction;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use UserBundle\Entity\User;
 
 class TransactionController extends Controller
 {
@@ -153,12 +152,27 @@ class TransactionController extends Controller
 
         /** @var Payment $payment */
         $payment = $transaction->getPayment();
-        $payment = $em->getRepository("AppBundle:Payment")->update($payment, $array[18]);
-        $em->persist($payment);
-
         /** @var BaptismHasUser $baptismHasUser */
         $baptismHasUser = $payment->getBaptismHasUser();
-        $baptismHasUser = $em->getRepository("AppBundle:BaptismHasUser")->find(1);
+        /** @var Baptism $baptism */
+        $baptism = $baptismHasUser->getBaptism();
+
+        if("00" === $array[18]){
+            $payment->setStatus("confirmed");
+            $baptism->setStatus("open");
+        }else{
+            $payment->setStatus("cancelled");
+            $em->remove($baptismHasUser);
+            $baptismHasUserCount = $em->getRepository("AppBundle:BaptismHasUser")->findOtherByBaptism($baptism, $baptismHasUser->getUser());
+            if ($baptismHasUserCount == 0){
+                $em->remove($baptism);
+            }else{
+                $baptism->setPlaces($baptism->getPlaces()+1);
+            }
+            $em->persist($baptismHasUser);
+        }
+        $em->persist($payment);
+        $em->persist($baptism);
 
         $em->flush();
 

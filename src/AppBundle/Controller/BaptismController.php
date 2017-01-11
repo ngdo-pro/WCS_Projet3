@@ -32,6 +32,7 @@ class BaptismController extends Controller
         if($form->isSubmitted()){
 
             $baptismParams = array();
+            $baptismParams["id"] = "";
             $baptismParams["status"] = "pending";
             $baptismParams["date"] = new \DateTime("2017-01-20");
             $baptismParams["places"] = 2;
@@ -76,12 +77,16 @@ class BaptismController extends Controller
             /** @var User $user */
             $user = $this->getUser();
 
-            $baptism = new Baptism();
+            if(isset($baptismParams["id"])) {
+                $baptism = new Baptism();
+            }else{
+                $baptism = $em->getRepository("AppBundle:Baptism")->find($baptismParams["id"]);
+            }
             $baptism->setRestaurant($restaurant);
             $baptism->setService($service);
             $baptism->setStatus($baptismParams["status"]);
             $baptism->setDate($baptismParams["date"]);
-            $baptism->setPlaces($baptismParams["places"]);
+            $baptism->setPlaces($baptismParams["places"]-1);
 
             $em->persist($baptism);
 
@@ -90,7 +95,6 @@ class BaptismController extends Controller
             $baptismHasUser->setUser($user);
             $baptismHasUser->setRole(true);
             $em->persist($baptismHasUser);
-
 
             $prices = $em->getRepository("AppBundle:Price")->findByProduct("bapteme");
             /** @var Price $price */

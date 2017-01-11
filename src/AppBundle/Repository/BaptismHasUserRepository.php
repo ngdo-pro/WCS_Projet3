@@ -2,7 +2,8 @@
 
 namespace AppBundle\Repository;
 
-use AppBundle\Entity\BaptismHasUser;
+use AppBundle\Entity\Baptism;
+use UserBundle\Entity\User;
 
 /**
  * BaptemHasUserRepository
@@ -12,5 +13,14 @@ use AppBundle\Entity\BaptismHasUser;
  */
 class BaptismHasUserRepository extends \Doctrine\ORM\EntityRepository
 {
-
+    public function findOtherByBaptism(Baptism $baptism, User $user){
+        return $this->createQueryBuilder('bhu')
+            ->select('count(bhu.baptism)')
+            ->where('bhu.baptism = :baptism')
+            ->andWhere('bhu.user != :user')
+            ->setParameter('baptism', $baptism)
+            ->setParameter('user', $user)
+            ->getQuery()
+            ->getResult();
+    }
 }

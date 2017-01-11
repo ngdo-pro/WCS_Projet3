@@ -36,7 +36,11 @@ class TransactionRepository extends \Doctrine\ORM\EntityRepository
         $transaction->setOrderId($array[27]);
         $transaction->setOrderValidity($array[33]);
         $transaction->setPaymentCertificate($array[12]);
-        $transaction->setPaymentDate(\DateTime::createFromFormat('Ymd', $array[10]));
+        if(false === $array[10]){
+            $transaction->setPaymentDate(new \DateTime());
+        }else{
+            $transaction->setPaymentDate(\DateTime::createFromFormat('Ymd', $array[10]));
+        }
         $transaction->setPaymentMeans($array[7]);
         $transaction->setReceiptComplement($array[23]);
         $transaction->setResponseCode($array[11]);
