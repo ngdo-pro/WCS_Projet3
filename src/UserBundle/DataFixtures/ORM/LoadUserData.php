@@ -31,7 +31,6 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface
                 "email"  => "jean-michel@email.com",
                 "emailCanonical" => "jean-michel@email.com",
                 "enabled" => true,
-                "salt" => "aozihzeoinoeuibrgpiae",
                 "password" => "test",
                 "lastLogin" => new \DateTime(),
                 "confirmationToken" => "oiengeoingaeongaerg",
@@ -57,8 +56,7 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface
             $userObj->setEmail($user["email"]);
             $userObj->setEmailCanonical($user["emailCanonical"]);
             $userObj->setEnabled($user["enabled"]);
-            $userObj->setSalt($user["salt"]);
-            $userObj->setPassword($user["password"]);
+            $userObj->setPlainPassword($user["password"]);
             $userObj->setLastLogin($user["lastLogin"]);
             $userObj->setConfirmationToken($user["confirmationToken"]);
             $userObj->setPasswordRequestedAt($user["passwordRequestedAt"]);
@@ -87,6 +85,6 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface
      */
     public function getOrder()
     {
-        return 3;
+        return 2;
     }
 }

@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Baptism</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ baptism.id }}</td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td>{% if baptism.status %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{% if baptism.date %}{{ baptism.date|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Places</th>
+                <td>{{ baptism.places }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('baptism_select') }}">Back to the list</a>
+        </li>
+    </ul>
+{% endblock %}
