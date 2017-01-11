@@ -1,0 +1,10 @@
+
+baptism_select:
+    path:     /selectionner
+    defaults: { _controller: "AppBundle:Baptism:select"}
+    methods: [GET, POST]
+
+baptism_purchase:
+    path:     /achat
+    defaults: { _controller: "AppBundle:Baptism:purchase" }
+    methods:  [GET, POST]
