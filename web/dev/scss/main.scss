@@ -2,9 +2,10 @@
 
 .navbar{
   &-menu {
-    color: $persian-green;
+    color: $font-color3;
+    font: bold 15px $title-font, serif;
     &--mobile {
-      color: $persian-green;
+      color: $bg-color1;
     }
   }
 }
