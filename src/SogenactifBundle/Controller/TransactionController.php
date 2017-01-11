@@ -48,9 +48,9 @@ class TransactionController extends Controller
         // 		Les valeurs proposées ne sont que des exemples
         // 		Les champs et leur utilisation sont expliqués dans le Dictionnaire des données
         //
-        $parm="$parm normal_return_url=$normalUrl";
-        $parm="$parm cancel_return_url=$normalUrl";
-        $parm="$parm automatic_response_url=$normalUrl";
+        $parm           ="$parm normal_return_url=$normalUrl";
+        $parm           ="$parm cancel_return_url=$normalUrl";
+        $parm           ="$parm automatic_response_url=$normalUrl";
         //		$parm="$parm language=fr";
         $parm           ="$parm payment_means=CB,2,VISA,2,MASTERCARD,2";
         //		$parm="$parm header_flag=no";
