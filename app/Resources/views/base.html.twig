@@ -7,8 +7,10 @@
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
+    {# Those two links are only here for test, feel free to remove then when doing the frontend, but they are now usefull to try things out #}
         <a href="{{ path('baptism_select') }}">Select</a>
         <a href="{{ path('fos_user_security_login') }}">Login</a>
+    {# End #}
         {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
     </body>
