@@ -2,6 +2,8 @@
 
 namespace AppBundle\Repository;
 
+use AppBundle\Entity\Payment;
+
 /**
  * PaymentRepository
  *
@@ -10,4 +12,14 @@ namespace AppBundle\Repository;
  */
 class PaymentRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function update(Payment $payment, $code){
+
+        if("00" === $code){
+            $payment->setStatus("confirmed");
+        }else{
+            $payment->setStatus("cancelled");
+        }
+
+        return $payment;
+    }
 }

@@ -9,6 +9,8 @@
 namespace SogenactifBundle\Controller;
 
 
+use AppBundle\Entity\BaptismHasUser;
+use AppBundle\Entity\Payment;
 use AppBundle\Entity\Price;
 use SogenactifBundle\Entity\Transaction;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -149,9 +151,15 @@ class TransactionController extends Controller
         $transaction = $em->getRepository("SogenactifBundle:Transaction")->update($transaction, $array);
         $em->persist($transaction);
 
+        /** @var Payment $payment */
         $payment = $transaction->getPayment();
-        $payment = $em->getRepository("AppBundle:Payment")->find();
-        
+        $payment = $em->getRepository("AppBundle:Payment")->update($payment, $array[18]);
+        $em->persist($payment);
+
+        /** @var BaptismHasUser $baptismHasUser */
+        $baptismHasUser = $payment->getBaptismHasUser();
+        $baptismHasUser = $em->getRepository("AppBundle:BaptismHasUser")->find(1);
+
         $em->flush();
 
         return $this->render("sogenactif/index.html.twig", array(
