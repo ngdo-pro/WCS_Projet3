@@ -17,14 +17,22 @@ use AppBundle\Entity\Price;
 use SogenactifBundle\Entity\Transaction;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Form;
 use Symfony\Component\HttpFoundation\Request;
 use UserBundle\Entity\User;
 
 class BaptismController extends Controller
 {
 
+    /**
+     * This function represents the search part, where the User will search for potential baptisms that he has interest in
+     *
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     */
     public function searchAction(Request $request){
         //TODO: This is a fake action, it needs to be replaced with the real searchAction
+        /** Creating a simple button to simulate user action */
         $form = $this->createFormBuilder()
             ->add("send", SubmitType::class)
             ->getForm();
@@ -79,7 +87,7 @@ class BaptismController extends Controller
     }
 
     /**
-     * Here we display results to the User and he can choose his baptism
+     * Here we display results to the User and he can choose his baptism. The selection part is done on the view
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
@@ -87,6 +95,7 @@ class BaptismController extends Controller
     {
         $session = $request->getSession();
         $baptisms = $session->get('results');
+
         return $this->render('app/baptism/select.html.twig', array(
             'baptisms' => $baptisms,
         ));
@@ -109,13 +118,16 @@ class BaptismController extends Controller
         $session = $request->getSession();
         $result = $session->get('results');
 
+        /** @var array $baptismParams contains the selected baptism */
         $baptismParams = $result[$reference];
 
+        /** @var Form $form is created to generate the confirm button */
         $form = $this->createFormBuilder()
-            ->add("send", SubmitType::class)
+            ->add("confirm", SubmitType::class)
             ->getForm();
         $form->handleRequest($request);
 
+        /** if confirm button is pushed by User, meaning he confirm his wish to buy the selected baptism */
         if($form->isSubmitted() && $form->isValid()){
 
             $em = $this->getDoctrine()->getManager();
@@ -125,6 +137,7 @@ class BaptismController extends Controller
             /** @var User $user */
             $user = $this->getUser();
 
+            /** if id=0, it means that it is a new Baptism, else, the Baptism already exist and is open */
             if(0 === $baptismParams["id"]) {
                 $baptism = new Baptism();
             }else{
@@ -167,13 +180,18 @@ class BaptismController extends Controller
             $payment->setTransaction($transaction);
             $em->persist($payment);
 
+            /**
+             * Baptism, BaptismHasUser, Transaction and Payment have been persisted
+             */
             $em->flush();
             $em->clear();
 
+            /** Transaction is being passed through session and User is redirected to sogenactif_sending route*/
             $session->set('transaction', $transaction);
             return $this->redirectToRoute("sogenactif_sending");
         }
 
+        /** selected Baptism parameters are passed to the view to be displayed to the User and getting his confirmation */
         return $this->render('app/baptism/purchase.html.twig', array(
             'baptism' => $baptismParams,
             'form' => $form->createView()

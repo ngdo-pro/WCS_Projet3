@@ -3,7 +3,6 @@
 namespace AppBundle\Repository;
 
 use AppBundle\Entity\Baptism;
-use UserBundle\Entity\User;
 
 /**
  * BaptemHasUserRepository
