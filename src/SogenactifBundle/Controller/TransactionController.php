@@ -119,7 +119,7 @@ class TransactionController extends Controller
         $error          = $array[2];
         $message        = $array[3];
 
-        return $this->render("sogenactif/index.html.twig", array(
+        return $this->render("sogenactif/payment.html.twig", array(
             'code' => $code,
             'error' => $error,
             'message' => $message
@@ -166,6 +166,7 @@ class TransactionController extends Controller
                 $baptism->setStatus("closed");
             }
             $em->persist($baptism);
+            $transactionStatusMessage = true;
         }else{
             $payment->setStatus("cancelled");
             $payment->setBaptismHasUser(null);
@@ -177,16 +178,14 @@ class TransactionController extends Controller
             }else{
                 $baptism->setPlaces($baptism->getPlaces()+1);
             }
+            $transactionStatusMessage = false;
         }
         $em->persist($payment);
 
         $em->flush();
 
-        return $this->render("sogenactif/index.html.twig", array(
-            'array'   => $array,
-            'message'   => $message,
-            'code'      => $array[1],
-            'error'     => $array[2]
+        return $this->render("sogenactif/response.html.twig", array(
+            'message'   => $transactionStatusMessage
         ));
     }
 }

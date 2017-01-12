@@ -6,12 +6,14 @@
         <div class="row">
             {% for baptism in baptisms %}
                 <div class="col-sm-4">
+                    <!-- Here are the datas you can use-->
                     <p>Statut : {{ baptism.status }}</p>
                     <p>Places : {{ baptism.places }}</p>
                     <p>Date : {{ baptism.date |date }}</p>
                     <p>Service : {{ baptism.serviceName }}</p>
                     <p>Restaurant : {{ baptism.restaurantName }}</p>
                     <p>Reference : {{ baptism.reference }}</p>
+                    <!-- This button is here to select a baptism -->
                     <a href="{{ path('baptism_purchase', {reference: baptism.reference}) }}">Select</a>
                 </div>
             {% endfor %}

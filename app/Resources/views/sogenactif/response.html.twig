@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div>
+        {% if message %}
+            {{ 'confirmed' |trans }}
+        {% else %}
+            {{ 'cancelled' |trans }}
+        {% endif %}
+    </div>
+
+{% endblock %}
