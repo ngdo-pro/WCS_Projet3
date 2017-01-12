@@ -1,8 +1,9 @@
-var gulp = require('gulp');
-var concat = require('gulp-concat');
-var clean = require('gulp-clean');
-var uglify = require('gulp-uglify');
-var sass = require('gulp-sass');
+var gulp    = require('gulp');
+var concat  = require('gulp-concat');
+var clean   = require('gulp-clean');
+var uglify  = require('gulp-uglify');
+var sass    = require('gulp-sass');
+//var compass = require('gulp-compass');
 
 //paths is an object containing all paths of the assets
 var paths = {
@@ -28,7 +29,8 @@ var paths = {
         css: './web/assets/css',
         fonts: './web/assets/fonts',
         assets: './web/assets'
-    }
+    },
+    //compass: 'web/dev/config.rb'
 };
 
 //the "default" tasks runs all the tasks, allowing to only run "gulp" command.
@@ -69,6 +71,16 @@ gulp.task('js', function(){
         .pipe(concat('app.js'))
         .pipe(gulp.dest(paths.dist.js))
 });
+
+//the css task allows compass action to be considered before sass action
+/*gulp.task('css', function() {
+    gulp.src(paths.sass)
+        .pipe(compass({
+            config_file: paths.compass
+        }))
+        .pipe(concat('app.css'))
+        .pipe(gulp.dest('paths.dist.css'));
+});*/
 
 //the "sass" task create a uniq, minified css file with all the compiled sass files and concatenate them in /web/assets/css/app.css
 gulp.task('sass', function(){
