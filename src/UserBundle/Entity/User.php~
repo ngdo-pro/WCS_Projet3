@@ -15,7 +15,7 @@ class User extends BaseUser
      */
     protected $id;
 
-
+    private static $slugnb = 0;
     /**
      * Get id
      *
@@ -80,7 +80,6 @@ class User extends BaseUser
      */
     private $profession;
 
-
     /**
      * Set firstName
      *
@@ -115,11 +114,8 @@ class User extends BaseUser
     public function setLastName($lastName)
     {
         $this->lastName = $lastName;
-        $this->slug = $this->firstName.'-'.$lastName;
-
         return $this;
     }
-
     /**
      * Get lastName
      *
@@ -129,7 +125,6 @@ class User extends BaseUser
     {
         return $this->lastName;
     }
-
     /**
      * Set slug
      *
@@ -137,10 +132,9 @@ class User extends BaseUser
      *
      * @return User
      */
-    public function setSlug($firstName, $lastName)
+    public function setSlug($slug)
     {
-        $this->slug = $firstName.'-'.$lastName;
-
+        $this->slug = $slug;
         return $this;
     }
 

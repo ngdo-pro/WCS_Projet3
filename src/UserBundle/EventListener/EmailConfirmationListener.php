@@ -5,8 +5,7 @@ namespace UserBundle\EventListener;
 use FOS\UserBundle\FOSUserEvents;
 use FOS\UserBundle\Event\FormEvent;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
-use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
+use Cocur\Slugify\Slugify;
 
 class EmailConfirmationListener implements EventSubscriberInterface
 {
@@ -24,7 +23,9 @@ class EmailConfirmationListener implements EventSubscriberInterface
     {
         /** @var $user \FOS\UserBundle\Model\UserInterface */
         $user = $event->getForm()->getData();
-        $id = $user->getId();
+        $slugify = new Slugify();
+        $slugify = $slugify->slugify($user->getFirstName().'-'.$user->getLastName());
+        $user->setSlug($slugify);
 
     }
 }

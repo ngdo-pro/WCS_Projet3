@@ -63,7 +63,7 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface
             $userObj->setRoles($user["roles"]);
             $userObj->setFirstName($user["firstName"]);
             $userObj->setLastName($user["lastName"]);
-            $userObj->setSlug($user["firstName"], $user["lastName"]);
+            $userObj->setSlug($user["slug"]);
             $userObj->setBirthDate($user["birthDate"]);
             $userObj->setBiography($user["biography"]);
             $userObj->setSignatureDish($user["signatureDish"]);
