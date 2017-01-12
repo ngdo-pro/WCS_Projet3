@@ -1,1 +1,5 @@
 services:
+    user.email_confirm_listener:
+        class: UserBundle\EventListener\EmailConfirmationListener
+        tags:
+            - { name: kernel.event_subscriber }
