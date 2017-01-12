@@ -14,8 +14,6 @@ use AppBundle\Entity\Baptism;
 use AppBundle\Entity\BaptismHasUser;
 use AppBundle\Entity\Payment;
 use AppBundle\Entity\Price;
-use AppBundle\Entity\Restaurant;
-use AppBundle\Entity\Service;
 use SogenactifBundle\Entity\Transaction;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -89,7 +87,7 @@ class BaptismController extends Controller
     {
         $session = $request->getSession();
         $baptisms = $session->get('results');
-        return $this->render('baptism/select.html.twig', array(
+        return $this->render('app/baptism/select.html.twig', array(
             'baptisms' => $baptisms,
         ));
 

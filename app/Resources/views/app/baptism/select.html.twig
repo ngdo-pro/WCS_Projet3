@@ -1,9 +1,20 @@
-{% extends 'app/layout.html.twig' %}
+{% extends 'base.html.twig' %}
 
-{% block content %}
-    <h2>Select Part</h2>
-    <h3>Context: search have been done, here will be found the result, and user will select baptism from here</h3>
-    {{ form_start(form) }}
-        {{ form_widget(form) }}
-    {{ form_end(form) }}
+{% block body %}
+    <h1>Baptisms list</h1>
+    <div class="container">
+        <div class="row">
+            {% for baptism in baptisms %}
+                <div class="col-sm-4">
+                    <p>Statut : {{ baptism.status }}</p>
+                    <p>Places : {{ baptism.places }}</p>
+                    <p>Date : {{ baptism.date |date }}</p>
+                    <p>Service : {{ baptism.serviceName }}</p>
+                    <p>Restaurant : {{ baptism.restaurantName }}</p>
+                    <p>Reference : {{ baptism.reference }}</p>
+                    <a href="{{ path('baptism_purchase', {reference: baptism.reference}) }}">Select</a>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
 {% endblock %}
