@@ -1,3 +1,1 @@
 services:
-    user.slugnumber:
-        class: User\SlugService\SlugService

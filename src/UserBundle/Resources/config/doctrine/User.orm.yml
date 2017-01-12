@@ -17,6 +17,7 @@ UserBundle\Entity\User:
             type: string
             length: 255
             unique: true
+            nullable: true
         birthDate:
             type: date
             nullable: true
