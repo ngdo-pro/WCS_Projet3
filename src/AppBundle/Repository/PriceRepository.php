@@ -11,6 +11,11 @@ namespace AppBundle\Repository;
 class PriceRepository extends \Doctrine\ORM\EntityRepository
 {
 
+    /**
+     * This function find out the price of a product
+     * @param $productName
+     * @return array
+     */
     public function findByProduct($productName){
         return $this
             ->createQueryBuilder('price')
