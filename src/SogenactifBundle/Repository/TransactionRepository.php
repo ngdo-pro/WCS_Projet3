@@ -12,6 +12,14 @@ use SogenactifBundle\Entity\Transaction;
  */
 class TransactionRepository extends \Doctrine\ORM\EntityRepository
 {
+    /**
+     * This function hydrate Transaction object with response data from Sogenactif Api
+     * It is called from TransactionController, responseAction
+     *
+     * @param Transaction $transaction
+     * @param $array
+     * @return Transaction
+     */
     public function update(Transaction $transaction, $array){
 
         $transaction->setAuthorisationId($array[13]);
