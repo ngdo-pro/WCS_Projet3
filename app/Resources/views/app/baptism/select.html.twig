@@ -1,7 +1,8 @@
-{% extends 'base.html.twig' %}
+{% extends 'app/layout.html.twig' %}
 
-{% block body %}
-    <h1>Baptisms list</h1>
+{% block content %}
+    <h2>Select Part</h2>
+    <h3>Context: Visitor has searched for baptisms and here are displayed the matching ones</h3>
     <div class="container">
         <div class="row">
             {% for baptism in baptisms %}

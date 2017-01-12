@@ -119,7 +119,7 @@ class TransactionController extends Controller
         $error          = $array[2];
         $message        = $array[3];
 
-        return $this->render("sogenactif/payment.html.twig", array(
+        return $this->render("sogenactif/transaction/payment.html.twig", array(
             'code' => $code,
             'error' => $error,
             'message' => $message
@@ -184,7 +184,7 @@ class TransactionController extends Controller
 
         $em->flush();
 
-        return $this->render("sogenactif/response.html.twig", array(
+        return $this->render("sogenactif/transaction/response.html.twig", array(
             'message'   => $transactionStatusMessage
         ));
     }
