@@ -20,8 +20,8 @@ var paths = {
         'web/dev/js/*.js'
     ],
     sass: [
-        'web/dev/scss/*.scss',
-        'web/dev/scss/**/*.scss'
+        'web/dev/sass/*.sass',
+        'web/dev/sass/**/*.sass'
     ],
     dist: {
         js: './web/assets/js',
