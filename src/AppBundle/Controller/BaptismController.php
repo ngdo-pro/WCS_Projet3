@@ -55,7 +55,6 @@ class BaptismController extends Controller
              */
             $service = $em->getRepository("AppBundle:Service")->findOneBy(array("name" => "midi"));
             $restaurant = $em->getRepository("AppBundle:Restaurant")->findOneBy(array("name" => "wild restaurant"));
-            $newBaptisms = array();
             for($i = 0; $i < 2; $i++){
                 $results[$resultCount] = array(
                     "id"            => 0,
@@ -80,10 +79,7 @@ class BaptismController extends Controller
     }
 
     /**
-     * This is the start of the function use to show where we should have the result of the search
-     * for opportunity for a baptism
-     * //TODO : replace the findAll function of the repository by a new function of the repository
-     * //TODO : to select the right result for the opportunity
+     * Here we display results to the User and he can choose his baptism
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
@@ -92,21 +88,6 @@ class BaptismController extends Controller
         $session = $request->getSession();
         $baptisms = $session->get('results');
 
-        $requestC = $request->request;
-        if ($requestC->get('origin','') === 'select') {
-            $baptism = array();
-            $baptism['id']              = $requestC->get('id');
-            $baptism['date']            = $requestC->get('date');
-            $baptism['status']          = $requestC->get('status');
-            $baptism['places']          = $requestC->get('places');
-            $baptism['restaurant_id']   = $requestC->get('restaurant_id');
-            $baptism['service']         = $requestC->get('service_id');
-
-            $session = $request->getSession();
-            $session->set('baptism',$baptism);
-            return $this->redirectToRoute('baptism_purchase') ;
-        }
-
         return $this->render('baptism/select.html.twig', array(
             'baptisms' => $baptisms,
         ));
@@ -114,7 +95,8 @@ class BaptismController extends Controller
     }
 
     /**
-     * This action receive the chosen baptism parameters, and has 2 parts :
+     * This action receive the chosen baptism reference and create the baptism parameters
+     * After that, there is 2 parts :
      *     - First, it sends to the view the parameters and a form asking for confirmation
      *     - Second, if confirmation is received, it creates pending baptism, pending payment and
      *       baptismHasUser, then, it redirects to sogenactif payment page.
@@ -122,10 +104,12 @@ class BaptismController extends Controller
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function purchaseAction(Request $request)
+    public function purchaseAction(Request $request, $reference)
     {
         $session = $request->getSession();
-        $baptismParams = $session->get('baptism');
+        $result = $session->get('results');
+
+        $baptismParams = $result[$reference];
 
         $form = $this->createFormBuilder()
             ->add("send", SubmitType::class)
@@ -136,8 +120,8 @@ class BaptismController extends Controller
 
             $em = $this->getDoctrine()->getManager();
 
-            $restaurant = $em->getRepository("AppBundle:Restaurant")->findOneBy(array("name" => $baptismParams["restaurantName"]));
-            $service = $em->getRepository("AppBundle:Service")->findOneBy(array("name" => $baptismParams["serviceName"]));
+            $restaurant = $em->getRepository("AppBundle:Restaurant")->findOneBy(array("name" => $baptismParams["restaurant"]->getName()));
+            $service = $em->getRepository("AppBundle:Service")->findOneBy(array("name" => $baptismParams["service"]->getName()));
             /** @var User $user */
             $user = $this->getUser();
 

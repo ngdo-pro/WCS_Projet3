@@ -6,7 +6,7 @@
     <h3>Context: Baptism have been selected, here the user will purchase it</h3>
     <p>There are {{ baptism.places }} places left.</p>
     <p>The Baptism will take place on {{ baptism.date |date }}.</p>
-    <p>At the {{ baptism.restaurantName }} on the {{ baptism.serviceName }} service.</p>
+    <p>At the {{ baptism.restaurant.name }} on the {{ baptism.service.name }} service.</p>
 
     {# This form can only be displayed if visitor is connected#}
     {{ form_start(form) }}
