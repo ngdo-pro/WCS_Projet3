@@ -1,11 +1,3 @@
-sogenactif:
-    resource: "@SogenactifBundle/Resources/config/routing.yml"
-    prefix:   /acheter
-
-blog:
-    resource: "@BlogBundle/Resources/config/routing.yml"
-    prefix:   /blog
-
 app:
     resource: "@AppBundle/Resources/config/routing.yml"
     prefix:   /
@@ -17,3 +9,7 @@ easy_admin_bundle:
     resource: "@EasyAdminBundle/Controller/"
     type:     annotation
     prefix:   /admin
+
+sogenactif:
+    resource: "@SogenactifBundle/Resources/config/routing.yml"
+    prefix:   /acheter
