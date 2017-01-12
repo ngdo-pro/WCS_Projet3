@@ -18,6 +18,14 @@ use Symfony\Component\HttpFoundation\Request;
 
 class TransactionController extends Controller
 {
+    /**
+     * This action is building sogenactif's request and sending it through src/SogenactifBundle/Api/bin/request
+     * French comments are api's
+     * Payments means are displayed through the view, click on them will move User to Sogenactif's payment page
+     * 
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function sendingAction(Request $request){
 
         $projectPath    = $this->getParameter('project_path');
@@ -26,8 +34,8 @@ class TransactionController extends Controller
         $merchantId     = $this->getParameter('merchant_id');
         $merchantCountry= $this->getParameter('merchant_country');
         $currencyCode   = $this->getParameter('currency_code');
-        $normalUrl = $this->generateUrl('sogenactif_normal', array(), true);
-        $session = $request->getSession();
+        $responseUrl    = $this->generateUrl('sogenactif_response', array(), true);
+        $session        = $request->getSession();
 
         /** @var Transaction $transaction */
         $transaction    = $session->get("transaction");
@@ -48,9 +56,9 @@ class TransactionController extends Controller
         // 		Les valeurs proposées ne sont que des exemples
         // 		Les champs et leur utilisation sont expliqués dans le Dictionnaire des données
         //
-        $parm           ="$parm normal_return_url=$normalUrl";
-        $parm           ="$parm cancel_return_url=$normalUrl";
-        $parm           ="$parm automatic_response_url=$normalUrl";
+        $parm           ="$parm normal_return_url=$responseUrl";
+        $parm           ="$parm cancel_return_url=$responseUrl";
+        $parm           ="$parm automatic_response_url=$responseUrl";
         //		$parm="$parm language=fr";
         $parm           ="$parm payment_means=CB,2,VISA,2,MASTERCARD,2";
         //		$parm="$parm header_flag=no";
@@ -83,18 +91,7 @@ class TransactionController extends Controller
         // 		$parm="$parm background_id=";
         // 		$parm="$parm templatefile=";
 
-
-        //		insertion de la commande en base de données (optionnel)
-        //		A développer en fonction de votre système d'information
-
-        // Initialisation du chemin de l'executable request (à modifier)
-        // ex :
-        // -> Windows : $path_bin = "c:/repertoire/bin/request.exe";
-        // -> Unix    : $path_bin = "/home/repertoire/bin/request";
-        //
-
         $path_bin       = "$requestPath";
-
 
         //	Appel du binaire request
         // La fonction escapeshellcmd() est incompatible avec certaines options avancées
@@ -115,22 +112,29 @@ class TransactionController extends Controller
 
         //	récupération des paramètres
 
-        $code           = $array[1];
-        $error          = $array[2];
         $message        = $array[3];
 
         return $this->render("sogenactif/transaction/payment.html.twig", array(
-            'code' => $code,
-            'error' => $error,
             'message' => $message
         ));
     }
 
-    public function normalResponseAction(Request $request){
+    /**
+     * This action is triggered in 2 differents ways :
+     * - User come back to website after his payment has succeeded or failed
+     * - User never comes back to website after his payment (connection lost, window closed, etc...)
+     *
+     * responseAction will update database to reflect the success or failure of the payment
+     *
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function responseAction(Request $request){
 
         $projectPath        = $this->getParameter('project_path');
         $pathfilePath       = $projectPath . 'src/SogenactifBundle/Api/params/pathfile';
         $responsePath       = $projectPath . 'src/SogenactifBundle/Api/bin/response';
+        /** data sent by the Api */
         $data               = $request->request->get('DATA');
 
         $message            = "message=$data";
@@ -147,6 +151,7 @@ class TransactionController extends Controller
 
         /** @var Transaction $transaction */
         $transaction = $em->getRepository("SogenactifBundle:Transaction")->find($array[6]);
+        /** array details can be found in TransactionRepository */
         $transaction = $em->getRepository("SogenactifBundle:Transaction")->update($transaction, $array);
 
         $em->persist($transaction);
@@ -158,6 +163,22 @@ class TransactionController extends Controller
         /** @var Baptism $baptism */
         $baptism = $baptismHasUser->getBaptism();
 
+        /**
+         * If payment is successful :
+         *     - payment is confirmed
+         *     - baptism is set to :
+         *         - "open" if there is still places
+         *         - "closed" if it was the last place
+         *     - message passed to view is set to "true"
+         * Else :
+         *     - payment is cancelled
+         *     - baptismHasUser is removed
+         *     - If someone else is participating to the baptism :
+         *         - Places come back to original count
+         *     - Else :
+         *         - baptism is removed
+         *     - message passed to view is set to "false"
+         */
         if("00" === $array[11]){
             $payment->setStatus("confirmed");
             if($baptism->getPlaces() > 0){
