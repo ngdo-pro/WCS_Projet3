@@ -23,6 +23,62 @@ use UserBundle\Entity\User;
 class BaptismController extends Controller
 {
 
+    public function searchAction(Request $request){
+        //TODO: This is a fake action, it needs to be replaced with the real searchAction
+        $form = $this->createFormBuilder()
+            ->add("send", SubmitType::class)
+            ->getForm();
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()){
+            /**
+             * fake result building
+             */
+            $results = array();
+            $resultCount = 0;
+            $em = $this->getDoctrine()->getManager();
+            $baptisms = $em->getRepository("AppBundle:Baptism")->findAll();
+            foreach($baptisms as $baptism){
+                $results[$resultCount] = array(
+                    "id"            => $baptism->getId(),
+                    "status"        => $baptism->getPlaces(),
+                    "date"          => $baptism->getDate(),
+                    "places"        => $baptism->getPlaces(),
+                    "service"       => $baptism->getService(),
+                    "restaurant"    => $baptism->getRestaurant(),
+                    "reference"     => $resultCount
+                );
+                $resultCount++;
+            }
+            /**
+             * Fake build of the new baptisms
+             */
+            $service = $em->getRepository("AppBundle:Service")->findOneBy(array("name" => "midi"));
+            $restaurant = $em->getRepository("AppBundle:Restaurant")->findOneBy(array("name" => "wild restaurant"));
+            $newBaptisms = array();
+            for($i = 0; $i < 2; $i++){
+                $results[$resultCount] = array(
+                    "id"            => 0,
+                    "status"        => "open",
+                    "date"          => new \DateTime(),
+                    "places"        => 2+$i,
+                    "service"       => $service,
+                    "restaurant"    => $restaurant,
+                    "reference"     => $resultCount
+                );
+                $resultCount++;
+            }
+
+            $session = $request->getSession();
+            $session->set('results', $results);
+            return $this->redirectToRoute('baptism_select');
+        }
+
+        return $this->render('app/baptism/search.html.twig', array(
+            'form' => $form->createView()
+        ));
+    }
+
     /**
      * This is the start of the function use to show where we should have the result of the search
      * for opportunity for a baptism
@@ -33,8 +89,10 @@ class BaptismController extends Controller
      */
     public function selectAction(Request $request)
     {
+        $session = $request->getSession();
+        $baptisms = $session->get('results');
+
         $requestC = $request->request;
-        $em = $this->getDoctrine()->getManager();
         if ($requestC->get('origin','') === 'select') {
             $baptism = array();
             $baptism['id']              = $requestC->get('id');
@@ -48,8 +106,6 @@ class BaptismController extends Controller
             $session->set('baptism',$baptism);
             return $this->redirectToRoute('baptism_purchase') ;
         }
-
-        $baptisms = $em->getRepository('AppBundle:Baptism')->findAll();
 
         return $this->render('baptism/select.html.twig', array(
             'baptisms' => $baptisms,

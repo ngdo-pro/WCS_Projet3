@@ -1,8 +1,12 @@
+baptism_search:
+    path:       /recherche
+    defaults:   { _controller: AppBundle:Baptism:search }
+
 baptism_select:
     path:       /selection
     defaults:   { _controller: AppBundle:Baptism:select }
 
 baptism_purchase:
-    path:       /achat
+    path:       /achat/{reference}
     defaults:   { _controller: AppBundle:Baptism:purchase }
 
