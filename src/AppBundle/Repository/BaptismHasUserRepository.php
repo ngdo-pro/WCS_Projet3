@@ -13,14 +13,13 @@ use UserBundle\Entity\User;
  */
 class BaptismHasUserRepository extends \Doctrine\ORM\EntityRepository
 {
-    public function findOtherByBaptism(Baptism $baptism, User $user){
+    public function findOtherByBaptism(Baptism $baptism){
         return $this->createQueryBuilder('bhu')
-            ->select('count(bhu.baptism)')
+            ->select('COUNT(bhu.id)')
             ->where('bhu.baptism = :baptism')
-            ->andWhere('bhu.user != :user')
+            ->andWhere('bhu.role = 1')
             ->setParameter('baptism', $baptism)
-            ->setParameter('user', $user)
             ->getQuery()
-            ->getResult();
+            ->getSingleScalarResult();
     }
 }

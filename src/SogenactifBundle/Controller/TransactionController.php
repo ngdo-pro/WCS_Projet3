@@ -147,7 +147,6 @@ class TransactionController extends Controller
 
         /** @var Transaction $transaction */
         $transaction = $em->getRepository("SogenactifBundle:Transaction")->find($array[6]);
-        var_dump($array);
         $transaction = $em->getRepository("SogenactifBundle:Transaction")->update($transaction, $array);
 
         $em->persist($transaction);
@@ -159,22 +158,27 @@ class TransactionController extends Controller
         /** @var Baptism $baptism */
         $baptism = $baptismHasUser->getBaptism();
 
-        if("00" === $array[18]){
+        if("00" === $array[11]){
             $payment->setStatus("confirmed");
-            $baptism->setStatus("open");
+            if($baptism->getPlaces() > 0){
+                $baptism->setStatus("open");
+            }else{
+                $baptism->setStatus("closed");
+            }
+            $em->persist($baptism);
         }else{
             $payment->setStatus("cancelled");
             $payment->setBaptismHasUser(null);
             $em->remove($baptismHasUser);
-            $baptismHasUserCount = $em->getRepository("AppBundle:BaptismHasUser")->findOtherByBaptism($baptism, $baptismHasUser->getUser());
-            if ($baptismHasUserCount == 0){
+            $baptismHasUserCount = $em->getRepository("AppBundle:BaptismHasUser")->findOtherByBaptism($baptism);
+            $baptismHasOtherUser = $baptismHasUserCount -1;
+            if ($baptismHasOtherUser === 0){
                 $em->remove($baptism);
             }else{
                 $baptism->setPlaces($baptism->getPlaces()+1);
             }
         }
         $em->persist($payment);
-        $em->persist($baptism);
 
         $em->flush();
 

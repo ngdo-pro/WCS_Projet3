@@ -14,6 +14,8 @@ use AppBundle\Entity\Baptism;
 use AppBundle\Entity\BaptismHasUser;
 use AppBundle\Entity\Payment;
 use AppBundle\Entity\Price;
+use AppBundle\Entity\Restaurant;
+use AppBundle\Entity\Service;
 use SogenactifBundle\Entity\Transaction;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -41,11 +43,11 @@ class BaptismController extends Controller
             foreach($baptisms as $baptism){
                 $results[$resultCount] = array(
                     "id"            => $baptism->getId(),
-                    "status"        => $baptism->getPlaces(),
+                    "status"        => $baptism->getStatus(),
                     "date"          => $baptism->getDate(),
                     "places"        => $baptism->getPlaces(),
-                    "service"       => $baptism->getService(),
-                    "restaurant"    => $baptism->getRestaurant(),
+                    "serviceName"   => $baptism->getService()->getName(),
+                    "restaurantName"=> $baptism->getRestaurant()->getName(),
                     "reference"     => $resultCount
                 );
                 $resultCount++;
@@ -53,16 +55,16 @@ class BaptismController extends Controller
             /**
              * Fake build of the new baptisms
              */
-            $service = $em->getRepository("AppBundle:Service")->findOneBy(array("name" => "midi"));
-            $restaurant = $em->getRepository("AppBundle:Restaurant")->findOneBy(array("name" => "wild restaurant"));
+            $service = $em->getRepository("AppBundle:Service")->findBy(array("name" => "midi"));
+            $restaurant = $em->getRepository("AppBundle:Restaurant")->findBy(array("name" => "wild restaurant"));
             for($i = 0; $i < 2; $i++){
                 $results[$resultCount] = array(
                     "id"            => 0,
                     "status"        => "open",
                     "date"          => new \DateTime(),
                     "places"        => 2+$i,
-                    "service"       => $service,
-                    "restaurant"    => $restaurant,
+                    "serviceName"   => $service[0]->getName(),
+                    "restaurantName"=> $restaurant[0]->getName(),
                     "reference"     => $resultCount
                 );
                 $resultCount++;
@@ -87,7 +89,6 @@ class BaptismController extends Controller
     {
         $session = $request->getSession();
         $baptisms = $session->get('results');
-
         return $this->render('baptism/select.html.twig', array(
             'baptisms' => $baptisms,
         ));
@@ -102,7 +103,8 @@ class BaptismController extends Controller
      *       baptismHasUser, then, it redirects to sogenactif payment page.
      *
      * @param Request $request
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @param $reference
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function purchaseAction(Request $request, $reference)
     {
@@ -120,12 +122,12 @@ class BaptismController extends Controller
 
             $em = $this->getDoctrine()->getManager();
 
-            $restaurant = $em->getRepository("AppBundle:Restaurant")->findOneBy(array("name" => $baptismParams["restaurant"]->getName()));
-            $service = $em->getRepository("AppBundle:Service")->findOneBy(array("name" => $baptismParams["service"]->getName()));
+            $restaurant = $em->getRepository("AppBundle:Restaurant")->findOneBy(array("name" => $baptismParams["restaurantName"]));
+            $service = $em->getRepository("AppBundle:Service")->findOneBy(array("name" => $baptismParams["serviceName"]));
             /** @var User $user */
             $user = $this->getUser();
 
-            if(isset($baptismParams["id"])) {
+            if(0 === $baptismParams["id"]) {
                 $baptism = new Baptism();
             }else{
                 $baptism = $em->getRepository("AppBundle:Baptism")->find($baptismParams["id"]);

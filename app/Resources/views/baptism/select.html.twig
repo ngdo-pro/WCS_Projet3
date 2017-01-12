@@ -9,8 +9,8 @@
                     <p>Statut : {{ baptism.status }}</p>
                     <p>Places : {{ baptism.places }}</p>
                     <p>Date : {{ baptism.date |date }}</p>
-                    <p>Service : {{ baptism.service.name }}</p>
-                    <p>Restaurant : {{ baptism.restaurant.name }}</p>
+                    <p>Service : {{ baptism.serviceName }}</p>
+                    <p>Restaurant : {{ baptism.restaurantName }}</p>
                     <p>Reference : {{ baptism.reference }}</p>
                     <a href="{{ path('baptism_purchase', {reference: baptism.reference}) }}">Select</a>
                 </div>
