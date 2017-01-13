@@ -51,6 +51,7 @@ class BaptismRepository extends \Doctrine\ORM\EntityRepository
         $now = new DateTime();
         $now->setTime(0, 0, 0);
         $baptismDateInfo = false;
+
         if (! is_null($baptismDate)) {
             $startDate = DateTime::createFromFormat('Y-m-d', $baptismDate);
             if ($startDate instanceof DateTime) {
@@ -70,12 +71,11 @@ class BaptismRepository extends \Doctrine\ORM\EntityRepository
             $baptismServiceInfo = true;
         }
 
-
         $select2 ="";
         $from2 = "";
         $where2="";
         if ($baptismDateInfo && $baptismServiceInfo) {
-            $select2 = " SELECT -1 so.id, so.service_id, 'Pending', :baptismdate, ifnull(soe.status,case weekday(:baptismdate) ";
+            $select2 = " SELECT -1 , so.service_id, 'Pending', :baptismdate, ifnull(soe.status,case weekday(:baptismdate) ";
             $select2 .= " when 0 then monday ";
             $select2 .= " when 1 then tuesday ";
             $select2 .= " when 2 then wednesday ";
@@ -83,12 +83,12 @@ class BaptismRepository extends \Doctrine\ORM\EntityRepository
             $select2 .= " when 4 then friday ";
             $select2 .= " when 5 then saturday ";
             $select2 .= " when 6 then sunday ";
-            $select2 .= " end case as places, restaurant_id ";
+            $select2 .= " end) as places, so.restaurant_id ";
             $from2 = " FROM service_opening so ";
             $from2 .= " LEFT JOIN service_opening_exception soe on (soe.service_id = so.service_id ";
             $from2 .= " and soe.restaurant_id = so.restaurant_id ";
-            $from2 .= " and soe.date = :baptismdate ";
-            $where2 = " WHERE service_id = $service ";
+            $from2 .= " and soe.date = :baptismdate) ";
+            $where2 = " WHERE so.service_id = $service ";
             $where2 .= " AND (case weekday(:baptismdate) ";
             $where2 .= " when 0 then monday ";
             $where2 .= " when 1 then tuesday ";
@@ -97,8 +97,8 @@ class BaptismRepository extends \Doctrine\ORM\EntityRepository
             $where2 .= " when 4 then friday ";
             $where2 .= " when 5 then saturday ";
             $where2 .= " when 6 then sunday ";
-            $where2 .= " end case) > $nb ";
-            $where2 .= " so.restaurant_id not in ( ";
+            $where2 .= " end) > $nb ";
+            $where2 .= " AND so.restaurant_id not in ( ";
             $where2 .= $select1 . $from . $where . ")";
 
             if ($baptismCityInfo) {
@@ -113,9 +113,11 @@ class BaptismRepository extends \Doctrine\ORM\EntityRepository
                 }
                 $where2 .= " AND r.name = :restaurant ";
             }
-            return $select . $from . $where . " union " . $select2 . $from2 . $where2 . ";";
+            return ($select . $from . $where . " union " . $select2 . $from2 . $where2 . ";");
+
         }
 
+        return ($select . $from . $where . ";");
 
     }
 }

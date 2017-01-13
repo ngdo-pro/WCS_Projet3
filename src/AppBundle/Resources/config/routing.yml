@@ -9,3 +9,4 @@ app_homepage:
 app_baptism:
     path:     /bapteme
     defaults: { _controller: AppBundle:Main:baptism }
+    methods:  [GET, POST]
