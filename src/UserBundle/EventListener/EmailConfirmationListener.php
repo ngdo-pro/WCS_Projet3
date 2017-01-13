@@ -3,11 +3,12 @@
 namespace UserBundle\EventListener;
 
 use FOS\UserBundle\FOSUserEvents;
+use UserBundle\Controller;
 use FOS\UserBundle\Event\FormEvent;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Cocur\Slugify\Slugify;
 
-class EmailConfirmationListener implements EventSubscriberInterface
+class EmailConfirmationListener extends Controller\UserController implements EventSubscriberInterface
 {
     /**
      * {@inheritdoc}
@@ -23,8 +24,9 @@ class EmailConfirmationListener implements EventSubscriberInterface
     {
         /** @var $user \FOS\UserBundle\Model\UserInterface */
         $user = $event->getForm()->getData();
+        $id = $this->userIdAction();
         $slugify = new Slugify();
-        $slugify = $slugify->slugify($user->getFirstName().'-'.$user->getLastName());
+        $slugify = $slugify->slugify($id.'.'.$user->getFirstName().'.'.$user->getLastName());
         $user->setSlug($slugify);
 
     }
