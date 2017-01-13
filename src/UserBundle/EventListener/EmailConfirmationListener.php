@@ -29,7 +29,8 @@ class EmailConfirmationListener implements EventSubscriberInterface, ContainerAw
         $user = $event->getForm()->getData();
         $slug = $this->container->get('user.new_user_slug');
         $email = $user->getEmail();
-        $slug->setNewUserSlug($email);
+        $userslug = $slug->setNewUserSlug($email, $user->getFirstName(), $user->getLastName());
+        $user->setSlug($userslug);
     }
 
     /**

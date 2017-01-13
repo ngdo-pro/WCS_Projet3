@@ -6,3 +6,4 @@ services:
 
     user.new_user_slug:
         class: UserBundle\Services\UserSlugService
+        factory: [ doctrine, 'getRepository' ]
