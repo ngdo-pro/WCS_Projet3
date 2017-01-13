@@ -179,6 +179,13 @@ class TransactionController extends Controller
          *         - baptism is removed
          *     - message passed to view is set to "false"
          */
+
+        /**
+         * $array[11] is the bank response code, if :
+         *     - 00 : payment has succeeded
+         *     - 05 : payment has failed
+         *     - 17 : payment has been cancelled
+         */
         if("00" === $array[11]){
             $payment->setStatus("confirmed");
             if($baptism->getPlaces() > 0){
@@ -193,8 +200,9 @@ class TransactionController extends Controller
             $payment->setBaptismHasUser(null);
             $em->remove($baptismHasUser);
             $baptismHasUserCount = $em->getRepository("AppBundle:BaptismHasUser")->findOtherByBaptism($baptism);
-            $baptismHasOtherUser = $baptismHasUserCount -1;
-            if ($baptismHasOtherUser === 0){
+            /** Since $baptismHasUser remove has not been flush, need to decrement it once */
+            $baptismHasUserCount--;
+            if ($baptismHasUserCount === 0){
                 $em->remove($baptism);
             }else{
                 $baptism->setPlaces($baptism->getPlaces()+1);
