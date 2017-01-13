@@ -12,7 +12,7 @@ class PriceRepository extends \Doctrine\ORM\EntityRepository
 {
 
     /**
-     * This function find out the price of a product
+     * This function finds out the price of a product
      * @param $productName
      * @return array
      */
