@@ -2,7 +2,7 @@ sogenactif_sending:
     path:     /
     defaults: { _controller: SogenactifBundle:Transaction:sending }
 
-sogenactif_normal:
+sogenactif_response:
     path:     /response
     defaults: { _controller: SogenactifBundle:Transaction:response }
     methods: POST
