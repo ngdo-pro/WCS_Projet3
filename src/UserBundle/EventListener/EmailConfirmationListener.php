@@ -4,17 +4,24 @@ namespace UserBundle\EventListener;
 
 use FOS\UserBundle\FOSUserEvents;
 use FOS\UserBundle\Event\FormEvent;
+use Symfony\Component\DependencyInjection\Container;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
+use Symfony\Component\EventDispatcher\ContainerAwareEventDispatcher;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 
-class EmailConfirmationListener implements EventSubscriberInterface, ContainerAwareInterface
+class EmailConfirmationListener implements EventSubscriberInterface
 {
     /**
      * @var ContainerInterface
      */
-    private $container;
+    protected $container;
+
+    public function __construct(Container $container)
+    {
+        $this->container = $container;
+    }
 
     public static function getSubscribedEvents()
     {
@@ -25,12 +32,13 @@ class EmailConfirmationListener implements EventSubscriberInterface, ContainerAw
 
     public function onRegistrationSuccess(FormEvent $event)
     {
+
         /** @var $user \FOS\UserBundle\Model\UserInterface */
         $user = $event->getForm()->getData();
         $slug = $this->container->get('user.new_user_slug');
-        $email = $user->getEmail();
-        $userslug = $slug->setNewUserSlug($email, $user->getFirstName(), $user->getLastName());
+        $userslug = $slug->setNewUserSlug($user->getFirstName(), $user->getLastName());
         $user->setSlug($userslug);
+
     }
 
     /**
@@ -38,8 +46,8 @@ class EmailConfirmationListener implements EventSubscriberInterface, ContainerAw
      *
      * @param ContainerInterface|null $container A ContainerInterface instance or null
      */
-    public function setContainer(ContainerInterface $container = null)
+    /*public function setContainer(ContainerInterface $container = null)
     {
         $this->container = $container;
-    }
+    }*/
 }

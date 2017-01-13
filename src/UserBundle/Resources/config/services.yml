@@ -1,9 +1,12 @@
 services:
     user.email_confirm_listener:
         class: UserBundle\EventListener\EmailConfirmationListener
+        arguments:
+            - @service_container
         tags:
             - { name: kernel.event_subscriber }
 
     user.new_user_slug:
         class: UserBundle\Services\UserSlugService
-        factory: [ doctrine, 'getRepository' ]
+        arguments:
+            - @doctrine.orm.entity_manager
