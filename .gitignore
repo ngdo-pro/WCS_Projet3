@@ -12,4 +12,7 @@
 /composer.phar
 /node_modules
 /web/vendors
-/web/assets/
+/web/assets/css/*
+/web/assets/fonts/*
+/web/assets/js/*
+/web/.sass-cache/*
