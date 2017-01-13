@@ -23,7 +23,6 @@ use UserBundle\Entity\User;
 
 class BaptismController extends Controller
 {
-
     /**
      * This function represents the search part, where the User will search for potential baptisms that he has interest in
      *
@@ -197,5 +196,4 @@ class BaptismController extends Controller
             'form' => $form->createView()
         ));
     }
-
 }
