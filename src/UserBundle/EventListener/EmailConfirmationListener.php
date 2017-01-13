@@ -4,15 +4,18 @@ namespace UserBundle\EventListener;
 
 use FOS\UserBundle\FOSUserEvents;
 use FOS\UserBundle\Event\FormEvent;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\DependencyInjection\ContainerAwareInterface;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 
-class EmailConfirmationListener extends Controller implements EventSubscriberInterface
+class EmailConfirmationListener implements EventSubscriberInterface, ContainerAwareInterface
 {
     /**
-     * {@inheritdoc}
+     * @var ContainerInterface
      */
+    private $container;
+
     public static function getSubscribedEvents()
     {
         return array(
@@ -24,8 +27,18 @@ class EmailConfirmationListener extends Controller implements EventSubscriberInt
     {
         /** @var $user \FOS\UserBundle\Model\UserInterface */
         $user = $event->getForm()->getData();
+        $slug = $this->container->get('user.new_user_slug');
         $email = $user->getEmail();
-        $slug = $this->get('user.new_user_slug');
         $slug->setNewUserSlug($email);
+    }
+
+    /**
+     * Sets the container.
+     *
+     * @param ContainerInterface|null $container A ContainerInterface instance or null
+     */
+    public function setContainer(ContainerInterface $container = null)
+    {
+        $this->container = $container;
     }
 }
