@@ -10,3 +10,6 @@ easy_admin_bundle:
     type:     annotation
     prefix:   /admin
 
+sogenactif:
+    resource: "@SogenactifBundle/Resources/config/routing.yml"
+    prefix:   /acheter

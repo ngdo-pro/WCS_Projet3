@@ -22,6 +22,7 @@ class AppKernel extends Kernel
             new JavierEguiluz\Bundle\EasyAdminBundle\EasyAdminBundle(),
             new BlogBundle\BlogBundle(),
             new Cocur\Slugify\Bridge\Symfony\CocurSlugifyBundle(),
+            new SogenactifBundle\SogenactifBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {
