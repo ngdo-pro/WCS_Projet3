@@ -38,7 +38,7 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface
                 "roles" => array("ROLE_USER"),
                 "firstName" => "jean-michel",
                 "lastName" => "dupont",
-                "slug" => "jean-michel-dupont",
+                "slug" => "1-jean-michel-dupont",
                 "birthDate" => new \DateTime("1990-06-30"),
                 "biography" => "lorem ipsum",
                 "signatureDish" => "quiche lorraine",

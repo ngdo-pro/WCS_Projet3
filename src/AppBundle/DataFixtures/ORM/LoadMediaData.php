@@ -31,7 +31,7 @@ class LoadMediaData extends AbstractFixture implements OrderedFixtureInterface
                 "lastUpdatedAt" => new \DateTime(),
                 "context" => "user",
                 "type" => "img",
-                "userSlug" => "jean-michel-dupont"
+                "userSlug" => "1-jean-michel-dupont"
             ),
             array(
                 "name" => "wild first floor",
