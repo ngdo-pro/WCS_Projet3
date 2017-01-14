@@ -15,7 +15,6 @@ class User extends BaseUser
      */
     protected $id;
 
-    private static $slugnb = 0;
     /**
      * Get id
      *
@@ -25,6 +24,12 @@ class User extends BaseUser
     {
         return $this->id;
     }
+
+    /**
+     * @var boolean
+     */
+    private $civility;
+
     /**
      * @var string
      */
@@ -48,22 +53,22 @@ class User extends BaseUser
     /**
      * @var string
      */
-    private $biography;
+    private $address;
+
+    /**
+     * @var integer
+     */
+    private $postal_code;
 
     /**
      * @var string
      */
-    private $signatureDish;
-
-    /**
-     * @var float
-     */
-    private $rating;
+    private $city;
 
     /**
      * @var string
      */
-    private $phone;
+    private $mobile_phone;
 
     /**
      * @var integer
@@ -71,14 +76,14 @@ class User extends BaseUser
     private $level;
 
     /**
+     * @var float
+     */
+    private $rating;
+
+    /**
      * @var integer
      */
     private $participation;
-
-    /**
-     * @var string
-     */
-    private $profession;
 
     /**
      * Set firstName
@@ -173,54 +178,6 @@ class User extends BaseUser
     }
 
     /**
-     * Set biography
-     *
-     * @param string $biography
-     *
-     * @return User
-     */
-    public function setBiography($biography)
-    {
-        $this->biography = $biography;
-
-        return $this;
-    }
-
-    /**
-     * Get biography
-     *
-     * @return string
-     */
-    public function getBiography()
-    {
-        return $this->biography;
-    }
-
-    /**
-     * Set signatureDish
-     *
-     * @param string $signatureDish
-     *
-     * @return User
-     */
-    public function setSignatureDish($signatureDish)
-    {
-        $this->signatureDish = $signatureDish;
-
-        return $this;
-    }
-
-    /**
-     * Get signatureDish
-     *
-     * @return string
-     */
-    public function getSignatureDish()
-    {
-        return $this->signatureDish;
-    }
-
-    /**
      * Set rating
      *
      * @param float $rating
@@ -242,30 +199,6 @@ class User extends BaseUser
     public function getRating()
     {
         return $this->rating;
-    }
-
-    /**
-     * Set phone
-     *
-     * @param string $phone
-     *
-     * @return User
-     */
-    public function setPhone($phone)
-    {
-        $this->phone = $phone;
-
-        return $this;
-    }
-
-    /**
-     * Get phone
-     *
-     * @return string
-     */
-    public function getPhone()
-    {
-        return $this->phone;
     }
 
     /**
@@ -316,29 +249,6 @@ class User extends BaseUser
         return $this->participation;
     }
 
-    /**
-     * Set profession
-     *
-     * @param string $profession
-     *
-     * @return User
-     */
-    public function setProfession($profession)
-    {
-        $this->profession = $profession;
-
-        return $this;
-    }
-
-    /**
-     * Get profession
-     *
-     * @return string
-     */
-    public function getProfession()
-    {
-        return $this->profession;
-    }
     /**
      * @var \Doctrine\Common\Collections\Collection
      */
@@ -494,5 +404,93 @@ class User extends BaseUser
     public function getRestaurants()
     {
         return $this->restaurants;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAddress()
+    {
+        return $this->address;
+    }
+
+    /**
+     * @param mixed $address
+     */
+    public function setAddress($address)
+    {
+        $this->address = $address;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPostalCode()
+    {
+        return $this->postal_code;
+    }
+
+    /**
+     * @param mixed $postal_code
+     */
+    public function setPostalCode($postal_code)
+    {
+        $this->postal_code = $postal_code;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCity()
+    {
+        return $this->city;
+    }
+
+    /**
+     * @param mixed $city
+     */
+    public function setCity($city)
+    {
+        $this->city = $city;
+    }
+
+    /**
+     * Set mobilePhone
+     *
+     * @param string $mobilePhone
+     *
+     * @return User
+     */
+    public function setMobilePhone($mobilePhone)
+    {
+        $this->mobile_phone = $mobilePhone;
+
+        return $this;
+    }
+
+    /**
+     * Get mobilePhone
+     *
+     * @return string
+     */
+    public function getMobilePhone()
+    {
+        return $this->mobile_phone;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCivility()
+    {
+        return $this->civility;
+    }
+
+    /**
+     * @param mixed $civility
+     */
+    public function setCivility($civility)
+    {
+        $this->civility = $civility;
     }
 }
