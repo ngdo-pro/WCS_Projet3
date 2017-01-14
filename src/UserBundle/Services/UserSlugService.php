@@ -13,7 +13,7 @@ class UserSlugService
     {
         $this->repository = $em->getRepository('UserBundle:User');
     }
-
+    // This function get user values to return an unique slug
     public function setNewUserSlug($firstName, $lastName)
     {
         $id = $this->repository->findIdByEmail();

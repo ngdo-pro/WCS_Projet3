@@ -34,26 +34,19 @@ class EmailConfirmationListener implements EventSubscriberInterface
 
         /** @var $user User */
         $user = $event->getForm()->getData();
+        // Here we take the civility value to return a boolean
         $gender = $user->getCivility();
         if ($gender == 'm'){
             $user->setCivility(true);
         } else if ($gender == 'f'){
             $user->setCivility(false);
         }
+        // Here we set the email value to the username for login with email
         $user->setUsername($user->getEmail());
+        // Here we create an user slug with UserSlugService
         $slug = $this->container->get('user.new_user_slug');
         $userSlug = $slug->setNewUserSlug($user->getFirstName(), $user->getLastName());
         $user->setSlug($userSlug);
 
     }
-
-    /**
-     * Sets the container.
-     *
-     * @param ContainerInterface|null $container A ContainerInterface instance or null
-     */
-    /*public function setContainer(ContainerInterface $container = null)
-    {
-        $this->container = $container;
-    }*/
 }

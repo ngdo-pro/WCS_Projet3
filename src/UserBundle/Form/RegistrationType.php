@@ -21,7 +21,7 @@ class RegistrationType extends AbstractType
             ))
             ->add('address', null, array('label' => 'form.address', 'translation_domain' => 'FOSUserBundle'))
             ->add('city', null, array('label' => 'form.city', 'translation_domain' => 'FOSUserBundle'))
-            ->add('zip_code', null, array('label' => 'form.zip_code', 'translation_domain' => 'FOSUserBundle'))
+            ->add('zip_code', 'number', array('label' => 'form.zip_code', 'translation_domain' => 'FOSUserBundle'))
             ->add('first_name', null, array('label' => 'form.first_name', 'translation_domain' => 'FOSUserBundle','required' => true,))
             ->add('last_name', null, array('label' => 'form.last_name', 'translation_domain' => 'FOSUserBundle','required' => true,))
             ->add('birth_date', 'date', array('label' => 'form.birth_date', 'translation_domain' => 'FOSUserBundle', 'widget' => 'choice',
@@ -41,6 +41,7 @@ class RegistrationType extends AbstractType
                 'invalid_message' => 'fos_user.password.mismatch',
             ))
         ;
+        //TODO add a captcha
     }
 
 
@@ -52,10 +53,5 @@ class RegistrationType extends AbstractType
     public function getParent()
     {
         return 'fos_user_registration';
-    }
-    public function setEmail($email)
-    {
-        parent::setEmail($email);
-        $this->setUsername($email);
     }
 }
