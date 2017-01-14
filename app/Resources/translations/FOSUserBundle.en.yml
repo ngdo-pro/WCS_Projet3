@@ -96,3 +96,4 @@ form:
     civility: 'Civility'
     mister: 'Mr.'
     misses: 'Mrs.'
+    checkbox: 'I agree to the Terms of Use.' #TODO add the cgu link

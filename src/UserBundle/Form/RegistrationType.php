@@ -4,7 +4,6 @@ namespace UserBundle\Form;
 
 use FOS\UserBundle\Util\LegacyFormHelper;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\FormBuilderInterface;
 
@@ -14,9 +13,9 @@ class RegistrationType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('civility', ChoiceType::class, array('label' => 'form.civility', 'translation_domain' => 'FOSUserBundle', 'choices' => array(
-                'm' => array('label' => 'form.mister'),
-                'f' => array('label' => 'form.misses')),
+            ->add('civility', 'choice', array('label' => 'form.civility', 'translation_domain' => 'FOSUserBundle', 'choices' => array(
+                'm' => 'form.mister',
+                'f' => 'form.misses'),
                 'expanded' => true,
                 'multiple' => false
             ))
@@ -28,6 +27,12 @@ class RegistrationType extends AbstractType
             ->add('birth_date', 'date', array('label' => 'form.birth_date', 'translation_domain' => 'FOSUserBundle', 'widget' => 'choice',
                 'years' => range(date('Y')-18,date('Y')-80)))
             ->add('mobile_phone', null, array('label' => 'form.phone', 'translation_domain' => 'FOSUserBundle'))
+            ->add('checkbox', 'choice', array('translation_domain' => 'FOSUserBundle',
+                'multiple' => true,
+                'expanded' => true,
+                'choices' => array('checkbox' => 'form.checkbox'),
+                'required' => true,
+                'mapped' => false))
             ->add('email', LegacyFormHelper::getType('Symfony\Component\Form\Extension\Core\Type\EmailType'), array('label' => 'form.email', 'translation_domain' => 'FOSUserBundle'))
             ->add('username', HiddenType::class, array('data' => 'NewUser'))
             ->add('plainPassword', LegacyFormHelper::getType('Symfony\Component\Form\Extension\Core\Type\RepeatedType'), array(
