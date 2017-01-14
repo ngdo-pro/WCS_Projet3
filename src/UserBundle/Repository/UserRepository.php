@@ -12,7 +12,6 @@ class UserRepository extends EntityRepository
             ->select('COUNT(u)')
             ->getQuery()
             ->getSingleScalarResult();
-            ;
     }
 
 }

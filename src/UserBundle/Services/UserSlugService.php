@@ -4,7 +4,6 @@ namespace UserBundle\Services;
 
 use Cocur\Slugify\Slugify;
 use Doctrine\ORM\EntityManager;
-use UserBundle\Repository\UserRepository;
 
 class UserSlugService
 {
@@ -20,7 +19,7 @@ class UserSlugService
         $id = $this->repository->findIdByEmail();
         $id++;
         $slugify = new Slugify();
-        $slug = $slugify->slugify($id.'.'.$firstName.'.'.$lastName);
+        $slug = $slugify->slugify($id.'-'.$firstName.'-'.$lastName);
         return $slug;
     }
 

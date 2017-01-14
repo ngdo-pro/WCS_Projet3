@@ -5,16 +5,15 @@ namespace UserBundle\EventListener;
 use FOS\UserBundle\FOSUserEvents;
 use FOS\UserBundle\Event\FormEvent;
 use Symfony\Component\DependencyInjection\Container;
-use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
-use Symfony\Component\EventDispatcher\ContainerAwareEventDispatcher;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
+use UserBundle\Entity\User;
 
 
 class EmailConfirmationListener implements EventSubscriberInterface
 {
     /**
-     * @var ContainerInterface
+     * @var ContainerInterface $container
      */
     protected $container;
 
@@ -33,11 +32,11 @@ class EmailConfirmationListener implements EventSubscriberInterface
     public function onRegistrationSuccess(FormEvent $event)
     {
 
-        /** @var $user \FOS\UserBundle\Model\UserInterface */
+        /** @var $user User */
         $user = $event->getForm()->getData();
         $slug = $this->container->get('user.new_user_slug');
-        $userslug = $slug->setNewUserSlug($user->getFirstName(), $user->getLastName());
-        $user->setSlug($userslug);
+        $userSlug = $slug->setNewUserSlug($user->getFirstName(), $user->getLastName());
+        $user->setSlug($userSlug);
 
     }
 
