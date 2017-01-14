@@ -58,7 +58,7 @@ class User extends BaseUser
     /**
      * @var integer
      */
-    private $postal_code;
+    private $zip_code;
 
     /**
      * @var string
@@ -425,17 +425,17 @@ class User extends BaseUser
     /**
      * @return mixed
      */
-    public function getPostalCode()
+    public function getZipCode()
     {
-        return $this->postal_code;
+        return $this->zip_code;
     }
 
     /**
-     * @param mixed $postal_code
+     * @param mixed $zip_code
      */
-    public function setPostalCode($postal_code)
+    public function setZipCode($zip_code)
     {
-        $this->postal_code = $postal_code;
+        $this->zip_code = $zip_code;
     }
 
     /**
