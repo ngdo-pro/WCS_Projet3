@@ -24,23 +24,19 @@ UserBundle\Entity\User:
             nullable: true
         birthDate:
             type: date
-            nullable: true
         address:
             type: string
             length: 255
-            nullable: true
         zip_code:
             type: string
             length: 5
-            nullable: true
         city:
             type: string
             length: 255
-            nullable: true
         mobile_phone:
             type: string
             length: 40
-            nullable: true
+            unique: true
         level:
             type: integer
             nullable: true
