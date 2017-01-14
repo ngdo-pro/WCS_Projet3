@@ -15,15 +15,25 @@
     </head>
     <body>
         <header>
-            <div class="menu col-md-12">
-                <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="menu">
+                <nav class="navbar navbar-default navbar-fixed-top navbar-toggleable-md">
                     <div class="container">
-                        <img class="">
+                        <ul>
+                            <li><a href="">Nos Restos</a></li>
+                            <li><a href=""></a> </li>
+                            <li><a href=""></a> </li>
+                            <li><a href=""></a> </li>
+                            <li><a href=""></a> </li>
+                            <li><a href=""></a> </li>
+                        </ul>
                     </div>
                 </nav>
             </div>
         </header>
         {% block body %}{% endblock %}
+        <footer>
+
+        </footer>
         <script src="{{ asset('assets/js/vendor.js') }}"></script>
         <script src="{{ asset('assets/js/app.js') }}"></script>
         {% block javascripts %}{% endblock %}
