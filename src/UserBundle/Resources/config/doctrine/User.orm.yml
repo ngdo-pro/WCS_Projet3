@@ -10,7 +10,6 @@ UserBundle\Entity\User:
     fields:
         civility:
             type: boolean
-            nullable: true
         firstName:
             type: string
             length: 255
