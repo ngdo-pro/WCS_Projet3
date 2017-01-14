@@ -610,4 +610,43 @@ class Restaurant
     {
         return $this->serviceOpeningExceptions;
     }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $baptisms;
+
+
+    /**
+     * Add baptism
+     *
+     * @param \AppBundle\Entity\Baptism $baptism
+     *
+     * @return Restaurant
+     */
+    public function addBaptism(\AppBundle\Entity\Baptism $baptism)
+    {
+        $this->baptisms[] = $baptism;
+
+        return $this;
+    }
+
+    /**
+     * Remove baptism
+     *
+     * @param \AppBundle\Entity\Baptism $baptism
+     */
+    public function removeBaptism(\AppBundle\Entity\Baptism $baptism)
+    {
+        $this->baptisms->removeElement($baptism);
+    }
+
+    /**
+     * Get baptisms
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getBaptisms()
+    {
+        return $this->baptisms;
+    }
 }

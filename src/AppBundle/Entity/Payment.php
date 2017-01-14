@@ -226,4 +226,33 @@ class Payment
     {
         return $this->user;
     }
+    /**
+     * @var \SogenactifBundle\Entity\Transaction
+     */
+    private $transaction;
+
+
+    /**
+     * Set transaction
+     *
+     * @param \SogenactifBundle\Entity\Transaction $transaction
+     *
+     * @return Payment
+     */
+    public function setTransaction(\SogenactifBundle\Entity\Transaction $transaction = null)
+    {
+        $this->transaction = $transaction;
+
+        return $this;
+    }
+
+    /**
+     * Get transaction
+     *
+     * @return \SogenactifBundle\Entity\Transaction
+     */
+    public function getTransaction()
+    {
+        return $this->transaction;
+    }
 }

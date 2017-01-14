@@ -28,6 +28,10 @@ class LoadProductData extends AbstractFixture implements OrderedFixtureInterface
             array(
                 "name" => "bapteme",
                 "reference" => "1"
+            ),
+            array(
+                "name" => "evenement",
+                "reference" => "2"
             )
         );
 
