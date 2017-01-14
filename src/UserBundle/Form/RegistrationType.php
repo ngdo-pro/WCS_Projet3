@@ -22,15 +22,13 @@ class RegistrationType extends AbstractType
             ->add('address', null, array('label' => 'form.address', 'translation_domain' => 'FOSUserBundle'))
             ->add('city', null, array('label' => 'form.city', 'translation_domain' => 'FOSUserBundle'))
             ->add('zip_code', null, array('label' => 'form.zip_code', 'translation_domain' => 'FOSUserBundle'))
-            ->add('first_name', null, array('label' => 'form.first_name', 'translation_domain' => 'FOSUserBundle'))
-            ->add('last_name', null, array('label' => 'form.last_name', 'translation_domain' => 'FOSUserBundle'))
+            ->add('first_name', null, array('label' => 'form.first_name', 'translation_domain' => 'FOSUserBundle','required' => true,))
+            ->add('last_name', null, array('label' => 'form.last_name', 'translation_domain' => 'FOSUserBundle','required' => true,))
             ->add('birth_date', 'date', array('label' => 'form.birth_date', 'translation_domain' => 'FOSUserBundle', 'widget' => 'choice',
                 'years' => range(date('Y')-18,date('Y')-80)))
             ->add('mobile_phone', null, array('label' => 'form.phone', 'translation_domain' => 'FOSUserBundle'))
-            ->add('checkbox', 'choice', array('translation_domain' => 'FOSUserBundle',
-                'multiple' => true,
-                'expanded' => true,
-                'choices' => array('checkbox' => 'form.checkbox'),
+            ->add('checkbox', 'checkbox', array('translation_domain' => 'FOSUserBundle',
+                'label' => 'form.checkbox',
                 'required' => true,
                 'mapped' => false))
             ->add('email', LegacyFormHelper::getType('Symfony\Component\Form\Extension\Core\Type\EmailType'), array('label' => 'form.email', 'translation_domain' => 'FOSUserBundle'))
