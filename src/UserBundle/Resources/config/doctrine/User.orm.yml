@@ -26,7 +26,8 @@ UserBundle\Entity\User:
             type: date
             nullable: true
         address:
-            type: text
+            type: string
+            length: 255
             nullable: true
         zip_code:
             type: string
