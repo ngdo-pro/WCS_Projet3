@@ -20,7 +20,9 @@ class RegistrationType extends AbstractType
                 'expanded' => true,
                 'multiple' => false
             ))
-            ->add('address', null, array())
+            ->add('address', null, array('label' => 'form.address', 'translation_domain' => 'FOSUserBundle'))
+            ->add('city', null, array('label' => 'form.city', 'translation_domain' => 'FOSUserBundle'))
+            ->add('zip_code', null, array('label' => 'form.zip_code', 'translation_domain' => 'FOSUserBundle'))
             ->add('first_name', null, array('label' => 'form.first_name', 'translation_domain' => 'FOSUserBundle'))
             ->add('last_name', null, array('label' => 'form.last_name', 'translation_domain' => 'FOSUserBundle'))
             ->add('birth_date', 'date', array('widget' => 'single_text','label' => 'form.birth_date', 'translation_domain' => 'FOSUserBundle'))
