@@ -34,6 +34,13 @@ class EmailConfirmationListener implements EventSubscriberInterface
 
         /** @var $user User */
         $user = $event->getForm()->getData();
+        $gender = $user->getCivility();
+        if ($gender == 'm'){
+            $user->setCivility(true);
+        } else if ($gender == 'f'){
+            $user->setCivility(false);
+        }
+        $user->setUsername($user->getEmail());
         $slug = $this->container->get('user.new_user_slug');
         $userSlug = $slug->setNewUserSlug($user->getFirstName(), $user->getLastName());
         $user->setSlug($userSlug);

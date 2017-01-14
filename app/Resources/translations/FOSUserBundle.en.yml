@@ -12,14 +12,13 @@ group:
 
 security:
     login:
-        username: Username
+        username: Email
         password: Password
         remember_me: 'Remember me'
         submit: 'Log in'
 
 profile:
     show:
-        username: Username
         email: Email
     edit:
         submit: Update
@@ -33,7 +32,7 @@ change_password:
 
 registration:
     check_email: 'An email has been sent to %email%. It contains an activation link you must click to activate your account.'
-    confirmed: 'Congrats %username%, your account is now activated.'
+    confirmed: 'Congrats %first_name%, your account is now activated.'
     back: 'Back to the originating page.'
     submit: Register
     flash:
@@ -41,7 +40,7 @@ registration:
     email:
         subject: 'Welcome %username%!'
         message: |
-            Hello %username%!
+            Hello %first_name%!
 
             To finish activating your account - please visit %confirmationUrl%
 
@@ -55,7 +54,7 @@ resetting:
 
         If you don't get an email check your spam folder or try again.
     request:
-        username: 'Username or email address'
+        username: 'Email address'
         submit: 'Reset password'
     reset:
         submit: 'Change password'
@@ -64,7 +63,7 @@ resetting:
     email:
         subject: 'Reset Password'
         message: |
-            Hello %username%!
+            Hello %first_name%!
 
             To reset your password - please visit %confirmationUrl%
 
@@ -76,7 +75,7 @@ layout:
     logout: 'Log out'
     login: 'Log in'
     register: Register
-    logged_in_as: 'Logged in as %username%'
+    logged_in_as: 'Logged in as %first_name%'
 
 form:
     group_name: 'Group name'
@@ -90,7 +89,10 @@ form:
     first_name: 'Firstname'
     last_name: 'Lastname'
     birth_date: 'Birth date'
-    biography: 'Biography'
-    signature_dish: 'Signature dish'
-    phone: 'Phone'
-    profession: 'Profession'
+    phone: 'Mobile phone'
+    address: 'Address'
+    zip_code: 'Zip code'
+    city: 'City'
+    civility: 'Civility'
+    mister: 'Mr.'
+    misses: 'Mrs.'
