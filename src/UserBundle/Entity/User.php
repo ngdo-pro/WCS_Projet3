@@ -56,7 +56,7 @@ class User extends BaseUser
     private $address;
 
     /**
-     * @var integer
+     * @var string
      */
     private $zip_code;
 
