@@ -39,9 +39,18 @@ class BaptismHasUserRepository extends \Doctrine\ORM\EntityRepository
             ->getSingleScalarResult();
     }
 
-    /*
+    /**
+     * This function count how many guests have already reserved a place at a baptism
+     *
+     * @param Baptism $baptism
+     * @return integer
+     */
     public function findHowManyGuest(Baptism $baptism){
         return $this->createQueryBuilder('bhu')
-            ->select('')
-    }*/
+            ->select('SUM(bhu.guestCount) as guestCount')
+            ->where('bhu.baptism = :baptism')
+            ->setParameter('baptism', $baptism)
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
 }
