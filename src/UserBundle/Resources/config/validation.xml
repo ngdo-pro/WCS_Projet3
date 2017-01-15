@@ -5,9 +5,154 @@
         http://symfony.com/schema/dic/constraint-mapping/constraint-mapping-1.0.xsd">
 
     <class name="UserBundle\Entity\User">
+        <property name="firstName">
+            <constraint name="NotBlank">
+                <option name="message">fos_user.first_name.blank</option>
+                <option name="groups">
+                    <value>Registration</value>
+                    <value>Profile</value>
+                </option>
+            </constraint>
+            <constraint name="Length">
+                <option name="min">2</option>
+                <option name="minMessage">fos_user.first_name.short</option>
+                <option name="max">50</option>
+                <option name="maxMessage">fos_user.first_name.long</option>
+                <option name="groups">
+                    <value>Registration</value>
+                    <value>Profile</value>
+                </option>
+            </constraint>
+            <constraint name="Regex">
+                <option name="pattern">#^[a-zéèàêâùïüë' -]{2,}$#i</option>
+                <option name="match">true</option>
+                <option name="message">fos_user.first_name.type</option>
+                <option name="groups">
+                    <value>Registration</value>
+                    <value>Profile</value>
+                </option>
+            </constraint>
+        </property>
+
+        <property name="lastName">
+            <constraint name="NotBlank">
+                <option name="message">fos_user.last_name.blank</option>
+                <option name="groups">
+                    <value>Registration</value>
+                    <value>Profile</value>
+                </option>
+            </constraint>
+            <constraint name="Length">
+                <option name="min">2</option>
+                <option name="minMessage">fos_user.last_name.short</option>
+                <option name="max">50</option>
+                <option name="maxMessage">fos_user.last_name.long</option>
+                <option name="groups">
+                    <value>Registration</value>
+                    <value>Profile</value>
+                </option>
+            </constraint>
+            <constraint name="Regex">
+                <option name="pattern">#^[a-zéèàêâùïüë' -]{2,}$#i</option>
+                <option name="match">true</option>
+                <option name="message">fos_user.last_name.type</option>
+                <option name="groups">
+                    <value>Registration</value>
+                    <value>Profile</value>
+                </option>
+            </constraint>
+        </property>
+
+        <property name="address">
+            <constraint name="NotBlank">
+                <option name="message">fos_user.address.blank</option>
+                <option name="groups">
+                    <value>Registration</value>
+                    <value>Profile</value>
+                </option>
+            </constraint>
+            <constraint name="Length">
+                <option name="min">8</option>
+                <option name="minMessage">fos_user.address.short</option>
+                <option name="max">50</option>
+                <option name="maxMessage">fos_user.address.long</option>
+                <option name="groups">
+                    <value>Registration</value>
+                    <value>Profile</value>
+                </option>
+            </constraint>
+            <constraint name="Regex">
+                <option name="pattern">#^[a-z0-9' -]{8,}$#i</option>
+                <option name="match">true</option>
+                <option name="message">fos_user.address.type</option>
+                <option name="groups">
+                    <value>Registration</value>
+                    <value>Profile</value>
+                </option>
+            </constraint>
+        </property>
+
+        <property name="city">
+            <constraint name="NotBlank">
+                <option name="message">fos_user.city.blank</option>
+                <option name="groups">
+                    <value>Registration</value>
+                    <value>Profile</value>
+                </option>
+            </constraint>
+            <constraint name="Length">
+                <option name="min">2</option>
+                <option name="minMessage">fos_user.city.short</option>
+                <option name="max">50</option>
+                <option name="maxMessage">fos_user.city.long</option>
+                <option name="groups">
+                    <value>Registration</value>
+                    <value>Profile</value>
+                </option>
+            </constraint>
+            <constraint name="Regex">
+                <option name="pattern">#^[a-z' -]{2,}$#i</option>
+                <option name="match">true</option>
+                <option name="message">fos_user.city.type</option>
+                <option name="groups">
+                    <value>Registration</value>
+                    <value>Profile</value>
+                </option>
+            </constraint>
+        </property>
+
+        <property name="zip_code">
+            <constraint name="NotBlank">
+                <option name="message">fos_user.zip_code.blank</option>
+                <option name="groups">
+                    <value>Registration</value>
+                    <value>Profile</value>
+                </option>
+            </constraint>
+            <constraint name="Length">
+                <option name="min">5</option>
+                <option name="minMessage">fos_user.zip_code.short</option>
+                <option name="max">5</option>
+                <option name="maxMessage">fos_user.zip_code.long</option>
+                <option name="groups">
+                    <value>Registration</value>
+                    <value>Profile</value>
+                </option>
+            </constraint>
+            <constraint name="Regex">
+                <option name="pattern">#^[0-9]{5}$#</option>
+                <option name="match">true</option>
+                <option name="message">fos_user.zip_code.type</option>
+                <option name="groups">
+                    <value>Registration</value>
+                    <value>Profile</value>
+                </option>
+            </constraint>
+        </property>
+
         <property name="mobile_phone">
             <constraint name="NotBlank">
-                <option name="message">fos_user.username.blank</option>
+                <option name="message">fos_user.mobile_phone.blank</option>
                 <option name="groups">
                     <value>Registration</value>
                     <value>Profile</value>
@@ -15,9 +160,18 @@
             </constraint>
             <constraint name="Length">
                 <option name="min">10</option>
-                <option name="minMessage">fos_user.username.short</option>
+                <option name="minMessage">fos_user.mobile_phone.short</option>
                 <option name="max">14</option>
-                <option name="maxMessage">fos_user.username.long</option>
+                <option name="maxMessage">fos_user.mobile_phone.long</option>
+                <option name="groups">
+                    <value>Registration</value>
+                    <value>Profile</value>
+                </option>
+            </constraint>
+            <constraint name="Regex">
+                <option name="pattern">#^0[1-9]([-. ]?[0-9]{2}){4}$#</option>
+                <option name="match">true</option>
+                <option name="message">fos_user.mobile_phone.type</option>
                 <option name="groups">
                     <value>Registration</value>
                     <value>Profile</value>
@@ -84,7 +238,7 @@
                 </option>
             </constraint>
             <constraint name="Length">
-                <option name="min">2</option>
+                <option name="min">2</option><!-- TODO change password length -->
                 <option name="max">4096</option>
                 <option name="minMessage">fos_user.password.short</option>
                 <option name="groups">
@@ -104,7 +258,7 @@
                 <option name="groups">Registration</option>
             </constraint>
             <constraint name="Length">
-                <option name="min">2</option>
+                <option name="min">2</option><!-- TODO change repeat password length -->
                 <option name="minMessage">fos_user.group.short</option>
                 <option name="max">255</option>
                 <option name="maxMessage">fos_user.group.long</option>
