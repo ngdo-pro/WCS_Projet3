@@ -167,4 +167,33 @@ class BaptismHasUser
     {
         return $this->payment;
     }
+    /**
+     * @var integer
+     */
+    private $guestCount;
+
+
+    /**
+     * Set guestCount
+     *
+     * @param integer $guestCount
+     *
+     * @return BaptismHasUser
+     */
+    public function setGuestCount($guestCount)
+    {
+        $this->guestCount = $guestCount;
+
+        return $this;
+    }
+
+    /**
+     * Get guestCount
+     *
+     * @return integer
+     */
+    public function getGuestCount()
+    {
+        return $this->guestCount;
+    }
 }
