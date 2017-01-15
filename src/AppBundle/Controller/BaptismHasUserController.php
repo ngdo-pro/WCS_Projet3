@@ -17,8 +17,8 @@ class BaptismHasUserController extends Controller
     public function reserveAction(BaptismHasUser $baptismHasUser){
 
         $em = $this->getDoctrine()->getManager();
-
         $guestCount = $em->getRepository("AppBundle:BaptismHasUser")->findHowManyGuest($baptismHasUser->getBaptism());
+
         return $this->render('app/baptism_has_user/guest/baptism_guest.html.twig', array(
             'baptism_has_user'  => $baptismHasUser,
             'guestCount'        => $guestCount

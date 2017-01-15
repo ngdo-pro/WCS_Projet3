@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="fr" target-language="fr" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="97a867b60d14c6a99023d40fa7e1b60b" resname="inviting_guest">
+        <source>inviting_guest</source>
+        <target>vous invite à son Baptême de Chef.</target>
+      </trans-unit>
+      <trans-unit id="6d4b62960a6aa2b1fff43a9c1d95f7b2" resname="restaurant">
+        <source>restaurant</source>
+        <target>Restaurant</target>
+      </trans-unit>
+      <trans-unit id="b4081e2f659f4632aaac81b172dac4aa" resname="number_of_guest.first_part">
+        <source>number_of_guest.first_part</source>
+        <target>Déjà</target>
+      </trans-unit>
+      <trans-unit id="0e219f6742f5e54f091213b04d8b520d" resname="number_of_guest.second_part">
+        <source>number_of_guest.second_part</source>
+        <target>personnes ont réservé leur place. A mon tour,</target>
+      </trans-unit>
+      <trans-unit id="9c3b62949032a7361e2f0642fcb118d6" resname="reserve">
+        <source>reserve</source>
+        <target>Je réserve</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

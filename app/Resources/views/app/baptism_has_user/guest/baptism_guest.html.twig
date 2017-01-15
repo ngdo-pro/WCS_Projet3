@@ -14,4 +14,10 @@
     <p>{{ 'number_of_guest.first_part' |trans }}</p>
     <p>{{ guestCount }}</p>
     <p>{{ 'number_of_guest.second_part' |trans }}</p>
+    <select name="number_of_guest" title="guestCount">
+        {% for i in 1..4 %}
+            <option value="{{ i }}">{{ i }}</option>
+        {% endfor %}
+    </select>
+    <button name="confirm">{{ 'reserve' |trans }}</button>
 {% endblock %}
