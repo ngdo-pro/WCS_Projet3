@@ -1,6 +1,6 @@
 services:
-    user.email_confirm_listener:
-        class: UserBundle\EventListener\EmailConfirmationListener
+    user.user_registration_listener:
+        class: UserBundle\EventListener\UserRegistrationListener
         arguments:
             - @service_container
         tags:

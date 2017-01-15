@@ -10,7 +10,7 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use UserBundle\Entity\User;
 
 
-class EmailConfirmationListener implements EventSubscriberInterface
+class UserRegistrationListener implements EventSubscriberInterface
 {
     /**
      * @var ContainerInterface $container
