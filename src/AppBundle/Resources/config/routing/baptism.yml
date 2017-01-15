@@ -11,5 +11,7 @@ baptism_purchase:
     defaults:   { _controller: AppBundle:Baptism:purchase }
 
 baptism_guest:
-    path:       /reserver-avec/{slug}
+    path:       /reserver/{id}
     defaults:   { _controller: AppBundle:BaptismHasUser:reserve }
+    requirements:
+      id: \d+
