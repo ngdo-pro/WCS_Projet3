@@ -38,4 +38,10 @@ class BaptismHasUserRepository extends \Doctrine\ORM\EntityRepository
             ->getQuery()
             ->getSingleScalarResult();
     }
+
+    /*
+    public function findHowManyGuest(Baptism $baptism){
+        return $this->createQueryBuilder('bhu')
+            ->select('')
+    }*/
 }

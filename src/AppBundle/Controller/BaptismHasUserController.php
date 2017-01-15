@@ -15,9 +15,11 @@ use UserBundle\Entity\User;
 
 class BaptismHasUserController extends Controller
 {
-    public function reserveAction(User $user){
+    public function reserveAction(BaptismHasUser $baptismHasUser){
+
         return $this->render('app/baptism_has_user/guest/baptism_guest.html.twig', array(
-            'user'      => $user
+            'baptism_has_user'  => $baptismHasUser
         ));
+
     }
 }

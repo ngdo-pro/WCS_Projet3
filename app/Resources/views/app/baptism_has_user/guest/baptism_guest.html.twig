@@ -1,8 +1,17 @@
 {% extends 'app/baptism_has_user/layout.html.twig' %}
-
+{% trans_default_domain 'baptism_guest' %}
 {% block content %}
     <h2>Guest Part</h2>
     <h3>Context: Visitor visit a baptism page via link (mainly to reserve on his table)</h3>
 
-    {{ user.firstName }}
+    <p>{{ baptism_has_user.user.firstName }} {{ baptism_has_user.user.lastName }} {{ 'inviting_guest' |trans }}</p>
+    <p>{{ 'restaurant' |trans }} {{ baptism_has_user.baptism.restaurant.name }}</p>
+    <p>{{ baptism_has_user.baptism.restaurant.address }}</p>
+    <p>{{ baptism_has_user.baptism.restaurant.postalCode }}</p>
+    <p>{{ baptism_has_user.baptism.restaurant.city }}</p>
+    <p>{{ baptism_has_user.baptism.service.name }}</p>
+    <p>{{ baptism_has_user.baptism.date |date('d m Y') }}</p>
+    <p>{{ 'number_of_guest.first_part' |trans }}</p>
+    <p></p>
+    <p>{{ 'number_of_guest.second_part' |trans }}</p>
 {% endblock %}
