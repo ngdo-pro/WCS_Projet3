@@ -17,3 +17,11 @@ parameters:
 
     # A secret key that's used to generate certain security-related tokens
     secret:            ThisTokenIsNotSoSecretChangeIt
+
+    # Paths to Sogenactif params files
+
+    project_path:       /var/www/html/food_and_you/
+    merchant_id:        "014213245611111"
+    merchant_country:   fr
+    currency_code:      978
+

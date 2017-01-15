@@ -138,4 +138,33 @@ class BaptismHasUser
     {
         return $this->payments;
     }
+    /**
+     * @var \AppBundle\Entity\Payment
+     */
+    private $payment;
+
+
+    /**
+     * Set payment
+     *
+     * @param \AppBundle\Entity\Payment $payment
+     *
+     * @return BaptismHasUser
+     */
+    public function setPayment(\AppBundle\Entity\Payment $payment = null)
+    {
+        $this->payment = $payment;
+
+        return $this;
+    }
+
+    /**
+     * Get payment
+     *
+     * @return \AppBundle\Entity\Payment
+     */
+    public function getPayment()
+    {
+        return $this->payment;
+    }
 }

@@ -1,10 +1,12 @@
+baptism_search:
+    path:       /recherche
+    defaults:   { _controller: AppBundle:Baptism:search }
 
 baptism_select:
-    path:     /selectionner
-    defaults: { _controller: "AppBundle:Baptism:select"}
-    methods: [GET, POST]
+    path:       /selection
+    defaults:   { _controller: AppBundle:Baptism:select }
 
 baptism_purchase:
-    path:     /achat
-    defaults: { _controller: "AppBundle:Baptism:purchase" }
-    methods:  [GET, POST]
+    path:       /achat/{reference}
+    defaults:   { _controller: AppBundle:Baptism:purchase }
+

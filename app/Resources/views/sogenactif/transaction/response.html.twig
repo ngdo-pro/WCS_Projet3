@@ -1,0 +1,16 @@
+{% extends 'sogenactif/layout.html.twig' %}
+
+{% block content %}
+    <h2>Response Part</h2>
+    <h3>Context: Visitor returns from sogenactif's API,
+        here is displayed a short message to confirm or not,
+        this landing page may change</h3>
+    <div>
+        {% if message %}
+            {{ 'confirmed' |trans }}
+        {% else %}
+            {{ 'cancelled' |trans }}
+        {% endif %}
+    </div>
+
+{% endblock %}

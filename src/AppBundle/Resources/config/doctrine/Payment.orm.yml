@@ -33,8 +33,14 @@ AppBundle\Entity\Payment:
     oneToOne:
         baptism_has_user:
             targetEntity: AppBundle\Entity\BaptismHasUser
-            inversedBy: payments
+            inversedBy: payment
             joinColumn:
                 name: baptism_has_user_id
+                referencedColumnName: id
+        transaction:
+            targetEntity: SogenactifBundle\Entity\Transaction
+            inversedBy: payment
+            joinColumn:
+                name: transaction_id
                 referencedColumnName: id
     lifecycleCallbacks: {  }

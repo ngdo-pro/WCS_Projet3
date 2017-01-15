@@ -1,0 +1,169 @@
+SogenactifBundle\Entity\Transaction:
+    type: entity
+    table: null
+    repositoryClass: SogenactifBundle\Repository\TransactionRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        amount:
+            type: integer
+        authorisationId:
+            type: string
+            length: 255
+            nullable: true
+        bankResponseCode:
+            type: string
+            length: 255
+            nullable: true
+        caddie:
+            type: string
+            length: 255
+            nullable: true
+        captureDay:
+            type: string
+            length: 255
+            nullable: true
+        captureMode:
+            type: string
+            length: 255
+            nullable: true
+        cardNumber:
+            type: string
+            length: 255
+            nullable: true
+        cardValidity:
+            type: string
+            length: 255
+            nullable: true
+        code:
+            type: string
+            length: 255
+            nullable: true
+        complementaryCode:
+            type: string
+            length: 255
+            nullable: true
+        complementaryInfo:
+            type: string
+            length: 255
+            nullable: true
+        created:
+            type: datetime
+        currencyCode:
+            type: integer
+        customerEmail:
+            type: string
+            length: 255
+        customerId:
+            type: string
+            length: 255
+        customerIpAddress:
+            type: string
+            length: 255
+            nullable: true
+        cvvFlag:
+            type: string
+            length: 255
+            nullable: true
+        cvvResponseCode:
+            type: string
+            length: 255
+            nullable: true
+        data:
+            type: string
+            length: 255
+            nullable: true
+        error:
+            type: string
+            length: 255
+            nullable: true
+        language:
+            type: string
+            length: 255
+            nullable: true
+        merchantCountry:
+            type: string
+            length: 255
+            nullable: true
+        merchantId:
+            type: string
+            length: 255
+            nullable: true
+        merchantLanguage:
+            type: string
+            length: 255
+            nullable: true
+        orderId:
+            type: string
+            length: 255
+            nullable: true
+        orderValidity:
+            type: string
+            length: 255
+            nullable: true
+        paymentCertificate:
+            type: string
+            length: 255
+            nullable: true
+        paymentDate:
+            type: datetime
+            nullable: true
+        paymentMeans:
+            type: string
+            length: 255
+            nullable: true
+        receiptComplement:
+            type: string
+            length: 255
+            nullable: true
+        responseCode:
+            type: string
+            length: 255
+            nullable: true
+        returnContext:
+            type: string
+            length: 255
+            nullable: true
+        scoreColor:
+            type: string
+            length: 255
+            nullable: true
+        scoreInfo:
+            type: string
+            length: 255
+            nullable: true
+        scoreProfile:
+            type: string
+            length: 255
+            nullable: true
+        scoreThreshold:
+            type: string
+            length: 255
+            nullable: true
+        scoreValue:
+            type: string
+            length: 255
+            nullable: true
+        statementReference:
+            type: string
+            length: 255
+            nullable: true
+        transactionCondition:
+            type: string
+            length: 255
+            nullable: true
+        transmissionDate:
+            type: datetime
+            nullable: true
+        updated:
+            type: datetime
+            nullable: true
+    oneToOne:
+        payment:
+            targetEntity: AppBundle\Entity\Payment
+            mappedBy: transaction
+    lifecycleCallbacks: {  }
