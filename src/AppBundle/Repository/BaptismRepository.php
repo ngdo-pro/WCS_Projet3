@@ -23,6 +23,7 @@ class BaptismRepository extends \Doctrine\ORM\EntityRepository
      */
     public function findAllFree($city, $restaurant, $nb, $baptismDate, $service){
 
+        $week = array('monday','tuesday','wednesday','thursday','friday','saturday','sunday');
         $select = " SELECT b.id, b.service_id, b.status, b.date, b.places , b.restaurant_id ";
         $select1 = " SELECT b.restaurant_id ";
         $from = " FROM baptism b ";
@@ -60,6 +61,7 @@ class BaptismRepository extends \Doctrine\ORM\EntityRepository
             if (!$startDate || $startDate < $now) {
                 $startDate = $now;
             }
+            $weekDay = $startDate->format ('w');
             $where .= " AND date = :baptismdate ";
             // we must use parameters to set this correctly this data in the query
             $baptismDateInfo = true;
@@ -75,29 +77,14 @@ class BaptismRepository extends \Doctrine\ORM\EntityRepository
         $from2 = "";
         $where2="";
         if ($baptismDateInfo && $baptismServiceInfo) {
-            $select2 = " SELECT -1 , so.service_id, 'Pending', :baptismdate, ifnull(soe.status,case weekday(:baptismdate) ";
-            $select2 .= " when 0 then monday ";
-            $select2 .= " when 1 then tuesday ";
-            $select2 .= " when 2 then wednesday ";
-            $select2 .= " when 3 then thursday ";
-            $select2 .= " when 4 then friday ";
-            $select2 .= " when 5 then saturday ";
-            $select2 .= " when 6 then sunday ";
-            $select2 .= " end) as places, so.restaurant_id ";
+            $select2 = " SELECT -1 , so.service_id, 'Pending', :baptismdate, ifnull(soe.status,$week[$weekDay]) ";
+            $select2 .= " as places, so.restaurant_id ";
             $from2 = " FROM service_opening so ";
             $from2 .= " LEFT JOIN service_opening_exception soe on (soe.service_id = so.service_id ";
             $from2 .= " and soe.restaurant_id = so.restaurant_id ";
             $from2 .= " and soe.date = :baptismdate) ";
             $where2 = " WHERE so.service_id = $service ";
-            $where2 .= " AND (case weekday(:baptismdate) ";
-            $where2 .= " when 0 then monday ";
-            $where2 .= " when 1 then tuesday ";
-            $where2 .= " when 2 then wednesday ";
-            $where2 .= " when 3 then thursday ";
-            $where2 .= " when 4 then friday ";
-            $where2 .= " when 5 then saturday ";
-            $where2 .= " when 6 then sunday ";
-            $where2 .= " end) > $nb ";
+            $where2 .= " AND $week[$weekDay] > $nb ";
             $where2 .= " AND so.restaurant_id not in ( ";
             $where2 .= $select1 . $from . $where . ")";
 
