@@ -11,17 +11,31 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\BaptismHasUser;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
 
 class BaptismHasUserController extends Controller
 {
-    public function reserveAction(BaptismHasUser $baptismHasUser){
+    public function reserveAction(Request $request, BaptismHasUser $baptismHasUser){
 
         $em = $this->getDoctrine()->getManager();
         $guestCount = $em->getRepository("AppBundle:BaptismHasUser")->findHowManyGuest($baptismHasUser->getBaptism());
 
+        $baptismHasGuest = new BaptismHasUser();
+        $form = $this->createForm('AppBundle\Form\BaptismGuestType', $baptismHasGuest);
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()){
+            $baptismHasGuest->setBaptism($baptismHasUser->getBaptism());
+            $baptismHasGuest->setUser($this->getUser());
+            $baptismHasGuest->setRole(false);
+            $em->persist($baptismHasGuest);
+            $em->flush();
+        }
+
         return $this->render('app/baptism_has_user/guest/baptism_guest.html.twig', array(
             'baptism_has_user'  => $baptismHasUser,
-            'guestCount'        => $guestCount
+            'guestCount'        => $guestCount,
+            'form'              =>$form->createView()
         ));
 
     }
