@@ -27,12 +27,32 @@ fos_user:
         blank: 'Entrez votre prénom s''il vous plait.'
         short: 'Le prénom est trop court.'
         long: 'Le prénom est trop long.'
+        type: 'Le prénom n''est pas valide.'
     last_name:
         blank: 'Entrez votre nom s''il vous plait.'
         short: 'Le nom est trop court.'
         long: 'Le nom est trop long.'
-    birth_date:
-        blank: 'Entrez votre date de naissance s''il vous plait.'
+        type: 'Le nom n''est pas valide.'
+    address:
+        blank: 'Entrez votre adresse s''il vous plait.'
+        short: 'L''adresse est trop courte.'
+        long: 'L''adresse est trop longue.'
+        type: 'L''adresse n''est pas valide.'
+    zip_code:
+        blank: 'Entrez votre code postal s''il vous plait.'
+        short: 'Le code postal est trop court.'
+        long: 'Le code postal est trop long.'
+        type: 'Le code postal n''est pas valide.'
+    city:
+        blank: 'Entrez votre ville s''il vous plait.'
+        short: 'La ville est trop courte.'
+        long: 'La ville est trop longue.'
+        type: 'La ville n''est pas valide.'
+    mobile_phone:
+        blank: 'Entrez votre numéro s''il vous plait.'
+        short: 'Le numéro est trop court.'
+        long: 'Le numéro est trop long.'
+        type: 'Le numéro n''est pas valide.'
 fos_group:
     name:
         already_used: 'Le nom est déjà utilisé.'
