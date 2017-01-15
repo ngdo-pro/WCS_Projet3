@@ -26,7 +26,7 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface
     {
         $users = array(
             array(
-                "username" => "Jean-Michel",
+                "username" => "jean-michel@email.com",
                 "usernameCanonical" => "jean-michel@email.com",
                 "email"  => "jean-michel@email.com",
                 "emailCanonical" => "jean-michel@email.com",

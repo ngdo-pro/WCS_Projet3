@@ -3,17 +3,24 @@
 namespace UserBundle\Entity;
 
 
-use FOS\UserBundle\Model\User as BaseUser;
+use FOS\UserBundle\Model\User as AbstractUser;
+use Doctrine\ORM\Mapping as ORM;
 
 /**
  * User
  */
-class User extends BaseUser
+class User extends AbstractUser
 {
     /**
      * @var integer
      */
     protected $id;
+
+    public function __construct()
+    {
+        trigger_error(sprintf('%s is deprecated. Extend FOS\UserBundle\Model\User directly.', __CLASS__), E_USER_DEPRECATED);
+        parent::__construct();
+    }
 
     /**
      * Get id
@@ -56,7 +63,7 @@ class User extends BaseUser
     private $address;
 
     /**
-     * @var integer
+     * @var string
      */
     private $zip_code;
 

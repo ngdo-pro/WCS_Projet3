@@ -44,6 +44,10 @@ class RegistrationType extends AbstractType
         //TODO add a captcha
     }
 
+    public function getBlockPrefix()
+    {
+        return 'app_user_registration';
+    }
 
     public function getName()
     {

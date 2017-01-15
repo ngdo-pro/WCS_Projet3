@@ -25,7 +25,9 @@ class UserRegistrationListener implements EventSubscriberInterface
     public static function getSubscribedEvents()
     {
         return array(
-            FOSUserEvents::REGISTRATION_SUCCESS => 'onRegistrationSuccess',
+            FOSUserEvents::REGISTRATION_SUCCESS => [
+                ['onRegistrationSuccess', -10],
+            ],
         );
     }
 
@@ -42,7 +44,7 @@ class UserRegistrationListener implements EventSubscriberInterface
             $user->setCivility(false);
         }
         // Here we set the email value to the username for login with email
-        $user->setUsername($user->getFirstName());
+        $user->setUsername($user->getEmail());
         // Here we create an user slug with UserSlugService
         $slug = $this->container->get('user.new_user_slug');
         $userSlug = $slug->setNewUserSlug($user->getFirstName(), $user->getLastName());
