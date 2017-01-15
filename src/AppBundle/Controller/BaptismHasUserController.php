@@ -9,7 +9,15 @@
 namespace AppBundle\Controller;
 
 
-class BaptismHasUserController
-{
+use AppBundle\Entity\BaptismHasUser;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use UserBundle\Entity\User;
 
+class BaptismHasUserController extends Controller
+{
+    public function reserveAction(User $user){
+        return $this->render('app/baptism_has_user/guest/baptism_guest.html.twig', array(
+            'user'      => $user
+        ));
+    }
 }

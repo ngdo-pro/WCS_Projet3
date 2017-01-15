@@ -10,3 +10,6 @@ baptism_purchase:
     path:       /achat/{reference}
     defaults:   { _controller: AppBundle:Baptism:purchase }
 
+baptism_guest:
+    path:       /reserver-avec/{slug}
+    defaults:   { _controller: AppBundle:BaptismHasUser:reserve }
