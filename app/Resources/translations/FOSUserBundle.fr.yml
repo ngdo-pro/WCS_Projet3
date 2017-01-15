@@ -28,15 +28,15 @@ change_password:
         success: 'Le mot de passe a été modifié.'
 registration:
     check_email: 'Un e-mail a été envoyé à l''adresse %email%. Il contient un lien d''activation sur lequel il vous faudra cliquer afin d''activer votre compte.'
-    confirmed: 'Félicitations %first_name%, votre compte est maintenant activé.'
+    confirmed: 'Félicitations %username%, votre compte est maintenant activé.'
     back: 'Retour à la page d''origine.'
     submit: 'Créer un compte'
     flash:
         user_created: 'L''utilisateur a été créé avec succès.'
     email:
-        subject: 'Bienvenue %first_name% !'
+        subject: 'Bienvenue %username% !'
         message: |
-            Bonjour %first_name% !
+            Bonjour %username% !
 
             Pour valider votre compte utilisateur, merci de vous rendre sur %confirmationUrl%
 
@@ -58,7 +58,7 @@ resetting:
     email:
         subject: 'Réinitialisation de votre mot de passe'
         message: |
-            Bonjour %first_name% !
+            Bonjour %username% !
 
             Pour réinitialiser votre mot de passe, merci de vous rendre sur %confirmationUrl%
 
@@ -68,7 +68,7 @@ layout:
     logout: 'Déconnexion'
     login: 'Connexion'
     register: 'Inscription'
-    logged_in_as: 'Connecté en tant que %first_name%'
+    logged_in_as: 'Connecté en tant que %username%'
 form:
     group_name: 'Nom du groupe'
     username: 'Nom d''utilisateur'

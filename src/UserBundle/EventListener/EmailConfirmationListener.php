@@ -42,7 +42,7 @@ class EmailConfirmationListener implements EventSubscriberInterface
             $user->setCivility(false);
         }
         // Here we set the email value to the username for login with email
-        $user->setUsername($user->getEmail());
+        $user->setUsername($user->getFirstName());
         // Here we create an user slug with UserSlugService
         $slug = $this->container->get('user.new_user_slug');
         $userSlug = $slug->setNewUserSlug($user->getFirstName(), $user->getLastName());
