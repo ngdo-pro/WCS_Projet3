@@ -10,20 +10,6 @@ use FOS\UserBundle\Model\User as BaseUser;
  */
 class User extends BaseUser
 {
-    /**
-     * @var integer
-     */
-    protected $id;
-
-    /**
-     * Get id
-     *
-     * @return integer
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
 
     /**
      * @var boolean
@@ -58,7 +44,7 @@ class User extends BaseUser
     /**
      * @var string
      */
-    private $zip_code;
+    private $zipCode;
 
     /**
      * @var string
@@ -68,7 +54,7 @@ class User extends BaseUser
     /**
      * @var string
      */
-    private $mobile_phone;
+    private $mobilePhone;
 
     /**
      * @var integer
@@ -84,6 +70,51 @@ class User extends BaseUser
      * @var integer
      */
     private $participation;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $baptismsHasUser;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $payments;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $medias;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $restaurants;
+
+
+    /**
+     * Set civility
+     *
+     * @param boolean $civility
+     *
+     * @return User
+     */
+    public function setCivility($civility)
+    {
+        $this->civility = $civility;
+
+        return $this;
+    }
+
+    /**
+     * Get civility
+     *
+     * @return boolean
+     */
+    public function getCivility()
+    {
+        return $this->civility;
+    }
 
     /**
      * Set firstName
@@ -119,8 +150,10 @@ class User extends BaseUser
     public function setLastName($lastName)
     {
         $this->lastName = $lastName;
+
         return $this;
     }
+
     /**
      * Get lastName
      *
@@ -130,6 +163,7 @@ class User extends BaseUser
     {
         return $this->lastName;
     }
+
     /**
      * Set slug
      *
@@ -140,6 +174,7 @@ class User extends BaseUser
     public function setSlug($slug)
     {
         $this->slug = $slug;
+
         return $this;
     }
 
@@ -178,27 +213,99 @@ class User extends BaseUser
     }
 
     /**
-     * Set rating
+     * Set address
      *
-     * @param float $rating
+     * @param string $address
      *
      * @return User
      */
-    public function setRating($rating)
+    public function setAddress($address)
     {
-        $this->rating = $rating;
+        $this->address = $address;
 
         return $this;
     }
 
     /**
-     * Get rating
+     * Get address
      *
-     * @return float
+     * @return string
      */
-    public function getRating()
+    public function getAddress()
     {
-        return $this->rating;
+        return $this->address;
+    }
+
+    /**
+     * Set zipCode
+     *
+     * @param string $zipCode
+     *
+     * @return User
+     */
+    public function setZipCode($zipCode)
+    {
+        $this->zipCode = $zipCode;
+
+        return $this;
+    }
+
+    /**
+     * Get zipCode
+     *
+     * @return string
+     */
+    public function getZipCode()
+    {
+        return $this->zipCode;
+    }
+
+    /**
+     * Set city
+     *
+     * @param string $city
+     *
+     * @return User
+     */
+    public function setCity($city)
+    {
+        $this->city = $city;
+
+        return $this;
+    }
+
+    /**
+     * Get city
+     *
+     * @return string
+     */
+    public function getCity()
+    {
+        return $this->city;
+    }
+
+    /**
+     * Set mobilePhone
+     *
+     * @param string $mobilePhone
+     *
+     * @return User
+     */
+    public function setMobilePhone($mobilePhone)
+    {
+        $this->mobilePhone = $mobilePhone;
+
+        return $this;
+    }
+
+    /**
+     * Get mobilePhone
+     *
+     * @return string
+     */
+    public function getMobilePhone()
+    {
+        return $this->mobilePhone;
     }
 
     /**
@@ -226,6 +333,30 @@ class User extends BaseUser
     }
 
     /**
+     * Set rating
+     *
+     * @param float $rating
+     *
+     * @return User
+     */
+    public function setRating($rating)
+    {
+        $this->rating = $rating;
+
+        return $this;
+    }
+
+    /**
+     * Get rating
+     *
+     * @return float
+     */
+    public function getRating()
+    {
+        return $this->rating;
+    }
+
+    /**
      * Set participation
      *
      * @param integer $participation
@@ -248,17 +379,6 @@ class User extends BaseUser
     {
         return $this->participation;
     }
-
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
-    private $baptismsHasUser;
-
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
-    private $payments;
-
 
     /**
      * Add baptismsHasUser
@@ -327,11 +447,6 @@ class User extends BaseUser
     {
         return $this->payments;
     }
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
-    private $medias;
-
 
     /**
      * Add media
@@ -366,11 +481,6 @@ class User extends BaseUser
     {
         return $this->medias;
     }
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
-    private $restaurants;
-
 
     /**
      * Add restaurant
@@ -404,93 +514,5 @@ class User extends BaseUser
     public function getRestaurants()
     {
         return $this->restaurants;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getAddress()
-    {
-        return $this->address;
-    }
-
-    /**
-     * @param mixed $address
-     */
-    public function setAddress($address)
-    {
-        $this->address = $address;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getZipCode()
-    {
-        return $this->zip_code;
-    }
-
-    /**
-     * @param mixed $zip_code
-     */
-    public function setZipCode($zip_code)
-    {
-        $this->zip_code = $zip_code;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getCity()
-    {
-        return $this->city;
-    }
-
-    /**
-     * @param mixed $city
-     */
-    public function setCity($city)
-    {
-        $this->city = $city;
-    }
-
-    /**
-     * Set mobilePhone
-     *
-     * @param string $mobilePhone
-     *
-     * @return User
-     */
-    public function setMobilePhone($mobilePhone)
-    {
-        $this->mobile_phone = $mobilePhone;
-
-        return $this;
-    }
-
-    /**
-     * Get mobilePhone
-     *
-     * @return string
-     */
-    public function getMobilePhone()
-    {
-        return $this->mobile_phone;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getCivility()
-    {
-        return $this->civility;
-    }
-
-    /**
-     * @param mixed $civility
-     */
-    public function setCivility($civility)
-    {
-        $this->civility = $civility;
     }
 }

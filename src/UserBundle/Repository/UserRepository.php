@@ -6,7 +6,10 @@ use Doctrine\ORM\EntityRepository;
 
 class UserRepository extends EntityRepository
 {
-    public function findIdByEmail()
+    /**
+     * @return mixed
+     */
+    public function countUsers()
     {
         return $this->createQueryBuilder('u')
             ->select('COUNT(u)')

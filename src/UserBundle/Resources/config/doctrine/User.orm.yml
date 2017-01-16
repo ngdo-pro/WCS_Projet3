@@ -26,13 +26,13 @@ UserBundle\Entity\User:
         address:
             type: string
             length: 255
-        zip_code:
+        zipCode:
             type: string
             length: 5
         city:
             type: string
             length: 255
-        mobile_phone:
+        mobilePhone:
             type: string
             length: 40
             unique: true

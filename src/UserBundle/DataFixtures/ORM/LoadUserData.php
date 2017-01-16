@@ -42,10 +42,10 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface
                 "slug" => "1-jean-michel-dupont",
                 "birthDate" => new \DateTime("1990-06-30"),
                 "address" => "23 rue du Poireau",
-                "zip_code" => "69006",
+                "zipCode" => "69006",
                 "city" => "Lyon",
                 "rating" => 3.4,
-                "mobile_phone" => "06-07-15-75-26",
+                "mobilePhone" => "06-07-15-75-26",
                 "level" => 4,
                 "participation" => 12
             )
@@ -68,10 +68,10 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface
             $userObj->setSlug($user["slug"]);
             $userObj->setBirthDate($user["birthDate"]);
             $userObj->setAddress($user["address"]);
-            $userObj->setZipCode($user["zip_code"]);
+            $userObj->setZipCode($user["zipCode"]);
             $userObj->setCity($user["city"]);
             $userObj->setRating($user["rating"]);
-            $userObj->setMobilePhone($user["mobile_phone"]);
+            $userObj->setMobilePhone($user["mobilePhone"]);
             $userObj->setLevel($user["level"]);
             $manager->persist($userObj);
             $this->addReference("user-" . $userObj->getSlug(), $userObj);

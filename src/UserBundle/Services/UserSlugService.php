@@ -16,7 +16,7 @@ class UserSlugService
     // This function get user values to return an unique slug
     public function setNewUserSlug($firstName, $lastName)
     {
-        $id = $this->repository->findIdByEmail();
+        $id = $this->repository->countUsers();
         $id++;
         $slugify = new Slugify();
         $slug = $slugify->slugify($id.'-'.$firstName.'-'.$lastName);

@@ -17,20 +17,33 @@ class UserRegistrationListener implements EventSubscriberInterface
      */
     protected $container;
 
+    /**
+     * UserRegistrationListener constructor.
+     * @param Container $container
+     */
     public function __construct(Container $container)
     {
         $this->container = $container;
     }
 
+    /**
+     * This function check the registration event
+     * @return array
+     */
     public static function getSubscribedEvents()
     {
         return array(
             FOSUserEvents::REGISTRATION_SUCCESS => [
+                // The '-10' value it's for prioritizing this Event before an others
                 ['onRegistrationSuccess', -10],
             ],
         );
     }
 
+    /**
+     * This function is call when the event is execute
+     * @param FormEvent $event
+     */
     public function onRegistrationSuccess(FormEvent $event)
     {
 
@@ -43,7 +56,7 @@ class UserRegistrationListener implements EventSubscriberInterface
         } else if ($gender == 'f'){
             $user->setCivility(false);
         }
-        // Here we take a string to set it Uppercase the first character
+        // Here we take a string to set it Uppercase the first character of each word
         $firstName = ucwords(strtolower($user->getFirstName()));
         $user->setFirstName($firstName);
 
