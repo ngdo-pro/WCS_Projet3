@@ -41,7 +41,7 @@ class LoadRestaurantData extends AbstractFixture implements OrderedFixtureInterf
                 "postalCode" => "69002",
                 "city" => "lyon",
                 "foodType" => "disruptive",
-                "userSlug" => "jean-michel-dupont"
+                "userSlug" => "1-jean-michel-dupont"
             )
         );
 

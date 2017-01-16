@@ -1,12 +1,15 @@
 UserBundle\Entity\User:
     type:  entity
     table: user
+    repositoryClass: UserBundle\Repository\UserRepository
     id:
         id:
             type: integer
             generator:
                 strategy: AUTO
     fields:
+        civility:
+            type: boolean
         firstName:
             type: string
             length: 255
@@ -17,26 +20,31 @@ UserBundle\Entity\User:
             type: string
             length: 255
             unique: true
+            nullable: true
         birthDate:
             type: date
-            nullable: true
-        biography:
-            type: text
-        signatureDish:
+        address:
             type: string
             length: 255
-        rating:
-            type: float
-        phone:
+        zipCode:
+            type: string
+            length: 5
+        city:
+            type: string
+            length: 255
+        mobilePhone:
             type: string
             length: 40
+            unique: true
         level:
             type: integer
+            nullable: true
+        rating:
+            type: float
+            nullable: true
         participation:
             type: integer
-        profession:
-            type: string
-            length: 255
+            nullable: true
     oneToMany:
         baptismsHasUser:
             targetEntity: AppBundle\Entity\BaptismHasUser
