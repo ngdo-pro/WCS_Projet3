@@ -31,8 +31,8 @@ class LoadPaymentData extends AbstractFixture implements OrderedFixtureInterface
                 "productName" => "baptism",
                 "status" => "confirmed",
                 "confirmationSent" => true,
-                "baptismHasUserId" => "jean-michel-dupont1",
-                "userSlug" => "jean-michel-dupont",
+                "baptismHasUserId" => "1",
+                "userSlug" => "1-jean-michel-dupont",
                 "reference" => "1"
             )
         );

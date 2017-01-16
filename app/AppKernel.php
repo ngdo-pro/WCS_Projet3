@@ -21,6 +21,7 @@ class AppKernel extends Kernel
             new Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle(),
             new JavierEguiluz\Bundle\EasyAdminBundle\EasyAdminBundle(),
             new BlogBundle\BlogBundle(),
+            new Cocur\Slugify\Bridge\Symfony\CocurSlugifyBundle(),
             new SogenactifBundle\SogenactifBundle(),
         );
 

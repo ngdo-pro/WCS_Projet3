@@ -10,21 +10,12 @@ use FOS\UserBundle\Model\User as BaseUser;
  */
 class User extends BaseUser
 {
-    /**
-     * @var integer
-     */
-    protected $id;
-
 
     /**
-     * Get id
-     *
-     * @return integer
+     * @var boolean
      */
-    public function getId()
-    {
-        return $this->id;
-    }
+    private $civility;
+
     /**
      * @var string
      */
@@ -48,22 +39,22 @@ class User extends BaseUser
     /**
      * @var string
      */
-    private $biography;
+    private $address;
 
     /**
      * @var string
      */
-    private $signatureDish;
-
-    /**
-     * @var float
-     */
-    private $rating;
+    private $zipCode;
 
     /**
      * @var string
      */
-    private $phone;
+    private $city;
+
+    /**
+     * @var string
+     */
+    private $mobilePhone;
 
     /**
      * @var integer
@@ -71,15 +62,59 @@ class User extends BaseUser
     private $level;
 
     /**
+     * @var float
+     */
+    private $rating;
+
+    /**
      * @var integer
      */
     private $participation;
 
     /**
-     * @var string
+     * @var \Doctrine\Common\Collections\Collection
      */
-    private $profession;
+    private $baptismsHasUser;
 
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $payments;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $medias;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $restaurants;
+
+
+    /**
+     * Set civility
+     *
+     * @param boolean $civility
+     *
+     * @return User
+     */
+    public function setCivility($civility)
+    {
+        $this->civility = $civility;
+
+        return $this;
+    }
+
+    /**
+     * Get civility
+     *
+     * @return boolean
+     */
+    public function getCivility()
+    {
+        return $this->civility;
+    }
 
     /**
      * Set firstName
@@ -178,99 +213,99 @@ class User extends BaseUser
     }
 
     /**
-     * Set biography
+     * Set address
      *
-     * @param string $biography
+     * @param string $address
      *
      * @return User
      */
-    public function setBiography($biography)
+    public function setAddress($address)
     {
-        $this->biography = $biography;
+        $this->address = $address;
 
         return $this;
     }
 
     /**
-     * Get biography
+     * Get address
      *
      * @return string
      */
-    public function getBiography()
+    public function getAddress()
     {
-        return $this->biography;
+        return $this->address;
     }
 
     /**
-     * Set signatureDish
+     * Set zipCode
      *
-     * @param string $signatureDish
+     * @param string $zipCode
      *
      * @return User
      */
-    public function setSignatureDish($signatureDish)
+    public function setZipCode($zipCode)
     {
-        $this->signatureDish = $signatureDish;
+        $this->zipCode = $zipCode;
 
         return $this;
     }
 
     /**
-     * Get signatureDish
+     * Get zipCode
      *
      * @return string
      */
-    public function getSignatureDish()
+    public function getZipCode()
     {
-        return $this->signatureDish;
+        return $this->zipCode;
     }
 
     /**
-     * Set rating
+     * Set city
      *
-     * @param float $rating
+     * @param string $city
      *
      * @return User
      */
-    public function setRating($rating)
+    public function setCity($city)
     {
-        $this->rating = $rating;
+        $this->city = $city;
 
         return $this;
     }
 
     /**
-     * Get rating
-     *
-     * @return float
-     */
-    public function getRating()
-    {
-        return $this->rating;
-    }
-
-    /**
-     * Set phone
-     *
-     * @param string $phone
-     *
-     * @return User
-     */
-    public function setPhone($phone)
-    {
-        $this->phone = $phone;
-
-        return $this;
-    }
-
-    /**
-     * Get phone
+     * Get city
      *
      * @return string
      */
-    public function getPhone()
+    public function getCity()
     {
-        return $this->phone;
+        return $this->city;
+    }
+
+    /**
+     * Set mobilePhone
+     *
+     * @param string $mobilePhone
+     *
+     * @return User
+     */
+    public function setMobilePhone($mobilePhone)
+    {
+        $this->mobilePhone = $mobilePhone;
+
+        return $this;
+    }
+
+    /**
+     * Get mobilePhone
+     *
+     * @return string
+     */
+    public function getMobilePhone()
+    {
+        return $this->mobilePhone;
     }
 
     /**
@@ -298,6 +333,30 @@ class User extends BaseUser
     }
 
     /**
+     * Set rating
+     *
+     * @param float $rating
+     *
+     * @return User
+     */
+    public function setRating($rating)
+    {
+        $this->rating = $rating;
+
+        return $this;
+    }
+
+    /**
+     * Get rating
+     *
+     * @return float
+     */
+    public function getRating()
+    {
+        return $this->rating;
+    }
+
+    /**
      * Set participation
      *
      * @param integer $participation
@@ -320,40 +379,6 @@ class User extends BaseUser
     {
         return $this->participation;
     }
-
-    /**
-     * Set profession
-     *
-     * @param string $profession
-     *
-     * @return User
-     */
-    public function setProfession($profession)
-    {
-        $this->profession = $profession;
-
-        return $this;
-    }
-
-    /**
-     * Get profession
-     *
-     * @return string
-     */
-    public function getProfession()
-    {
-        return $this->profession;
-    }
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
-    private $baptismsHasUser;
-
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
-    private $payments;
-
 
     /**
      * Add baptismsHasUser
@@ -422,11 +447,6 @@ class User extends BaseUser
     {
         return $this->payments;
     }
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
-    private $medias;
-
 
     /**
      * Add media
@@ -461,11 +481,6 @@ class User extends BaseUser
     {
         return $this->medias;
     }
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
-    private $restaurants;
-
 
     /**
      * Add restaurant
