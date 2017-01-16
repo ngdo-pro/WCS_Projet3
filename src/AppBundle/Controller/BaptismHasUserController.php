@@ -29,7 +29,6 @@ class BaptismHasUserController extends Controller
         }else{
             $currentUserRole = 'none';
         }
-        var_dump($currentUserRole);
 
         $baptismHasGuest = new BaptismHasUser();
         $form = $this->createForm('AppBundle\Form\BaptismGuestType', $baptismHasGuest);
@@ -42,12 +41,13 @@ class BaptismHasUserController extends Controller
             $em->persist($baptismHasGuest);
             $em->flush();
 
-            $this->redirectToRoute('baptism_guest', array('id' => $baptismHasUser->getId()));
+            return $this->redirect($this->generateUrl('baptism_guest', array('id' => $baptismHasUser->getId())));
         }
 
         return $this->render('app/baptism_has_user/guest/baptism_guest.html.twig', array(
             'baptism_has_user'  => $baptismHasUser,
             'guestCount'        => $guestCount,
+            'currentUserRole'   => $currentUserRole,
             'form'              =>$form->createView()
         ));
 

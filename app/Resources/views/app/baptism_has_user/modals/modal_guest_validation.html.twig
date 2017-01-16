@@ -11,7 +11,7 @@
                 {{ baptism_has_user.baptism.date |date('d m Y') }}
             </div>
             <div class="modal-footer">
-                {{ form_row(form.validate) }}
+                <span id="guestValidation">{{ form_row(form.validate) }}</span>
             </div>
         </div>
     </div>
