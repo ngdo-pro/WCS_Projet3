@@ -1,3 +1,4 @@
+{% trans_default_domain 'baptism_guest' %}
 <div class="modal fade" id="validationModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -7,8 +8,12 @@
             <div class="modal-body">
                 {{ 'validation.text' |trans}}
                 <span id="guestNumberToValidate"></span>
-                {{ 'people_at_restaurant' |trans }} {{ baptism_has_user.baptism.restaurant.name }}, {{ 'on.date' |trans }}
-                {{ baptism_has_user.baptism.date |date('d m Y') }}
+                {{ 'validation_second_part.text' |trans({
+                    'restaurantName': baptism_has_user.baptism.restaurant.name,
+                    'date': baptism_has_user.baptism.date |date('d m Y')
+                    })
+                }}
+
             </div>
             <div class="modal-footer">
                 <span id="guestValidation">{{ form_row(form.validate) }}</span>

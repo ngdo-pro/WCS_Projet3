@@ -39,8 +39,7 @@
       </trans-unit>
       <trans-unit id="572abb3dd2c18e3f25dac757b1ac7aca" resname="validation_second_part.text">
         <source>validation_second_part.text</source>
-        <target>personne(s), au restaurant restaurantName, le date
-        </target>
+        <target>__validation_second_part.text</target>
       </trans-unit>
     </body>
   </file>

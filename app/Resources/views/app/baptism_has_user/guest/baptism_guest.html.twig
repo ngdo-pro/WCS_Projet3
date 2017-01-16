@@ -11,9 +11,7 @@
     <p>{{ baptism_has_user.baptism.restaurant.city }}</p>
     <p>{{ baptism_has_user.baptism.service.name }}</p>
     <p>{{ baptism_has_user.baptism.date |date('d m Y') }}</p>
-    <p>{{ 'number_of_guest.first_part' |trans }}</p>
-    <p>{{ guestCount }}</p>
-    <p>{{ 'number_of_guest.second_part' |trans }}</p>
+    <p>{{ 'number_of_guest' |transchoice(guestCount, {"guestCount": guestCount}) }}</p>
 
     {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
 
