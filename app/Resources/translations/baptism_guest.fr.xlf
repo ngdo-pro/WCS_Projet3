@@ -13,14 +13,6 @@
         <source>restaurant</source>
         <target>Restaurant</target>
       </trans-unit>
-      <trans-unit id="b4081e2f659f4632aaac81b172dac4aa" resname="number_of_guest.first_part">
-        <source>number_of_guest.first_part</source>
-        <target>Déjà</target>
-      </trans-unit>
-      <trans-unit id="0e219f6742f5e54f091213b04d8b520d" resname="number_of_guest.second_part">
-        <source>number_of_guest.second_part</source>
-        <target>personnes ont réservé leur place. A mon tour,</target>
-      </trans-unit>
       <trans-unit id="9c3b62949032a7361e2f0642fcb118d6" resname="reserve">
         <source>reserve</source>
         <target>Je réserve</target>
