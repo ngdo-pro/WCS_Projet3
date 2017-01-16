@@ -121,7 +121,7 @@
             </constraint>
         </property>
 
-        <property name="zip_code">
+        <property name="zipCode">
             <constraint name="NotBlank">
                 <option name="message">fos_user.zip_code.blank</option>
                 <option name="groups">
@@ -150,7 +150,7 @@
             </constraint>
         </property>
 
-        <property name="mobile_phone">
+        <property name="mobilePhone">
             <constraint name="NotBlank">
                 <option name="message">fos_user.mobile_phone.blank</option>
                 <option name="groups">
