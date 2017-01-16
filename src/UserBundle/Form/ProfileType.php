@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace FOS\UserBundle\Form\Type;
+namespace UserBundle\Form;
 
 use FOS\UserBundle\Util\LegacyFormHelper;
 use Symfony\Component\Form\AbstractType;
@@ -24,7 +24,7 @@ use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 
-class ProfileFormType extends AbstractType
+class ProfileType extends AbstractType
 {
     /**
      * @var string
@@ -77,12 +77,17 @@ class ProfileFormType extends AbstractType
 
     public function getBlockPrefix()
     {
-        return 'app_user_registration';
+        return 'app_user_profile';
     }
 
     public function getName()
     {
-        return 'app_user_registration';
+        return 'app_user_profile';
+    }
+
+    public function getParent()
+    {
+        return 'FOS\UserBundle\Form\Type\ProfileFormType';
     }
 
     /**
@@ -103,23 +108,17 @@ class ProfileFormType extends AbstractType
             ->add('address', null, array('label' => 'form.address', 'translation_domain' => 'FOSUserBundle', 'trim' => true))
             ->add('city', null, array('label' => 'form.city', 'translation_domain' => 'FOSUserBundle', 'trim' => true))
             ->add('zip_code', null, array('label' => 'form.zip_code', 'translation_domain' => 'FOSUserBundle', 'trim' => true))
-            ->add('first_name', null, array('label' => 'form.first_name', 'translation_domain' => 'FOSUserBundle','required' => true, 'trim' => true))
-            ->add('last_name', null, array('label' => 'form.last_name', 'translation_domain' => 'FOSUserBundle','required' => true, 'trim' => true))
+            ->add('first_name', null, array('label' => 'form.first_name', 'translation_domain' => 'FOSUserBundle', 'trim' => true))
+            ->add('last_name', null, array('label' => 'form.last_name', 'translation_domain' => 'FOSUserBundle', 'trim' => true))
             ->add('birth_date', DateType::class, array('label' => 'form.birth_date', 'translation_domain' => 'FOSUserBundle', 'widget' => 'choice',
-                'years' => range(date('Y')-18,date('Y')-80)))
+                'years' => range(date('Y'),date('Y')-80)))
             ->add('mobile_phone', null, array('label' => 'form.phone', 'translation_domain' => 'FOSUserBundle'))
-            ->add('checkbox', CheckboxType::class, array('translation_domain' => 'FOSUserBundle',
-                'label' => 'form.checkbox',
-                'required' => true,
-                'mapped' => false,
-            ))
             ->add('email', EmailType::class, array(
                 'label' => 'form.email',
                 'translation_domain' => 'FOSUserBundle',
                 'trim' => true,
             ))
-            ->add('username', HiddenType::class, array('data' => 'NewUser'))
-            ->add('plainPassword', RepeatedType::class, array(
+            ->add('plainPassword', RepeatedType::class, array('required' => false,
                 'type' => PasswordType::class,
                 'options' => array('translation_domain' => 'FOSUserBundle'),
                 'first_options' => array('label' => 'form.password'),
