@@ -48,6 +48,30 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface
                 "mobilePhone" => "06-07-15-75-26",
                 "level" => 4,
                 "participation" => 12
+            ),
+            array(
+                "username" => "john@email.com",
+                "usernameCanonical" => "john@email.com",
+                "email"  => "john@email.com",
+                "emailCanonical" => "john@email.com",
+                "enabled" => true,
+                "password" => "test",
+                "lastLogin" => new \DateTime(),
+                "confirmationToken" => "oiengeoingaeazegaerg",
+                "passwordRequestedAt" => new \DateTime(),
+                "roles" => array("ROLE_USER"),
+                "civility" => TRUE,
+                "firstName" => "john",
+                "lastName" => "mitchell",
+                "slug" => "2-john-mitchell",
+                "birthDate" => new \DateTime("1990-06-30"),
+                "address" => "72 avenue des carottes",
+                "zipCode" => "69009",
+                "city" => "Lyon",
+                "rating" => 2.1,
+                "mobilePhone" => "07-45-15-75-26",
+                "level" => 4,
+                "participation" => 3,
             )
         );
         foreach($users as $user){
