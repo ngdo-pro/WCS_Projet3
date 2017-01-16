@@ -14,6 +14,7 @@ use AppBundle\Entity\Baptism;
 use AppBundle\Entity\BaptismHasUser;
 use AppBundle\Entity\Payment;
 use AppBundle\Entity\Price;
+use AppBundle\Form\BaptismSearchType;
 use SogenactifBundle\Entity\Transaction;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -32,9 +33,8 @@ class BaptismController extends Controller
     public function searchAction(Request $request){
         //TODO: This is a fake action, it needs to be replaced with the real searchAction
         /** Creating a simple button to simulate user action */
-        $form = $this->createFormBuilder(BaptismSearchType::class)
+        $form = $this->createForm(BaptismSearchType::class);
             //->add("send", SubmitType::class)
-            ->getForm();
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()){
@@ -50,9 +50,11 @@ class BaptismController extends Controller
             $baptismDate = $form->get('baptismDate')->getData();
             $service = $form->get('service')->getData();
             $nbPlaces = $form->get('nb')->getData();
-            $baptisms = $em->getRepository("Baptism")->findSearch($cityId,$restaurantName,$baptismDate,$service);
+            var_dump($baptismDate);
+            $baptisms = $em->getRepository("AppBundle:Baptism")->findSearch($cityId,$restaurantName,$baptismDate,$service);
             //$baptisms = $em->getRepository("AppBundle:Baptism")->findAll();
             foreach($baptisms as $baptism){
+
                 if ($nbPlaces < $baptism->getPlaces()) {
                     $results[$resultCount] = array(
                         "id" => $baptism->getId(),
@@ -88,7 +90,7 @@ class BaptismController extends Controller
 
             $session = $request->getSession();
             $session->set('results', $results);
-            return $this->redirectToRoute('baptism_select');
+            //return $this->redirectToRoute('baptism_select');
         }
 
         return $this->render('app/baptism/search.html.twig', array(
