@@ -16,38 +16,27 @@
     <p>{{ 'number_of_guest.second_part' |trans }}</p>
 
     {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+
         {{ form_start(form) }}
         {{ form_widget(form.guestCount) }}
         <button
                 id="guestConfirm"
                 name="confirm"
                 type="button"
-                class="btn btn-primary btn-lg"
                 data-toggle="modal"
                 data-target="#validationModal">{{ 'reserve' |trans }}
         </button>
 
+        {% include 'app/baptism_has_user/modals/modal_guest_validation.html.twig' with {'baptism_has_user': baptism_has_user, 'form' : form} %}
 
-
-        <div class="modal fade" id="validationModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    </div>
-                    <div class="modal-body">
-                        {{ 'validation.text' |trans}}
-                        <span id="guestNumberToValidate"></span>
-                        {{ 'people_at_restaurant' |trans }} {{ baptism_has_user.baptism.restaurant.name }}, {{ 'on.date' |trans }}
-                        {{ baptism_has_user.baptism.date |date('d m Y') }}
-                    </div>
-                    <div class="modal-footer">
-                        {{ form_row(form.validate) }}
-                    </div>
-                </div>
-            </div>
-        </div>
         {{ form_end(form) }}
+
+    {% else %}
+
+        <a href="{{ path('fos_user_security_login') }}">{{ 'sign.in' |trans({}, 'user') }}</a>
+        <a href="{{ path('fos_user_registration_register') }}">{{ 'sign.up' |trans({}, 'user') }}</a>
+
     {% endif %}
+
 
 {% endblock %}

@@ -3,6 +3,8 @@
 namespace AppBundle\Repository;
 
 use AppBundle\Entity\Baptism;
+use AppBundle\Entity\BaptismHasUser;
+use UserBundle\Entity\User;
 
 /**
  * BaptemHasUserRepository
@@ -52,5 +54,32 @@ class BaptismHasUserRepository extends \Doctrine\ORM\EntityRepository
             ->setParameter('baptism', $baptism)
             ->getQuery()
             ->getSingleScalarResult();
+    }
+
+    public function findIfUserIsParticipating(Baptism $baptism, User $user){
+
+        $result = $this
+            ->createQueryBuilder('bhu')
+            ->select('bhu')
+            ->where('bhu.baptism = :baptism')
+            ->andWhere('bhu.user = :user')
+            ->setParameter('baptism', $baptism)
+            ->setParameter('user', $user)
+            ->getQuery()
+            ->getResult();
+
+        if(isset($result[0])){
+            /** @var BaptismHasUser $baptismHasUser */
+            $baptismHasUser = $result[0];
+            if(true === $baptismHasUser->getRole()){
+                $userRole = 'baptised';
+            }else{
+                $userRole = 'guest';
+            }
+        }else{
+            $userRole = 'none';
+        }
+
+        return $userRole;
     }
 }

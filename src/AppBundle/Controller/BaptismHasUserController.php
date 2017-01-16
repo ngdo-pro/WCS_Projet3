@@ -19,6 +19,17 @@ class BaptismHasUserController extends Controller
 
         $em = $this->getDoctrine()->getManager();
         $guestCount = $em->getRepository("AppBundle:BaptismHasUser")->findHowManyGuest($baptismHasUser->getBaptism());
+        if(!null == $this->getUser()) {
+            $currentUserRole = $em
+                ->getRepository("AppBundle:BaptismHasUser")
+                ->findIfUserIsParticipating(
+                    $baptismHasUser->getBaptism(),
+                    $this->getUser()
+                );
+        }else{
+            $currentUserRole = 'none';
+        }
+        var_dump($currentUserRole);
 
         $baptismHasGuest = new BaptismHasUser();
         $form = $this->createForm('AppBundle\Form\BaptismGuestType', $baptismHasGuest);
@@ -30,6 +41,8 @@ class BaptismHasUserController extends Controller
             $baptismHasGuest->setRole(false);
             $em->persist($baptismHasGuest);
             $em->flush();
+
+            $this->redirectToRoute('baptism_guest', array('id' => $baptismHasUser->getId()));
         }
 
         return $this->render('app/baptism_has_user/guest/baptism_guest.html.twig', array(
