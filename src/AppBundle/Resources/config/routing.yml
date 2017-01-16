@@ -4,4 +4,4 @@ app_homepage:
 
 app_baptism:
     resource: "@AppBundle/Resources/config/routing/baptism.yml"
-    prefix:   /bapteme
+    prefix:   /bapteme-de-chef
