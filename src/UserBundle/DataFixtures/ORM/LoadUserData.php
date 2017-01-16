@@ -36,7 +36,7 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface
                 "confirmationToken" => "oiengeoingaeongaerg",
                 "passwordRequestedAt" => new \DateTime(),
                 "roles" => array("ROLE_USER"),
-                "civility" => TRUE,
+                "civility" => 'm',
                 "firstName" => "jean-michel",
                 "lastName" => "dupont",
                 "slug" => "1-jean-michel-dupont",

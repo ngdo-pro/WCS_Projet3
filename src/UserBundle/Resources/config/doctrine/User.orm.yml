@@ -9,7 +9,8 @@ UserBundle\Entity\User:
                 strategy: AUTO
     fields:
         civility:
-            type: boolean
+            type: string
+            length: '1'
         firstName:
             type: string
             length: 255
