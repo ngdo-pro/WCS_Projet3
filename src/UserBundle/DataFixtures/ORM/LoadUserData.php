@@ -36,17 +36,18 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface
                 "confirmationToken" => "oiengeoingaeongaerg",
                 "passwordRequestedAt" => new \DateTime(),
                 "roles" => array("ROLE_USER"),
+                "civility" => TRUE,
                 "firstName" => "jean-michel",
                 "lastName" => "dupont",
-                "slug" => "jean-michel-dupont",
+                "slug" => "1-jean-michel-dupont",
                 "birthDate" => new \DateTime("1990-06-30"),
-                "biography" => "lorem ipsum",
-                "signatureDish" => "quiche lorraine",
+                "address" => "23 rue du Poireau",
+                "zipCode" => "69006",
+                "city" => "Lyon",
                 "rating" => 3.4,
-                "phone" => "06-07-15-75-26",
+                "mobilePhone" => "06-07-15-75-26",
                 "level" => 4,
-                "participation" => 12,
-                "profession" => "webdev"
+                "participation" => 12
             )
         );
         foreach($users as $user){
@@ -61,17 +62,17 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface
             $userObj->setConfirmationToken($user["confirmationToken"]);
             $userObj->setPasswordRequestedAt($user["passwordRequestedAt"]);
             $userObj->setRoles($user["roles"]);
+            $userObj->setCivility($user["civility"]);
             $userObj->setFirstName($user["firstName"]);
             $userObj->setLastName($user["lastName"]);
             $userObj->setSlug($user["slug"]);
             $userObj->setBirthDate($user["birthDate"]);
-            $userObj->setBiography($user["biography"]);
-            $userObj->setSignatureDish($user["signatureDish"]);
+            $userObj->setAddress($user["address"]);
+            $userObj->setZipCode($user["zipCode"]);
+            $userObj->setCity($user["city"]);
             $userObj->setRating($user["rating"]);
-            $userObj->setPhone($user["phone"]);
+            $userObj->setMobilePhone($user["mobilePhone"]);
             $userObj->setLevel($user["level"]);
-            $userObj->setParticipation($user["participation"]);
-            $userObj->setProfession($user["profession"]);
             $manager->persist($userObj);
             $this->addReference("user-" . $userObj->getSlug(), $userObj);
         }

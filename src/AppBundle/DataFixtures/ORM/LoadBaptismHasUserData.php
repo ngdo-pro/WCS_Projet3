@@ -28,7 +28,8 @@ class LoadBaptismHasUserData extends AbstractFixture implements OrderedFixtureIn
             array(
                 "role" => true,
                 "baptismId" => "1",
-                "userSlug" => "jean-michel-dupont",
+                "userSlug" => "1-jean-michel-dupont",
+                "reference" => "1"
             )
         );
 
@@ -38,7 +39,7 @@ class LoadBaptismHasUserData extends AbstractFixture implements OrderedFixtureIn
             $baptismHasUserObject->setBaptism($this->getReference("baptism-".$baptismHasUser["baptismId"]));
             $baptismHasUserObject->setUser($this->getReference("user-" . $baptismHasUser["userSlug"]));
             $manager->persist($baptismHasUserObject);
-            $this->addReference("baptismHasUser-" . $baptismHasUser["userSlug"] . $baptismHasUser["baptismId"], $baptismHasUserObject);
+            $this->addReference("baptismHasUser-" . $baptismHasUser["reference"], $baptismHasUserObject);
         }
 
         $manager->flush();
