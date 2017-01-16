@@ -56,6 +56,17 @@ class BaptismHasUserRepository extends \Doctrine\ORM\EntityRepository
             ->getSingleScalarResult();
     }
 
+    /**
+     * This function finds out if user is already participating to the baptism.
+     * If he is, it checks his role and sets $userRole to :
+     *     -"baptised" if true
+     *     -"guest" if false
+     * Else, it sets ûserRole to "none"
+     *
+     * @param Baptism $baptism
+     * @param User $user
+     * @return string
+     */
     public function findIfUserIsParticipating(Baptism $baptism, User $user){
 
         $result = $this

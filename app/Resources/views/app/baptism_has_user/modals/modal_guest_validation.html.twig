@@ -1,4 +1,5 @@
 {% trans_default_domain 'baptism_guest' %}
+{# Modal triggered by reservation #}
 <div class="modal fade" id="validationModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -13,7 +14,6 @@
                     'date': baptism_has_user.baptism.date |date('d m Y')
                     })
                 }}
-
             </div>
             <div class="modal-footer">
                 <span id="guestValidation">{{ form_row(form.validate) }}</span>
