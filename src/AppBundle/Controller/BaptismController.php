@@ -22,6 +22,7 @@ use Symfony\Component\Form\Form;
 use Symfony\Component\HttpFoundation\Request;
 use UserBundle\Entity\User;
 
+
 class BaptismController extends Controller
 {
     /**
@@ -45,17 +46,16 @@ class BaptismController extends Controller
             $restaurantsWithBaptism = array ();
             $restaurantsWithBaptismCount = 0;
             $em = $this->getDoctrine()->getManager();
-            $cityId = $form->get('city')->getData();
+            $city = $form->get('city')->getData();
             $restaurantName = $form->get('restaurant')->getData();
             $baptismDate = $form->get('baptismDate')->getData();
             $service = $form->get('service')->getData();
             $nbPlaces = $form->get('nb')->getData();
-            var_dump($baptismDate);
-            $baptisms = $em->getRepository("AppBundle:Baptism")->findSearch($cityId,$restaurantName,$baptismDate,$service);
+            $baptisms = $em->getRepository("AppBundle:Baptism")->findSearch($city,$restaurantName,$baptismDate,$service);
             //$baptisms = $em->getRepository("AppBundle:Baptism")->findAll();
             foreach($baptisms as $baptism){
 
-                if ($nbPlaces < $baptism->getPlaces()) {
+                if ($nbPlaces <= $baptism->getPlaces()) {
                     $results[$resultCount] = array(
                         "id" => $baptism->getId(),
                         "status" => $baptism->getStatus(),
@@ -67,30 +67,62 @@ class BaptismController extends Controller
                     );
                     $resultCount++;
                 }
-                $restaurantsWithBaptism[$restaurantsWithBaptismCount] = $baptism->getId();
+                $restaurantsWithBaptism[$restaurantsWithBaptismCount] = $baptism->getRestaurant()->getId();
                 $restaurantsWithBaptismCount++;
             }
             /**
              * Fake build of the new baptisms
              */
-            $service = $em->getRepository("AppBundle:Service")->findBy(array("name" => "midi"));
-            $restaurant = $em->getRepository("AppBundle:Restaurant")->findBy(array("name" => "wild restaurant"));
-            for($i = 0; $i < 2; $i++){
-                $results[$resultCount] = array(
-                    "id"            => 0,
-                    "status"        => "open",
-                    "date"          => new \DateTime(),
-                    "places"        => 2+$i,
-                    "serviceName"   => $service[0]->getName(),
-                    "restaurantName"=> $restaurant[0]->getName(),
-                    "reference"     => $resultCount
-                );
-                $resultCount++;
+            $serviceOpenings = $em->getRepository("AppBundle:ServiceOpening")->findSearch($city,$restaurantName,$service);
+            //$service = $em->getRepository("AppBundle:Service")->findBy(array("name" => "midi"));
+            //$restaurant = $em->getRepository("AppBundle:Restaurant")->findBy(array("name" => "wild restaurant"));
+            $now = new \DateTime();
+            $now->setTime(0, 0, 0);
+            $startDate = \DateTime::createFromFormat('Y-m-d', $baptismDate);
+            if ($startDate instanceof \DateTime) {
+                $startDate->setTime(0, 0, 0);
+            }
+            if (!$startDate || $startDate < $now) {
+                $startDate = $now;
+            }
+            //$nbPlaces
+            foreach($serviceOpenings as $serviceOpening){
+                $weekDay = $startDate->format ('w');
+                switch ($weekDay) {
+                    case 0: $nbSo = $serviceOpening->getMonday();
+                        break;
+                    case 1: $nbSo = $serviceOpening->getTuesday();
+                        break;
+                    case 2: $nbSo = $serviceOpening->getWednesday();
+                        break;
+                    case 3: $nbSo = $serviceOpening->getThursday();
+                        break;
+                    case 4: $nbSo = $serviceOpening->getFriday();
+                        break;
+                    case 5: $nbSo = $serviceOpening->getSaturday();
+                        break;
+                    case 6: $nbSo = $serviceOpening->getSunday();
+                        break;
+
+                }
+                $test = array_search($serviceOpening->getRestaurant()->getId(), $restaurantsWithBaptism,true);
+                if (($nbPlaces <= $nbSo) && ( $test === false)) {
+                    $results[$resultCount] = array(
+                        "id" => 0,
+                        "status" => "open",
+                        "date" => $startDate,
+                        "places" => $nbSo,
+                        "serviceName" => $serviceOpening->getService()->getName(),
+                        "restaurantName" => $serviceOpening->getRestaurant()->getName(),
+                        "reference" => $resultCount ,
+                    );
+                    $resultCount++ ;
+                }
             }
 
             $session = $request->getSession();
             $session->set('results', $results);
-            //return $this->redirectToRoute('baptism_select');
+            return $this->redirectToRoute('baptism_select');
         }
 
         return $this->render('app/baptism/search.html.twig', array(

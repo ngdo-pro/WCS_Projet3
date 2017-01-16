@@ -19,12 +19,12 @@ class ServiceOpeningRepository extends \Doctrine\ORM\EntityRepository
      * @param $baptismDate
      * @param $service
      */
-    public function findAllFree($city, $restaurant, $nb, $baptismDate, $service)
+    public function findSearch($city, $restaurant, $service)
     {
 
         $query = $this->createQueryBuilder('so')
             ->innerJoin('so.restaurant', 'r')
-            ->innerJoin('b.service', 's')
+            ->innerJoin('so.service', 's')
             // this line is here just to assure the first test
             ->where('0 = 0');
         if (!is_null($restaurant)) {
@@ -35,11 +35,6 @@ class ServiceOpeningRepository extends \Doctrine\ORM\EntityRepository
                 ->setParameter('city', $city->getName())
                 ->andWhere('r.postalCode = :postalCode')
                 ->setParameter('postalCode', $city->getPostalCode());
-        }
-
-        if (!is_null($baptismDate)) {
-            $query = $query->andWhere("b.date = '$baptismDate'");
-            //->setParameter('date', $baptismDate);
         }
 
         if (!is_null($service)) {
