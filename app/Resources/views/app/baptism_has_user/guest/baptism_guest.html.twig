@@ -14,20 +14,25 @@
     <p>{{ 'number_of_guest' |transchoice(guestCount, {"guestCount": guestCount}) }}</p>
 
     {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+        {% if currentUserRole == "none" %}
+            {{ form_start(form) }}
+            {{ form_widget(form.guestCount) }}
+            <button
+                    id="guestConfirm"
+                    name="confirm"
+                    type="button"
+                    data-toggle="modal"
+                    data-target="#validationModal">{{ 'reserve' |trans }}
+            </button>
 
-        {{ form_start(form) }}
-        {{ form_widget(form.guestCount) }}
-        <button
-                id="guestConfirm"
-                name="confirm"
-                type="button"
-                data-toggle="modal"
-                data-target="#validationModal">{{ 'reserve' |trans }}
-        </button>
+            {% include 'app/baptism_has_user/modals/modal_guest_validation.html.twig' with {'baptism_has_user': baptism_has_user, 'form' : form} %}
 
-        {% include 'app/baptism_has_user/modals/modal_guest_validation.html.twig' with {'baptism_has_user': baptism_has_user, 'form' : form} %}
-
-        {{ form_end(form) }}
+            {{ form_end(form) }}
+        {% elseif currentUserRole == "guest" %}
+            {# Here will be the button to self-remove from guests #}
+        {% else %}
+            {# Here Baptised will be able to invite, share, etc... #}
+        {% endif %}
 
     {% else %}
 
