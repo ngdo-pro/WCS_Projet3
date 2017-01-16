@@ -32,30 +32,41 @@ class BaptismController extends Controller
     public function searchAction(Request $request){
         //TODO: This is a fake action, it needs to be replaced with the real searchAction
         /** Creating a simple button to simulate user action */
-        $form = $this->createFormBuilder()
-            ->add("send", SubmitType::class)
+        $form = $this->createFormBuilder(BaptismSearchType::class)
+            //->add("send", SubmitType::class)
             ->getForm();
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()){
-            /**
-             * fake result building
-             */
+
             $results = array();
             $resultCount = 0;
+            // new information to avoid showing restaurant who have already a baptism scheduled
+            $restaurantsWithBaptism = array ();
+            $restaurantsWithBaptismCount = 0;
             $em = $this->getDoctrine()->getManager();
-            $baptisms = $em->getRepository("AppBundle:Baptism")->findAll();
+            $cityId = $form->get('city')->getData();
+            $restaurantName = $form->get('restaurant')->getData();
+            $baptismDate = $form->get('baptismDate')->getData();
+            $service = $form->get('service')->getData();
+            $nbPlaces = $form->get('nb')->getData();
+            $baptisms = $em->getRepository("Baptism")->findSearch($cityId,$restaurantName,$baptismDate,$service);
+            //$baptisms = $em->getRepository("AppBundle:Baptism")->findAll();
             foreach($baptisms as $baptism){
-                $results[$resultCount] = array(
-                    "id"            => $baptism->getId(),
-                    "status"        => $baptism->getStatus(),
-                    "date"          => $baptism->getDate(),
-                    "places"        => $baptism->getPlaces(),
-                    "serviceName"   => $baptism->getService()->getName(),
-                    "restaurantName"=> $baptism->getRestaurant()->getName(),
-                    "reference"     => $resultCount
-                );
-                $resultCount++;
+                if ($nbPlaces < $baptism->getPlaces()) {
+                    $results[$resultCount] = array(
+                        "id" => $baptism->getId(),
+                        "status" => $baptism->getStatus(),
+                        "date" => $baptism->getDate(),
+                        "places" => $baptism->getPlaces(),
+                        "serviceName" => $baptism->getService()->getName(),
+                        "restaurantName" => $baptism->getRestaurant()->getName(),
+                        "reference" => $resultCount
+                    );
+                    $resultCount++;
+                }
+                $restaurantsWithBaptism[$restaurantsWithBaptismCount] = $baptism->getId();
+                $restaurantsWithBaptismCount++;
             }
             /**
              * Fake build of the new baptisms

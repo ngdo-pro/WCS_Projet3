@@ -14,6 +14,32 @@ use datetime;
 class BaptismRepository extends \Doctrine\ORM\EntityRepository
 {
 
+    public function findSearch($city,$restaurant, $baptismDate, $service) {
+
+        $service = $this->_em->getRepository('service')->find($service);
+
+        $query = $this->createQueryBuilder('b')
+                ->innerJoin('b.restaurant', 'r')
+                ->innerJoin('b.service', 's')
+                ->where('b.places >= 0');
+
+        if (! is_null($restaurant)) {
+            $query = $query->andWhere('r.name = :restaurant')
+                ->setParameter('restaurant', $restaurant);
+        } elseif (! is_null($city)) {
+            $cityInformation = $this->_em->getRepository('city')->find($city);
+            $query = $query->andWhere('r.city = :city')
+                    ->setParameter('city',$cityInformation->getName())
+                    ->andWhere('r.postalCode = :postalCode')
+                    ->setParameter('postalCode',$cityInformation->getPostalCode());
+        }
+
+        if (! is_null($baptismDate)) {
+            $query = $query->andWhere('b.date = :date')
+                    ->setParameter('date', $baptismDate);
+        }
+    }
+
     /**
      * function findAllFree
      * Object: generate the query for the search for free baptism date
