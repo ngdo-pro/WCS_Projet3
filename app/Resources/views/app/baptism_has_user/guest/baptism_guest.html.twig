@@ -11,10 +11,11 @@
     <p>{{ baptism_has_user.baptism.restaurant.city }}</p>
     <p>{{ baptism_has_user.baptism.service.name }}</p>
     <p>{{ baptism_has_user.baptism.date |date('d m Y') }}</p>
-    <p>{{ 'number_of_guest' |transchoice(guestCount, {"guestCount": guestCount}) }}</p>
-
+    {# Number of guests #}
+    <p>{{ guestCount }}</p>
     {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
         {% if currentUserRole == "none" %}
+            <p>{{ 'number_of_guest' |transchoice(guestCount, {"guestCount": guestCount}) }}</p>
             {{ form_start(form) }}
             {{ form_widget(form.guestCount) }}
             <button
