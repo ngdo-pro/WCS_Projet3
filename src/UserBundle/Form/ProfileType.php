@@ -16,11 +16,9 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Security\Core\Validator\Constraints\UserPassword;
-use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
-use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 
@@ -118,6 +116,7 @@ class ProfileType extends AbstractType
                 'translation_domain' => 'FOSUserBundle',
                 'trim' => true,
             ))
+            ->remove('username')
             ->add('plainPassword', RepeatedType::class, array('required' => false,
                 'type' => PasswordType::class,
                 'options' => array('translation_domain' => 'FOSUserBundle'),
