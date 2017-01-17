@@ -11,7 +11,6 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\BaptismHasUser;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 
 class BaptismHasUserController extends Controller
@@ -41,9 +40,25 @@ class BaptismHasUserController extends Controller
             $baptismHasCurrentUser['role'] = 'none';
         }
 
-        /** Create a form to pass to view, in order to register new guest(s) */
+        /**
+         * If User is not yet participating to the baptism :
+         *     - Creates an empty form
+         *     - Pass it to the view
+         *     - When $form is received, a new baptismHasUser is created with 'guest' role and selected guest count
+         * Else if User is already a guest :
+         *     - Creates a form with the existing baptismHasUser
+         *     - Pass it to the view
+         *     - When $form is received :
+         *          - If all invited people by the guest are cancelled, baptismHasUser is deleted
+         *          - Else, baptismHasUser is updated with the difference between previous and new guestCount
+         * Else :
+         *     - Only pass recap to the view
+         */
         if($baptismHasCurrentUser['role'] == 'none'){
+
             $baptismNewGuest = new BaptismHasUser();
+
+            /** Create a form to pass to view, in order to register new guest(s) */
             $form = $this->createForm('AppBundle\Form\BaptismGuestType', $baptismNewGuest);
             $form->handleRequest($request);
 
@@ -96,8 +111,5 @@ class BaptismHasUserController extends Controller
                 'baptism_has_current_user'  => $baptismHasCurrentUser
             ));
         }
-
-
-
     }
 }
