@@ -34,6 +34,48 @@
         <target>personne(s), au restaurant restaurantName, le date
         </target>
       </trans-unit>
+      <trans-unit id="4c686d5580c3582dd615c0e09996fe4c" resname="number_of_guest_invited">
+        <source>number_of_guest_invited</source>
+        <target>
+          {1} Vous avez réservé pour guestInvited personne. |
+          ]1, Inf[ Vous avez réservé pour guestInvited personnes.
+        </target>
+      </trans-unit>
+      <trans-unit id="1331a2ec2a612f533a6837fd95126a3c" resname="asking_for_removal.guest">
+        <source>asking_for_removal.guest</source>
+        <target>Besoin de décommander ?</target>
+      </trans-unit>
+      <trans-unit id="92d0fed058a80ae3d1c2216e4226c4f7" resname="need_for_cancel">
+        <source>need_for_cancel</source>
+        <target>Je veux décommander </target>
+      </trans-unit>
+      <trans-unit id="e557551c5e286dfe2ebfb489fb30db27" resname="guests_invited">
+        <source>guests_invited</source>
+        <target>
+          {1} personne |
+          ]1, Inf[ personnes
+        </target>
+      </trans-unit>
+      <trans-unit id="d0cf705f201ddc526f49ba2e62392e21" resname="confirm">
+        <source>confirm</source>
+        <target>Confirmer ?</target>
+      </trans-unit>
+      <trans-unit id="2617bbe3e60735ecaa9c15b32bd321f9" resname="cancel.text">
+        <source>cancel.text</source>
+        <target>Je veux décommander </target>
+      </trans-unit>
+      <trans-unit id="3ef3cca0c71d899b4815c186f4cd7f35" resname="cancel_second_part.text">
+        <source>cancel_second_part.text</source>
+        <target>personne(s) de ma réservation</target>
+      </trans-unit>
+      <trans-unit id="d7f3e851ee159fe02b61de0443c71872" resname="baptised_text.guest">
+        <source>baptised_text.guest</source>
+        <target>Vous ne pouvez pas réserver à votre propre baptême de chef.</target>
+      </trans-unit>
+      <trans-unit id="353b828fb1787bbde127f3b9aeeefd3f" resname="asking_for_invite.baptised">
+        <source>asking_for_invite.baptised</source>
+        <target>Voulez-vous inviter d'autres personnes</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
