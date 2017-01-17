@@ -29,7 +29,7 @@ class BaptismHasGuestType extends AbstractType
                 'data' => $options['data']->getGuestCount(),
                 'mapped' => false
             ))
-            ->add('validate', SubmitType::class)
+            ->add('confirm', SubmitType::class)
         ;
     }
     

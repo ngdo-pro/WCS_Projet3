@@ -7,16 +7,16 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             </div>
             <div class="modal-body">
-                {{ 'validation.text' |trans}}
+                {{ 'cancel.text' |trans}}
                 <span id="guestNumberToValidate"></span>
-                {{ 'validation_second_part.text' |trans({
+                {{ 'cancel_second_part.text' |trans({
                     'restaurantName': baptism_has_user.baptism.restaurant.name,
                     'date': baptism_has_user.baptism.date |date('d m Y')
                     })
                 }}
             </div>
             <div class="modal-footer">
-                <span id="guestValidation">{{ form_row(form.validate) }}</span>
+                <span id="guestValidation">{{ form_row(form.confirm) }}</span>
             </div>
         </div>
     </div>
