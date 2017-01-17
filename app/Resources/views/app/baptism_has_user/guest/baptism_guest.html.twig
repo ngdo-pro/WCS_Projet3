@@ -13,6 +13,19 @@
     <p>{{ baptism_has_user.baptism.date |date('d m Y') }}</p>
     {# Number of guests #}
     <p>{{ guestCount }}</p>
+
+    {#
+        If User is authenticated :
+            - If he is not yet participating to the baptism as baptised or guest :
+                - He can add 1..4 guests to the baptism
+            - Else if he is already a guest :
+                - He can cancel reservation for 1..<number_of_reservation_he_made_before> people
+            - Else :
+                - He gets a message that he can't make reservation on his own baptism
+                - He gets a link to his profile where he will be able to invite contacts throught mail or fb
+        Else :
+            - SignUp/SignIn links are displayed
+    #}
     {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
         {% if baptism_has_current_user.role == "none" %}
             <p>{{ 'number_of_guest' |transchoice(guestCount, {"guestCount": guestCount}) }}</p>
@@ -50,7 +63,7 @@
             {{ form_end(form) }}
         {% else %}
             <p>{{ 'baptised_text.guest' |trans}}</p>
-            <a href="#">Voulez-vous inviter des personnes</a> ?
+            <a href="#">{{ 'asking_for_invite.baptised' |trans }}</a> ?
         {% endif %}
 
     {% else %}

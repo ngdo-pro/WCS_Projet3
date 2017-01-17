@@ -68,6 +68,10 @@
         <source>cancel_second_part.text</source>
         <target>personne(s) de ma réservation</target>
       </trans-unit>
+      <trans-unit id="d7f3e851ee159fe02b61de0443c71872" resname="baptised_text.guest">
+        <source>baptised_text.guest</source>
+        <target>Vous ne pouvez pas réserver à votre propre baptême de chef.</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
