@@ -53,10 +53,12 @@ UserBundle\Entity\User:
         payments:
             targetEntity: AppBundle\Entity\Payment
             mappedBy: user
-        medias:
-            targetEntity: AppBundle\Entity\Media
-            mappedBy: user
         restaurants:
             targetEntity: AppBundle\Entity\Restaurant
+            mappedBy: user
+
+    oneToOne:
+        media:
+            targetEntity: AppBundle\Entity\Media
             mappedBy: user
     lifecycleCallbacks: {  }

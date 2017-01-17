@@ -7,6 +7,7 @@ use FOS\UserBundle\Event\FormEvent;
 use Symfony\Component\DependencyInjection\Container;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use UserBundle\Entity\User;
 
 
@@ -41,11 +42,16 @@ class UserListener implements EventSubscriberInterface
     /**
      * This function is call when the profile edit event is execute
      * @param FormEvent $event
+     * @param UploadedFile $file
      */
-    public function onProfileEditSuccess(FormEvent $event)
+    public function onProfileEditSuccess(FormEvent $event, UploadedFile $file)
     {
         /** @var $user User */
         $user = $event->getForm()->getData();
+
+        $picture = new UploadedFile($file);
+
+        var_dump($picture);
 
         // Here we take a string to set it Uppercase the first character of each word
         $firstName = ucwords(strtolower($user->getFirstName()));

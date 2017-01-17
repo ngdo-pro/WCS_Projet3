@@ -515,4 +515,33 @@ class User extends BaseUser
     {
         return $this->restaurants;
     }
+    /**
+     * @var \AppBundle\Entity\Media
+     */
+    private $media;
+
+
+    /**
+     * Set media
+     *
+     * @param \AppBundle\Entity\Media $media
+     *
+     * @return User
+     */
+    public function setMedia(\AppBundle\Entity\Media $media = null)
+    {
+        $this->media = $media;
+
+        return $this;
+    }
+
+    /**
+     * Get media
+     *
+     * @return \AppBundle\Entity\Media
+     */
+    public function getMedia()
+    {
+        return $this->media;
+    }
 }
