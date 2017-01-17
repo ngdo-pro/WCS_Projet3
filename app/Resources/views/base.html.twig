@@ -14,29 +14,12 @@
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
-        <header>
-            <div class="menu">
-                <nav class="navbar navbar-default navbar-fixed-top navbar-toggleable-md">
-                    <div class="container">
-                        <ul>
-                            <li><a href="">NOS RESTOS</a></li>
-                            <li><a href="">RÉSERVER</a></li>
-                            <li><a href="">BONS CADEAUX</a></li>
-                            <a href=""><img src="{{ asset('img/logo-home.png') }}"></a>
-                            <li><a href="">BLOG</a> </li>
-                            <li><a href="">NOUS CONTACTER</a></li>
-                            <li><a href="">CONNEXION</a></li>
-                        </ul>
-                    </div>
-                </nav>
-            </div>
-        </header>
 
    {# Those two links are only here for test, feel free to remove then when doing the frontend, but they are now usefull to try things out #}
         {#   <a href="{{ path('baptism_search') }}">Search</a>
              <a href="{{ path('fos_user_security_login') }}">Login</a> #}
       {# End #}
-
+        {% include('modules/header.html.twig') %}
         {% block body %}{% endblock %}
         <footer>
 
