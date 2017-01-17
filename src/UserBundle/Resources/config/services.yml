@@ -1,4 +1,12 @@
 services:
-#    user.example:
-#        class: UserBundle\Example
-#        arguments: ["@service_id", "plain_value", "%parameter%"]
+    user.user_registration_listener:
+        class: UserBundle\EventListener\UserRegistrationListener
+        arguments:
+            - @service_container
+        tags:
+            - { name: kernel.event_subscriber }
+
+    user.new_user_slug:
+        class: UserBundle\Services\UserSlugService
+        arguments:
+            - @doctrine.orm.entity_manager

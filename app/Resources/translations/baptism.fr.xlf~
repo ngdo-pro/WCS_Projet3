@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="fr" target-language="fr" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="53017003cde6f3e5e3cba2cab55a07d6" resname="baptism.title">
+        <source>baptism.title</source>
+        <target>Baptême de chef</target>
+      </trans-unit>
+      <trans-unit id="ee9f8f969e7d0cff7a04d48879870c84" resname="baptism.content">
+        <source>baptism.content</source>
+        <target>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi non quis exercitationem culpa nesciunt nihil aut nostrum explicabo reprehenderit optio amet ab temporibus asperiores quasi cupiditate. Voluptatum ducimus voluptates voluptas?  </target>
+      </trans-unit>
+      <trans-unit id="8b82bca4b230bc88bda4993bd289753a" resname="baptism.search.submit">
+        <source>baptism.search.submit</source>
+        <target>c'est parti</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

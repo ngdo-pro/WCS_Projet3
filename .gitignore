@@ -16,3 +16,4 @@
 /web/assets/fonts/*
 /web/assets/js/*
 /web/.sass-cache/*
+/src/SogenactifBundle/Api/params/pathfile

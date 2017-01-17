@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="fr" target-language="fr" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="97a867b60d14c6a99023d40fa7e1b60b" resname="inviting_guest">
+        <source>inviting_guest</source>
+        <target>vous invite à son Baptême de Chef.</target>
+      </trans-unit>
+      <trans-unit id="6d4b62960a6aa2b1fff43a9c1d95f7b2" resname="restaurant">
+        <source>restaurant</source>
+        <target>Restaurant</target>
+      </trans-unit>
+      <trans-unit id="9c3b62949032a7361e2f0642fcb118d6" resname="reserve">
+        <source>reserve</source>
+        <target>Je réserve</target>
+      </trans-unit>
+      <trans-unit id="26c1ae09c4f474a2781f277e7de53db5" resname="number_of_guest">
+        <source>number_of_guest</source>
+        <target>
+          {0} Soyez le premier à réserver votre place ! |
+          {1} Déjà guestCount personne a réservé sa place. A mon tour, |
+          ]1, Inf[ Déjà guestCount personnes ont réservé leur places. A mon tour,
+        </target>
+      </trans-unit>
+      <trans-unit id="7912a6718c9aeed6fae3a80c09c4aea9" resname="validation.text">
+        <source>validation.text</source>
+        <target>En validant, vous confirmez votre réservation pour </target>
+      </trans-unit>
+      <trans-unit id="572abb3dd2c18e3f25dac757b1ac7aca" resname="validation_second_part.text">
+        <source>validation_second_part.text</source>
+        <target>personne(s), au restaurant restaurantName, le date
+        </target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
