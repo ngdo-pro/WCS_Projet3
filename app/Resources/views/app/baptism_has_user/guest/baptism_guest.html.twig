@@ -34,6 +34,7 @@
             <p>{{ 'number_of_guest_invited' |transchoice(baptism_has_current_user.baptismHasUser.guestCount, {"guestInvited": baptism_has_current_user.baptismHasUser.guestCount}) }}</p>
             <p>{{ 'asking_for_removal.guest' |trans }}
             {{ form_start(form) }}
+            {{ 'need_for_cancel' |trans }}
             {{ form_widget(form.guestCount) }}
             {{ 'guests_invited' | transchoice(baptism_has_current_user.baptismHasUser.guestCount, {"guestInvited": baptism_has_current_user.baptismHasUser.guestCount}) }}</p>
             <button
@@ -41,7 +42,7 @@
                     name="confirm"
                     type="button"
                     data-toggle="modal"
-                    data-target="#validationModal">{{ 'cancel' |trans }}
+                    data-target="#validationModal">{{ 'confirm' |trans }}
             </button>
 
             {% include 'app/baptism_has_user/modals/modal_guest_cancel.html.twig' with {'baptism_has_user': baptism_has_user, 'form' : form} %}

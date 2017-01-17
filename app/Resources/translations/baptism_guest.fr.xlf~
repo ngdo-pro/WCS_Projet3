@@ -13,14 +13,6 @@
         <source>restaurant</source>
         <target>Restaurant</target>
       </trans-unit>
-      <trans-unit id="b4081e2f659f4632aaac81b172dac4aa" resname="number_of_guest.first_part">
-        <source>number_of_guest.first_part</source>
-        <target>Déjà</target>
-      </trans-unit>
-      <trans-unit id="0e219f6742f5e54f091213b04d8b520d" resname="number_of_guest.second_part">
-        <source>number_of_guest.second_part</source>
-        <target>personnes ont réservé leur place. A mon tour,</target>
-      </trans-unit>
       <trans-unit id="9c3b62949032a7361e2f0642fcb118d6" resname="reserve">
         <source>reserve</source>
         <target>Je réserve</target>
@@ -39,7 +31,34 @@
       </trans-unit>
       <trans-unit id="572abb3dd2c18e3f25dac757b1ac7aca" resname="validation_second_part.text">
         <source>validation_second_part.text</source>
-        <target>__validation_second_part.text</target>
+        <target>personne(s), au restaurant restaurantName, le date
+        </target>
+      </trans-unit>
+      <trans-unit id="4c686d5580c3582dd615c0e09996fe4c" resname="number_of_guest_invited">
+        <source>number_of_guest_invited</source>
+        <target>
+          {1} Vous avez réservé pour guestInvited personne. |
+          ]1, Inf[ Vous avez réservé pour guestInvited personnes.
+        </target>
+      </trans-unit>
+      <trans-unit id="1331a2ec2a612f533a6837fd95126a3c" resname="asking_for_removal.guest">
+        <source>asking_for_removal.guest</source>
+        <target>Besoin de décommander ?</target>
+      </trans-unit>
+      <trans-unit id="e557551c5e286dfe2ebfb489fb30db27" resname="guests_invited">
+        <source>guests_invited</source>
+        <target>
+          {1} personne |
+          ]1, Inf[ personnes
+        </target>
+      </trans-unit>
+      <trans-unit id="2617bbe3e60735ecaa9c15b32bd321f9" resname="cancel.text">
+        <source>cancel.text</source>
+        <target>__cancel.text</target>
+      </trans-unit>
+      <trans-unit id="3ef3cca0c71d899b4815c186f4cd7f35" resname="cancel_second_part.text">
+        <source>cancel_second_part.text</source>
+        <target>__cancel_second_part.text</target>
       </trans-unit>
     </body>
   </file>
