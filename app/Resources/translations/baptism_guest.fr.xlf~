@@ -45,6 +45,10 @@
         <source>asking_for_removal.guest</source>
         <target>Besoin de décommander ?</target>
       </trans-unit>
+      <trans-unit id="92d0fed058a80ae3d1c2216e4226c4f7" resname="need_for_cancel">
+        <source>need_for_cancel</source>
+        <target>Je veux décommander </target>
+      </trans-unit>
       <trans-unit id="e557551c5e286dfe2ebfb489fb30db27" resname="guests_invited">
         <source>guests_invited</source>
         <target>
@@ -52,13 +56,17 @@
           ]1, Inf[ personnes
         </target>
       </trans-unit>
+      <trans-unit id="d0cf705f201ddc526f49ba2e62392e21" resname="confirm">
+        <source>confirm</source>
+        <target>Confirmer ?</target>
+      </trans-unit>
       <trans-unit id="2617bbe3e60735ecaa9c15b32bd321f9" resname="cancel.text">
         <source>cancel.text</source>
-        <target>__cancel.text</target>
+        <target>Je veux décommander </target>
       </trans-unit>
       <trans-unit id="3ef3cca0c71d899b4815c186f4cd7f35" resname="cancel_second_part.text">
         <source>cancel_second_part.text</source>
-        <target>__cancel_second_part.text</target>
+        <target>personne(s) de ma réservation</target>
       </trans-unit>
     </body>
   </file>

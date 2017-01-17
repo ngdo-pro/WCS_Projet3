@@ -49,7 +49,8 @@
 
             {{ form_end(form) }}
         {% else %}
-            {# Here Baptised will be able to invite, share, etc... #}
+            <p>{{ 'baptised_text.guest' |trans}}</p>
+            <a href="#">Voulez-vous inviter des personnes</a> ?
         {% endif %}
 
     {% else %}

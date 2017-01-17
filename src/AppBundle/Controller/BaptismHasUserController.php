@@ -11,6 +11,7 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\BaptismHasUser;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 
 class BaptismHasUserController extends Controller
@@ -56,7 +57,13 @@ class BaptismHasUserController extends Controller
 
                 return $this->redirect($this->generateUrl('baptism_guest', array('id' => $baptismHasUser->getId())));
             }
-        }else{
+            return $this->render('app/baptism_has_user/guest/baptism_guest.html.twig', array(
+                'baptism_has_user'          => $baptismHasUser,
+                'guestCount'                => $guestCount,
+                'baptism_has_current_user'  => $baptismHasCurrentUser,
+                'form'                      => $form->createView()
+            ));
+        }elseif($baptismHasCurrentUser['role'] == 'guest'){
             /** @var BaptismHasUser $baptismHasGuest */
             $baptismHasGuest = $baptismHasCurrentUser['baptismHasUser'];
             $form = $this->createForm('AppBundle\Form\BaptismHasGuestType', $baptismHasGuest);
@@ -76,14 +83,21 @@ class BaptismHasUserController extends Controller
 
                 return $this->redirect($this->generateUrl('baptism_guest', array('id' => $baptismHasUser->getId())));
             }
+            return $this->render('app/baptism_has_user/guest/baptism_guest.html.twig', array(
+                'baptism_has_user'          => $baptismHasUser,
+                'guestCount'                => $guestCount,
+                'baptism_has_current_user'  => $baptismHasCurrentUser,
+                'form'                      => $form->createView()
+            ));
+        }else{
+            return $this->render('app/baptism_has_user/guest/baptism_guest.html.twig', array(
+                'baptism_has_user'          => $baptismHasUser,
+                'guestCount'                => $guestCount,
+                'baptism_has_current_user'  => $baptismHasCurrentUser
+            ));
         }
 
-        return $this->render('app/baptism_has_user/guest/baptism_guest.html.twig', array(
-            'baptism_has_user'          => $baptismHasUser,
-            'guestCount'                => $guestCount,
-            'baptism_has_current_user'  => $baptismHasCurrentUser,
-            'form'                      => $form->createView()
-        ));
+
 
     }
 }
