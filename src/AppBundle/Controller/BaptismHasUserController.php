@@ -30,37 +30,59 @@ class BaptismHasUserController extends Controller
 
         /** Checks if User is authenticated. If he is, gets his role, else, give him "none" role */
         if(!null == $this->getUser()) {
-            $currentUserRole = $em
+            $baptismHasCurrentUser = $em
                 ->getRepository("AppBundle:BaptismHasUser")
                 ->findIfUserIsParticipating(
                     $baptismHasUser->getBaptism(),
                     $this->getUser()
                 );
         }else{
-            $currentUserRole = 'none';
+            $baptismHasCurrentUser['role'] = 'none';
         }
 
         /** Create a form to pass to view, in order to register new guest(s) */
-        $baptismHasGuest = new BaptismHasUser();
-        $form = $this->createForm('AppBundle\Form\BaptismGuestType', $baptismHasGuest);
-        $form->handleRequest($request);
+        if($baptismHasCurrentUser['role'] == 'none'){
+            $baptismNewGuest = new BaptismHasUser();
+            $form = $this->createForm('AppBundle\Form\BaptismGuestType', $baptismNewGuest);
+            $form->handleRequest($request);
 
-        /** If form is valid, hydrate $baptismHasGuest and persist it */
-        if($form->isSubmitted() && $form->isValid()){
-            $baptismHasGuest->setBaptism($baptismHasUser->getBaptism());
-            $baptismHasGuest->setUser($this->getUser());
-            $baptismHasGuest->setRole(false);
-            $em->persist($baptismHasGuest);
-            $em->flush();
+            if($form->isSubmitted() && $form->isValid()){
+                /** If form is valid, hydrate $baptismNewGuest and persist it */
+                $baptismNewGuest->setBaptism($baptismHasUser->getBaptism());
+                $baptismNewGuest->setUser($this->getUser());
+                $baptismNewGuest->setRole(false);
+                $em->persist($baptismNewGuest);
+                $em->flush();
 
-            return $this->redirect($this->generateUrl('baptism_guest', array('id' => $baptismHasUser->getId())));
+                return $this->redirect($this->generateUrl('baptism_guest', array('id' => $baptismHasUser->getId())));
+            }
+        }else{
+            /** @var BaptismHasUser $baptismHasGuest */
+            $baptismHasGuest = $baptismHasCurrentUser['baptismHasUser'];
+            $form = $this->createForm('AppBundle\Form\BaptismHasGuestType', $baptismHasGuest);
+            $form->handleRequest($request);
+
+            if($form->isSubmitted() && $form->isValid()){
+                $invitedGuests = $request->request->get('appbundle_baptismhasuser')['invitedGuest'];
+                $removedGuests = $baptismHasGuest->getGuestCount();
+                if($invitedGuests - $removedGuests != 0){
+                    $baptismHasGuest->setGuestCount($invitedGuests - $removedGuests);
+                    $em->persist($baptismHasGuest);
+                }else{
+                    $em->remove($baptismHasGuest);
+                }
+
+                $em->flush();
+
+                return $this->redirect($this->generateUrl('baptism_guest', array('id' => $baptismHasUser->getId())));
+            }
         }
 
         return $this->render('app/baptism_has_user/guest/baptism_guest.html.twig', array(
-            'baptism_has_user'  => $baptismHasUser,
-            'guestCount'        => $guestCount,
-            'currentUserRole'   => $currentUserRole,
-            'form'              =>$form->createView()
+            'baptism_has_user'          => $baptismHasUser,
+            'guestCount'                => $guestCount,
+            'baptism_has_current_user'  => $baptismHasCurrentUser,
+            'form'                      => $form->createView()
         ));
 
     }
