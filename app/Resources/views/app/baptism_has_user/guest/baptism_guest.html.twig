@@ -1,0 +1,46 @@
+{% extends 'app/baptism_has_user/layout.html.twig' %}
+{% trans_default_domain 'baptism_guest' %}
+{% block content %}
+    <h2>Guest Part</h2>
+    <h3>Context: Visitor visit a baptism page via link (mainly to reserve on his table)</h3>
+
+    <p>{{ baptism_has_user.user.firstName }} {{ baptism_has_user.user.lastName }} {{ 'inviting_guest' |trans }}</p>
+    <p>{{ 'restaurant' |trans }} {{ baptism_has_user.baptism.restaurant.name|capitalize }}</p>
+    <p>{{ baptism_has_user.baptism.restaurant.address }}</p>
+    <p>{{ baptism_has_user.baptism.restaurant.postalCode }}</p>
+    <p>{{ baptism_has_user.baptism.restaurant.city }}</p>
+    <p>{{ baptism_has_user.baptism.service.name }}</p>
+    <p>{{ baptism_has_user.baptism.date |date('d m Y') }}</p>
+    {# Number of guests #}
+    <p>{{ guestCount }}</p>
+    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+        {% if currentUserRole == "none" %}
+            <p>{{ 'number_of_guest' |transchoice(guestCount, {"guestCount": guestCount}) }}</p>
+            {{ form_start(form) }}
+            {{ form_widget(form.guestCount) }}
+            <button
+                    id="guestConfirm"
+                    name="confirm"
+                    type="button"
+                    data-toggle="modal"
+                    data-target="#validationModal">{{ 'reserve' |trans }}
+            </button>
+
+            {% include 'app/baptism_has_user/modals/modal_guest_validation.html.twig' with {'baptism_has_user': baptism_has_user, 'form' : form} %}
+
+            {{ form_end(form) }}
+        {% elseif currentUserRole == "guest" %}
+            {# Here will be the button to self-remove from guests #}
+        {% else %}
+            {# Here Baptised will be able to invite, share, etc... #}
+        {% endif %}
+
+    {% else %}
+
+        <a href="{{ path('fos_user_security_login') }}">{{ 'sign.in' |trans({}, 'user') }}</a>
+        <a href="{{ path('fos_user_registration_register') }}">{{ 'sign.up' |trans({}, 'user') }}</a>
+
+    {% endif %}
+
+
+{% endblock %}

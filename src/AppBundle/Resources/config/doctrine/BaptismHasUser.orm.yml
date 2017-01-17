@@ -11,6 +11,9 @@ AppBundle\Entity\BaptismHasUser:
     fields:
         role:
             type: boolean
+        guestCount:
+            type: integer
+            nullable: true
     manyToOne:
         baptism:
             targetEntity: AppBundle\Entity\Baptism

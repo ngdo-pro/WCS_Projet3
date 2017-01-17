@@ -3,6 +3,8 @@
 namespace AppBundle\Repository;
 
 use AppBundle\Entity\Baptism;
+use AppBundle\Entity\BaptismHasUser;
+use UserBundle\Entity\User;
 
 /**
  * BaptemHasUserRepository
@@ -37,5 +39,58 @@ class BaptismHasUserRepository extends \Doctrine\ORM\EntityRepository
             ->setParameter('baptism', $baptism)
             ->getQuery()
             ->getSingleScalarResult();
+    }
+
+    /**
+     * This function count how many guests have already reserved a place at a baptism
+     *
+     * @param Baptism $baptism
+     * @return integer
+     */
+    public function findHowManyGuest(Baptism $baptism){
+        return $this->createQueryBuilder('bhu')
+            ->select('SUM(bhu.guestCount) as guestCount')
+            ->where('bhu.baptism = :baptism')
+            ->setParameter('baptism', $baptism)
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
+
+    /**
+     * This function finds out if user is already participating to the baptism.
+     * If he is, it checks his role and sets $userRole to :
+     *     -"baptised" if true
+     *     -"guest" if false
+     * Else, it sets ûserRole to "none"
+     *
+     * @param Baptism $baptism
+     * @param User $user
+     * @return string
+     */
+    public function findIfUserIsParticipating(Baptism $baptism, User $user){
+
+        $result = $this
+            ->createQueryBuilder('bhu')
+            ->select('bhu')
+            ->where('bhu.baptism = :baptism')
+            ->andWhere('bhu.user = :user')
+            ->setParameter('baptism', $baptism)
+            ->setParameter('user', $user)
+            ->getQuery()
+            ->getResult();
+
+        if(isset($result[0])){
+            /** @var BaptismHasUser $baptismHasUser */
+            $baptismHasUser = $result[0];
+            if(true === $baptismHasUser->getRole()){
+                $userRole = 'baptised';
+            }else{
+                $userRole = 'guest';
+            }
+        }else{
+            $userRole = 'none';
+        }
+
+        return $userRole;
     }
 }
