@@ -52,7 +52,6 @@ class BaptismController extends Controller
             $service = $form->get('service')->getData();
             $nbPlaces = $form->get('nb')->getData();
             $baptisms = $em->getRepository("AppBundle:Baptism")->findSearch($city,$restaurantName,$baptismDate,$service);
-            //$baptisms = $em->getRepository("AppBundle:Baptism")->findAll();
             foreach($baptisms as $baptism){
 
                 if ($nbPlaces <= $baptism->getPlaces()) {
@@ -71,11 +70,10 @@ class BaptismController extends Controller
                 $restaurantsWithBaptismCount++;
             }
             /**
-             * Fake build of the new baptisms
+             * build of the new baptisms
              */
             $serviceOpenings = $em->getRepository("AppBundle:ServiceOpening")->findSearch($city,$restaurantName,$service);
-            //$service = $em->getRepository("AppBundle:Service")->findBy(array("name" => "midi"));
-            //$restaurant = $em->getRepository("AppBundle:Restaurant")->findBy(array("name" => "wild restaurant"));
+            //$serviceOpeningException = $em->getRepository("AppBundle:ServiceOpeningException")
             $now = new \DateTime();
             $now->setTime(0, 0, 0);
             $startDate = \DateTime::createFromFormat('Y-m-d', $baptismDate);
@@ -89,22 +87,23 @@ class BaptismController extends Controller
             foreach($serviceOpenings as $serviceOpening){
                 $weekDay = $startDate->format ('w');
                 switch ($weekDay) {
-                    case 0: $nbSo = $serviceOpening->getMonday();
+                    case 0: $nbSo = $serviceOpening->getSunday();
                         break;
-                    case 1: $nbSo = $serviceOpening->getTuesday();
+                    case 1: $nbSo = $serviceOpening->getMonday();
                         break;
-                    case 2: $nbSo = $serviceOpening->getWednesday();
+                    case 2: $nbSo = $serviceOpening->getTuesday();
                         break;
-                    case 3: $nbSo = $serviceOpening->getThursday();
+                    case 3: $nbSo = $serviceOpening->getWednesday();
                         break;
-                    case 4: $nbSo = $serviceOpening->getFriday();
+                    case 4: $nbSo = $serviceOpening->getThursday();
                         break;
-                    case 5: $nbSo = $serviceOpening->getSaturday();
+                    case 5: $nbSo = $serviceOpening->getFriday();
                         break;
-                    case 6: $nbSo = $serviceOpening->getSunday();
+                    case 6: $nbSo = $serviceOpening->getSaturday();
                         break;
 
                 }
+
                 $test = array_search($serviceOpening->getRestaurant()->getId(), $restaurantsWithBaptism,true);
                 if (($nbPlaces <= $nbSo) && ( $test === false)) {
                     $results[$resultCount] = array(
@@ -139,7 +138,7 @@ class BaptismController extends Controller
     {
         $session = $request->getSession();
         $baptisms = $session->get('results');
-
+        var_dump($baptisms);
         return $this->render('app/baptism/select.html.twig', array(
             'baptisms' => $baptisms,
         ));

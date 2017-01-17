@@ -27,13 +27,13 @@ class ServiceOpeningRepository extends \Doctrine\ORM\EntityRepository
             ->innerJoin('so.service', 's')
             // this line is here just to assure the first test
             ->where('0 = 0');
-        if (!is_null($restaurant)) {
+        if (!is_null($restaurant) || $restaurant != '') {
             $query = $query->andWhere('r.name = :restaurant')
                 ->setParameter('restaurant', $restaurant);
         } elseif (!is_null($city)) {
-            $query = $query->andWhere('r.city = :city')
+            $query = $query->andWhere(' (r.city = :city or r.postalCode = :postalCode) ')
                 ->setParameter('city', $city->getName())
-                ->andWhere('r.postalCode = :postalCode')
+                //->andWhere('r.postalCode = :postalCode')
                 ->setParameter('postalCode', $city->getPostalCode());
         }
 

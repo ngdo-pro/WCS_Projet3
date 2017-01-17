@@ -26,7 +26,7 @@ class BaptismRepository extends \Doctrine\ORM\EntityRepository
             ->innerJoin('b.service', 's')
             ->where('b.places >= 0');
 
-        if (!is_null($restaurant)) {
+        if (!is_null($restaurant) && $restaurant != '') {
             $query = $query->andWhere('r.name = :restaurant')
                 ->setParameter('restaurant', $restaurant);
         } elseif (!is_null($city)) {
