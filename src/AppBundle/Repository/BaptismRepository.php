@@ -38,7 +38,6 @@ class BaptismRepository extends \Doctrine\ORM\EntityRepository
 
         if (!is_null($baptismDate)) {
             $query = $query->andWhere("b.date = '$baptismDate'");
-            //->setParameter('date', $baptismDate);
         }
 
         if (!is_null($service)) {

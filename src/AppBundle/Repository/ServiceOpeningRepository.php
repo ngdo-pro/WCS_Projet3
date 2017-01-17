@@ -2,6 +2,9 @@
 
 namespace AppBundle\Repository;
 
+use AppBundle\Entity\City;
+use AppBundle\Entity\Service;
+
 /**
  * ServiceOpeningRepository
  *
@@ -10,16 +13,14 @@ namespace AppBundle\Repository;
  */
 class ServiceOpeningRepository extends \Doctrine\ORM\EntityRepository
 {
+
     /**
-     * function findAllFree
-     * Object: generate the query for the search for free baptism date
-     * @param $city
+     * @param City $city
      * @param $restaurant
-     * @param $nb
-     * @param $baptismDate
-     * @param $service
+     * @param Service $service
+     * @return array
      */
-    public function findSearch($city, $restaurant, $service)
+    public function findSearch(City $city, $restaurant, Service $service)
     {
 
         $query = $this->createQueryBuilder('so')

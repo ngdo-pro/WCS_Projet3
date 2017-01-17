@@ -73,7 +73,6 @@ class BaptismController extends Controller
              * build of the new baptisms
              */
             $serviceOpenings = $em->getRepository("AppBundle:ServiceOpening")->findSearch($city,$restaurantName,$service);
-            //$serviceOpeningException = $em->getRepository("AppBundle:ServiceOpeningException")
             $now = new \DateTime();
             $now->setTime(0, 0, 0);
             $startDate = \DateTime::createFromFormat('Y-m-d', $baptismDate);
@@ -99,12 +98,17 @@ class BaptismController extends Controller
                         break;
                     case 5: $nbSo = $serviceOpening->getFriday();
                         break;
-                    case 6: $nbSo = $serviceOpening->getSaturday();
+                    default:$nbSo = $serviceOpening->getSaturday(); // case 6
                         break;
 
                 }
+                $restaurantEntity = $serviceOpening->getRestaurant();
+                $serviceOpeningExceptions = $em->getRepository("AppBundle:ServiceOpeningException")->findSearch($restaurantEntity,$service,$baptismDate);
+                if (count($serviceOpeningExceptions)>0) {
+                    $nbSo = $serviceOpeningExceptions[0]->getStatus();
+                }
+                $test = array_search($restaurantEntity->getId(), $restaurantsWithBaptism,true);
 
-                $test = array_search($serviceOpening->getRestaurant()->getId(), $restaurantsWithBaptism,true);
                 if (($nbPlaces <= $nbSo) && ( $test === false)) {
                     $results[$resultCount] = array(
                         "id" => 0,
@@ -138,7 +142,6 @@ class BaptismController extends Controller
     {
         $session = $request->getSession();
         $baptisms = $session->get('results');
-        var_dump($baptisms);
         return $this->render('app/baptism/select.html.twig', array(
             'baptisms' => $baptisms,
         ));
