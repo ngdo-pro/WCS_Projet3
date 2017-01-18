@@ -11,6 +11,7 @@ namespace UserBundle\Controller;
 
 use AppBundle\Entity\BaptismHasUser;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use UserBundle\Entity\User;
 
 class MemberController extends Controller
 {
@@ -29,5 +30,9 @@ class MemberController extends Controller
             'ordersBaptised'    => $ordersBaptised,
             'resGuest'          => $resGuest
         ));
+    }
+
+    public function publicProfileAction(User $user){
+        return $this->render('app/main/index.html.twig');
     }
 }

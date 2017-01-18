@@ -1,3 +1,7 @@
 member_orders:
     path:       /mes-commandes
     defaults:   { _controller: UserBundle:Member:order }
+
+member_public_profil:
+    path:       /{slug}
+    defaults:   { _controller: UserBundle:Member:publicProfile }
