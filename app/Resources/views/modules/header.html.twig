@@ -18,7 +18,26 @@
                     <li class="navbar-menu" id="brand-logo"><a class="navbar-link" href=""><img class="navbar-img" src="{{ asset('img/logo-home.png') }}"></a></li>
                     <li class="navbar-menu"><a class="navbar-link" href="">BLOG</a> </li>
                     <li class="navbar-menu"><a class="navbar-link" href="">NOUS CONTACTER</a></li>
+                    {% if app.user %}  {# when user is connected , his firstname appears instead of connection link  #}
+                    <li class="dropdown myAccount">
+                        <a class="dropdown-toggle text-uppercase" data-toggle="dropdown" aria-expanded="false" >
+                            {{ app.user.getFirstname() }}
+                        </a>
+                        <ul class="dropdown-menu"> {# user menu - acount infos and profile access#}
+                            <li class="dropdown-menu--list">
+                                <a href="">MON COMPTE</a>
+                            </li>
+                            <li class="dropdown-menu--list">
+                                <a href="">MON PROFIL</a>
+                            </li>
+                            <li class="dropdown-menu--list">
+                                <a href="">DÉCONNEXION</a>
+                            </li>
+                        </ul>
+                    </li>
+                    {% else %}
                     <li class="navbar-menu"><a class="navbar-link" href="">CONNEXION</a></li>
+                    {% endif %}
                 </ul>
             </div>
         </div>
