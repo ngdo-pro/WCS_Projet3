@@ -42,7 +42,29 @@ class MemberController extends Controller
 
 
         if($form->isValid() && $form->isSubmitted()){
-            var_dump($form);
+            $emails = $form->getData()['emails'];
+            foreach ($emails as $email){
+                $message = \Swift_Message::newInstance()
+                    ->setSubject('Hello Email')
+                    ->setFrom('send@example.com')
+                    ->setTo($email)
+                    ->setBody(
+                        $this->renderView('app/main/index.html.twig'),
+                        'text/html'
+                    )
+                    /*
+                     * If you also want to include a plaintext version of the message
+                    ->addPart(
+                        $this->renderView(
+                            'Emails/registration.txt.twig',
+                            array('name' => $name)
+                        ),
+                        'text/plain'
+                    )
+                    */
+                ;
+                $this->get('mailer')->send($message);
+            }
         }
 
         return $this->render('user/member/my_orders.html.twig', array(
