@@ -21,6 +21,8 @@ class MemberController extends Controller
             Throw $this->createAccessDeniedException();
         }
 
+
+
         $em = $this->getDoctrine()->getManager();
         $ordersBaptised = $em->getRepository("AppBundle:BaptismHasUser")->findByUserAndRole($user, true);
         $resGuest = $em->getRepository("AppBundle:BaptismHasUser")->findByUserAndRole($user, false);

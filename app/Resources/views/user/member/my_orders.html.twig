@@ -3,22 +3,17 @@
 {% block content %}
 
     {{ 'my_baptisms.title' |trans }}
-    {{ 'my_next_baptism.subtitle' |trans }}
+    {{ 'my_next_baptisms.subtitle' |trans }}
 
     {% for order in ordersBaptised %}
-        {% if loop.first %}
-            {{ 'my_next_baptism.date' |trans }} : {{ order.baptismHasUser.baptism.date |date }}
-            {{ 'restaurant.title' |trans }} : {{ order.baptismHasUser.baptism.restaurant.name }}
-            <a href="{{ path('restaurant', {'slug': order.baptismHasUser.baptism.restaurant.slug}) }}">{{ 'my_next_baptism.see_link' |trans }}</a>
-            {{ 'guestNumber.title' |transchoice(order.guestNumber,{'guestNumber': order.guestNumber}) }}
-        {% elseif order.baptismHasUser.baptism.status != 'done' %}
-            <h2>other</h2>
+        {% if order.baptismHasUser.baptism.status != 'done' %}
             {{ 'date.title' |trans }} : {{ order.baptismHasUser.baptism.date |date }}
             {{ 'restaurant.title' |trans }} : {{ order.baptismHasUser.baptism.restaurant.name }}
             <a href="{{ path('restaurant', {'slug': order.baptismHasUser.baptism.restaurant.slug}) }}">{{ 'my_next_baptism.see_link' |trans }}</a>
             {{ 'guestNumber.title' |transchoice(order.guestNumber,{'guestNumber': order.guestNumber}) }}
         {% endif %}
     {% endfor %}
+
     <table>
         <thead>
             <tr>

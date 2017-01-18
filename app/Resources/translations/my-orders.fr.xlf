@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="fr" target-language="fr" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="0b247e35cb82812060c4e4444eb84b56" resname="my_baptisms.title">
+        <source>my_baptisms.title</source>
+        <target>Mes Baptêmes de chef</target>
+      </trans-unit>
+      <trans-unit id="be54df094babd59b04438510b748cb73" resname="my_next_baptisms.subtitle">
+        <source>my_next_baptisms.subtitle</source>
+        <target>Mes prochains baptêmes de chef</target>
+      </trans-unit>
+      <trans-unit id="6e9d71e87deb3a0e991dc528b027c064" resname="date.title">
+        <source>date.title</source>
+        <target>Date</target>
+      </trans-unit>
+      <trans-unit id="dc19facc4d1617330316a5a3edd479e6" resname="restaurant.title">
+        <source>restaurant.title</source>
+        <target>Restaurant</target>
+      </trans-unit>
+      <trans-unit id="51271f2a5dcede14de106bd7e32b8e34" resname="my_next_baptism.see_link">
+        <source>my_next_baptism.see_link</source>
+        <target>Voir</target>
+      </trans-unit>
+      <trans-unit id="3910753ad2cc1450a13791d5ca9960fd" resname="guestNumber.title">
+        <source>guestNumber.title</source>
+        <target>Nombre de convives</target>
+      </trans-unit>
+      <trans-unit id="557fa209bfe939c51efa1ef99ebb6945" resname="bill.title">
+        <source>bill.title</source>
+        <target>Facture</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
