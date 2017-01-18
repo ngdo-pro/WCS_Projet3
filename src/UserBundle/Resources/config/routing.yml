@@ -1,0 +1,3 @@
+member_orders:
+    path:       /mes-commandes
+    defaults:   { _controller: UserBundle:Member:order }

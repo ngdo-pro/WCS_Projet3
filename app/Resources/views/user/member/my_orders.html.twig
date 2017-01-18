@@ -1,0 +1,20 @@
+{% extends 'user/layout.html.twig' %}
+{% trans_default_domain 'my-orders' %}
+{% block content %}
+
+    {{ 'my_baptisms.title' |trans }}
+    {{ 'my_next_baptism.subtitle' |trans }}
+
+    {% for order in ordersBaptised %}
+        {% if loop.first %}
+            {{ 'my_next_baptism.date' |trans }} : {{ order.baptismHasUser.baptism.date |date }}
+            {{ 'my_next_baptism.restaurant' |trans }} : {{ order.baptismHasUser.baptism.restaurant.name }}
+            {{ 'my_next_baptism.restaurant' |trans }} : {{ order.baptismHasUser.baptism.restaurant.name }}
+            <a href="{{ path('restaurant', {'slug': order.baptismHasUser.baptism.restaurant.slug}) }}">{{ 'my_next_baptism.see_link' |trans }}</a>
+            {{ 'my_next_baptism.restaurant' |trans }} : {{ order.baptismHasUser.baptism.restaurant.name }}
+        {% else %}
+
+        {% endif %}
+    {% endfor %}
+
+{% endblock %}
