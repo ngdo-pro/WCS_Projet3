@@ -25,13 +25,21 @@
         <source>my_next_baptism.see_link</source>
         <target>Voir</target>
       </trans-unit>
-      <trans-unit id="3910753ad2cc1450a13791d5ca9960fd" resname="guestNumber.title">
-        <source>guestNumber.title</source>
+      <trans-unit id="5fa6239a8f68fa130288c531dbd02e12" resname="guestCount.title">
+        <source>guestCount.title</source>
         <target>Nombre de convives</target>
       </trans-unit>
       <trans-unit id="557fa209bfe939c51efa1ef99ebb6945" resname="bill.title">
         <source>bill.title</source>
         <target>Facture</target>
+      </trans-unit>
+      <trans-unit id="4785c204cf5df062e469cdca5a944112" resname="guestNumber.data">
+        <source>guestNumber.data</source>
+        <target>
+          {0} Aucun |
+          {1} guestNumber personne |
+          ]1, Inf[ guestNumber personnes
+        </target>
       </trans-unit>
     </body>
   </file>

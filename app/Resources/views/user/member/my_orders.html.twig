@@ -2,15 +2,15 @@
 {% trans_default_domain 'my-orders' %}
 {% block content %}
 
-    {{ 'my_baptisms.title' |trans }}
-    {{ 'my_next_baptisms.subtitle' |trans }}
+    <h2>{{ 'my_baptisms.title' |trans }}</h2>
+    <h3>{{ 'my_next_baptisms.subtitle' |trans }}</h3>
 
     {% for order in ordersBaptised %}
         {% if order.baptismHasUser.baptism.status != 'done' %}
-            {{ 'date.title' |trans }} : {{ order.baptismHasUser.baptism.date |date }}
-            {{ 'restaurant.title' |trans }} : {{ order.baptismHasUser.baptism.restaurant.name }}
-            <a href="{{ path('restaurant', {'slug': order.baptismHasUser.baptism.restaurant.slug}) }}">{{ 'my_next_baptism.see_link' |trans }}</a>
-            {{ 'guestNumber.title' |transchoice(order.guestNumber,{'guestNumber': order.guestNumber}) }}
+            <p>{{ 'date.title' |trans }} : {{ order.baptismHasUser.baptism.date |date }}</p>
+            <p>{{ 'restaurant.title' |trans }} : {{ order.baptismHasUser.baptism.restaurant.name }}</p>
+            <p><a href="{{ path('restaurant', {'slug': order.baptismHasUser.baptism.restaurant.slug}) }}">{{ 'my_next_baptism.see_link' |trans }}</a></p>
+            <p>{{ 'guestCount.title' |trans }} : {{ 'guestNumber.data' |transchoice(order.guestNumber,{'guestNumber': order.guestNumber}) }}</p>
         {% endif %}
     {% endfor %}
 
@@ -19,7 +19,7 @@
             <tr>
                 <th>{{ 'restaurant.title' |trans }}</th>
                 <th>{{ 'date.title' |trans }}</th>
-                <th>{{ 'guestNumber.title' |trans }}</th>
+                <th>{{ 'guestCount.title' |trans }}</th>
                 <th>{{ 'bill.title' |trans }}</th>
             </tr>
         </thead>
