@@ -27,6 +27,7 @@ class MemberController extends Controller
         $resGuest = $em->getRepository("AppBundle:BaptismHasUser")->findByUserAndRole($user, false);
 
         return $this->render('user/member/my_orders.html.twig', array(
+            'user'              => $user,
             'ordersBaptised'    => $ordersBaptised,
             'resGuest'          => $resGuest
         ));
