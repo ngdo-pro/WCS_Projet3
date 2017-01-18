@@ -10,9 +10,8 @@ use FOS\UserBundle\Model\User as BaseUser;
  */
 class User extends BaseUser
 {
-
     /**
-     * @var boolean
+     * @var string
      */
     private $civility;
 
@@ -72,6 +71,11 @@ class User extends BaseUser
     private $participation;
 
     /**
+     * @var \AppBundle\Entity\Media
+     */
+    private $media;
+
+    /**
      * @var \Doctrine\Common\Collections\Collection
      */
     private $baptismsHasUser;
@@ -84,18 +88,13 @@ class User extends BaseUser
     /**
      * @var \Doctrine\Common\Collections\Collection
      */
-    private $medias;
-
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
     private $restaurants;
 
 
     /**
      * Set civility
      *
-     * @param boolean $civility
+     * @param string $civility
      *
      * @return User
      */
@@ -109,7 +108,7 @@ class User extends BaseUser
     /**
      * Get civility
      *
-     * @return boolean
+     * @return string
      */
     public function getCivility()
     {
@@ -381,6 +380,30 @@ class User extends BaseUser
     }
 
     /**
+     * Set media
+     *
+     * @param \AppBundle\Entity\Media $media
+     *
+     * @return User
+     */
+    public function setMedia(\AppBundle\Entity\Media $media = null)
+    {
+        $this->media = $media;
+
+        return $this;
+    }
+
+    /**
+     * Get media
+     *
+     * @return \AppBundle\Entity\Media
+     */
+    public function getMedia()
+    {
+        return $this->media;
+    }
+
+    /**
      * Add baptismsHasUser
      *
      * @param \AppBundle\Entity\BaptismHasUser $baptismsHasUser
@@ -449,40 +472,6 @@ class User extends BaseUser
     }
 
     /**
-     * Add media
-     *
-     * @param \AppBundle\Entity\Media $media
-     *
-     * @return User
-     */
-    public function addMedia(\AppBundle\Entity\Media $media)
-    {
-        $this->medias[] = $media;
-
-        return $this;
-    }
-
-    /**
-     * Remove media
-     *
-     * @param \AppBundle\Entity\Media $media
-     */
-    public function removeMedia(\AppBundle\Entity\Media $media)
-    {
-        $this->medias->removeElement($media);
-    }
-
-    /**
-     * Get medias
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getMedias()
-    {
-        return $this->medias;
-    }
-
-    /**
      * Add restaurant
      *
      * @param \AppBundle\Entity\Restaurant $restaurant
@@ -514,34 +503,5 @@ class User extends BaseUser
     public function getRestaurants()
     {
         return $this->restaurants;
-    }
-    /**
-     * @var \AppBundle\Entity\Media
-     */
-    private $media;
-
-
-    /**
-     * Set media
-     *
-     * @param \AppBundle\Entity\Media $media
-     *
-     * @return User
-     */
-    public function setMedia(\AppBundle\Entity\Media $media = null)
-    {
-        $this->media = $media;
-
-        return $this;
-    }
-
-    /**
-     * Get media
-     *
-     * @return \AppBundle\Entity\Media
-     */
-    public function getMedia()
-    {
-        return $this->media;
     }
 }

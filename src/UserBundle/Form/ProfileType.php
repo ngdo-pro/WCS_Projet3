@@ -12,12 +12,10 @@
 namespace UserBundle\Form;
 
 use AppBundle\Entity\Media;
-use Doctrine\Common\Collections\ArrayCollection;
 use FOS\UserBundle\Util\LegacyFormHelper;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Security\Core\Validator\Constraints\UserPassword;
@@ -102,10 +100,10 @@ class ProfileType extends AbstractType
     protected function buildUserForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('avatar', FileType::class, array(
-                'label' => 'form.picture',
-                'translation_domain' => 'FOSUserBundle',
-                'mapped' => false))
+            ->add('media', FileType::class, array('label' => 'form.picture', 'translation_domain' => 'FOSUserBundle',
+                'mapped' => false,
+                'required' => false,
+            ))
             ->add('civility', ChoiceType::class, array('label' => 'form.civility', 'translation_domain' => 'FOSUserBundle', 'choices' => array(
                 'm' => 'form.mister',
                 'f' => 'form.misses'),
@@ -133,6 +131,7 @@ class ProfileType extends AbstractType
                 'second_options' => array('label' => 'form.password_confirmation'),
                 'invalid_message' => 'fos_user.password.mismatch',
             ))
+            ->add('submit', SubmitType::class, array('label' => 'profile.edit.submit', 'translation_domain' => 'FOSUserBundle'))
         ;
     }
 }

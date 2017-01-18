@@ -13,3 +13,7 @@ app:
 sogenactif:
     resource: "@SogenactifBundle/Resources/config/routing.yml"
     prefix:   /acheter
+
+user:
+    resource: "@UserBundle/Resources/config/routing.yml"
+    prefix: /membre

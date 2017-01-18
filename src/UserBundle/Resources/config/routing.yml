@@ -1,0 +1,7 @@
+member_orders:
+    path:       /mes-commandes
+    defaults: { _controller: UserBundle:Member:order }
+
+member_profile_edit:
+    path: /editer-mon-profil
+    defaults: { _controller: UserBundle:Member:edit }
