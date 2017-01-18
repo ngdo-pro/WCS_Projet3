@@ -21,6 +21,7 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Form;
 use Symfony\Component\HttpFoundation\Request;
 use UserBundle\Entity\User;
+use AppBundle\Entity\BaptismSearch;
 
 
 class BaptismController extends Controller
@@ -32,12 +33,11 @@ class BaptismController extends Controller
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function searchAction(Request $request){
-        //TODO: This is a fake action, it needs to be replaced with the real searchAction
-        /** Creating a simple button to simulate user action */
-        $form = $this->createForm(BaptismSearchType::class);
+        $em = $this->getDoctrine()->getManager();
+        $baptismSearch = new BaptismSearch();
+        $form = $this->createForm(BaptismSearchType::class,$baptismSearch,array('restaurantRepository' => ($em->getRepository('AppBundle:Restaurant') )));
             //->add("send", SubmitType::class)
         $form->handleRequest($request);
-
         if($form->isSubmitted() && $form->isValid()){
 
             $results = array();
@@ -45,7 +45,6 @@ class BaptismController extends Controller
             // new information to avoid showing restaurant who have already a baptism scheduled
             $restaurantsWithBaptism = array ();
             $restaurantsWithBaptismCount = 0;
-            $em = $this->getDoctrine()->getManager();
             $city = $form->get('city')->getData();
             $restaurantName = $form->get('restaurant')->getData();
             $baptismDate = $form->get('baptismDate')->getData();
