@@ -6,11 +6,17 @@
     <h3>{{ 'my_next_baptisms.subtitle' |trans }}</h3>
 
     {% for order in ordersBaptised %}
-        {% if order.baptismHasUser.baptism.status != 'done' %}
+        {% if loop.first %}
+
             <p>{{ 'date.title' |trans }} : {{ order.baptismHasUser.baptism.date |date }}</p>
             <p>{{ 'restaurant.title' |trans }} : {{ order.baptismHasUser.baptism.restaurant.name }}</p>
             <p><a href="{{ path('restaurant', {'slug': order.baptismHasUser.baptism.restaurant.slug}) }}">{{ 'my_next_baptism.see_link' |trans }}</a></p>
             <p>{{ 'guestCount.title' |trans }} : {{ 'guestNumber.data' |transchoice(order.guestNumber,{'guestNumber': order.guestNumber}) }}</p>
+
+            {{ form_start(form) }}
+            <ul class="emails" data-prototype="{{ form_widget(form.emails.vars.prototype)|e('html_attr') }}"></ul>
+            {{ form_end(form) }}
+
         {% endif %}
     {% endfor %}
 
