@@ -37,13 +37,16 @@
   color: $font-color3
   text-decoration: underline
 
-.navbar-default .navbar-toggle:focus, .navbar-default .navbar-toggle:hover
-  background-color: transparent
+.navbar
+  &-default &-toggle &toggle
+    &:focus &:hover
+      background-color: transparent
 
-.navbar-default .navbar-toggle .icon-bar
-  background-color: $bg-color1
-  height: 6px
-  width: 32px
+.navbar .icon-bar
+  &-default &-toggle
+    background-color: $bg-color1
+    height: 6px
+    width: 32px
 
 @media (max-width: 766px) //mobile
   #brand-logo
