@@ -22,20 +22,69 @@
        </div>
        <div class="container brandPresentation">
            <div class="row">
-               <div class="col-md-offset-1 col-md-10 brandPresentation-firstBlock">
+               <div class="col-md-12 brandPresentation-firstBlock">
                    <h1 class="brandPresentation-title">{{ 'home_secondTitle' |trans |upper }}</h1>
                </div>
-               <div class="col-xs-12 col-md-3 brandPresentation-1" >
-                   <img class="brandPresentation-1" src="{{ asset('img/home_icone1.png') }}"/>
-                   <p>{{ 'home_presentation_p1' |trans }}</p>
+               <div class="col-xs-12 col-md-4 brandPresentation-alignBlock" >
+                   <img class="brandPresentation-icone" src="{{ asset('img/home_icone1.png') }}"/>
+                   <p class="brandPresentation-text">{{ 'home_presentation_p1' |trans }}</p>
                </div>
-               <div class="col-xs-12 col-md-3">
-                   <img src="{{ asset('img/home_icone2.png') }}"/>
-                   <p>{{ 'home_presentation_p2' |trans }}</p>
+               <div class="col-xs-12 col-md-4 brandPresentation-alignBlock">
+                   <img class="brandPresentation-icone" src="{{ asset('img/home_icone2.png') }}"/>
+                   <p class="brandPresentation-text">{{ 'home_presentation_p2' |trans }}</p>
                </div>
-               <div class="col-xs-12 col-md-3">
-                   <img src="{{ asset('img/home_icone3.png') }}"/>
-                   <p>{{ 'home_presentation_p3' |trans }}</p>
+               <div class="col-xs-12 col-md-4 brandPresentation-alignBlock">
+                   <img class="brandPresentation-icone" src="{{ asset('img/home_icone3.png') }}"/>
+                   <p class="brandPresentation-text">{{ 'home_presentation_p3' |trans }}</p>
+               </div>
+           </div>
+       </div>
+       <div class="container homeMozaic">
+           <div class="row">
+               <div class="col-xs-12 col-md-6 homeMozaic-block homeMozaic--bgImage1">
+                   <div class="homeMozaic-blockText">
+                       <h3 class="homeMozaic-title homeMozaic-title--size1">{{ 'home_mozaic1_h3' |trans |upper }}</h3>
+                   </div>
+               </div>
+               <div class="col-xs-12 col-md-6 homeMozaic-block homeMozaic--bgImage2">
+                   <div class="homeMozaic-blockText">
+                       <h3 class="homeMozaic-title homeMozaic-title--size2 ">{{ 'home_mozaic2_h3' |trans |upper }}</h3>
+                   </div>
+               </div>
+               <div class="col-xs-12 col-md-4 homeMozaic-block homeMozaic--bgImage3">
+                   <div class="homeMozaic-blockText">
+                       <h3 class="homeMozaic-title homeMozaic-title--size3">{{ 'home_mozaic3_h3' |trans |upper }}</h3>
+                       <p class="homeMozaic-text homeMozaic-text--size1">{{ 'home_mozaic3_text' |trans |upper }}</p>
+                   </div>
+               </div>
+               <div class="col-xs-12 col-md-4 homeMozaic-block homeMozaic--bgImage4">
+                   <div class="homeMozaic-blockText">
+                       <h3 class="homeMozaic-title homeMozaic-title--size4">{{ 'home_mozaic4_h3' |trans |upper }}</h3>
+                       <p class="homeMozaic-text homeMozaic-text--size2">{{ 'home_mozaic4_text' |trans |upper }}</p>
+                   </div>
+               </div>
+               <div class="col-xs-12 col-md-4 homeMozaic-block homeMozaic--bgImage5">
+                   <div class="homeMozaic-blockText">
+                       <h3 class="homeMozaic-title homeMozaic-title--size5">{{ 'home_mozaic5_h3' |trans |upper }}</h3>
+                       <p class="homeMozaic-text homeMozaic-text--size3">{{ 'home_mozaic5_text' |trans |upper }}</p>
+                   </div>
+               </div>
+               <div class="col-xs-12 col-md-6 homeMozaic-block homeMozaic--bgImage6">
+                   <div class="homeMozaic-blockText">
+                       <h3 class="homeMozaic-title homeMozaic-title--size6">{{ 'home_mozaic6_h3' |trans |upper }}</h3>
+                       <p class="homeMozaic-text homeMozaic-text--size4">{{ 'home_mozaic6_text' |trans |upper }}</p>
+                   </div>
+               </div>
+               <div class="col-xs-12 col-md-6 homeMozaic-block homeMozaic--bgImage7">
+                   <div class="homeMozaic-blockText">
+                       <h3 class="homeMozaic-title homeMozaic-title--size7">{{ 'home_mozaic7_h3' |trans |upper }}</h3>
+                       <p class="homeMozaic-text homeMozaic-text--size5">{{ 'home_mozaic7_text' |trans |upper }}</p>
+                   </div>
+               </div>
+               <div class="col-md-12" id="visit-blog">
+                   <button id="blog-button">
+                       {{ 'visit-blog' |trans |upper }}
+                   </button>
                </div>
            </div>
        </div>

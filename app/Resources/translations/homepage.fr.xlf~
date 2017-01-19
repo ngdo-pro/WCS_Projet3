@@ -19,7 +19,67 @@
       </trans-unit>
       <trans-unit id="b7c1f89036a4b8c4533a0ea2f80b5da9" resname="home_secondTitle">
         <source>home_secondTitle</source>
-        <target>food and you : comment ça marche ? </target>
+        <target><![CDATA[Food&You : comment ça marche ?]]></target>
+      </trans-unit>
+      <trans-unit id="29f000e3b5f53e9f1126a4fd66f360a8" resname="home_presentation_p1">
+        <source>home_presentation_p1</source>
+        <target>Vous choissisez le restaurant et le chef pour vivre un service en immersion</target>
+      </trans-unit>
+      <trans-unit id="aa44acf4f7d237a86f8f27ccbd215900" resname="home_presentation_p2">
+        <source>home_presentation_p2</source>
+        <target>Vous vivez le coup de feu en plein coeur de la cuisine</target>
+      </trans-unit>
+      <trans-unit id="b228239cd81f29c08b82827547c51d82" resname="home_presentation_p3">
+        <source>home_presentation_p3</source>
+        <target>Partagez votre expérience avec vos proches</target>
+      </trans-unit>
+      <trans-unit id="67d8652d49678d7b2e74b316acc37eba" resname="home_mozaic3_text">
+        <source>home_mozaic3_text</source>
+        <target>à partir de 25 personnes</target>
+      </trans-unit>
+      <trans-unit id="4dee636308761c894a295a3f24bcabb2" resname="home_mozaic4_text">
+        <source>home_mozaic4_text</source>
+        <target>inscrivez vous pour jouer avec d'autres chefs et gagnez des cadeaux !</target>
+      </trans-unit>
+      <trans-unit id="a4bb781a8ba9b79020970ee8226d776d" resname="home_mozaic5_text">
+        <source>home_mozaic5_text</source>
+        <target>votre conciergerie pour vos évènements d'entreprise</target>
+      </trans-unit>
+      <trans-unit id="6411a57a4f031611d2efa08742e69501" resname="home_mozaic6_text">
+        <source>home_mozaic6_text</source>
+        <target>ils ouvrent leurs cuisines pour vous</target>
+      </trans-unit>
+      <trans-unit id="0491fbf6f350ec61c5b8bc43b62ee871" resname="home_mozaic7_text">
+        <source>home_mozaic7_text</source>
+        <target>ils sont passés à la casserole...et ils ont adoré !</target>
+      </trans-unit>
+      <trans-unit id="2436c35d81ffa1373b9543ad7b06ed49" resname="home_mozaic1_h3">
+        <source>home_mozaic1_h3</source>
+        <target>vivre un baptême de chef</target>
+      </trans-unit>
+      <trans-unit id="a3635fc73c4bb2eaaf8e0fd3335b66c2" resname="home_mozaic2_h3">
+        <source>home_mozaic2_h3</source>
+        <target>offrir une expérience culinaire inédite</target>
+      </trans-unit>
+      <trans-unit id="c0518790c426f8c7f67fd3fdf72b3457" resname="home_mozaic3_h3">
+        <source>home_mozaic3_h3</source>
+        <target>privatiser un restaurant</target>
+      </trans-unit>
+      <trans-unit id="e71a19db3929c995ce0fc65a45688183" resname="home_mozaic4_h3">
+        <source>home_mozaic4_h3</source>
+        <target>food and you le jeu !</target>
+      </trans-unit>
+      <trans-unit id="47ff2d9a9b0e1bbca4f97b1d986b6836" resname="home_mozaic5_h3">
+        <source>home_mozaic5_h3</source>
+        <target>food and you entreprise</target>
+      </trans-unit>
+      <trans-unit id="b0731d0df767aff18f0a4b3b1661fd68" resname="home_mozaic6_h3">
+        <source>home_mozaic6_h3</source>
+        <target>nos restaurants adorés</target>
+      </trans-unit>
+      <trans-unit id="facfe40f84f5f20838a084c7e42b3187" resname="home_mozaic7_h3">
+        <source>home_mozaic7_h3</source>
+        <target>nos foodys joyeux</target>
       </trans-unit>
     </body>
   </file>
