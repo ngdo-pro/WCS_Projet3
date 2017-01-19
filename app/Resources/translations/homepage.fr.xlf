@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="fr" target-language="fr" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="7334befb4abbeb36c869c931310f75f9" resname="home_mainTitle">
+        <source>home_mainTitle</source>
+        <target>en plein coeur de la cuisine</target>
+      </trans-unit>
+      <trans-unit id="f1c63d76c52dac62d759e975f18c3580" resname="home_intro">
+        <source>home_intro</source>
+        <target>Un chef vous invite dans les coulisses de son restaurant et partage avec vous son savoir-faire</target>
+      </trans-unit>
+      <trans-unit id="b357c089473198a61d450aa965f16f11" resname="home_buttonInfo">
+        <source>home_buttonInfo</source>
+        <target>Comment ça marche ?</target>
+      </trans-unit>
+      <trans-unit id="b7c1f89036a4b8c4533a0ea2f80b5da9" resname="home_secondTitle">
+        <source>home_secondTitle</source>
+        <target>food and you : comment ça marche ? </target>
+      </trans-unit>
+      <trans-unit id="29f000e3b5f53e9f1126a4fd66f360a8" resname="home_presentation_p1">
+        <source>home_presentation_p1</source>
+        <target>Vous choissisez le restaurant et le chef pour vivre un service en immersion</target>
+      </trans-unit>
+      <trans-unit id="aa44acf4f7d237a86f8f27ccbd215900" resname="home_presentation_p2">
+        <source>home_presentation_p2</source>
+        <target>Vous vivez le coup de feu en plein coeur de la cuisine</target>
+      </trans-unit>
+      <trans-unit id="b228239cd81f29c08b82827547c51d82" resname="home_presentation_p3">
+        <source>home_presentation_p3</source>
+        <target>Partagez votre expérience avec vos proches</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
