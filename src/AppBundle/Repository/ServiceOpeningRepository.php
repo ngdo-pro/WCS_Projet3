@@ -32,10 +32,10 @@ class ServiceOpeningRepository extends \Doctrine\ORM\EntityRepository
             $query = $query->andWhere('r.name = :restaurant')
                 ->setParameter('restaurant', $restaurant);
         } elseif (!is_null($city)) {
-            $query = $query->andWhere(' (r.city = :city or r.postalCode = :postalCode) ')
+            $query = $query->andWhere(' (r.city = :city) ')
                 ->setParameter('city', $city->getName())
-                //->andWhere('r.postalCode = :postalCode')
-                ->setParameter('postalCode', $city->getPostalCode());
+                ->andWhere('r.postalCode = :zipCode')
+                ->setParameter('zipCode', $city->getZipCode());
         }
 
         if (!is_null($service)) {

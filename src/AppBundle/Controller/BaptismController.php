@@ -45,11 +45,16 @@ class BaptismController extends Controller
             $restaurantsWithBaptism = array ();
             $restaurantsWithBaptismCount = 0;
             $city = $form->get('city')->getData();
-            $restaurant = $form->get('restaurant')->getData()->getName();
+            $restaurant = $form->get('restaurant')->getData();
+            if (is_null($restaurant)) {
+                $restaurantName = null;
+            } else {
+                $restaurantName = $restaurant->getName();
+            }
             $baptismDate = $form->get('baptismDate')->getData();
             $service = $form->get('service')->getData();
             $nbPlaces = $form->get('nb')->getData();
-            $baptisms = $em->getRepository("AppBundle:Baptism")->findSearch($city,$restaurant,$baptismDate,$service);
+            $baptisms = $em->getRepository("AppBundle:Baptism")->findSearch($city,$restaurantName,$baptismDate,$service);
             foreach($baptisms as $baptism){
 
                 if ($nbPlaces <= $baptism->getPlaces()) {
@@ -70,7 +75,7 @@ class BaptismController extends Controller
             /**
              * build of the new baptisms
              */
-            $serviceOpenings = $em->getRepository("AppBundle:ServiceOpening")->findSearch($city,$restaurant,$service);
+            $serviceOpenings = $em->getRepository("AppBundle:ServiceOpening")->findSearch($city,$restaurantName,$service);
             $now = new \DateTime();
             $now->setTime(0, 0, 0);
             $startDate = \DateTime::createFromFormat('Y-m-d', $baptismDate);

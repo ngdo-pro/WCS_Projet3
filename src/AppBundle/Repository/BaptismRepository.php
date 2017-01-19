@@ -32,8 +32,8 @@ class BaptismRepository extends \Doctrine\ORM\EntityRepository
         } elseif (!is_null($city)) {
             $query = $query->andWhere('r.city = :city')
                 ->setParameter('city', $city->getName())
-                ->andWhere('r.postalCode = :postalCode')
-                ->setParameter('postalCode', $city->getPostalCode());
+                ->andWhere('r.postalCode = :zipCode')
+                ->setParameter('zipCode', $city->getzipCode());
         }
 
         if (!is_null($baptismDate)) {
