@@ -44,7 +44,7 @@ class BaptismSearchType extends AbstractType
                     'required' => false,
                     'choices'     => array(),
                 ));} else {
-                $restaurants = $this->restaurantRepository->findRestaurantListCity($city->getName(),$city->getPostalCode());
+                $restaurants = $this->restaurantRepository->findRestaurantListCity($city->getName(),$city->getZipCode());
                 $form->add('restaurant', EntityType::class, array(
                     'class'       => 'AppBundle:Restaurant',
                     'placeholder' => 'Restaurant',
