@@ -1,0 +1,62 @@
+.navbar
+  border: none
+  &-default
+    font-family: $nav_bar-font
+    background-color: transparent
+  &-header
+    margin-bottom: 25px
+  &-brand
+    display: none
+  &-img
+    width: 93px
+    height: 117px
+    margin-top: 30px
+  &-toggle
+    float: right
+    border: 0
+    padding: 20px 20px
+
+@media (min-width: 766px) //here we allow the menu to be inline except for mobile
+
+  .navbar-nav
+    float: inherit
+    list-style: none
+    margin: 1rem -2rem
+    padding: 0
+    display: flex
+    justify-content: space-around
+    align-items: center
+
+
+#navbar > ul > li > a
+ color: $font-color1
+ text-decoration: none
+ display: block
+
+ &:active, &:hover
+  color: $font-color3
+  text-decoration: underline
+
+.navbar
+  &-default &-toggle &toggle
+    &:focus &:hover
+      background-color: transparent
+
+.navbar .icon-bar
+  &-default &-toggle
+    background-color: $bg-color1
+    height: 6px
+    width: 32px
+
+@media (max-width: 766px) //mobile
+  #brand-logo
+    display: none
+  .navbar
+    &-menu
+      text-align: center
+    &-brand
+      display: block
+    &-img__hidden
+      width: 70px
+    &-collapse
+      background-color: $bg-color2
