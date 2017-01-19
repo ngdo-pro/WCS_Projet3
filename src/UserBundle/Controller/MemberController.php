@@ -49,7 +49,7 @@ class MemberController extends Controller
                     ->setFrom('send@example.com')
                     ->setTo($email)
                     ->setBody(
-                        $this->renderView('app/main/index.html.twig'),
+                        $this->renderView('email/baptism_of_chef_invitation.html.twig'),
                         'text/html'
                     )
                     /*

@@ -29,7 +29,7 @@ var paths = {
         css: './web/assets/css',
         fonts: './web/assets/fonts',
         assets: './web/assets'
-    },
+    }
     //compass: 'web/dev/config.rb'
 };
 
