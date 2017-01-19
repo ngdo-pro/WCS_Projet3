@@ -76,6 +76,8 @@ class MemberController extends Controller
     }
 
     public function publicProfileAction(User $user){
-        return $this->render('app/main/index.html.twig');
+        return $this->render('user/member/public_profile.html.twig', array(
+            'user' => $user
+        ));
     }
 }
