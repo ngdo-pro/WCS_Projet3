@@ -77,9 +77,9 @@ class BaptismSearchType extends AbstractType
 
 
         $builder->addEventListener(
-            FormEvents::POST_SET_DATA,  //PRE_SET_DATA,
+            FormEvents::POST_SET_DATA,
             function (FormEvent $event) use ($formModifier) {
-                // this would be your entity, i.e. SportMeetup
+               
                 $data = $event->getData();
                 if (is_null($data)) {
                     $city = $event->getForm()->getData()->getCity();

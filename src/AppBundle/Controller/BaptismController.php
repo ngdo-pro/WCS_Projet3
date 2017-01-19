@@ -36,7 +36,6 @@ class BaptismController extends Controller
         $em = $this->getDoctrine()->getManager();
         $baptismSearch = new BaptismSearch();
         $form = $this->createForm(BaptismSearchType::class,$baptismSearch,array('restaurantRepository' => ($em->getRepository('AppBundle:Restaurant') )));
-            //->add("send", SubmitType::class)
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid()){
 
@@ -141,8 +140,10 @@ class BaptismController extends Controller
     {
         $session = $request->getSession();
         $baptisms = $session->get('results');
+        $nbBaptisms = count($baptisms);
         return $this->render('app/baptism/select.html.twig', array(
             'baptisms' => $baptisms,
+            'nbBaptism' => $nbBaptisms,
         ));
 
     }
