@@ -4,5 +4,22 @@
 {% trans_default_domain 'homepage' %}
 
 {% block content %}
-       <H1>HOMEPAGE</H1>
+    <div class="wrapper">
+       <div class="container homeHeader">
+              <div class="row">
+                  <div class="col-md-12 homeHeader">
+                      <img src="{{ asset('img/home-header') }}">
+                      <div class="col-xs-offset-1 col-xs-10 col-md-offset-2 col-md-8 homeHeader-text">
+                          <H1>EN PLEIN COEUR DE LA CUISINE</H1>
+                          <p>UN CHEF VOUS INVITE DANS LES COULISSES DE SON RESTAURANT ET PARTAGE AVEC VOUS SON SAVOIR-FAIRE</p>
+                      </div>
+                      <div class="col-md-offset-5 col-md-2 homeHeader-buttonInfo">
+                          <button>
+                              Comment ça marche ?
+                          </button>
+                      </div>
+                  </div>
+              </div>
+       </div>
+    </div>
 {% endblock %}
