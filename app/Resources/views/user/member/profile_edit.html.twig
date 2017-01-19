@@ -5,44 +5,63 @@
     {{ form_start(form) }}
     {{ form_label(form.media) }}
     {{ form_widget(form.media) }}
-    {{ form_errors(form.media) }}
+    {{ form_errors(form) }}
 {% endblock %}
 
 {% block content %}
-    <h2>MON PROFIL</h2>
-    {{ form_label(form.last_name) }}
-    {{ form_widget(form.last_name) }}
+    <section id="profileEdit" class="container-fluid">
+        <h2>MON PROFIL</h2>
+        <div class="row">
+            <div class="col-md-12">
+                {{ form_label(form.civility) }}<br/>
+                {{ form_widget(form.civility) }}
+            </div>
 
+            <div class="col-md-6">
+                {{ form_label(form.last_name) }}<br/>
+                {{ form_widget(form.last_name) }}
+            </div>
+            <div class="col-md-6">
+                {{ form_label(form.email) }}<br/>
+                {{ form_widget(form.email) }}
+            </div>
+            <div class="col-md-6">
+                {{ form_label(form.first_name) }}<br/>
+                {{ form_widget(form.first_name) }}
+            </div>
+            <div class="col-md-6">
+                {{ form_label(form.mobile_phone) }}<br/>
+                {{ form_widget(form.mobile_phone) }}
+            </div>
+            <div class="col-md-12">
+                {{ form_label(form.birth_date) }}<br/>
+                {{ form_widget(form.birth_date) }}
+            </div>
+            <div class="col-md-12">
+                {{ form_label(form.address) }}<br/>
+                {{ form_widget(form.address) }}
+            </div>
+            <div class="col-md-6">
+                {{ form_label(form.zip_code) }}<br/>
+                {{ form_widget(form.zip_code) }}
+            </div>
+            <div class="col-md-6">
+                {{ form_label(form.city) }}<br/>
+                {{ form_widget(form.city) }}
+            </div>
 
-    {{ form_label(form.email) }}
-    {{ form_widget(form.email) }}
+            <div id="changePassword" class="col-md-6">
+                {{ form_widget(form.plainPassword) }}
+            </div>
 
+            <div class="col-md-6">
+                {{ form_widget(form) }}
+            </div>
+            <div class="col-md-6">
+                {{ form_widget(form.submit) }}
+            </div>
+            {{ form_end(form) }}
 
-    {{ form_label(form.first_name) }}
-    {{ form_widget(form.first_name) }}
-
-
-    {{ form_label(form.mobile_phone) }}
-    {{ form_widget(form.mobile_phone) }}
-
-
-    {{ form_label(form.birth_date) }}
-    {{ form_widget(form.birth_date) }}
-
-
-    {{ form_label(form.address) }}
-    {{ form_widget(form.address) }}
-
-
-    {{ form_label(form.zip_code) }}
-    {{ form_widget(form.zip_code) }}
-
-
-    {{ form_label(form.city) }}
-    {{ form_widget(form.city) }}
-    {{ form_end(form) }}
-
-    {% block fos_user_content %}
-    {% endblock fos_user_content %}
-
+        </div>
+    </section>
 {% endblock %}
