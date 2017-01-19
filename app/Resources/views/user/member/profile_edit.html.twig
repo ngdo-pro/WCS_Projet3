@@ -1,0 +1,48 @@
+{% extends 'user/layout.html.twig' %}
+
+{% block avatar %}
+    <img src="{{ asset('uploads/users_avatar/avatar.jpg') }}"/>
+    {{ form_start(form) }}
+    {{ form_label(form.media) }}
+    {{ form_widget(form.media) }}
+    {{ form_errors(form.media) }}
+{% endblock %}
+
+{% block content %}
+    <h2>MON PROFIL</h2>
+    {{ form_label(form.last_name) }}
+    {{ form_widget(form.last_name) }}
+
+
+    {{ form_label(form.email) }}
+    {{ form_widget(form.email) }}
+
+
+    {{ form_label(form.first_name) }}
+    {{ form_widget(form.first_name) }}
+
+
+    {{ form_label(form.mobile_phone) }}
+    {{ form_widget(form.mobile_phone) }}
+
+
+    {{ form_label(form.birth_date) }}
+    {{ form_widget(form.birth_date) }}
+
+
+    {{ form_label(form.address) }}
+    {{ form_widget(form.address) }}
+
+
+    {{ form_label(form.zip_code) }}
+    {{ form_widget(form.zip_code) }}
+
+
+    {{ form_label(form.city) }}
+    {{ form_widget(form.city) }}
+    {{ form_end(form) }}
+
+    {% block fos_user_content %}
+    {% endblock fos_user_content %}
+
+{% endblock %}

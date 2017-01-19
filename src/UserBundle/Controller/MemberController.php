@@ -108,7 +108,7 @@ class MemberController extends Controller
             $error = 'fos_user.media.type';
         }
 
-        return $this->render('@FOSUser/test.html.twig', array(
+        return $this->render('user/member/profile_edit.html.twig', array(
             'form' => $form->createView(),
             'error' => $error,
         ));

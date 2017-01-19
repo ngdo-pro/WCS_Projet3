@@ -72,6 +72,10 @@
         <source>baptised_text.guest</source>
         <target>Vous ne pouvez pas réserver à votre propre baptême de chef.</target>
       </trans-unit>
+      <trans-unit id="353b828fb1787bbde127f3b9aeeefd3f" resname="asking_for_invite.baptised">
+        <source>asking_for_invite.baptised</source>
+        <target>Voulez-vous inviter d'autres personnes</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
