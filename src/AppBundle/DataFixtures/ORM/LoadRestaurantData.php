@@ -41,8 +41,30 @@ class LoadRestaurantData extends AbstractFixture implements OrderedFixtureInterf
                 "postalCode" => "69002",
                 "city" => "lyon",
                 "foodType" => "disruptive",
-                "userSlug" => "1-jean-michel-dupont"
-            )
+                "userSlug" => "1-jean-michel-dupont",
+                "latitude" => "45.7463057",
+                "longitude" => "4.8269647",
+            ),
+            array(
+                "name" => "wild fake",
+                "description" => "lorem ipsum",
+                "openingDate" => new \DateTime("2017-01-06"),
+                "address" => "30 cours Suchet",
+                "status" => "validated",
+                "webUrl" => "www.wildcodeschool.fr",
+                "tripAdvisorUrl" => "none",
+                "facebookUrl" => "none",
+                "phone" => "04-04-04-04-04",
+                "phone2" => "06-06-06-06-16",
+                "email" => "wcs@email.com",
+                "slug" => "wild-fake",
+                "postalCode" => "69002",
+                "city" => "lyon",
+                "foodType" => "unknow",
+                "userSlug" => "1-jean-michel-dupont",
+                "latitude" => "45.7468179",
+                "longitude" => "4.8237256",
+            ),
         );
 
         foreach ($restaurants as $restaurant){
@@ -63,6 +85,8 @@ class LoadRestaurantData extends AbstractFixture implements OrderedFixtureInterf
             $restaurantObj->setCity($restaurant["city"]);
             $restaurantObj->setFoodType($restaurant["foodType"]);
             $restaurantObj->setUser($this->getReference("user-" . $restaurant["userSlug"]));
+            $restaurantObj->setLatitude($restaurant['latitude']);
+            $restaurantObj->setLongitude($restaurant['longitude']);
             $manager->persist($restaurantObj);
             $this->addReference("restaurant-" . $restaurantObj->getSlug(), $restaurantObj);
         }

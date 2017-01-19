@@ -23,6 +23,7 @@ class AppKernel extends Kernel
             new BlogBundle\BlogBundle(),
             new Cocur\Slugify\Bridge\Symfony\CocurSlugifyBundle(),
             new SogenactifBundle\SogenactifBundle(),
+            new Ivory\GoogleMapBundle\IvoryGoogleMapBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {

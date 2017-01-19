@@ -24,7 +24,10 @@
         "doctrine/doctrine-migrations-bundle": "^1.0",
         "friendsofsymfony/user-bundle": "~2.0@dev",
         "javiereguiluz/easyadmin-bundle": "^1.16",
-        "cocur/slugify": "^2.3"
+        "cocur/slugify": "^2.3",
+        "egeloen/google-map-bundle": "^2.2",
+        "egeloen/google-map": "^1.4",
+        "php-http/guzzle6-adapter": "^1.1"
     },
     "require-dev": {
         "sensio/generator-bundle": "~3.0",

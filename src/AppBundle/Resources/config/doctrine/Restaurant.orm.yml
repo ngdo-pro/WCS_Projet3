@@ -55,6 +55,10 @@ AppBundle\Entity\Restaurant:
         foodType:
             type: string
             length: 255
+        latitude:
+            type: float
+        longitude:
+            type: float
     manyToOne:
         user:
             targetEntity: UserBundle\Entity\User

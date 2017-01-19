@@ -1,0 +1,3 @@
+restaurants_all:
+    path:       /
+    defaults:   { _controller: AppBundle:Restaurant:restaurantsList }
