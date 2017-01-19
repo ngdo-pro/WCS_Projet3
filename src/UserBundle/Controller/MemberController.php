@@ -89,7 +89,7 @@ class MemberController extends Controller
         $baptisms = array();
 
         foreach ($baptismsWhereUserIsBaptised as $baptismWhereUserIsBaptised){
-            $baptismWhereUserIsBaptised['currentUserIsGuest'] = false;
+            $baptismWhereUserIsBaptised['currentUserIsGuest'] = 0;
             /** @var BaptismHasUser $guest */
             foreach ($baptismsWhereCurrentUserIsGuest as $baptismWhereCurrentUserIsGuest){
 
@@ -99,7 +99,7 @@ class MemberController extends Controller
                 $baptismHasGuest = $baptismWhereCurrentUserIsGuest['baptismHasUser'];
 
                 if($baptismHasGuest->getBaptism() == $baptismHasBaptised->getBaptism()){
-                    $baptismWhereUserIsBaptised['currentUserIsGuest'] = true;
+                    $baptismWhereUserIsBaptised['currentUserIsGuest'] = $baptismHasGuest->getGuestCount();
                 }
             }
             $baptisms[] = $baptismWhereUserIsBaptised;

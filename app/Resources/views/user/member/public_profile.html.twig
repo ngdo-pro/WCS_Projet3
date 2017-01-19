@@ -1,5 +1,5 @@
 {% extends 'user/layout.html.twig' %}
-{% trans_default_domain 'my-orders' %}
+{% trans_default_domain 'public_profile' %}
 {% block title %}Baptême de Chef{% endblock %}
 {% block description %}{{ user.firstName }}{{ user.lastName }} fait son Baptême de Chef !{% endblock %}
 {% block opengraph %}
@@ -11,6 +11,33 @@
 {% endblock %}
 {% block content %}
 
-    <h2>{{ 'my_baptisms.title' |trans }}</h2>
+    <h2>Public profile</h2>
+    <h3>Context : Visitor lands here by clicking on shared link, via email or social media</h3>
+
+    <table>
+        <thead>
+            <tr>
+                <th>{{ 'restaurant.title' |trans }}</th>
+                <th>{{ 'date.title' |trans }}</th>
+                <th>{{ 'guestCount.title' |trans }}</th>
+                <th>{{ 'reservation_status.title' |trans }}</th>
+                <th>{{ 'reservation_action.title' |trans }}</th>
+            </tr>
+        </thead>
+    <tbody>
+    {% for baptism in baptisms %}
+        <tr>
+            <td>{{ baptism.baptismHasUser.baptism.restaurant.name }}</td>
+            <td>{{ baptism.baptismHasUser.baptism.date |date }}</td>
+            <td>{{ baptism.guestNumber }}</td>
+            {% if baptism.currentUserIsGuest != 0 %}
+                <td>{{ baptism.currentUserIsGuest }}</td>
+                <td><a href="{{ path('baptism_guest', {'id': baptism.baptismHasUser.id}) }}">{{ 'reservation_modify.title' |trans }}</a></td>
+            {% else %}
+                <td>{{ 'no_reservation.title' |trans }}</td>
+                <td><a href="{{ path('baptism_guest', {'id': baptism.baptismHasUser.id}) }}">{{ 'reservation_add.title' |trans }}</a></td>
+            {% endif %}
+        </tr>
+    {% endfor %}
 
 {% endblock %}
