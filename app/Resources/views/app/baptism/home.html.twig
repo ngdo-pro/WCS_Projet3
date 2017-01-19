@@ -1,0 +1,17 @@
+{% extends 'app/layout.html.twig' %}
+
+{% block content %}
+
+    <h2>Purchase Part</h2>
+    <h3>Context: Baptism have been selected, here the user will purchase it</h3>
+    <p>There are {{ baptism.places }} places left.</p>
+    <p>The Baptism will take place on {{ baptism.date |date }}.</p>
+    <p>At the {{ baptism.restaurantName }} on the {{ baptism.serviceName }} service.</p>
+
+    {# This form can only be displayed if visitor is connected#}
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+    {{ form_end(form) }}
+    {# else, a sign in/ sign up button must appear, with an explanation#}
+
+{% endblock %}
