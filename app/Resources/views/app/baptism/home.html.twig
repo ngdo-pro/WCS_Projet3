@@ -1,17 +1,19 @@
-{% extends 'app/layout.html.twig' %}
+{% extends 'base.html.twig' %}
+{% trans_default_domain 'baptism_home' %}
+{% block body %}
 
-{% block content %}
+<section id="baptismChefHeader">
+    <h1>
+        {{ 'boc.title' |trans |upper }}
+        <br>
+        <span class="subtitle">{{ 'boc.video_launch' |trans |upper }}</span>
+        <a href="#" data-toggle="modal" data-target="#homeVideo" class="videoTrigger">
+            <span class="glyphicon glyphicon-play-circle" aria-hidden="true"></span>
+        </a>
+    </h1>
 
-    <h2>Purchase Part</h2>
-    <h3>Context: Baptism have been selected, here the user will purchase it</h3>
-    <p>There are {{ baptism.places }} places left.</p>
-    <p>The Baptism will take place on {{ baptism.date |date }}.</p>
-    <p>At the {{ baptism.restaurantName }} on the {{ baptism.serviceName }} service.</p>
+</section>
 
-    {# This form can only be displayed if visitor is connected#}
-    {{ form_start(form) }}
-        {{ form_widget(form) }}
-    {{ form_end(form) }}
-    {# else, a sign in/ sign up button must appear, with an explanation#}
+{% include 'app/baptism/modals/modal_home_video.html.twig' %}
 
 {% endblock %}
