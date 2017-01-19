@@ -9,6 +9,7 @@
 namespace UserBundle\Controller;
 
 
+use AppBundle\Entity\BaptismHasUser;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
@@ -27,7 +28,6 @@ class MemberController extends Controller
 
         $em = $this->getDoctrine()->getManager();
         $ordersBaptised = $em->getRepository("AppBundle:BaptismHasUser")->findByUserAndRole($user, true);
-        $resGuest = $em->getRepository("AppBundle:BaptismHasUser")->findByUserAndRole($user, false);
 
         $form = $this->createFormBuilder()
             ->add('emails', CollectionType::class, array(
@@ -70,14 +70,43 @@ class MemberController extends Controller
         return $this->render('user/member/my_orders.html.twig', array(
             'user'              => $user,
             'ordersBaptised'    => $ordersBaptised,
-            'resGuest'          => $resGuest,
             'form'              => $form->createView()
         ));
     }
 
     public function publicProfileAction(User $user){
+
+        $currentUser = $this->getUser();
+
+        if(null == $currentUser){
+            Throw $this->createAccessDeniedException();
+        }
+
+        $em = $this->getDoctrine()->getManager();
+        $baptismsWhereUserIsBaptised = $em->getRepository("AppBundle:BaptismHasUser")->findByUserAndRole($user, true);
+        $baptismsWhereCurrentUserIsGuest = $em->getRepository("AppBundle:BaptismHasUser")->findByUserAndRole($currentUser, false);
+
+        $baptisms = array();
+
+        foreach ($baptismsWhereUserIsBaptised as $baptismWhereUserIsBaptised){
+            /** @var BaptismHasUser $guest */
+            foreach ($baptismsWhereCurrentUserIsGuest as $baptismWhereCurrentUserIsGuest){
+                /** @var BaptismHasUser $baptismHasBaptised */
+                $baptismHasBaptised = $baptismWhereUserIsBaptised['baptismHasUser'];
+                /** @var BaptismHasUser $baptismHasGuest */
+                $baptismHasGuest = $baptismWhereCurrentUserIsGuest['baptismHasUser'];
+                if($baptismHasGuest->getBaptism() == $baptismHasBaptised->getBaptism()){
+                    $baptismWhereUserIsBaptised['userIsGuest'] = true;
+                }else{
+                    $baptismWhereUserIsBaptised['userIsGuest'] = false;
+                }
+            }
+            $baptisms[] = $baptismWhereUserIsBaptised;
+        }
+
         return $this->render('user/member/public_profile.html.twig', array(
-            'user' => $user
+            'user'      => $user,
+            'baptisms'  => $baptisms
         ));
     }
 }
