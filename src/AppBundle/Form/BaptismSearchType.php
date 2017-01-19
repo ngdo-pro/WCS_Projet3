@@ -37,14 +37,14 @@ class BaptismSearchType extends AbstractType
             if ($city === null) {
                 $form->add('restaurant', EntityType::class, array(
                     'class'       => 'AppBundle:Restaurant',
-                    //'placeholder' => '',
+                    'placeholder' => 'Restaurant',
                     'choice_label' => 'name',
                     'choices'     => array(),
                 ));} else {
                 $restaurants = $this->restaurantRepository->findRestaurantListCity($city->getName(),$city->getPostalCode());
                 $form->add('restaurant', EntityType::class, array(
                     'class'       => 'AppBundle:Restaurant',
-                    //'placeholder' => '',
+                    'placeholder' => 'Restaurant',
                     'choice_label' => 'name',
                     'choices'     => $restaurants
                 ));
@@ -77,7 +77,7 @@ class BaptismSearchType extends AbstractType
 
 
         $builder->addEventListener(
-            FormEvents::POST_SET_DATA,
+            FormEvents::PRE_SET_DATA,
             function (FormEvent $event) use ($formModifier) {
                
                 $data = $event->getData();

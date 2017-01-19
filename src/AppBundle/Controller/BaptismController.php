@@ -45,11 +45,11 @@ class BaptismController extends Controller
             $restaurantsWithBaptism = array ();
             $restaurantsWithBaptismCount = 0;
             $city = $form->get('city')->getData();
-            $restaurantName = $form->get('restaurant')->getData();
+            $restaurant = $form->get('restaurant')->getData()->getName();
             $baptismDate = $form->get('baptismDate')->getData();
             $service = $form->get('service')->getData();
             $nbPlaces = $form->get('nb')->getData();
-            $baptisms = $em->getRepository("AppBundle:Baptism")->findSearch($city,$restaurantName,$baptismDate,$service);
+            $baptisms = $em->getRepository("AppBundle:Baptism")->findSearch($city,$restaurant,$baptismDate,$service);
             foreach($baptisms as $baptism){
 
                 if ($nbPlaces <= $baptism->getPlaces()) {
@@ -70,7 +70,7 @@ class BaptismController extends Controller
             /**
              * build of the new baptisms
              */
-            $serviceOpenings = $em->getRepository("AppBundle:ServiceOpening")->findSearch($city,$restaurantName,$service);
+            $serviceOpenings = $em->getRepository("AppBundle:ServiceOpening")->findSearch($city,$restaurant,$service);
             $now = new \DateTime();
             $now->setTime(0, 0, 0);
             $startDate = \DateTime::createFromFormat('Y-m-d', $baptismDate);
@@ -81,6 +81,7 @@ class BaptismController extends Controller
                 $startDate = $now;
             }
             //$nbPlaces
+
             foreach($serviceOpenings as $serviceOpening){
                 $weekDay = $startDate->format ('w');
                 switch ($weekDay) {
@@ -120,7 +121,6 @@ class BaptismController extends Controller
                     $resultCount++ ;
                 }
             }
-
             $session = $request->getSession();
             $session->set('results', $results);
             return $this->redirectToRoute('baptism_select');

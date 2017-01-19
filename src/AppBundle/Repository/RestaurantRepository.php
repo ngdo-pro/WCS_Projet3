@@ -12,14 +12,12 @@ class RestaurantRepository extends \Doctrine\ORM\EntityRepository
 {
     public function findRestaurantListCity ($cityName, $postalCode)
     {
-        var_dump($postalCode);
         $query = $this->createQueryBuilder('r')
            ->where('r.city = :city')
            ->setParameter('city', $cityName)
            ->andWhere('r.postalCode = :postalCode')
            ->setParameter('postalCode',$postalCode)
            ->getQuery();
-        var_dump($query->getDQL());
 
        return $query->getResult();
     }
