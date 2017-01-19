@@ -1,5 +1,12 @@
 {% extends 'user/layout.html.twig' %}
 {% trans_default_domain 'my-orders' %}
+{% block opengraph %}
+    <meta property="og:url"           content="{{ base_url }}" />
+    <meta property="og:type"          content="website" />
+    <meta property="og:title"         content="Food&You" />
+    <meta property="og:description"   content="Bienvenue à mon baptême de chef !" />
+    <meta property="og:image"         content="{{ base_url ~ asset('email_images/HEADER.gif') }}" />
+{% endblock %}
 {% block content %}
 
     <h2>{{ 'my_baptisms.title' |trans }}</h2>
@@ -12,8 +19,20 @@
             <p>{{ 'restaurant.title' |trans }} : {{ order.baptismHasUser.baptism.restaurant.name }}</p>
             <p><a href="{{ path('restaurant', {'slug': order.baptismHasUser.baptism.restaurant.slug}) }}">{{ 'my_next_baptism.see_link' |trans }}</a></p>
             <p>{{ 'guestCount.title' |trans }} : {{ 'guestNumber.data' |transchoice(order.guestNumber,{'guestNumber': order.guestNumber}) }}</p>
-
             {{ form_start(form) }}
+            <div
+                class="fb-share-button"
+                data-href="{{ path('member_public_profil', {"slug": user.slug}) }}"
+                data-layout="button"
+                data-size="small"
+                data-mobile-iframe="true">
+                <a
+                    class="fb-xfbml-parse-ignore"
+                    target="_blank"
+                    href="https://www.facebook.com/sharer/sharer.php?u={{ base_url ~ path('member_public_profil', {"slug": user.slug}) }}&amp;src=sdkpreparse">
+                        Partager
+                </a>
+            </div>
             <ul class="emails" data-prototype="{{ form_widget(form.emails.vars.prototype)|e('html_attr') }}"></ul>
             {{ form_end(form) }}
 
