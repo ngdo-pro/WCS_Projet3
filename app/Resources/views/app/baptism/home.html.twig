@@ -2,18 +2,33 @@
 {% trans_default_domain 'baptism_home' %}
 {% block body %}
 
-<section id="baptismChefHeader">
-    <h1>
-        {{ 'boc.title' |trans |upper }}
-        <br>
-        <span class="subtitle">{{ 'boc.video_launch' |trans |upper }}</span>
-        <a href="#myvideo" class="afterglow" >
-            <span class="glyphicon glyphicon-play-circle" aria-hidden="true"></span>
-        </a>
-    </h1>
-
+<section class="container-fluid" id="baptismChefHeader">
+    <div class="row">
+        <h1>
+            {{ 'boc.title' |trans |upper }}
+            <br>
+            <span class="subtitle">{{ 'boc.video_launch' |trans |upper }}</span>
+            <a href="#myvideo" class="afterglow" >
+                <span class="glyphicon glyphicon-play-circle" aria-hidden="true"></span>
+                {% include 'app/baptism/modals/modal_home_video.html.twig' %}
+            </a>
+        </h1>
+    </div>
+</section>
+<section class="container-fluid" id="baptismChefExplanation">
+    <h2>{{ 'boc_explanation.title' }}</h2>
+    <a href="#" id="triggerExplanation" >{{ 'boc_explanation.button' }}</a>
+    <div id="baptismChefExplanation-toggle" class="hidden">
+        <ul>
+            <li>{{ 'boc_explanation.first_row' |trans }}</li>
+            <li>{{ 'boc_explanation.second_row' |trans }}</li>
+            <li>{{ 'boc_explanation.third_row' |trans }}</li>
+            <li>{{ 'boc_explanation.fourth_row' |trans }}</li>
+            <li>{{ 'boc_explanation.fifth_row' |trans }}</li>
+        </ul>
+        <div>{{ 'boc_explanation.price' |trans }}</div>
+    </div>
 </section>
 
-{% include 'app/baptism/modals/modal_home_video.html.twig' %}
 
 {% endblock %}

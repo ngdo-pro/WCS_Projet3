@@ -1,37 +1,54 @@
 @import "imports"
 
-section
-  &#baptismChefHeader
-    background: url('../media/img/vivreunbaptemedechef.JPG') 50%
-    background-size: cover
-    height: 100vh
-    position: relative
-    width: 100vw
-    h1
+
+#baptismChefHeader
+  background: url('../media/img/vivreunbaptemedechef.JPG') 50%
+  background-size: cover
+  height: 100vh
+  position: relative
+  h1
+    color: $font-color1
+    font-family: $main-title-font
+    font-size: $main-title-size
+    font-weight: bold
+    left: 50%
+    margin: 0
+    position: absolute
+    text-align: center
+    top: 50%
+    transform: translateX(-50%) translateY(-50%)
+    span
       color: $font-color1
-      font-family: $main-title-font
-      font-size: $title-size
-      font-weight: bold
-      left: 50%
-      margin: 0
+      font-size: 2rem
       position: absolute
       text-align: center
-      top: 50%
-      transform: translateX(-50%) translateY(-50%)
-      span
-        color: $font-color1
-        font-size: 2rem
-        position: absolute
-        text-align: center
-        &.subtitle
-          font-family: $title-font
-          transform: translateX(-50%)
-        &.glyphicon-play-circle
-          font-size: 100px
-          top: 120px
-          transform: translateX(-50%)
-
-.modal
-  .modal-dialog
-    video
-      max-width: 100%
+      &.subtitle
+        font-family: $title-font
+        transform: translateX(-50%)
+      &.glyphicon-play-circle
+        font-size: 100px
+        top: 120px
+        transform: translateX(-50%)
+#baptismChefExplanation
+  background: $bg-color1
+  color: $font-color1
+  padding: 50px 0
+  position: relative
+  text-align: center
+  h2
+    font-family: $title-font
+    font-size: $title-size
+    margin-bottom: 4rem
+  a
+    background: $btn-color2
+    color: $font-color1
+    padding: 15px 30px
+    -webkit-transition: background 0.2s
+    &:hover
+      background: $btn-hover3
+      color: $bg-color2
+      text-decoration: none
+    &:active,
+    &:visited,
+    &:focus
+      text-decoration: none
