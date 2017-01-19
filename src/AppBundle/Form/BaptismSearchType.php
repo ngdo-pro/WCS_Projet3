@@ -30,6 +30,8 @@ class BaptismSearchType extends AbstractType
             array(
                 'class'   => 'AppBundle:City',
                 'choice_label' => 'name',
+                'required' => false,
+                'placeholder' => 'City'
             )
         );
         $this->restaurantRepository = $options['restaurantRepository'];
@@ -39,6 +41,7 @@ class BaptismSearchType extends AbstractType
                     'class'       => 'AppBundle:Restaurant',
                     'placeholder' => 'Restaurant',
                     'choice_label' => 'name',
+                    'required' => false,
                     'choices'     => array(),
                 ));} else {
                 $restaurants = $this->restaurantRepository->findRestaurantListCity($city->getName(),$city->getPostalCode());
@@ -46,6 +49,7 @@ class BaptismSearchType extends AbstractType
                     'class'       => 'AppBundle:Restaurant',
                     'placeholder' => 'Restaurant',
                     'choice_label' => 'name',
+                    'required' => false,
                     'choices'     => $restaurants
                 ));
             };
@@ -71,6 +75,8 @@ class BaptismSearchType extends AbstractType
             EntityType::class, array(
                 'class'   => 'AppBundle:Service',
                 'choice_label' => 'name',
+                'required' => false,
+                'placeholder'=>'Service',
             )
         );
         
