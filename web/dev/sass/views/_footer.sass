@@ -1,0 +1,38 @@
+.footer
+  font-family: $footer-font
+  background-color: $bg-color2
+  color: $font-color1
+  min-height: 125px
+  &-menu
+    text-align: center
+    margin-top: 40px
+    &--logoDesktop
+      text-align: center
+      margin-top: 30px
+    &--logoMobile
+      display: none
+  &-link
+    text-decoration: none
+    color: $font-color1
+    &:active, &:hover
+      color: $font-color3
+      text-decoration: underline
+  &-img
+    width: 70px
+
+.hr--hidden
+  display: none
+
+@media (max-width: 766px) //mobile
+  .hr--hidden
+    display: block
+  .footer-menu
+    margin-top: auto
+    &--logoDesktop
+      display: none
+    &--logoMobile
+      display: block
+      text-align: center
+      margin-top: 30px
+    &--bottom
+      margin-bottom: 30px
