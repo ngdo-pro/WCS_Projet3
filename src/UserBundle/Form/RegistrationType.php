@@ -18,23 +18,11 @@ class RegistrationType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('civility', ChoiceType::class, array('label' => 'form.civility', 'translation_domain' => 'FOSUserBundle', 'choices' => array(
-                'm' => 'form.mister',
-                'f' => 'form.misses'),
-                'expanded' => true,
-                'multiple' => false,
-                ))
-            ->add('address', null, array('label' => 'form.address', 'translation_domain' => 'FOSUserBundle', 'trim' => true))
-            ->add('city', null, array('label' => 'form.city', 'translation_domain' => 'FOSUserBundle', 'trim' => true))
-            ->add('zip_code', null, array('label' => 'form.zip_code', 'translation_domain' => 'FOSUserBundle', 'trim' => true))
-            ->add('first_name', null, array('label' => 'form.first_name', 'translation_domain' => 'FOSUserBundle','required' => true, 'trim' => true))
-            ->add('last_name', null, array('label' => 'form.last_name', 'translation_domain' => 'FOSUserBundle','required' => true, 'trim' => true))
-            ->add('birth_date', DateType::class, array('label' => 'form.birth_date', 'translation_domain' => 'FOSUserBundle', 'widget' => 'choice',
-                'years' => range(date('Y')-18,date('Y')-80)))
-            ->add('mobile_phone', null, array('label' => 'form.phone', 'translation_domain' => 'FOSUserBundle'))
+            ->add('first_name', null, array('label' => 'form.first_name', 'translation_domain' => 'FOSUserBundle', 'trim' => true, 'required' => true))
+            ->add('last_name', null, array('label' => 'form.last_name', 'translation_domain' => 'FOSUserBundle', 'trim' => true, 'required' => true))
             ->add('checkbox', CheckboxType::class, array('translation_domain' => 'FOSUserBundle',
                 'label' => 'form.checkbox',
-                'required' => true,
+                
                 'mapped' => false,
                 ))
             ->add('email', EmailType::class, array(

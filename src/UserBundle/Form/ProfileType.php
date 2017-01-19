@@ -11,7 +11,6 @@
 
 namespace UserBundle\Form;
 
-use AppBundle\Entity\Media;
 use FOS\UserBundle\Util\LegacyFormHelper;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
@@ -103,6 +102,8 @@ class ProfileType extends AbstractType
             ->add('media', FileType::class, array('label' => 'form.picture', 'translation_domain' => 'FOSUserBundle',
                 'mapped' => false,
                 'required' => false,
+                'attr' => array('accept' => '.jpg,.jpeg,.png'),
+                'invalid_message' => 'fos_user.media.type',
             ))
             ->add('civility', ChoiceType::class, array('label' => 'form.civility', 'translation_domain' => 'FOSUserBundle', 'choices' => array(
                 'm' => 'form.mister',
@@ -113,8 +114,8 @@ class ProfileType extends AbstractType
             ->add('address', null, array('label' => 'form.address', 'translation_domain' => 'FOSUserBundle', 'trim' => true))
             ->add('city', null, array('label' => 'form.city', 'translation_domain' => 'FOSUserBundle', 'trim' => true))
             ->add('zip_code', null, array('label' => 'form.zip_code', 'translation_domain' => 'FOSUserBundle', 'trim' => true))
-            ->add('first_name', null, array('label' => 'form.first_name', 'translation_domain' => 'FOSUserBundle', 'trim' => true))
-            ->add('last_name', null, array('label' => 'form.last_name', 'translation_domain' => 'FOSUserBundle', 'trim' => true))
+            ->add('first_name', null, array('label' => 'form.first_name', 'translation_domain' => 'FOSUserBundle', 'trim' => true, 'required' => true))
+            ->add('last_name', null, array('label' => 'form.last_name', 'translation_domain' => 'FOSUserBundle', 'trim' => true, 'required' => true))
             ->add('birth_date', DateType::class, array('label' => 'form.birth_date', 'translation_domain' => 'FOSUserBundle', 'widget' => 'choice',
                 'years' => range(date('Y'),date('Y')-80)))
             ->add('mobile_phone', null, array('label' => 'form.phone', 'translation_domain' => 'FOSUserBundle'))
