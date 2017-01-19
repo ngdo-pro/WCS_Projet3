@@ -3,11 +3,11 @@
 {% block title %}Baptême de Chef{% endblock %}
 {% block description %}{{ user.firstName }}{{ user.lastName }} fait son Baptême de Chef !{% endblock %}
 {% block opengraph %}
-    <meta property="og:url"           content="{{ base_url }}" />
+    <meta property="og:url"           content="{{ base_url ~ path('member_public_profil', {"slug": user.slug}) }}" />
     <meta property="og:type"          content="website" />
     <meta property="og:title"         content="Food&You" />
     <meta property="og:description"   content="Bienvenue à mon baptême de chef !" />
-    <meta property="og:image"         content="{{ base_url ~ asset('/email_images/HEADER.gif') }}" />
+    <meta property="og:image"         content="{{ base_url ~ asset('email_images/HEADER.gif') }}" />
 {% endblock %}
 {% block content %}
 
