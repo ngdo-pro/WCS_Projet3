@@ -10,7 +10,8 @@ var paths = {
     vendorJs: [
         './web/vendors/components/jquery/dist/jquery.min.js',
         './web/vendors/components/bootstrap/dist/js/bootstrap.min.js',
-        './web/vendors/components/afterglow/dist/afterglow.min.js'
+        './web/vendors/components/afterglow/dist/afterglow.min.js',
+        './web/vendors/components/jquery-ui/jquery-ui.min.js'
     ],
     vendorCss: [
         'web/vendors/components/bootstrap/dist/css/bootstrap.min.css'

@@ -13,6 +13,46 @@
         <source>boc.video_launch</source>
         <target>lancez la vidéo !</target>
       </trans-unit>
+      <trans-unit id="09a06fee02fcf9c21ffe542e954cd251" resname="boc_explanation.title">
+        <source>boc_explanation.title</source>
+        <target>l'aventure démarre maintenant !</target>
+      </trans-unit>
+      <trans-unit id="fa91a249cba75d72ac878d218b2e157d" resname="boc_explanation.button">
+        <source>boc_explanation.button</source>
+        <target>voir le déroulé</target>
+      </trans-unit>
+      <trans-unit id="de75b223f89090747bdba74cae39f406" resname="boc_explanation.first_row">
+        <source>boc_explanation.first_row</source>
+        <target>accueil: l'immersion commence</target>
+      </trans-unit>
+      <trans-unit id="2b37d9b3a23b2a8c5899803ddbabc254" resname="boc_explanation.second_row">
+        <source>boc_explanation.second_row</source>
+        <target>mise en place: préparatifs en amont en cuisine</target>
+      </trans-unit>
+      <trans-unit id="cffc49d31f7ef77177f7022f4fdb7253" resname="boc_explanation.third_row">
+        <source>boc_explanation.third_row</source>
+        <target>repas de service</target>
+      </trans-unit>
+      <trans-unit id="41da26c7a014cb03e8996cce0b0f0d2f" resname="boc_explanation.fourth_row">
+        <source>boc_explanation.fourth_row</source>
+        <target>coup de feu: début de service, les premiers clients arrivent !</target>
+      </trans-unit>
+      <trans-unit id="8c8745be156c4576c48f2a1b35790973" resname="boc_explanation.fifth_row">
+        <source>boc_explanation.fifth_row</source>
+        <target>fin du service</target>
+      </trans-unit>
+      <trans-unit id="cb8b2e6047194bcdde8bd086a1f20a64" resname="boc_explanation.price">
+        <source>boc_explanation.price</source>
+        <target>99 €</target>
+      </trans-unit>
+      <trans-unit id="b3a20ffbbd332feffe6b95899c21da44" resname="boc_gift.title">
+        <source>boc_gift.title</source>
+        <target>bon cadeau: offrir cette aventure</target>
+      </trans-unit>
+      <trans-unit id="abbf19c3b5b424f08eded3f1d6bbd29f" resname="boc_gift.link">
+        <source>boc_gift.link</source>
+        <target>j'offre un bon cadeau</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

@@ -16,18 +16,24 @@
     </div>
 </section>
 <section class="container-fluid" id="baptismChefExplanation">
-    <h2>{{ 'boc_explanation.title' }}</h2>
-    <a href="#" id="triggerExplanation" >{{ 'boc_explanation.button' }}</a>
-    <div id="baptismChefExplanation-toggle" class="hidden">
+    <h2>{{ 'boc_explanation.title' |trans |upper }}</h2>
+    <a role="button" data-toggle="collapse" href="#collapseExplanation" aria-expanded="false" aria-controls="collapseExplanation">
+        {{ 'boc_explanation.button' |trans |capitalize}}
+    </a>
+    <div id="collapseExplanation" class="collapse">
         <ul>
-            <li>{{ 'boc_explanation.first_row' |trans }}</li>
-            <li>{{ 'boc_explanation.second_row' |trans }}</li>
-            <li>{{ 'boc_explanation.third_row' |trans }}</li>
-            <li>{{ 'boc_explanation.fourth_row' |trans }}</li>
-            <li>{{ 'boc_explanation.fifth_row' |trans }}</li>
+            <li>{{ 'boc_explanation.first_row' |trans |upper }}</li>
+            <li>{{ 'boc_explanation.second_row' |trans |upper }}</li>
+            <li>{{ 'boc_explanation.third_row' |trans |upper }}</li>
+            <li>{{ 'boc_explanation.fourth_row' |trans |upper }}</li>
+            <li>{{ 'boc_explanation.fifth_row' |trans |upper }}</li>
         </ul>
-        <div>{{ 'boc_explanation.price' |trans }}</div>
+        <div>{{ 'boc_explanation.price' |trans |upper }}</div>
     </div>
+</section>
+<section id="baptismChefGift">
+    <h2>{{ 'boc_gift.title' |trans |upper }}</h2>
+    <a href="#">{{ 'boc_gift.link' |trans |upper }}</a>
 </section>
 
 
