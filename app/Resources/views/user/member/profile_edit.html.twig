@@ -5,7 +5,7 @@
         {% if avatar != null %}
             <img src="{{ asset('uploads/users_avatar/' ~ avatar) }}"/>
         {% else %}
-            <img src="{{ asset('uploads/users_avatar/avatar.jpg') }}"/>
+            <img src="{{ asset('uploads/users_avatar/default/avatar.jpg') }}"/>
         {% endif %}
         {{ form_start(form) }}
         {{ form_widget(form.media) }}
