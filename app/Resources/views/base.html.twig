@@ -15,11 +15,12 @@
         {% block opengraph %}{% endblock %}
     </head>
     <body>
+
         {% include('modules/header.html.twig') %}
 
-        {% block body %}{% endblock %}
+    {% block body %}{% endblock %}
 
-        {% include('modules/footer.html.twig') %}
+         {% include('modules/footer.html.twig') %}
 
         <script src="{{ asset('assets/js/vendor.js') }}"></script>
         <script src="{{ asset('assets/js/app.js') }}"></script>
