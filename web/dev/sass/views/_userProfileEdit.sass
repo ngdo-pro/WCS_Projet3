@@ -1,4 +1,17 @@
 @import "imports"
+#pictureUpload
+  img
+    border-radius: 100%
+    max-width: 25rem
+  input[type=file]:not(old)
+    width: 0.1px
+    height: 0.1px
+    opacity: 0
+    overflow: hidden
+    position: absolute
+    z-index: -1
+  label
+
 
 #profileEdit
   font-family: $title-font2
@@ -23,6 +36,9 @@
         width: 5%
       label
         font-weight: normal
+      button
+        margin-top: 3.5rem
+        width: 100%
 
 
 

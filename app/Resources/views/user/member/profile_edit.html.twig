@@ -1,11 +1,14 @@
 {% extends 'user/layout.html.twig' %}
 
 {% block avatar %}
-    <img src="{{ asset('uploads/users_avatar/avatar.jpg') }}"/>
-    {{ form_start(form) }}
-    {{ form_label(form.media) }}
-    {{ form_widget(form.media) }}
-    {{ form_errors(form) }}
+    <div id="pictureUpload">
+        {# TODO create the function for get the user avatar if it's not null, else return avatar.jpg #}
+        <img src="{{ asset('uploads/users_avatar/avatar.jpg') }}"/>
+        {{ form_start(form) }}
+        {{ form_widget(form.media) }}
+        <label for="app_user_profile_media"><span class="glyphicon glyphicon-camera"></span></label>
+        {{ form_errors(form) }}
+    </div>
 {% endblock %}
 
 {% block content %}
@@ -54,11 +57,8 @@
                 {{ form_widget(form.plainPassword) }}
             </div>
 
-            <div class="col-md-6">
+            <div id="submitButton" class="col-md-6">
                 {{ form_widget(form) }}
-            </div>
-            <div class="col-md-6">
-                {{ form_widget(form.submit) }}
             </div>
             {{ form_end(form) }}
 
