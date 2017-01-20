@@ -12,6 +12,7 @@
 
         {% block stylesheets %}{% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        {% block opengraph %}{% endblock %}
     </head>
     <body>
         {% include('modules/header.html.twig') %}

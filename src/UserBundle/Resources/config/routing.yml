@@ -13,3 +13,7 @@ member_registration:
 member_registration_confirmation:
     path: /inscription/valide
     defaults: { _controller: FOSUserBundle:Registration:confirmed }
+
+member_public_profil:
+    path:       /{slug}
+    defaults:   { _controller: UserBundle:Member:publicProfile }
