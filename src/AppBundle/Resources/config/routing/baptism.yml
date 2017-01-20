@@ -1,3 +1,7 @@
+baptism_page:
+    path:       /
+    defaults:   { _controller: AppBundle:Baptism:home }
+
 baptism_search:
     path:       /recherche
     defaults:   { _controller: AppBundle:Baptism:search }

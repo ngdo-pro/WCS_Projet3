@@ -25,3 +25,7 @@ parameters:
     merchant_country:   fr
     currency_code:      978
 
+    # Website absolute url (for email sending)
+
+    base_cdn: ~
+

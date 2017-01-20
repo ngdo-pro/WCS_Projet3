@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="fr" target-language="fr" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="06d0af420d61e4b57621495a9b4e2f3a" resname="become_restaurant">
+        <source>become_restaurant</source>
+        <target>devenir restaurateur</target>
+      </trans-unit>
+      <trans-unit id="e2e11f5f77cf4ee39696c5f4d30b8246" resname="who_are_we">
+        <source>who_are_we</source>
+        <target>qui sommes nous?</target>
+      </trans-unit>
+      <trans-unit id="8aa0c7c23513fd6ffc936d6eca6c64ef" resname="our_restaurants">
+        <source>our_restaurants</source>
+        <target>nos restos</target>
+      </trans-unit>
+      <trans-unit id="88332df2e04bcd4c541ad49c6c03eecf" resname="reservation">
+        <source>reservation</source>
+        <target>réserver</target>
+      </trans-unit>
+      <trans-unit id="b263ac8057a777fcf4b5d7c719335210" resname="gift_cards">
+        <source>gift_cards</source>
+        <target>bons cadeaux</target>
+      </trans-unit>
+      <trans-unit id="126ac9f6149081eb0e97c2e939eaad52" resname="blog">
+        <source>blog</source>
+        <target>blog</target>
+      </trans-unit>
+      <trans-unit id="53a2c328fefc1efd85d75137a9d833ab" resname="contact_us">
+        <source>contact_us</source>
+        <target>nous contacter</target>
+      </trans-unit>
+      <trans-unit id="b46a3a71a72027b02b5f1dbcb1e41c5c" resname="my_account">
+        <source>my_account</source>
+        <target>mon compte</target>
+      </trans-unit>
+      <trans-unit id="a65f9179300dba6f5e7fd3a8f5efcdaf" resname="my_profile">
+        <source>my_profile</source>
+        <target>mon profil</target>
+      </trans-unit>
+      <trans-unit id="9d634e1a156dc0c1611eb4c3cff57276" resname="disconnect">
+        <source>disconnect</source>
+        <target>déconnexion</target>
+      </trans-unit>
+      <trans-unit id="4717d53ebfdfea8477f780ec66151dcb" resname="connection">
+        <source>connection</source>
+        <target>connexion</target>
+      </trans-unit>
+      <trans-unit id="4abaa2bbfb2183b1e707f9cee4a75071" resname="sellings_conditions">
+        <source>sellings_conditions</source>
+        <target>conditions générales de vente</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

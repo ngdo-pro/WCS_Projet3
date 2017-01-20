@@ -7,26 +7,23 @@
         <title>{% block title %}{{ 'homepage.title' | trans({}, 'seo') }}{% endblock %}</title>
         <meta name="google" content="notranslate" />
         <meta name="description" content="{% block description %}{{ 'homepage.description' | trans({}, 'seo') }}{% endblock %}">
-        <link href="{{ asset('vendors/components/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
         <link type='text/css' href='{{ asset('assets/css/vendor.css') }}' rel='stylesheet' media='screen' />
         <link type='text/css' href='{{ asset('assets/css/app.css') }}' rel='stylesheet' media='screen' />
 
         {% block stylesheets %}{% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        {% block opengraph %}{% endblock %}
     </head>
     <body>
 
-
-   {# {% include('modules/header.html.twig') %} #}
+        {% include('modules/header.html.twig') %}
 
     {% block body %}{% endblock %}
 
-   {# {% include('modules/footer.html.twig') %} #}
+         {% include('modules/footer.html.twig') %}
 
         <script src="{{ asset('assets/js/vendor.js') }}"></script>
         <script src="{{ asset('assets/js/app.js') }}"></script>
-        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-        <script src="{{ asset('vendors/components/bootstrap/dist/js/bootstrap.min.js') }}"></script>
         {% block javascripts %}{% endblock %}
     </body>
 </html>

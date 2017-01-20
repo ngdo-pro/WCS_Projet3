@@ -1,0 +1,97 @@
+@import "imports"
+
+
+#baptismChefHeader
+  background: url('../media/img/vivreunbaptemedechef.JPG') 50%
+  background-size: cover
+  height: 100vh
+  position: relative
+  h1
+    color: $font-color1
+    font-family: $main-title-font
+    font-size: $main-title-size
+    font-weight: bold
+    left: 50%
+    margin: 0
+    position: absolute
+    text-align: center
+    top: 50%
+    transform: translateX(-50%) translateY(-50%)
+    span
+      color: $font-color1
+      font-size: 2rem
+      position: absolute
+      text-align: center
+      &.subtitle
+        font-family: $title-font
+        transform: translateX(-50%)
+      &.glyphicon-play-circle
+        font-size: 100px
+        top: 120px
+        transform: translateX(-50%)
+#baptismChefExplanation,
+#baptismChefFoodys
+  background: $bg-color1
+  color: $font-color1
+  padding: 40px 0 50px 0
+  position: relative
+  text-align: center
+  h2
+    font-family: $main-title-font
+    font-size: $title-size
+    margin-bottom: 40px
+    span
+      font-size: $section-size
+  a
+    background: $btn-color2
+    color: $font-color1
+    font-family: $btn-font
+    font-size: $btn-font-size
+    font-weight: bold
+    padding: 15px 30px
+    transition: color 0.2s, background 0.2s
+    &:hover
+      background: $btn-hover3
+      color: $bg-color2
+      text-decoration: none
+    &:active,
+    &:visited,
+    &:focus
+      text-decoration: none
+  #collapseExplanation
+    margin-top: 50px
+    ul
+      font-size: $section-size
+      list-style: none
+      padding: 0
+    div
+      font-family: $main-title-font
+      font-size: $title-size
+      font-weight: bold
+#baptismChefGift
+  background: $bg-color3
+  padding: 40px 0 50px 0
+  text-align: center
+  h2
+    color: $font-color3
+    font-family: $main-title-font
+    font-size: $title-size
+    margin-bottom: 50px
+  a
+    background: $btn-color2
+    border: 1px solid $btn-color1
+    color: $font-color1
+    font-family: $btn-font
+    font-size: $btn-font-size
+    font-weight: bold
+    padding: 15px 30px
+    transition: color 0.2s, background 0.2s
+    &:hover
+      background: $btn-hover3
+      border: 1px solid $btn-border-color
+      color: $bg-color2
+      text-decoration: none
+    &:active,
+    &:visited,
+    &:focus
+      text-decoration: none
