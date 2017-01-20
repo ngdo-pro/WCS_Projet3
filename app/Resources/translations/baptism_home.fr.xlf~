@@ -45,6 +45,22 @@
         <source>boc_explanation.price</source>
         <target>99 €</target>
       </trans-unit>
+      <trans-unit id="b3a20ffbbd332feffe6b95899c21da44" resname="boc_gift.title">
+        <source>boc_gift.title</source>
+        <target>bon cadeau: offrir cette aventure</target>
+      </trans-unit>
+      <trans-unit id="abbf19c3b5b424f08eded3f1d6bbd29f" resname="boc_gift.link">
+        <source>boc_gift.link</source>
+        <target>j'offre un bon cadeau</target>
+      </trans-unit>
+      <trans-unit id="3371bf6553a5cfe75ac0456ebd1c4372" resname="boc_foodys.title">
+        <source>boc_foodys.title</source>
+        <target>voir les foodys qui sont passés à la casserole</target>
+      </trans-unit>
+      <trans-unit id="7ae492748242e21f63b39af1ff38104e" resname="boc_foodys.link">
+        <source>boc_foodys.link</source>
+        <target>je découvre</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

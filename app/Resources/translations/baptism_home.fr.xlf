@@ -53,6 +53,18 @@
         <source>boc_gift.link</source>
         <target>j'offre un bon cadeau</target>
       </trans-unit>
+      <trans-unit id="3371bf6553a5cfe75ac0456ebd1c4372" resname="boc_foodys.title">
+        <source>boc_foodys.title</source>
+        <target>voir les foodys</target>
+      </trans-unit>
+      <trans-unit id="41a7b6c009b4a13bca5d4e79128a5155" resname="boc_foodys.subtitle">
+        <source>boc_foodys.subtitle</source>
+        <target>qui sont passés à la casserole</target>
+      </trans-unit>
+      <trans-unit id="7ae492748242e21f63b39af1ff38104e" resname="boc_foodys.link">
+        <source>boc_foodys.link</source>
+        <target>je découvre</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
