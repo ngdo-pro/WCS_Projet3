@@ -36,6 +36,7 @@ var paths = {
         assets: './web/assets',
         img: './web/assets/media/img'
     }
+
     //compass: 'web/dev/config.rb'
 };
 
@@ -97,6 +98,7 @@ gulp.task('sass', function(){
 });
 
 //the "images" task optimize images
+
 gulp.task('images', function(){
     return gulp.src(paths.img)
         .pipe(gulp.dest(paths.dist.img))
