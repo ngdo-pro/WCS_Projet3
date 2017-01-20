@@ -9,7 +9,9 @@ var sass    = require('gulp-sass');
 var paths = {
     vendorJs: [
         './web/vendors/components/jquery/dist/jquery.min.js',
-        './web/vendors/components/bootstrap/dist/js/bootstrap.min.js'
+        './web/vendors/components/bootstrap/dist/js/bootstrap.min.js',
+        './web/vendors/components/afterglow/dist/afterglow.min.js',
+        './web/vendors/components/jquery-ui/jquery-ui.min.js'
     ],
     vendorCss: [
         'web/vendors/components/bootstrap/dist/css/bootstrap.min.css'
@@ -24,12 +26,16 @@ var paths = {
         'web/dev/sass/*.sass',
         'web/dev/sass/**/*.sass'
     ],
+    img: [
+        'web/dev/sass/media/img/*'
+    ],
     dist: {
         js: './web/assets/js',
         css: './web/assets/css',
         fonts: './web/assets/fonts',
-        assets: './web/assets'
-    },
+        assets: './web/assets',
+        img: './web/assets/media/img'
+    }
     //compass: 'web/dev/config.rb'
 };
 
@@ -90,8 +96,14 @@ gulp.task('sass', function(){
         .pipe(gulp.dest(paths.dist.css))
 });
 
+//the "images" task optimize images
+gulp.task('images', function(){
+    return gulp.src(paths.img)
+        .pipe(gulp.dest(paths.dist.img))
+});
+
 //the "src" task regroup all the sources (made by us) tasks
-gulp.task('src', ['js', 'sass'], function(){
+gulp.task('src', ['js', 'sass', 'images'], function(){
 
 });
 

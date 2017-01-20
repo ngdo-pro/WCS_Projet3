@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="fr" target-language="fr" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="dc19facc4d1617330316a5a3edd479e6" resname="restaurant.title">
+        <source>restaurant.title</source>
+        <target>Restaurant</target>
+      </trans-unit>
+      <trans-unit id="6e9d71e87deb3a0e991dc528b027c064" resname="date.title">
+        <source>date.title</source>
+        <target>Date</target>
+      </trans-unit>
+      <trans-unit id="5fa6239a8f68fa130288c531dbd02e12" resname="guestCount.title">
+        <source>guestCount.title</source>
+        <target>Nombre de convives</target>
+      </trans-unit>
+      <trans-unit id="4784cd93584b12c9c4d74b6d915d99f5" resname="reservation_status.title">
+        <source>reservation_status.title</source>
+        <target>Mes réservations</target>
+      </trans-unit>
+      <trans-unit id="89be074f7ac4eb8b4117905483977d3b" resname="reservation_action.title">
+        <source>reservation_action.title</source>
+        <target>Action</target>
+      </trans-unit>
+      <trans-unit id="983b84a55b5dd1c82f11cdb65c87dc64" resname="reservation_modify.title">
+        <source>reservation_modify.title</source>
+        <target>Modifier</target>
+      </trans-unit>
+      <trans-unit id="f8cdccff30df0e13ce589de6b9a03d9a" resname="no_reservation.title">
+        <source>no_reservation.title</source>
+        <target>Aucune</target>
+      </trans-unit>
+      <trans-unit id="e196d054ce19a51381180d913286a58a" resname="reservation_add.title">
+        <source>reservation_add.title</source>
+        <target>Ajouter</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

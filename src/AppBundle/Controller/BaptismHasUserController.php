@@ -70,7 +70,7 @@ class BaptismHasUserController extends Controller
                 $em->persist($baptismNewGuest);
                 $em->flush();
 
-                return $this->redirect($this->generateUrl('baptism_guest', array('id' => $baptismHasUser->getId())));
+                return $this->redirect($this->generateUrl('member_public_profil', array('slug' => $baptismHasUser->getUser()->getSlug())));
             }
             return $this->render('app/baptism_has_user/guest/baptism_guest.html.twig', array(
                 'baptism_has_user'          => $baptismHasUser,
@@ -96,7 +96,7 @@ class BaptismHasUserController extends Controller
 
                 $em->flush();
 
-                return $this->redirect($this->generateUrl('baptism_guest', array('id' => $baptismHasUser->getId())));
+                return $this->redirect($this->generateUrl('member_public_profil', array('slug' => $baptismHasUser->getUser()->getSlug())));
             }
             return $this->render('app/baptism_has_user/guest/baptism_guest.html.twig', array(
                 'baptism_has_user'          => $baptismHasUser,
