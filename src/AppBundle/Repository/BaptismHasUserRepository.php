@@ -94,5 +94,32 @@ class BaptismHasUserRepository extends \Doctrine\ORM\EntityRepository
 
         return $currentUser;
     }
+
+    public function findByUserAndRole(User $user, $role){
+        $baptismsHasUser = $this->createQueryBuilder('bhu')
+            ->select('bhu')
+            ->where('bhu.user = :user')
+            ->andWhere('bhu.role = :role')
+            ->innerJoin('bhu.baptism', 'b')
+            ->orderBy('b.date', 'DESC')
+            ->setParameter('user', $user)
+            ->setParameter('role', $role)
+            ->getQuery()
+            ->getResult();
+
+        $results = array();
+        $i = 0;
+
+        /** @var BaptismHasUser $baptismHasUser */
+        foreach ($baptismsHasUser as $baptismHasUser){
+            $results[$i] = array(
+                "baptismHasUser" => $baptismHasUser,
+                "guestNumber" => $this->findHowManyGuest($baptismHasUser->getBaptism())
+            );
+            $i++;
+        }
+
+        return $results;
+    }
     
 }

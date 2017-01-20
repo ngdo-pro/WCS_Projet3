@@ -1,3 +1,4 @@
+{% trans_default_domain 'header_footer' %}
 <header>
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
@@ -12,12 +13,12 @@
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li class="navbar-menu"><a class="navbar-link" href="">NOS RESTOS</a></li>
-                    <li class="navbar-menu"><a class="navbar-link" href="">RÉSERVER</a></li>
-                    <li class="navbar-menu"><a class="navbar-link" href="">BONS CADEAUX</a></li>
+                    <li class="navbar-menu"><a class="navbar-link" href="">{{ 'our_restaurants' |trans |upper}}</a></li>
+                    <li class="navbar-menu"><a class="navbar-link" href="">{{ 'reservation' |trans |upper}}</a></li>
+                    <li class="navbar-menu"><a class="navbar-link" href="">{{ 'gift_cards' |trans |upper}}</a></li>
                     <li class="navbar-menu" id="brand-logo"><a class="navbar-link" href=""><img class="navbar-img" src="{{ asset('img/logo-home.png') }}"></a></li>
-                    <li class="navbar-menu"><a class="navbar-link" href="">BLOG</a> </li>
-                    <li class="navbar-menu"><a class="navbar-link" href="">NOUS CONTACTER</a></li>
+                    <li class="navbar-menu"><a class="navbar-link" href="">{{ 'blog' |trans |upper}}</a> </li>
+                    <li class="navbar-menu"><a class="navbar-link" href="">{{ 'contact_us' |trans |upper}}</a></li>
                     {% if app.user %}  {# when user is connected , his firstname appears instead of connection link  #}
                     <li class="dropdown myAccount">
                         <a class="dropdown-toggle text-uppercase" data-toggle="dropdown" aria-expanded="false" >
@@ -25,18 +26,18 @@
                         </a>
                         <ul class="dropdown-menu"> {# user menu - acount infos and profile access#}
                             <li class="dropdown-menu--list">
-                                <a href="">MON COMPTE</a>
+                                <a href="">{{ 'my_account' |trans |upper}}</a>
                             </li>
                             <li class="dropdown-menu--list">
-                                <a href="">MON PROFIL</a>
+                                <a href="">{{ 'my_profile' |trans |upper}}</a>
                             </li>
                             <li class="dropdown-menu--list">
-                                <a href="">DÉCONNEXION</a>
+                                <a href="">{{ 'disconnect' |trans |upper}}</a>
                             </li>
                         </ul>
                     </li>
                     {% else %}
-                    <li class="navbar-menu"><a class="navbar-link" href="">CONNEXION</a></li>
+                    <li class="navbar-menu"><a class="navbar-link" href="">{{ 'connection' |trans |upper}}</a></li>
                     {% endif %}
                 </ul>
             </div>
