@@ -53,6 +53,10 @@
         <source>sellings_conditions</source>
         <target>conditions générales de vente</target>
       </trans-unit>
+      <trans-unit id="3a64b29df718f3c5903239281fd69124" resname="visit-blog">
+        <source>visit-blog</source>
+        <target>visitez notre blog !</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

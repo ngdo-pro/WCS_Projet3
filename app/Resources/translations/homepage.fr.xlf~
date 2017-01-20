@@ -81,6 +81,10 @@
         <source>home_mozaic7_h3</source>
         <target>nos foodys joyeux</target>
       </trans-unit>
+      <trans-unit id="3a64b29df718f3c5903239281fd69124" resname="visit-blog">
+        <source>visit-blog</source>
+        <target>Visitez notre blog !</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
