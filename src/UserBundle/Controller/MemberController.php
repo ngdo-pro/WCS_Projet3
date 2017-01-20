@@ -100,6 +100,7 @@ class MemberController extends Controller
         $form = $this->createForm(ProfileType::class, $user);
         $form->handleRequest($request)->isValid();
 
+        // Check the form
         if ($form->isSubmitted() && $form->isValid()) {
             /** @var  $userManager UserManagerInterface */
             $userManager = $this->get('fos_user.user_manager');
@@ -110,11 +111,12 @@ class MemberController extends Controller
 
             $userManager->updateUser($user);
 
-
+            // Here we check if an image was uploaded or not
             if ($request->files->get('app_user_profile')['media'] != null) {
                 /** @var UploadedFile $file */
                 $file = $request->files->get('app_user_profile')['media'];
 
+                // We test the image extension, if it's good we continue the process
                 if ($file->guessExtension() == 'jpg' || $file->guessExtension() == 'jpeg' || $file->guessExtension() == 'png') {
 
                     if ($user->getMedia() == null) {
@@ -123,6 +125,7 @@ class MemberController extends Controller
                         $media = $user->getMedia();
                     }
 
+                    // Here we attribute an unique name on the picture
                     $fileName = md5(uniqid()) . '.' . $file->guessExtension();
 
                     $file->move(
@@ -149,10 +152,16 @@ class MemberController extends Controller
         if ($error == true) {
             $error = 'fos_user.media.type';
         }
+        // Here we get the picture if is in the database for the view
+        $userPicture = null;
+        if ($user->getMedia() != null){
+            $userPicture = $user->getMedia()->getName();
+        }
 
         return $this->render('user/member/profile_edit.html.twig', array(
             'form' => $form->createView(),
             'error' => $error,
+            'avatar' => $userPicture,
         ));
     }
 

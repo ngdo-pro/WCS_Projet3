@@ -1,5 +1,7 @@
 @import "imports"
 #pictureUpload
+  position: relative
+  margin: auto
   img
     border-radius: 100%
     max-width: 25rem
@@ -11,6 +13,19 @@
     position: absolute
     z-index: -1
   label
+    position: absolute
+    transform: translateX(-50%) translateY(10%)
+    left: 50%
+    bottom: 0
+    cursor: pointer
+    .glyphicon-camera
+      font-size: 2.5rem
+      color: $font-color5
+      &:hover
+        transform: translateY(11%)
+        font-size: 3rem
+        color: $btn-hover
+
 
 
 #profileEdit
