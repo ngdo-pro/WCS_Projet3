@@ -1,9 +1,44 @@
 {% extends 'base.html.twig' %}
+{% trans_default_domain "user" %}
 
 {% block body %}
+    <section id="userLayout">
+        <div id="avatar">
+        {% block avatar %}
+            {% if avatar != null %}
+                <img src="{{ asset('uploads/users_avatar/' ~ avatar) }}"/>
+            {% else %}
+                <img src="{{ asset('uploads/users_avatar/default/avatar.jpg') }}"/>
+            {% endif %}
+        {% endblock %}
+        </div>
 
-    <h1>User Layout</h1>
-    {% block content %}
-    {% endblock %}
+        <div class="container-fluid">
+            <div class="row">
+                <div id="menuContent" class="col-md-3 col-md-offset-1">
+                    <h2>{{ "menu.title" |trans |upper }}</h2>
+                    <ul>
+                        <li><a href="{{ path('member_profile_edit') }}">{{ "menu.profile" |trans |capitalize }}
+                            </a><span class="glyphicon glyphicon-user pull-right"></span></li>
+                        <li>{{ "menu.orders" |trans |capitalize }}<span
+                                    class="glyphicon glyphicon-euro pull-right"></span></li>
+                        <ul>
+                            <li><a href="#">{{ "menu.baptem" |trans |capitalize }}</a></li>
+                            <li><a href="#">{{ "menu.reservation" |trans |capitalize }}</a></li>
+                            <li><a href="#">{{ "menu.gift" |trans |capitalize }}</a></li>
+                            <li><a href="#">{{ "menu.goodBuy" |trans |capitalize }}</a></li>
+                        </ul>
+                        <li><a href="{{ path('fos_user_security_logout') }}">
+                                {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+                            </a><span class="glyphicon glyphicon-off pull-right"></span></li>
+                    </ul>
+                </div>
+                <div class="col-md-offset-2 col-md-4">
+                    {% block content %}
+                    {% endblock %}
+                </div>
+            </div>
+        </div>
+    </section>
 
 {% endblock %}

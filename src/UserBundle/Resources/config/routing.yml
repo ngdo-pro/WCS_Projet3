@@ -1,6 +1,22 @@
 member_orders:
     path:       /mes-commandes
-    defaults:   { _controller: UserBundle:Member:order }
+    defaults: { _controller: UserBundle:Member:order }
+
+member_profile_edit:
+    path: /editer-mon-profil
+    defaults: { _controller: UserBundle:Member:edit }
+
+member_registration:
+    path: /inscription
+    defaults: { _controller: FOSUserBundle:Registration:register }
+
+member_registration_confirmation:
+    path: /inscription/valide
+    defaults: { _controller: FOSUserBundle:Registration:confirmed }
+
+member_connection:
+    path: /connexion
+    defaults: { _controller: FOSUserBundle:Security:login}
 
 member_public_profil:
     path:       /{slug}

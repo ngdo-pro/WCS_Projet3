@@ -16,7 +16,7 @@
                     <li class="navbar-menu"><a class="navbar-link" href="">{{ 'our_restaurants' |trans |upper}}</a></li>
                     <li class="navbar-menu"><a class="navbar-link" href="">{{ 'reservation' |trans |upper}}</a></li>
                     <li class="navbar-menu"><a class="navbar-link" href="">{{ 'gift_cards' |trans |upper}}</a></li>
-                    <li class="navbar-menu" id="brand-logo"><a class="navbar-link" href=""><img class="navbar-img" src="{{ asset('img/logo-home.png') }}"></a></li>
+                    <li class="navbar-menu" id="brand-logo"><a class="navbar-link" href="{{ path('app_homepage') }}"><img class="navbar-img" src="{{ asset('img/logo-home.png') }}"></a></li>
                     <li class="navbar-menu"><a class="navbar-link" href="">{{ 'blog' |trans |upper}}</a> </li>
                     <li class="navbar-menu"><a class="navbar-link" href="">{{ 'contact_us' |trans |upper}}</a></li>
                     {% if app.user %}  {# when user is connected , his firstname appears instead of connection link  #}
@@ -26,7 +26,7 @@
                         </a>
                         <ul class="dropdown-menu"> {# user menu - acount infos and profile access#}
                             <li class="dropdown-menu--list">
-                                <a href="">{{ 'my_account' |trans |upper}}</a>
+                                <a href="{{ path('member_profile_edit') }}">{{ 'my_account' |trans |upper}}</a>
                             </li>
                             <li class="dropdown-menu--list">
                                 <a href="">{{ 'my_profile' |trans |upper}}</a>
@@ -37,7 +37,7 @@
                         </ul>
                     </li>
                     {% else %}
-                    <li class="navbar-menu"><a class="navbar-link" href="">{{ 'connection' |trans |upper}}</a></li>
+                    <li class="navbar-menu"><a class="navbar-link" href="{{ path('member_connection') }}">{{ 'connection' |trans |upper}}</a></li>
                     {% endif %}
                 </ul>
             </div>

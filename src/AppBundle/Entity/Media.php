@@ -2,13 +2,16 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
 /**
  * Media
  */
 class Media
 {
     /**
-     * @var int
+     * @var integer
      */
     private $id;
 
@@ -32,11 +35,38 @@ class Media
      */
     private $context;
 
+    /**
+     * @var string
+     */
+    private $type;
+
+    /**
+     * @var \UserBundle\Entity\User
+     */
+    private $user;
+
+    /**
+     * @var \AppBundle\Entity\Restaurant
+     */
+    private $restaurant;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $posts;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->posts = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Get id
      *
-     * @return int
+     * @return integer
      */
     public function getId()
     {
@@ -138,11 +168,6 @@ class Media
     {
         return $this->context;
     }
-    /**
-     * @var string
-     */
-    private $type;
-
 
     /**
      * Set type
@@ -167,11 +192,6 @@ class Media
     {
         return $this->type;
     }
-    /**
-     * @var \UserBundle\Entity\User
-     */
-    private $user;
-
 
     /**
      * Set user
@@ -196,11 +216,6 @@ class Media
     {
         return $this->user;
     }
-    /**
-     * @var \AppBundle\Entity\Restaurant
-     */
-    private $restaurant;
-
 
     /**
      * Set restaurant
@@ -225,57 +240,6 @@ class Media
     {
         return $this->restaurant;
     }
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
-    private $postsMedias;
-
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->postsMedias = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
-    /**
-     * Add postsMedia
-     *
-     * @param \BlogBundle\Entity\Post $postsMedia
-     *
-     * @return Media
-     */
-    public function addPostsMedia(\BlogBundle\Entity\Post $postsMedia)
-    {
-        $this->postsMedias[] = $postsMedia;
-
-        return $this;
-    }
-
-    /**
-     * Remove postsMedia
-     *
-     * @param \BlogBundle\Entity\Post $postsMedia
-     */
-    public function removePostsMedia(\BlogBundle\Entity\Post $postsMedia)
-    {
-        $this->postsMedias->removeElement($postsMedia);
-    }
-
-    /**
-     * Get postsMedias
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getPostsMedias()
-    {
-        return $this->postsMedias;
-    }
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
-    private $posts;
-
 
     /**
      * Add post
