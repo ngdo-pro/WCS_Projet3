@@ -17,7 +17,7 @@
 
 {% block content %}
     <section id="profileEdit" class="container-fluid">
-        <h2>MON PROFIL</h2>{#TODO translate #}
+        <h2>{{ 'myProfile' |trans({},'user') |upper}}</h2>
         <div class="row">
             <div class="col-md-12">
                 {{ form_label(form.civility) }}<br/>
