@@ -2,7 +2,7 @@ var $collectionHolder;
 
 var $addEmailLink = $('<button class="add_email_link glyphicon glyphicon-plus"></button>');
 var $delEmailLink = $('<button class="del_email_link glyphicon glyphicon-minus"></button>');
-var $newLinkLi = $('<div></div>').append($addEmailLink).append($delEmailLink);
+var $newLinkLi = $('<div id="emailButton"></div>').append($addEmailLink).append($delEmailLink);
 
 function addEmailForm($collectionHolder, $newLinkLi) {
     var prototype = $collectionHolder.data('prototype');
@@ -25,6 +25,8 @@ jQuery(document).ready(function() {
     $collectionHolder.data('index', $collectionHolder.find(':input').length);
 
     addEmailForm($collectionHolder, $newLinkLi);
+
+    $('#form_validate').appendTo($('#emailButton'));
 
     $($delEmailLink).on('click',function (e) {
         e.preventDefault();

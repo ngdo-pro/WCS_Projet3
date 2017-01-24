@@ -37,7 +37,11 @@ class MemberController extends Controller
                     'allow_delete'  => true,
                 )
             )
-            ->add('validate', SubmitType::class, array('label' => 'form.send', 'translation_domain' => 'FOSUserBundle'))
+            ->add('validate', SubmitType::class, array(
+                'label' => 'form.send',
+                'translation_domain' => 'FOSUserBundle',
+                'attr' => array('class' => 'pull-right')
+                ))
             ->getForm();
         $form->handleRequest($request);
 
