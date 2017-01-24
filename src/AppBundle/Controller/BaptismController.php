@@ -14,6 +14,7 @@ use AppBundle\Entity\Baptism;
 use AppBundle\Entity\BaptismHasUser;
 use AppBundle\Entity\Payment;
 use AppBundle\Entity\Price;
+use AppBundle\Entity\ServiceOpening;
 use AppBundle\Form\BaptismSearchType;
 use SogenactifBundle\Entity\Transaction;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -55,6 +56,7 @@ class BaptismController extends Controller
             $service = $form->get('service')->getData();
             $nbPlaces = $form->get('nb')->getData();
             $baptisms = $em->getRepository("AppBundle:Baptism")->findSearch($city,$restaurantName,$baptismDate,$service);
+            /** @var Baptism $baptism */
             foreach($baptisms as $baptism){
 
                 if ($nbPlaces <= $baptism->getPlaces()) {
@@ -87,6 +89,7 @@ class BaptismController extends Controller
             }
             //$nbPlaces
 
+            /** @var ServiceOpening $serviceOpening */
             foreach($serviceOpenings as $serviceOpening){
                 $weekDay = $startDate->format ('w');
                 switch ($weekDay) {
@@ -131,7 +134,7 @@ class BaptismController extends Controller
             return $this->redirectToRoute('baptism_select');
         }
 
-        return $this->render('app/baptism/search.html.twig', array(
+        return $this->render('app/baptism/widgets/search.html.twig', array(
             'form' => $form->createView()
         ));
     }
