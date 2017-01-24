@@ -16,4 +16,8 @@
 /web/assets/fonts/*
 /web/assets/js/*
 /web/.sass-cache/*
+/web/assets/media/*
 /src/SogenactifBundle/Api/params/pathfile
+/web/uploads/users_avatar/
+/web/uploads/users_avatar/default/avatar.jpg
+/web/uploads/users_avatar/default/

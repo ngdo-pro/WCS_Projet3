@@ -1,0 +1,43 @@
+{% trans_default_domain 'header_footer' %}
+
+<footer class="footer">
+    <div class="col-md-12" id="visit-blog">
+        <button id="blog-button">
+            {{ 'visit-blog' |trans |upper }}
+        </button>
+    </div>
+    <div class="container-fluid">
+        <div class="row box row-xs-center">
+            <div class="col-sm-2 col-xs-12 footer-menu--logoMobile">
+                <a class= "footer-link" href=""><img class="footer-img" src="{{ asset('img/logo-pin.png') }}"></a>
+            </div>
+            <div class="col-xs-12 hr--hidden">
+                <hr>
+            </div>
+            <div class="col-sm-2 col-sm-offset-1 col-xs-12 footer-menu">
+                <a class="footer-link" href="#">{{ 'become_restaurant' |trans |upper}}</a>
+            </div>
+            <div class="col-xs-12 hr--hidden">
+                <hr>
+            </div>
+            <div class="col-sm-2 col-xs-12 footer-menu">
+                <a class="footer-link" href="#">{{ 'who_are_we' |trans |upper}}</a>
+            </div>
+            <div class="col-xs-12 hr--hidden">
+                <hr>
+            </div>
+            <div class="col-sm-2 col-xs-12 footer-menu--logoDesktop">
+                <a class= "footer-link" href=""><img class="footer-img" src="{{ asset('img/logo-pin.png') }}"></a>
+            </div>
+            <div class="col-sm-2 col-xs-12 footer-menu">
+                <a class="footer-link" href="#">{{ 'sellings_conditions' |trans |upper}}</a>
+            </div>
+            <div class="col-xs-12 hr--hidden">
+                <hr>
+            </div>
+            <div class="col-sm-2 col-xs-12 footer-menu footer-menu--bottom">
+                <a class="footer-link" href="#">{{ 'contact_us' |trans |upper}}</a>
+            </div>
+        </div>
+    </div>
+</footer>

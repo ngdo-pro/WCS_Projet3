@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+{% trans_default_domain 'baptism_home' %}
+{% block body %}
+
+<section class="container-fluid" id="baptismChefHeader">
+    <div class="row">
+        <h1>
+            {{ 'boc.title' |trans |upper }}
+            <br>
+            <span class="subtitle">{{ 'boc.video_launch' |trans |upper }}</span>
+            <a href="#myvideo" class="afterglow" >
+                <span class="glyphicon glyphicon-play-circle" aria-hidden="true"></span>
+                {% include 'app/baptism/modals/modal_home_video.html.twig' %}
+            </a>
+        </h1>
+    </div>
+</section>
+<section class="container-fluid" id="baptismChefExplanation">
+    <h2>{{ 'boc_explanation.title' |trans |upper }}</h2>
+    <a role="button" data-toggle="collapse" href="#collapseExplanation" aria-expanded="false" aria-controls="collapseExplanation">
+        {{ 'boc_explanation.button' |trans |capitalize}}
+    </a>
+    <div id="collapseExplanation" class="collapse">
+        <ul>
+            <li>{{ 'boc_explanation.first_row' |trans |upper }}</li>
+            <li>{{ 'boc_explanation.second_row' |trans |upper }}</li>
+            <li>{{ 'boc_explanation.third_row' |trans |upper }}</li>
+            <li>{{ 'boc_explanation.fourth_row' |trans |upper }}</li>
+            <li>{{ 'boc_explanation.fifth_row' |trans |upper }}</li>
+        </ul>
+        <div>{{ 'boc_explanation.price' |trans |upper }}</div>
+    </div>
+</section>
+<section id="baptismChefGift">
+    <h2>{{ 'boc_gift.title' |trans |upper }}</h2>
+    <a href="#">{{ 'boc_gift.link' |trans |upper }}</a>
+</section>
+<section id="baptismChefFoodys">
+    <h2>
+        {{ 'boc_foodys.title' |trans |upper }}
+        <br>
+        <span class="subtitle">{{ 'boc_foodys.subtitle' |trans |upper}}</span>
+    </h2>
+    <a href="#">{{ 'boc_foodys.link' |trans |upper }}</a>
+</section>
+
+
+{% endblock %}

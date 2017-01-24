@@ -13,6 +13,14 @@
         <source>sign.up</source>
         <target>Inscription</target>
       </trans-unit>
+      <trans-unit id="c2cab2e4f0f4a2ad95ec83f22ab08605" resname="menu.title">
+        <source>menu.title</source>
+        <target>mes infos personnelles</target>
+      </trans-unit>
+      <trans-unit id="77efd5ab64d10c8229919a263b1b6b68" resname="menu.profile">
+        <source>menu.profile</source>
+        <target>mon profil</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

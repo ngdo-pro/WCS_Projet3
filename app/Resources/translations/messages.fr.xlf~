@@ -13,18 +13,6 @@
         <source>cancelled</source>
         <target>__cancelled</target>
       </trans-unit>
-      <trans-unit id="7912a6718c9aeed6fae3a80c09c4aea9" resname="validation.text">
-        <source>validation.text</source>
-        <target>__validation.text</target>
-      </trans-unit>
-      <trans-unit id="bef2a60c401b299ed7a7ac3e7c7b0ccd" resname="people_at_restaurant">
-        <source>people_at_restaurant</source>
-        <target>__people_at_restaurant</target>
-      </trans-unit>
-      <trans-unit id="6196193995af6b7c3c624f22bc6cbcfc" resname="on.date">
-        <source>on.date</source>
-        <target>__on.date</target>
-      </trans-unit>
     </body>
   </file>
 </xliff>

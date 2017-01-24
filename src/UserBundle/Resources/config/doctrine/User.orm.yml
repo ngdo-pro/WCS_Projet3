@@ -9,7 +9,9 @@ UserBundle\Entity\User:
                 strategy: AUTO
     fields:
         civility:
-            type: boolean
+            type: string
+            length: '1'
+            nullable: true
         firstName:
             type: string
             length: 255
@@ -23,19 +25,24 @@ UserBundle\Entity\User:
             nullable: true
         birthDate:
             type: date
+            nullable: true
         address:
             type: string
             length: 255
+            nullable: true
         zipCode:
             type: string
             length: 5
+            nullable: true
         city:
             type: string
             length: 255
+            nullable: true
         mobilePhone:
             type: string
             length: 40
             unique: true
+            nullable: true
         level:
             type: integer
             nullable: true
@@ -52,10 +59,12 @@ UserBundle\Entity\User:
         payments:
             targetEntity: AppBundle\Entity\Payment
             mappedBy: user
-        medias:
-            targetEntity: AppBundle\Entity\Media
-            mappedBy: user
         restaurants:
             targetEntity: AppBundle\Entity\Restaurant
+            mappedBy: user
+
+    oneToOne:
+        media:
+            targetEntity: AppBundle\Entity\Media
             mappedBy: user
     lifecycleCallbacks: {  }

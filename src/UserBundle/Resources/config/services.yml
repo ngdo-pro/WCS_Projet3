@@ -1,6 +1,6 @@
 services:
-    user.user_registration_listener:
-        class: UserBundle\EventListener\UserRegistrationListener
+    user.user_listener:
+        class: UserBundle\EventListener\UserListener
         arguments:
             - @service_container
         tags:

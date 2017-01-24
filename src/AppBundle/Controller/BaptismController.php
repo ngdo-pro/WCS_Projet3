@@ -248,4 +248,8 @@ class BaptismController extends Controller
             'form' => $form->createView()
         ));
     }
+
+    public function homeAction(){
+        return $this->render('app/baptism/home.html.twig');
+    }
 }
