@@ -27,46 +27,46 @@ class LoadCityData extends AbstractFixture implements OrderedFixtureInterface
         $cities = array(
             array(
                 "name" => "lyon",
-                "postalCode" => "69001"
+                "zipCode" => "69001"
             ),
             array(
                 "name" => "lyon",
-                "postalCode" => "69002"
+                "zipCode" => "69002"
             ),
             array(
                 "name" => "lyon",
-                "postalCode" => "69003"
+                "zipCode" => "69003"
             ),
             array(
                 "name" => "lyon",
-                "postalCode" => "69004"
+                "zipCode" => "69004"
             ),
             array(
                 "name" => "lyon",
-                "postalCode" => "69005"
+                "zipCode" => "69005"
             ),
             array(
                 "name" => "lyon",
-                "postalCode" => "69006"
+                "zipCode" => "69006"
             ),
             array(
                 "name" => "lyon",
-                "postalCode" => "69007"
+                "zipCode" => "69007"
             ),
             array(
                 "name" => "lyon",
-                "postalCode" => "69008"
+                "zipCode" => "69008"
             ),
             array(
                 "name" => "lyon",
-                "postalCode" => "69009"
+                "zipCode" => "69009"
             )
         );
         
         foreach($cities as $city){
             $cityObj = new City();
             $cityObj->setName($city["name"]);
-            $cityObj->setPostalCode($city["postalCode"]);
+            $cityObj->setZipCode($city["zipCode"]);
             $manager->persist($cityObj);
         }
 

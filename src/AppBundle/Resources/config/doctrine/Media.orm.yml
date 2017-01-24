@@ -22,13 +22,16 @@ AppBundle\Entity\Media:
         type:
             type: string
             length: 255
-    manyToOne:
+
+    oneToOne:
         user:
             targetEntity: UserBundle\Entity\User
-            inversedBy: medias
+            inversedBy: media
             joinColumn:
                 name: user_id
                 referencedColumnName: id
+
+    manyToOne:
         restaurant:
             targetEntity: AppBundle\Entity\Restaurant
             inversedBy: medias

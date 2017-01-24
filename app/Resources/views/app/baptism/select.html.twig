@@ -5,6 +5,9 @@
     <h3>Context: Visitor has searched for baptisms and here are displayed the matching ones</h3>
     <div class="container">
         <div class="row">
+            {% if (nbBaptism==0) %}
+                <h2>No available baptism found</h2>
+            {% endif %}
             {% for baptism in baptisms %}
                 <div class="col-sm-4">
                     <!-- Here are the datas you can use-->

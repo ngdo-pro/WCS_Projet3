@@ -1,21 +1,22 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: nicolas
- * Date: 18/01/17
- * Time: 05:07
- */
 
 namespace UserBundle\Controller;
 
-
 use AppBundle\Entity\BaptismHasUser;
+use FOS\UserBundle\Event\FormEvent;
+use FOS\UserBundle\FOSUserEvents;
+use FOS\UserBundle\Model\UserInterface;
+use FOS\UserBundle\Model\UserManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
+use UserBundle\Entity\User;
+use UserBundle\Form\ProfileType;
+use AppBundle\Entity\Media;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use Symfony\Component\HttpFoundation\Request;
-use UserBundle\Entity\User;
 
 class MemberController extends Controller
 {
@@ -74,6 +75,97 @@ class MemberController extends Controller
         ));
     }
 
+    /**
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     * Edit Profile Action
+     * TODO validation.xml is not functionnal on this form, find a solution !!!
+     */
+    public function editAction(Request $request)
+    {
+        $error = true;
+        $em = $this->getDoctrine()->getManager();
+        /** @var User $user */
+        $user = $this->getUser();
+
+        // Check if the user is connected
+        if (!is_object($user) || !$user instanceof UserInterface) {
+            Throw $this->createAccessDeniedException('This user does not have access to this section.');
+        }
+        // Initialize the dispatcher for event call
+        /** @var EventDispatcherInterface $dispatcher */
+        $dispatcher = $this->get('event_dispatcher');
+
+        // Create the ProfileType form
+        $form = $this->createForm(ProfileType::class, $user);
+        $form->handleRequest($request)->isValid();
+
+        // Check the form
+        if ($form->isSubmitted() && $form->isValid()) {
+            /** @var  $userManager UserManagerInterface */
+            $userManager = $this->get('fos_user.user_manager');
+
+            // The event UserListener it's call
+            $event = new FormEvent($form, $request);
+            $dispatcher->dispatch(FOSUserEvents::PROFILE_EDIT_SUCCESS, $event);
+
+            $userManager->updateUser($user);
+
+            // Here we check if an image was uploaded or not
+            if ($request->files->get('app_user_profile')['media'] != null) {
+                /** @var UploadedFile $file */
+                $file = $request->files->get('app_user_profile')['media'];
+
+                // We test the image extension, if it's good we continue the process
+                if ($file->guessExtension() == 'jpg' || $file->guessExtension() == 'jpeg' || $file->guessExtension() == 'png') {
+
+                    if ($user->getMedia() == null) {
+                        $media = new Media();
+                    } else {
+                        $media = $user->getMedia();
+                    }
+
+                    // Here we attribute an unique name on the picture
+                    $fileName = md5(uniqid()) . '.' . $file->guessExtension();
+
+                    $file->move(
+                        $this->getParameter('users_avatar_directory'),
+                        $fileName
+                    );
+                    $media->setName($fileName);
+
+                    if ($media->getCreatedAt() == null) {
+                        $media->setCreatedAt(new \DateTime());
+                    }
+
+                    $media->setLastUpdatedAt(new \DateTime());
+                    $media->setContext('user');
+                    $media->setType('img');
+                    $media->setUser($user);
+
+                    $em->persist($media);
+                    $em->flush($media);
+                    $error = false;
+                }
+            }
+        }
+        if ($error == true) {
+            $error = 'fos_user.media.type';
+        }
+        // Here we get the picture if is in the database for the view
+        $userPicture = null;
+        if ($user->getMedia() != null){
+            $userPicture = $user->getMedia()->getName();
+        }
+
+        return $this->render('user/member/profile_edit.html.twig', array(
+            'form' => $form->createView(),
+            'error' => $error,
+            'avatar' => $userPicture,
+        ));
+    }
+
+
     public function publicProfileAction(User $user){
 
         $currentUser = $this->getUser();
@@ -109,5 +201,6 @@ class MemberController extends Controller
             'user'      => $user,
             'baptisms'  => $baptisms
         ));
+
     }
 }

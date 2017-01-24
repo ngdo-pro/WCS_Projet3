@@ -13,15 +13,15 @@
                           <p class="homeHeader-p">{{ 'home_intro' |trans |upper }}</p>
                       </div>
                       <div class="col-md-offset-3 col-md-6 homeHeader-buttonInfo">
-                          <button class="homeHeader-buttonInfo--size">
+                          <button id="homeHeader-knowMore" class="homeHeader-buttonInfo--size" data-toggle="collapse" href="#collapsePresentation" aria-expanded="false" aria-controls="collapsePresentation">
                               {{ 'home_buttonInfo' |trans }}
                           </button>
                       </div>
                   </div>
               </div>
        </div>
-       <div class="container brandPresentation">
-           <div class="row">
+       <div class="container brandPresentation" id="conceptPresentation">
+           <div class="row collapse" id="collapsePresentation">
                <div class="col-md-12 brandPresentation-firstBlock">
                    <h1 class="brandPresentation-title">{{ 'home_secondTitle' |trans |upper }}</h1>
                </div>

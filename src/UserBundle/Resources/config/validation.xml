@@ -4,6 +4,7 @@
     xsi:schemaLocation="http://symfony.com/schema/dic/constraint-mapping
         http://symfony.com/schema/dic/constraint-mapping/constraint-mapping-1.0.xsd">
 
+
     <class name="UserBundle\Entity\User">
         <property name="firstName">
             <constraint name="NotBlank">
@@ -64,13 +65,6 @@
         </property>
 
         <property name="address">
-            <constraint name="NotBlank">
-                <option name="message">fos_user.address.blank</option>
-                <option name="groups">
-                    <value>Registration</value>
-                    <value>Profile</value>
-                </option>
-            </constraint>
             <constraint name="Length">
                 <option name="min">8</option>
                 <option name="minMessage">fos_user.address.short</option>
@@ -93,13 +87,6 @@
         </property>
 
         <property name="city">
-            <constraint name="NotBlank">
-                <option name="message">fos_user.city.blank</option>
-                <option name="groups">
-                    <value>Registration</value>
-                    <value>Profile</value>
-                </option>
-            </constraint>
             <constraint name="Length">
                 <option name="min">2</option>
                 <option name="minMessage">fos_user.city.short</option>
@@ -122,13 +109,6 @@
         </property>
 
         <property name="zipCode">
-            <constraint name="NotBlank">
-                <option name="message">fos_user.zip_code.blank</option>
-                <option name="groups">
-                    <value>Registration</value>
-                    <value>Profile</value>
-                </option>
-            </constraint>
             <constraint name="Length">
                 <option name="min">5</option>
                 <option name="minMessage">fos_user.zip_code.short</option>
@@ -151,13 +131,6 @@
         </property>
 
         <property name="mobilePhone">
-            <constraint name="NotBlank">
-                <option name="message">fos_user.mobile_phone.blank</option>
-                <option name="groups">
-                    <value>Registration</value>
-                    <value>Profile</value>
-                </option>
-            </constraint>
             <constraint name="Length">
                 <option name="min">10</option>
                 <option name="minMessage">fos_user.mobile_phone.short</option>

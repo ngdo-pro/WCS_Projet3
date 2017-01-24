@@ -6,27 +6,56 @@ use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Form\FormInterface;
+use AppBundle\Entity\City;
+use Doctrine\ORM\EntityRepository;
+use Symfony\Component\Form\FormEvent;
+use Symfony\Component\Form\FormEvents;
+use AppBundle\Repository\RestaurantRepository;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class BaptismSearchType extends AbstractType
 {
+    private $restaurantRepository;
+
+    public function configureOptions( OptionsResolver $resolver ) {
+        $resolver->setRequired(['restaurantRepository']);
+    }
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+
         $builder->add(
             'city',
             EntityType::class,
             array(
                 'class'   => 'AppBundle:City',
                 'choice_label' => 'name',
-            )
-        );
-        $builder->add(
-            'restaurant',
-            TextType::class,
-            array(
                 'required' => false,
-
+                'placeholder' => 'City'
             )
         );
+        $this->restaurantRepository = $options['restaurantRepository'];
+        $formModifier = function (FormInterface $form, City $city = null) {
+            if ($city === null) {
+                $form->add('restaurant', EntityType::class, array(
+                    'class'       => 'AppBundle:Restaurant',
+                    'placeholder' => 'Restaurant',
+                    'choice_label' => 'name',
+                    'required' => false,
+                    'choices'     => array(),
+                ));} else {
+                $restaurants = $this->restaurantRepository->findRestaurantListCity($city->getName(),$city->getZipCode());
+                $form->add('restaurant', EntityType::class, array(
+                    'class'       => 'AppBundle:Restaurant',
+                    'placeholder' => 'Restaurant',
+                    'choice_label' => 'name',
+                    'required' => false,
+                    'choices'     => $restaurants
+                ));
+            };
+
+        };
+
         $builder->add(
             'nb',
             IntegerType::class
@@ -46,7 +75,34 @@ class BaptismSearchType extends AbstractType
             EntityType::class, array(
                 'class'   => 'AppBundle:Service',
                 'choice_label' => 'name',
+                'required' => false,
+                'placeholder'=>'Service',
             )
+        );
+        
+
+
+        $builder->addEventListener(
+            FormEvents::PRE_SET_DATA,
+            function (FormEvent $event) use ($formModifier) {
+               
+                $data = $event->getData();
+                if (is_null($data)) {
+                    $city = $event->getForm()->getData()->getCity();
+                } else {
+                    $city = $data->getCity();
+                }
+                $formModifier($event->getForm(), $city);
+            }
+        );
+
+        $builder->get('city')->addEventListener(
+            FormEvents::POST_SUBMIT,
+            function (FormEvent $event) use ($formModifier) {
+
+                $city = $event->getForm()->getData();
+                $formModifier($event->getForm()->getParent(), $city);
+            }
         );
     }
 
