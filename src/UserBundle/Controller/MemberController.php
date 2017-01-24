@@ -67,11 +67,16 @@ class MemberController extends Controller
                 $this->get('mailer')->send($message);
             }
         }
+        $userPicture = null;
+        if ($user->getMedia() != null){
+            $userPicture = $user->getMedia()->getName();
+        }
 
         return $this->render('user/member/my_orders.html.twig', array(
             'user'              => $user,
             'ordersBaptised'    => $ordersBaptised,
-            'form'              => $form->createView()
+            'form'              => $form->createView(),
+            'avatar'            => $userPicture,
         ));
     }
 

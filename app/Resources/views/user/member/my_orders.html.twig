@@ -1,47 +1,61 @@
 {% extends 'user/layout.html.twig' %}
 {% trans_default_domain 'my-orders' %}
-{% block content %}
-
-    <h2>{{ 'my_baptisms.title' |trans }}</h2>
-    <h3>{{ 'my_next_baptisms.subtitle' |trans }}</h3>
-
-    {% for order in ordersBaptised %}
-        {% if loop.first %}
-
-            <p>{{ 'date.title' |trans }} : {{ order.baptismHasUser.baptism.date |date }}</p>
-            <p>{{ 'restaurant.title' |trans }} : {{ order.baptismHasUser.baptism.restaurant.name }}</p>
-            <p><a href="{{ path('restaurant', {'slug': order.baptismHasUser.baptism.restaurant.slug}) }}">{{ 'my_next_baptism.see_link' |trans }}</a></p>
-            <p>{{ 'guestCount.title' |trans }} : {{ 'guestNumber.data' |transchoice(order.guestNumber,{'guestNumber': order.guestNumber}) }}</p>
-            {{ form_start(form) }}
-            <div
-                class="fb-share-button"
-                data-href="{{ path('member_public_profil', {"slug": user.slug}) }}"
-                data-layout="button"
-                data-size="small"
-                data-mobile-iframe="true">
-                <a
-                    class="fb-xfbml-parse-ignore"
-                    target="_blank"
-                    href="https://www.facebook.com/sharer/sharer.php?u={{ base_url ~ path('member_public_profil', {"slug": user.slug}) }}&amp;src=sdkpreparse">
-                        Partager
-                </a>
-            </div>
-            <ul class="emails" data-prototype="{{ form_widget(form.emails.vars.prototype)|e('html_attr') }}"></ul>
-            {{ form_end(form) }}
-
+{% block avatar %}
+    <div id="pictureUpload">
+        {% if avatar != null %}
+            <img src="{{ asset('uploads/users_avatar/' ~ avatar) }}"/>
+        {% else %}
+            <img src="{{ asset('uploads/users_avatar/default/avatar.jpg') }}"/>
         {% endif %}
-    {% endfor %}
+    </div>
+{% endblock %}
 
-    <table>
-        <thead>
+{% block content %}
+    <section id="profileOrder" class="container-fluid">
+
+        <h2>{{ 'my_baptisms.title' |trans }}</h2>
+        <h3>{{ 'my_next_baptisms.subtitle' |trans }}</h3>
+
+        {% for order in ordersBaptised %}
+            {% if loop.first %}
+
+                <p>{{ 'date.title' |trans }} : {{ order.baptismHasUser.baptism.date |date }}</p>
+                <p>{{ 'restaurant.title' |trans }} : {{ order.baptismHasUser.baptism.restaurant.name }}</p>
+                <p>
+                    <a href="{{ path('restaurant', {'slug': order.baptismHasUser.baptism.restaurant.slug}) }}">{{ 'my_next_baptism.see_link' |trans }}</a>
+                </p>
+                <p>{{ 'guestCount.title' |trans }}
+                    : {{ 'guestNumber.data' |transchoice(order.guestNumber,{'guestNumber': order.guestNumber}) }}</p>
+                {{ form_start(form) }}
+                <div
+                        class="fb-share-button"
+                        data-href="{{ path('member_public_profil', {"slug": user.slug}) }}"
+                        data-layout="button"
+                        data-size="small"
+                        data-mobile-iframe="true">
+                    <a
+                            class="fb-xfbml-parse-ignore"
+                            target="_blank"
+                            href="https://www.facebook.com/sharer/sharer.php?u={{ base_url ~ path('member_public_profil', {"slug": user.slug}) }}&amp;src=sdkpreparse">
+                        Partager
+                    </a>
+                </div>
+                <ul class="emails" data-prototype="{{ form_widget(form.emails.vars.prototype)|e('html_attr') }}"></ul>
+                {{ form_end(form) }}
+
+            {% endif %}
+        {% endfor %}
+
+        <table>
+            <thead>
             <tr>
                 <th>{{ 'restaurant.title' |trans }}</th>
                 <th>{{ 'date.title' |trans }}</th>
                 <th>{{ 'guestCount.title' |trans }}</th>
                 <th>{{ 'bill.title' |trans }}</th>
             </tr>
-        </thead>
-        <tbody>
+            </thead>
+            <tbody>
             {% for order in ordersBaptised %}
                 {% if order.baptismHasUser.baptism.status == 'done' %}
                     <tr>
@@ -52,7 +66,7 @@
                     </tr>
                 {% endif %}
             {% endfor %}
-        </tbody>
-    </table>
-
+            </tbody>
+        </table>
+    </section>
 {% endblock %}
