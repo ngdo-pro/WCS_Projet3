@@ -26,12 +26,10 @@
 
                 <p><span>{{ 'date.title' |trans }}
                         : {{ order.baptismHasUser.baptism.date | localizeddate('full', 'none') }}</span><br/>
-                    <span>{{ 'restaurant.title' |trans }} : {{ order.baptismHasUser.baptism.restaurant.name }}</span>
+                        <span>{{ 'restaurant.title' |trans }} : <a href="{{ path('restaurant', {'slug': order.baptismHasUser.baptism.restaurant.slug}) }}">{{ order.baptismHasUser.baptism.restaurant.name |title }}</span>
+                    </a>
                 </p>
 
-                <p>
-                    <a href="{{ path('restaurant', {'slug': order.baptismHasUser.baptism.restaurant.slug}) }}">{{ 'my_next_baptism.see_link' |trans }}</a>
-                </p>
                 <p>{{ 'guestCount.title' |trans }}
                     : {{ 'guestNumber.data' |transchoice(order.guestNumber,{'guestNumber': order.guestNumber}) }}</p>
 
@@ -48,7 +46,7 @@
                     {% for order in ordersBaptised %}
                         {% if order.baptismHasUser.baptism.status == 'done' %}
                             <tr>
-                                <td>{{ order.baptismHasUser.baptism.restaurant.name }}</td>
+                                <td>{{ order.baptismHasUser.baptism.restaurant.name |title }}</td>
                                 <td>{{ order.baptismHasUser.baptism.date | localizeddate('short', 'none') }}</td>
                                 <td>{{ order.guestNumber }}</td>
                                 <td>link</td>
