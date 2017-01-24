@@ -21,6 +21,26 @@
         <source>menu.profile</source>
         <target>mon profil</target>
       </trans-unit>
+      <trans-unit id="72dc65e25f404656d48471a2bd7df8f5" resname="menu.orders">
+        <source>menu.orders</source>
+        <target>mes commandes</target>
+      </trans-unit>
+      <trans-unit id="fa6a542ad59087de0526f64a162bd3c8" resname="menu.baptem">
+        <source>menu.baptem</source>
+        <target>baptême de chef</target>
+      </trans-unit>
+      <trans-unit id="79641de9e6fcfcdfa39cecccd1d41ae0" resname="menu.reservation">
+        <source>menu.reservation</source>
+        <target>reservation</target>
+      </trans-unit>
+      <trans-unit id="abc006cc902bf71f0045b03567b3d575" resname="menu.gift">
+        <source>menu.gift</source>
+        <target>bons cadeaux</target>
+      </trans-unit>
+      <trans-unit id="ab6d07919090605bca0d767d704fd9af" resname="menu.goodBuy">
+        <source>menu.goodBuy</source>
+        <target>bons d'achat</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
