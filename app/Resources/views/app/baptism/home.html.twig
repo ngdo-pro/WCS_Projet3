@@ -8,11 +8,12 @@
             {{ 'boc.title' |trans |upper }}
             <br>
             <span class="subtitle">{{ 'boc.video_launch' |trans |upper }}</span>
-            <a href="#myvideo" class="afterglow" >
-                <span class="glyphicon glyphicon-play-circle" aria-hidden="true"></span>
-                {% include 'app/baptism/modals/modal_home_video.html.twig' %}
-            </a>
         </h1>
+        <a href="#myvideo" class="afterglow" >
+            <span class="glyphicon glyphicon-play-circle" aria-hidden="true"></span>
+            {% include 'app/baptism/modals/modal_home_video.html.twig' %}
+        </a>
+        {% render(controller('AppBundle:Baptism:search')) %}
     </div>
 </section>
 <section class="container-fluid" id="baptismChefExplanation">
