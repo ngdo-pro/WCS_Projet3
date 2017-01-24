@@ -4,6 +4,10 @@ namespace AppBundle\Repository;
 
 use AppBundle\Entity\Baptism;
 
+use datetime;
+use AppBundle\Entity\City;
+use AppBundle\Entity\Service;
+
 /**
  * BaptemRepository
  *
@@ -12,4 +16,36 @@ use AppBundle\Entity\Baptism;
  */
 class BaptismRepository extends \Doctrine\ORM\EntityRepository
 {
+
+    public function findSearch(City $city, $restaurant, $baptismDate, Service $service)
+    {
+
+
+        $query = $this->createQueryBuilder('b')
+            ->innerJoin('b.restaurant', 'r')
+            ->innerJoin('b.service', 's')
+            ->where('b.places >= 0');
+
+        if (!is_null($restaurant) && $restaurant != '') {
+            $query = $query->andWhere('r.name = :restaurant')
+                ->setParameter('restaurant', $restaurant);
+        } elseif (!is_null($city)) {
+            $query = $query->andWhere('r.city = :city')
+                ->setParameter('city', $city->getName())
+                ->andWhere('r.postalCode = :zipCode')
+                ->setParameter('zipCode', $city->getzipCode());
+        }
+
+        if (!is_null($baptismDate)) {
+            $query = $query->andWhere("b.date = '$baptismDate'");
+        }
+
+        if (!is_null($service)) {
+            $query = $query->andWhere('s.id = :serviceId')
+                ->setParameter('serviceId', $service->getId());
+        }
+        return $query->getQuery()->getResult();
+    }
+
+
 }

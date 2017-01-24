@@ -2,6 +2,9 @@
 
 namespace AppBundle\Repository;
 
+use AppBundle\Entity\Restaurant;
+use AppBundle\Entity\Service;
+
 /**
  * ServiceOpeningExceptionRepository
  *
@@ -10,4 +13,28 @@ namespace AppBundle\Repository;
  */
 class ServiceOpeningExceptionRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function findSearch(Restaurant $restaurant, Service $service , $baptismDate)
+    {
+
+        $query = $this->createQueryBuilder('soe')
+            ->innerJoin('soe.restaurant', 'r')
+            ->innerJoin('soe.service', 's')
+            // this line is here just to assure the first test
+            ->where('0 = 0');
+        if (!is_null($restaurant) || $restaurant != '') {
+            $query = $query->andWhere('r.id = :restaurant')
+                ->setParameter('restaurant', $restaurant->getId());
+        }
+
+        if (!is_null($service)) {
+            $query = $query->andWhere('s.id = :serviceId')
+                ->setParameter('serviceId', $service->getId());
+        }
+
+        if (!is_null($baptismDate)) {
+            $query = $query->andWhere("soe.date = '$baptismDate'");
+        }
+
+        return $query->getQuery()->getResult();
+    }
 }
