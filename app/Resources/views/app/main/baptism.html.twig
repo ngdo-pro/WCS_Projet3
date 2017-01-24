@@ -9,6 +9,9 @@
 
 {% block content %}
     <H1>{{ 'baptism.title' | trans }} </H1>
+    <H2>Select <BR/></H2>
+    <p>{{ selectcase }}</p>
+    <BR/>
     <p>{{ 'baptism.content' | trans }}</p>
 
     {{ form_start(baptismSearchType,{'action': path('app_baptism')}) }}

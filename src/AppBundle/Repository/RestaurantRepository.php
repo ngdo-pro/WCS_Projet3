@@ -10,4 +10,15 @@ namespace AppBundle\Repository;
  */
 class RestaurantRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function findRestaurantListCity ($cityName, $zipCode)
+    {
+        $query = $this->createQueryBuilder('r')
+           ->where('r.city = :city')
+           ->setParameter('city', $cityName)
+           ->andWhere('r.postalCode = :zipCode')
+           ->setParameter('zipCode',$zipCode)
+           ->getQuery();
+
+       return $query->getResult();
+    }
 }
