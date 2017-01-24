@@ -11,10 +11,13 @@ var paths = {
         './web/vendors/components/jquery/dist/jquery.min.js',
         './web/vendors/components/bootstrap/dist/js/bootstrap.min.js',
         './web/vendors/components/afterglow/dist/afterglow.min.js',
-        './web/vendors/components/jquery-ui/jquery-ui.min.js',
+        './web/vendors/components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js',
+        './web/vendors/components/bootstrap-datepicker/dist/locales/bootstrap-datepicker.fr.min.js',
+        './web/vendors/components/jquery-ui/jquery-ui.min.js'
     ],
     vendorCss: [
-        './web/vendors/components/bootstrap/dist/css/bootstrap.min.css',
+        'web/vendors/components/bootstrap/dist/css/bootstrap.min.css',
+        'web/vendors/components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css'
     ],
     fonts: [
         './web/vendors/components/bootstrap/dist/fonts/**/*'

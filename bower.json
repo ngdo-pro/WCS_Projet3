@@ -21,5 +21,6 @@
   "dependencies": {
     "bootstrap": "^3.3.7",
     "afterglow": "^0.4.0",
+    "bootstrap-datepicker": "^1.6.4"
   }
 }

@@ -23,6 +23,7 @@ class BaptismSearchType extends AbstractType
     }
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        $today = (new \DateTime)->format('d-m-Y');
 
         $builder->add(
             'city',
@@ -64,9 +65,13 @@ class BaptismSearchType extends AbstractType
             'baptismDate',
             TextType::class,
             array(
-                'data' => (new \DateTime)->format('Y-m-d'),
+                'data' => $today,
                 'attr' => array(
-                    'autocomplete' => 'off',
+                    'autocomplete'          => 'off',
+                    'class'                 => 'datepicker',
+                    'data-provide'          => 'datepicker',
+                    'data-date-format'      => 'd-mm-yyyy',
+                    'data-date-start-date'  => $today
                 )
             )
         );
