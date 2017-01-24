@@ -13,7 +13,7 @@
 {% block content %}
     <section id="profileOrder" class="container-fluid">
 
-        <h2>{{ 'my_baptisms.title' |trans }}</h2>
+        <h2>{{ 'my_baptisms.title' |trans |upper }}</h2>
         <h3>{{ 'my_next_baptisms.subtitle' |trans }}</h3>
 
         {% for order in ordersBaptised %}
