@@ -37,7 +37,11 @@ class MemberController extends Controller
                     'allow_delete'  => true,
                 )
             )
-            ->add('validate', SubmitType::class)
+            ->add('validate', SubmitType::class, array(
+                'label' => 'form.send',
+                'translation_domain' => 'FOSUserBundle',
+                'attr' => array('class' => 'pull-right')
+                ))
             ->getForm();
         $form->handleRequest($request);
 
@@ -67,11 +71,16 @@ class MemberController extends Controller
                 $this->get('mailer')->send($message);
             }
         }
+        $userPicture = null;
+        if ($user->getMedia() != null){
+            $userPicture = $user->getMedia()->getName();
+        }
 
         return $this->render('user/member/my_orders.html.twig', array(
             'user'              => $user,
             'ordersBaptised'    => $ordersBaptised,
-            'form'              => $form->createView()
+            'form'              => $form->createView(),
+            'avatar'            => $userPicture,
         ));
     }
 

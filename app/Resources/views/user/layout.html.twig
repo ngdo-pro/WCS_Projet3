@@ -23,7 +23,7 @@
                         <li>{{ "menu.orders" |trans |capitalize }}<span
                                     class="glyphicon glyphicon-euro pull-right"></span></li>
                         <ul>
-                            <li><a href="#">{{ "menu.baptem" |trans |capitalize }}</a></li>
+                            <li><a href="{{ path('member_orders') }}">{{ "menu.baptem" |trans |capitalize }}</a></li>
                             <li><a href="#">{{ "menu.reservation" |trans |capitalize }}</a></li>
                             <li><a href="#">{{ "menu.gift" |trans |capitalize }}</a></li>
                             <li><a href="#">{{ "menu.goodBuy" |trans |capitalize }}</a></li>
@@ -33,7 +33,7 @@
                             </a><span class="glyphicon glyphicon-off pull-right"></span></li>
                     </ul>
                 </div>
-                <div class="col-md-offset-2 col-md-4">
+                <div class="col-md-offset-1 col-md-6">
                     {% block content %}
                     {% endblock %}
                 </div>
