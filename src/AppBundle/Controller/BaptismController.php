@@ -131,10 +131,11 @@ class BaptismController extends Controller
             }
             $session = $request->getSession();
             $session->set('results', $results);
+            var_dump($results);
             return $this->redirectToRoute('baptism_select');
         }
 
-        return $this->render('app/baptism/widgets/search.html.twig', array(
+        return $this->render('app/baptism/home.html.twig', array(
             'form' => $form->createView()
         ));
     }
@@ -250,9 +251,5 @@ class BaptismController extends Controller
             'baptism' => $baptismParams,
             'form' => $form->createView()
         ));
-    }
-
-    public function homeAction(){
-        return $this->render('app/baptism/home.html.twig');
     }
 }

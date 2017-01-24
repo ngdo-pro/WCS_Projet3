@@ -13,7 +13,16 @@
             <span class="glyphicon glyphicon-play-circle" aria-hidden="true"></span>
             {% include 'app/baptism/modals/modal_home_video.html.twig' %}
         </a>
-        {% render(controller('AppBundle:Baptism:search')) %}
+        <div class="searchBar">
+            {{ form_start(form) }}
+            {{ form_widget(form.city) }}
+            {{ form_widget(form.nb) }}
+            {{ form_widget(form.baptismDate) }}
+            {{ form_widget(form.service) }}
+            {{ form_widget(form.restaurant) }}
+            <button>{{ 'baptism.search.submit' | trans }}</button>
+            {{ form_end(form) }}
+        </div>
     </div>
 </section>
 <section class="container-fluid" id="baptismChefExplanation">
