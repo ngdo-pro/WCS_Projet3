@@ -1,5 +1,5 @@
 our_restaurants:
-    path:       /nos-restaurants
+    path:       /
     defaults:   { _controller: AppBundle:Restaurant:list }
 
 restaurant:

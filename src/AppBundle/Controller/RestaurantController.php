@@ -15,7 +15,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 class RestaurantController extends Controller
 {
     public function listAction(){
-        return $this->render('app/main/index.html.twig');
+        return $this->render('app/restaurant/home.html.twig');
     }
 
     public function showAction(Restaurant $restaurant){
