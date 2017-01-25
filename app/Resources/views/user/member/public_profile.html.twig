@@ -3,19 +3,31 @@
 {% block title %}Baptême de Chef{% endblock %}
 {% block description %}{{ user.firstName }}{{ user.lastName }} fait son Baptême de Chef !{% endblock %}
 {% block opengraph %}
-    <meta property="og:url"           content="{{ base_url ~ path('member_public_profil', {"slug": user.slug}) }}" />
-    <meta property="og:type"          content="website" />
-    <meta property="og:title"         content="Food&You" />
-    <meta property="og:description"   content="Bienvenue à mon baptême de chef !" />
-    <meta property="og:image"         content="{{ base_url ~ asset('email_images/HEADER.gif') }}" />
+    <meta property="og:url" content="{{ base_url ~ path('member_public_profil', {"slug": user.slug}) }}"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:title" content="Food&You"/>
+    <meta property="og:description" content="Bienvenue à mon baptême de chef !"/>
+    <meta property="og:image" content="{{ base_url ~ asset('email_images/HEADER.gif') }}"/>
 {% endblock %}
-{% block content %}
+{% block body %}
+    <div id="headerBack" class="container-fluid"></div>
 
-    <h2>Public profile</h2>
-    <h3>Context : Visitor lands here by clicking on shared link, via email or social media</h3>
 
-    <table>
-        <thead>
+    <section id="publicProfile">
+        <div id="avatar">
+            <div id="pictureUpload">
+                {% if avatar != null %}
+                    <img src="{{ asset('uploads/users_avatar/' ~ avatar) }}"/>
+                {% else %}
+                    <img src="{{ asset('uploads/users_avatar/default/avatar.jpg') }}"/>
+                {% endif %}
+            </div>
+        </div>
+
+        <h2>{{ user.firstName |title ~ ' ' ~ user.lastName |title }}</h2>
+
+        <table class="table table-striped">
+            <thead>
             <tr>
                 <th>{{ 'restaurant.title' |trans }}</th>
                 <th>{{ 'date.title' |trans }}</th>
@@ -23,8 +35,8 @@
                 <th>{{ 'reservation_status.title' |trans }}</th>
                 <th>{{ 'reservation_action.title' |trans }}</th>
             </tr>
-        </thead>
-        <tbody>
+            </thead>
+            <tbody>
             {% for baptism in baptisms %}
                 <tr>
                     <td>{{ baptism.baptismHasUser.baptism.restaurant.name }}</td>
@@ -32,13 +44,18 @@
                     <td>{{ baptism.guestNumber }}</td>
                     {% if baptism.currentUserIsGuest != 0 %}
                         <td>{{ baptism.currentUserIsGuest }}</td>
-                        <td><a href="{{ path('baptism_guest', {'id': baptism.baptismHasUser.id}) }}">{{ 'reservation_modify.title' |trans }}</a></td>
+                        <td>
+                            <a href="{{ path('baptism_guest', {'id': baptism.baptismHasUser.id}) }}">{{ 'reservation_modify.title' |trans }}</a>
+                        </td>
                     {% else %}
                         <td>{{ 'no_reservation.title' |trans }}</td>
-                        <td><a href="{{ path('baptism_guest', {'id': baptism.baptismHasUser.id}) }}">{{ 'reservation_add.title' |trans }}</a></td>
+                        <td>
+                            <a href="{{ path('baptism_guest', {'id': baptism.baptismHasUser.id}) }}">{{ 'reservation_add.title' |trans }}</a>
+                        </td>
                     {% endif %}
                 </tr>
             {% endfor %}
-        </tbody>
-    </table>
+            </tbody>
+        </table>
+    </section>
 {% endblock %}
