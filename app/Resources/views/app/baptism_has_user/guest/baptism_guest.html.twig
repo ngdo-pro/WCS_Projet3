@@ -46,10 +46,10 @@
             {# Here will be the button to self-remove from guests #}
             <p>{{ 'number_of_guest_invited' |transchoice(baptism_has_current_user.baptismHasUser.guestCount, {"guestInvited": baptism_has_current_user.baptismHasUser.guestCount}) }}</p>
             <p>{{ 'asking_for_removal.guest' |trans }}
-            {{ form_start(form) }}
-            {{ 'need_for_cancel' |trans }}
-            {{ form_widget(form.guestCount) }}
-            {{ 'guests_invited' | transchoice(baptism_has_current_user.baptismHasUser.guestCount, {"guestInvited": baptism_has_current_user.baptismHasUser.guestCount}) }}</p>
+                {{ form_start(form) }}
+                {{ 'need_for_cancel' |trans }}
+                {{ form_widget(form.guestCount) }}
+                {{ 'guests_invited' | transchoice(baptism_has_current_user.baptismHasUser.guestCount, {"guestInvited": baptism_has_current_user.baptismHasUser.guestCount}) }}</p>
             <button
                     id="guestConfirm"
                     name="confirm"
@@ -62,7 +62,7 @@
 
             {{ form_end(form) }}
         {% else %}
-            <p>{{ 'baptised_text.guest' |trans}}</p>
+            <p>{{ 'baptised_text.guest' |trans }}</p>
             <a href="#">{{ 'asking_for_invite.baptised' |trans }}</a> ?
         {% endif %}
 
