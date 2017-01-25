@@ -15,11 +15,15 @@
       </trans-unit>
       <trans-unit id="666e48af914e1df2a2b1bd7d56ceda06" resname="restaurant_name">
         <source>restaurant_name</source>
-        <target>__restaurant_name</target>
+        <target>due by maurizio</target>
       </trans-unit>
       <trans-unit id="d8802f69c11a98af0ec8f3368eb97016" resname="restaurant_restaurantButton">
         <source>restaurant_restaurantButton</source>
         <target>voir le restaurant</target>
+      </trans-unit>
+      <trans-unit id="18295e67cb9b4874c8c35fac4d1f408d" resname="restaurant_address">
+        <source>restaurant_address</source>
+        <target>8 rue jouffron, lyon</target>
       </trans-unit>
     </body>
   </file>

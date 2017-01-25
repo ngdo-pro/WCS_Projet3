@@ -13,6 +13,14 @@
         <source>restaurant_searchBar</source>
         <target>trouver un restaurant foodandyou</target>
       </trans-unit>
+      <trans-unit id="666e48af914e1df2a2b1bd7d56ceda06" resname="restaurant_name">
+        <source>restaurant_name</source>
+        <target>__restaurant_name</target>
+      </trans-unit>
+      <trans-unit id="d8802f69c11a98af0ec8f3368eb97016" resname="restaurant_restaurantButton">
+        <source>restaurant_restaurantButton</source>
+        <target>voir le restaurant</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
