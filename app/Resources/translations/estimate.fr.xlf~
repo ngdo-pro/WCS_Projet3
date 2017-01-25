@@ -19,7 +19,7 @@
       </trans-unit>
       <trans-unit id="d6d4bb92e3d68f3c40a311ef1c8e1400" resname="estimate_status2">
         <source>estimate_status2</source>
-        <target>professionnel</target>
+        <target>entreprise</target>
       </trans-unit>
       <trans-unit id="8eb3982bbb7a3c75d0bdf93301ae33e7" resname="estimate_fullName">
         <source>estimate_fullName</source>
@@ -36,6 +36,18 @@
       <trans-unit id="7f75a1e6ef04783a0cb7e142e3d07966" resname="estimate_send">
         <source>estimate_send</source>
         <target>envoyer</target>
+      </trans-unit>
+      <trans-unit id="8a19ad1bfd47edebe104a763072dc057" resname="estimate_intro">
+        <source>estimate_intro</source>
+        <target>demandez-nous un devis</target>
+      </trans-unit>
+      <trans-unit id="bde8c93a585ed2bcded2e29db49925d3" resname="estimate_presentation">
+        <source>estimate_presentation</source>
+        <target>nous tâcherons de vous répondre dans les meilleurs délais</target>
+      </trans-unit>
+      <trans-unit id="ff7c9fd586a848efb0f0c9cd13e4ba89" resname="estimate_status">
+        <source>estimate_status</source>
+        <target>Êtes vous un particulier ou une entreprise ?</target>
       </trans-unit>
     </body>
   </file>
