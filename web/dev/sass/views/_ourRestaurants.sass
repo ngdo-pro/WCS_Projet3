@@ -18,51 +18,51 @@
 #restaurantSearch
 
   .restaurantSearch-block
-      background-color: $bg-color1
-      height: 350px
+    background-color: $bg-color1
+    height: 350px
+    display: flex
+    flex-direction: column
+    justify-content: center
+    text-align: center
+    h1
+      font-size: $section-size
+      color: $font-color1
+      font-family: $search_bar-font
+      font-weight: bold
+  .restaurantSearch-mozaic
+    background: url('../media/img/homeImage1.jpg') no-repeat center
+    background-size: cover
+    padding: 0
+    border: solid white 2px
+    a
+      text-decoration: none
+    &--inside
+      height: 500px
+      color: $font-color4
       display: flex
       flex-direction: column
       justify-content: center
-      text-align: center
-      h1
-        font-size: $section-size
+      align-items: center
+      background-color: $bg-color_mozaic
+      &:hover
         color: $font-color1
-        font-family: $search_bar-font
+        background: $bg-color-hover
+      h2
         font-weight: bold
-    .restaurantSearch-mozaic
-      background: url('../media/img/homeImage1.jpg') no-repeat center
-      background-size: cover
-      padding: 0
-      border: solid white 2px
-      a
-        text-decoration: none
-      &--inside
-        height: 500px
-        color: $font-color4
-        display: flex
-        flex-direction: column
-        justify-content: center
-        align-items: center
-        background-color: $bg-color_mozaic
-        &:hover
-          color: $font-color1
-          background: $bg-color-hover
-        h2
-          font-weight: bold
-          margin: 0
-        p
-          font-weight: bold
-          margin-bottom: 18%
-        button
-          color: $font-color1
-          background-color: $bg-color1
-          font: $btn-font
-          font-size: 1.8rem
-          border: none
-          width: 65%
-          height: 12%
-          border-radius: 5px
-          margin-bottom: 20%
+        margin: 0
+      p
+        font-weight: bold
+        margin-bottom: 18%
+      button
+        color: $font-color1
+        background-color: $bg-color1
+        font: $btn-font
+        font-size: 1.8rem
+        border: none
+        width: 65%
+        height: 12%
+        border-radius: 5px
+        margin-bottom: 20%
 
 
 
