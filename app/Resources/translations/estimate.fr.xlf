@@ -37,6 +37,14 @@
         <source>estimate_send</source>
         <target>envoyer</target>
       </trans-unit>
+      <trans-unit id="8a19ad1bfd47edebe104a763072dc057" resname="estimate_intro">
+        <source>estimate_intro</source>
+        <target>demandez-nous un devis</target>
+      </trans-unit>
+      <trans-unit id="bde8c93a585ed2bcded2e29db49925d3" resname="estimate_presentation">
+        <source>estimate_presentation</source>
+        <target>nous tâcherons de vous répondre dans les meilleurs délais</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
