@@ -4,31 +4,24 @@
 #baptismChefHeader
   background: url('../media/img/vivreunbaptemedechef.jpg') 50%
   background-size: cover
+  display: flex
   height: 100vh
-  position: relative
+  flex-direction: column
+  justify-content: center
+  text-align: center
   h1
     color: $font-color1
     font-family: $main-title-font
-    font-size: $main-title-size
-    font-weight: bold
-    left: 50%
+    font-size: 4.5rem
     margin: 0
-    position: absolute
-    text-align: center
-    top: 50%
-    transform: translateX(-50%) translateY(-50%)
-    span
-      color: $font-color1
-      font-size: 2rem
-      position: absolute
-      text-align: center
-      &.subtitle
-        font-family: $title-font
-        transform: translateX(-50%)
-      &.glyphicon-play-circle
-        font-size: 100px
-        top: 120px
-        transform: translateX(-50%)
+  span
+    color: $font-color1
+    font-size: 2rem
+    &.subtitle
+      font-family: $title-font
+    &.glyphicon-play-circle
+      font-size: 10rem
+      padding: 5rem 0
 #baptismChefExplanation,
 #baptismChefFoodys
   background: $bg-color1
@@ -58,16 +51,14 @@
     &:visited,
     &:focus
       text-decoration: none
-  #collapseExplanation
-    margin-top: 50px
-    ul
-      font-size: $section-size
-      list-style: none
-      padding: 0
-    div
-      font-family: $main-title-font
-      font-size: $title-size
-      font-weight: bold
+  ul
+    font-size: $section-size
+    list-style: none
+    padding: 0
+  div
+    font-family: $main-title-font
+    font-size: $title-size
+    font-weight: bold
 #baptismChefGift
   background: $bg-color3
   padding: 40px 0 50px 0

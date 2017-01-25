@@ -65,6 +65,10 @@
         <source>boc_foodys.link</source>
         <target>je découvre</target>
       </trans-unit>
+      <trans-unit id="8b82bca4b230bc88bda4993bd289753a" resname="baptism.search.submit">
+        <source>baptism.search.submit</source>
+        <target>recherche</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
