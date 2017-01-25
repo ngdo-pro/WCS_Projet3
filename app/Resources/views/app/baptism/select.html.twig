@@ -1,26 +1,33 @@
 {% extends 'app/layout.html.twig' %}
+{% trans_default_domain 'baptism_selection' %}
 
 {% block content %}
-    <h2>Select Part</h2>
-    <h3>Context: Visitor has searched for baptisms and here are displayed the matching ones</h3>
-    <div class="container">
-        <div class="row">
-            {% if (nbBaptism==0) %}
-                <h2>No available baptism found</h2>
-            {% endif %}
-            {% for baptism in baptisms %}
-                <div class="col-sm-4">
-                    <!-- Here are the datas you can use-->
-                    <p>Statut : {{ baptism.status }}</p>
-                    <p>Places : {{ baptism.places }}</p>
-                    <p>Date : {{ baptism.date |date }}</p>
-                    <p>Service : {{ baptism.serviceName }}</p>
-                    <p>Restaurant : {{ baptism.restaurantName }}</p>
-                    <p>Reference : {{ baptism.reference }}</p>
-                    <!-- This button is here to select a baptism -->
-                    <a href="{{ path('baptism_purchase', {reference: baptism.reference}) }}">Select</a>
-                </div>
-            {% endfor %}
+    <section id="baptismSelection">
+        <header>
+            <h1>{{ 'baptism.selection' |trans |upper }}</h1>
+        </header>
+        <h2>Select Part</h2>
+        <h3>Context: Visitor has searched for baptisms and here are displayed the matching ones</h3>
+        <div class="container">
+            <div class="row">
+                {% if (nbBaptism==0) %}
+                    <h2>No available baptism found</h2>
+                {% endif %}
+                {% for baptism in baptisms %}
+                    <div class="col-sm-4">
+                        <!-- Here are the datas you can use-->
+                        <p>Status : {{ baptism.status }}</p>
+                        <p>Places : {{ baptism.places }}</p>
+                        <p>Date : {{ baptism.date |date }}</p>
+                        <p>Service : {{ baptism.serviceName }}</p>
+                        <p>Restaurant : {{ baptism.restaurantName }}</p>
+                        <p>Reference : {{ baptism.reference }}</p>
+                        <!-- This button is here to select a baptism -->
+                        <a href="{{ path('baptism_purchase', {reference: baptism.reference}) }}">Select</a>
+                    </div>
+                {% endfor %}
+            </div>
         </div>
-    </div>
+    </section>
+
 {% endblock %}
