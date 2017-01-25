@@ -33,7 +33,8 @@ class BaptismSearchType extends AbstractType
                 'class'             => 'AppBundle:City',
                 'choice_label'      => 'name',
                 'required'          => false,
-                'placeholder'       => false
+                'placeholder'       => false,
+                'attr'              => array('class' => 'text-capitalize')
             )
         );
         $this->restaurantRepository = $options['restaurantRepository'];
@@ -44,7 +45,8 @@ class BaptismSearchType extends AbstractType
                     'choice_label'  => 'name',
                     'required'      => false,
                     'choices'       => array(),
-                    'placeholder'   => 'Restaurant'
+                    'placeholder'   => 'Restaurant',
+                    'attr'              => array('class' => 'text-capitalize')
                 ));
             } else {
                 $restaurants = $this->restaurantRepository->findRestaurantListCity($city->getName(),$city->getZipCode());
@@ -53,7 +55,8 @@ class BaptismSearchType extends AbstractType
                     'choice_label'  => 'name',
                     'required'      => false,
                     'choices'       => $restaurants,
-                    'placeholder'   => 'Restaurant'
+                    'placeholder'   => 'Restaurant',
+                    'attr'              => array('class' => 'text-capitalize')
                 ));
             };
         };
@@ -87,7 +90,8 @@ class BaptismSearchType extends AbstractType
                 'class'   => 'AppBundle:Service',
                 'choice_label' => 'name',
                 'required' => false,
-                'placeholder' => false
+                'placeholder' => false,
+                'attr'              => array('class' => 'text-capitalize')
             )
         );
         
