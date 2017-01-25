@@ -16,7 +16,7 @@
     font-size: $main-title-size
 
 #restaurantSearch
-  width: 100%
+
   .restaurantSearch-block
     background-color: $bg-color1
     height: 350px
@@ -32,30 +32,33 @@
   .restaurantSearch-mozaic
     background: url('../media/img/homeImage1.jpg') no-repeat center
     background-size: cover
-    height: 500px
-    color: $font-color4
-    display: flex
-    flex-direction: column
-    justify-content: center
-    align-items: center
-    &:hover
-      color: $font-color1
-      background: $bg-color-hover
-    h2
-      font-weight: bold
-      margin: 0
-    p
-      margin-bottom: 18%
-    button
-      color: $font-color1
-      background-color: $bg-color1
-      font: $btn-font
-      font-size: 1.8rem
-      border: none
-      width: 65%
-      height: 12%
-      border-radius: 5px
-      margin-bottom: 20%
+    padding: 0
+    &--inside
+      height: 500px
+      color: $font-color4
+      display: flex
+      flex-direction: column
+      justify-content: center
+      align-items: center
+      background-color: $bg-color_mozaic
+      &:hover
+        color: $font-color1
+        background: $bg-color-hover
+      h2
+        font-weight: bold
+        margin: 0
+      p
+        margin-bottom: 18%
+      button
+        color: $font-color1
+        background-color: $bg-color1
+        font: $btn-font
+        font-size: 1.8rem
+        border: none
+        width: 65%
+        height: 12%
+        border-radius: 5px
+        margin-bottom: 20%
 
 
 
