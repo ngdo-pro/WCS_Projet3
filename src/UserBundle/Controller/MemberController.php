@@ -20,10 +20,11 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 class MemberController extends Controller
 {
-    public function orderAction(Request $request){
+    public function orderAction(Request $request)
+    {
         $user = $this->getUser();
 
-        if(null == $user){
+        if (null == $user) {
             Throw $this->createAccessDeniedException();
         }
 
@@ -32,23 +33,23 @@ class MemberController extends Controller
 
         $form = $this->createFormBuilder()
             ->add('emails', CollectionType::class, array(
-                    'entry_type'    => EmailType::class,
-                    'allow_add'     => true,
-                    'allow_delete'  => true,
+                    'entry_type' => EmailType::class,
+                    'allow_add' => true,
+                    'allow_delete' => true,
                 )
             )
             ->add('validate', SubmitType::class, array(
                 'label' => 'form.send',
                 'translation_domain' => 'FOSUserBundle',
                 'attr' => array('class' => 'pull-right')
-                ))
+            ))
             ->getForm();
         $form->handleRequest($request);
 
 
-        if($form->isValid() && $form->isSubmitted()){
+        if ($form->isValid() && $form->isSubmitted()) {
             $emails = $form->getData()['emails'];
-            foreach ($emails as $email){
+            foreach ($emails as $email) {
                 $message = \Swift_Message::newInstance()
                     ->setSubject('Hello Email')
                     ->setFrom('send@example.com')
@@ -56,8 +57,7 @@ class MemberController extends Controller
                     ->setBody(
                         $this->renderView('email/baptism_of_chef_invitation.html.twig'),
                         'text/html'
-                    )
-                    /*
+                    )/*
                      * If you also want to include a plaintext version of the message
                     ->addPart(
                         $this->renderView(
@@ -72,7 +72,7 @@ class MemberController extends Controller
             }
         }
         $userPicture = null;
-        if ($user->getMedia() != null){
+        if ($user->getMedia() != null) {
             $userPicture = $user->getMedia()->getName();
         }
 
@@ -163,23 +163,24 @@ class MemberController extends Controller
         }
         // Here we get the picture if is in the database for the view
         $userPicture = null;
-        if ($user->getMedia() != null){
+        if ($user->getMedia() != null) {
             $userPicture = $user->getMedia()->getName();
         }
 
         return $this->render('user/member/profile_edit.html.twig', array(
-            'form' => $form->createView(),
-            'error' => $error,
-            'avatar' => $userPicture,
+            'form'      => $form->createView(),
+            'error'     => $error,
+            'avatar'    => $userPicture,
         ));
     }
 
 
-    public function publicProfileAction(User $user){
+    public function publicProfileAction(User $user)
+    {
 
         $currentUser = $this->getUser();
 
-        if(null == $currentUser){
+        if (null == $currentUser) {
             Throw $this->createAccessDeniedException();
         }
 
@@ -189,27 +190,56 @@ class MemberController extends Controller
 
         $baptisms = array();
 
-        foreach ($baptismsWhereUserIsBaptised as $baptismWhereUserIsBaptised){
+        foreach ($baptismsWhereUserIsBaptised as $baptismWhereUserIsBaptised) {
             $baptismWhereUserIsBaptised['currentUserIsGuest'] = 0;
             /** @var BaptismHasUser $guest */
-            foreach ($baptismsWhereCurrentUserIsGuest as $baptismWhereCurrentUserIsGuest){
+            foreach ($baptismsWhereCurrentUserIsGuest as $baptismWhereCurrentUserIsGuest) {
 
                 /** @var BaptismHasUser $baptismHasBaptised */
                 $baptismHasBaptised = $baptismWhereUserIsBaptised['baptismHasUser'];
                 /** @var BaptismHasUser $baptismHasGuest */
                 $baptismHasGuest = $baptismWhereCurrentUserIsGuest['baptismHasUser'];
 
-                if($baptismHasGuest->getBaptism() == $baptismHasBaptised->getBaptism()){
+                if ($baptismHasGuest->getBaptism() == $baptismHasBaptised->getBaptism()) {
                     $baptismWhereUserIsBaptised['currentUserIsGuest'] = $baptismHasGuest->getGuestCount();
                 }
             }
             $baptisms[] = $baptismWhereUserIsBaptised;
         }
+        $userPicture = null;
+        if ($user->getMedia() != null) {
+            $userPicture = $user->getMedia()->getName();
+        }
 
         return $this->render('user/member/public_profile.html.twig', array(
             'user'      => $user,
-            'baptisms'  => $baptisms
+            'baptisms'  => $baptisms,
+            'avatar'    => $userPicture,
         ));
 
+    }
+
+    public function reservationAction()
+    {
+        $user = $this->getUser();
+
+        if (null == $user) {
+            Throw $this->createAccessDeniedException();
+        }
+
+        $em = $this->getDoctrine()->getManager();
+        $guestReservation = $em->getRepository('AppBundle:BaptismHasUser')->findByUserAndRole($user, false);
+
+
+        $userPicture = null;
+        if ($user->getMedia() != null) {
+            $userPicture = $user->getMedia()->getName();
+        }
+
+        return $this->render('user/member/my_reservation.html.twig', array(
+            'user'         => $user,
+            'reservations' => $guestReservation,
+            'avatar'       => $userPicture
+        ));
     }
 }
