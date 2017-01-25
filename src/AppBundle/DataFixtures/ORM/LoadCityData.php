@@ -26,39 +26,39 @@ class LoadCityData extends AbstractFixture implements OrderedFixtureInterface
     {
         $cities = array(
             array(
-                "name" => "lyon",
+                "name" => "lyon 1er",
                 "zipCode" => "69001"
             ),
             array(
-                "name" => "lyon",
+                "name" => "lyon 2eme",
                 "zipCode" => "69002"
             ),
             array(
-                "name" => "lyon",
+                "name" => "lyon 3eme",
                 "zipCode" => "69003"
             ),
             array(
-                "name" => "lyon",
+                "name" => "lyon 4eme",
                 "zipCode" => "69004"
             ),
             array(
-                "name" => "lyon",
+                "name" => "lyon 5eme",
                 "zipCode" => "69005"
             ),
             array(
-                "name" => "lyon",
+                "name" => "lyon 6eme",
                 "zipCode" => "69006"
             ),
             array(
-                "name" => "lyon",
+                "name" => "lyon 7eme",
                 "zipCode" => "69007"
             ),
             array(
-                "name" => "lyon",
+                "name" => "lyon 8eme",
                 "zipCode" => "69008"
             ),
             array(
-                "name" => "lyon",
+                "name" => "lyon 9eme",
                 "zipCode" => "69009"
             )
         );
