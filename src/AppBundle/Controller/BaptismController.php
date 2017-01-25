@@ -52,7 +52,9 @@ class BaptismController extends Controller
             } else {
                 $restaurantName = $restaurant->getName();
             }
-            $baptismDate = $form->get('baptismDate')->getData();
+            $baptismDate = new \DateTime($form->get('baptismDate')->getData());
+            $baptismDate = $baptismDate->format('Y-m-d');
+            var_dump($baptismDate);
             $service = $form->get('service')->getData();
             $nbPlaces = $form->get('nb')->getData();
             $baptisms = $em->getRepository("AppBundle:Baptism")->findSearch($city,$restaurantName,$baptismDate,$service);
@@ -132,7 +134,7 @@ class BaptismController extends Controller
             $session = $request->getSession();
             $session->set('results', $results);
             var_dump($results);
-            return $this->redirectToRoute('baptism_select');
+            //return $this->redirectToRoute('baptism_select');
         }
 
         return $this->render('app/baptism/home.html.twig', array(

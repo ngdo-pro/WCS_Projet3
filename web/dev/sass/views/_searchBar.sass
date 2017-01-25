@@ -6,6 +6,24 @@
   justify-content: center
   form
     display: flex
+    border: none !important
     flex-direction: row
-    select
+    select,
+    button,
+    input
+      background: $bg-color3
+      border: 1px solid $btn-color2
+      color: $btn-color2
+      font-family: $btn-font
+      font-size: $btn-font-size
       padding: 10px
+      text-align: center
+    button
+      background: $bg-color2
+      border: none
+      color: $btn-color1
+
+@media screen and (max-width: 640px)
+  .searchBar
+    form
+      flex-direction: column
