@@ -10,21 +10,26 @@
             </h1>
     </section>
 
-    <!-- firs mozaic section including search bar and map -->
+    <!-- first mozaic section including search bar and map -->
     <section class="container-fluid" id="restaurantSearch">
         <div class="row">
 
             <div class="col-md-6 restaurantSearch-block">
-                <h3>{{ 'restaurant_searchBar' |trans |upper }}</h3>
+                <h1>{{ 'restaurant_searchBar' |trans |upper }}</h1>
                 <!-- search bar goes here -->
             </div>
             <div class="col-md-6 restaurantSearch-block">
                 <!-- map goes here -->
             </div>
 
-            <div class="col-md-4 restaurantSearch-mozaic">
-                <!-- restaurant block -->
-            </div>
+            <a href="#">
+                <div class="col-md-4 restaurantSearch-mozaic">
+                    <h2>{{ 'restaurant_name' |trans |upper }}</h2>
+                    <button>
+                        {{ 'restaurant_restaurantButton' |trans |upper }}
+                    </button>
+                </div>
+            </a>
 
         </div>
     </section>
