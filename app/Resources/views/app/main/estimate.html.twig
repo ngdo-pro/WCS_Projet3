@@ -1,0 +1,71 @@
+{% extends 'app/layout.html.twig' %}
+
+{% trans_default_domain 'estimate' %}
+
+{% block content %}
+    <div class="container-fluid privatise">
+        <div class="row">
+            <div class="col-lg-offset-2 col-lg-8 privatise-blockInfo">
+                <h1>{{ 'estimate_title' |trans |upper }}</h1>
+                <p>{{ 'estimate_text' |trans |upper }}</p>
+            </div>
+        </div>
+    </div>
+    <form class="estimateForm">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-offset-3 col-lg-6 form-group">
+                    <label class="radio-inline" for="status">
+                        <input type="radio" name="optradio" class="form-control estimateRadioButton">
+                        {{ 'estimate_status1' |trans |upper }}
+                    </label>
+                    <label class="radio-inline" for="status">
+                        <input type="radio" name="optradio" class="form-control estimateRadioButton">
+                        {{ 'estimate_status2' |trans |upper }}
+                    </label>
+                </div>
+                <div class="col-lg-offset-3 col-lg-6 form-group">
+                    <label for="usr">{{ 'estimate_fullName' |trans |upper }}</label>
+                    <input type="text" class="form-control" id="usr">
+                </div>
+                <div class="col-lg-offset-3 col-lg-6">
+                    <div class="input-group">
+                        <div class="input-group-btn">
+                            <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                {{ 'estimate_restaurantChoice' |trans |upper }}
+                            </button>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="#">Wild Restaurant</a>
+                                <a class="dropdown-item" href="#">Un Monde Vegan</a>
+                                <a class="dropdown-item" href="#">Un Monde Carnivore</a>
+                            </div>
+                        </div>
+                        <input type="text" class="form-control" aria-label="Text input with dropdown button">
+                    </div>
+                </div>
+                <div class='col-lg-offset-3 col-sm-6'>
+                    <div class="form-group">
+                        <div class='input-group date' id='datetimepicker1'>
+                            <input type='text' class="form-control" />
+                            <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
+                        </div>
+                    </div>
+                </div>
+                <script type="text/javascript">
+                    $(function () {
+                        $('#datetimepicker1').datetimepicker();
+                    });
+                </script>
+                <div class=" col-lg-offset-3 col-lg-6 form-group">
+                    <label for="people">{{ 'estimate_numberPeople' |trans }}</label>
+                    <input type="number" class="form-control" id="num">
+                </div>
+                <div class="col-lg-offset-3 col-lg-6 sendEstimate">
+                    <button type="submit" class="btn btn-default">{{ 'estimate_send' |trans }}</button>
+                </div>
+            </div>
+        </div>
+    </form>
+{% endblock content %}
