@@ -57,10 +57,13 @@
         <source>visit-blog</source>
         <target>visitez notre blog !</target>
       </trans-unit>
+<<<<<<< HEAD
       <trans-unit id="6d4b62960a6aa2b1fff43a9c1d95f7b2" resname="restaurant">
         <source>restaurant</source>
         <target>__restaurant</target>
       </trans-unit>
+=======
+>>>>>>> dev
     </body>
   </file>
 </xliff>

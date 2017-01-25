@@ -2,6 +2,7 @@
 namespace AppBundle\Form;
 
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -23,60 +24,74 @@ class BaptismSearchType extends AbstractType
     }
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        $today = (new \DateTime)->format('d-m-Y');
 
         $builder->add(
             'city',
             EntityType::class,
             array(
-                'class'   => 'AppBundle:City',
-                'choice_label' => 'name',
-                'required' => false,
-                'placeholder' => 'City'
+                'class'             => 'AppBundle:City',
+                'choice_label'      => 'name',
+                'required'          => false,
+                'placeholder'       => false,
+                'attr'              => array('class' => 'text-capitalize')
             )
         );
         $this->restaurantRepository = $options['restaurantRepository'];
         $formModifier = function (FormInterface $form, City $city = null) {
             if ($city === null) {
                 $form->add('restaurant', EntityType::class, array(
-                    'class'       => 'AppBundle:Restaurant',
-                    'placeholder' => 'Restaurant',
-                    'choice_label' => 'name',
-                    'required' => false,
-                    'choices'     => array(),
-                ));} else {
+                    'class'         => 'AppBundle:Restaurant',
+                    'choice_label'  => 'name',
+                    'required'      => false,
+                    'choices'       => array(),
+                    'placeholder'   => 'Restaurant',
+                    'attr'              => array('class' => 'text-capitalize')
+                ));
+            } else {
                 $restaurants = $this->restaurantRepository->findRestaurantListCity($city->getName(),$city->getZipCode());
                 $form->add('restaurant', EntityType::class, array(
-                    'class'       => 'AppBundle:Restaurant',
-                    'placeholder' => 'Restaurant',
-                    'choice_label' => 'name',
-                    'required' => false,
-                    'choices'     => $restaurants
+                    'class'         => 'AppBundle:Restaurant',
+                    'choice_label'  => 'name',
+                    'required'      => false,
+                    'choices'       => $restaurants,
+                    'placeholder'   => 'Restaurant',
+                    'attr'              => array('class' => 'text-capitalize')
                 ));
             };
-
         };
 
-        $builder->add(
-            'nb',
-            IntegerType::class
+        $builder->add('nb', ChoiceType::class, array(
+                'required' => false,
+                'choices' => array(
+                    1 => '1 place',
+                    2 => '2 places'
+                ),
+                'placeholder' => false
+            )
         );
         $builder->add(
             'baptismDate',
             TextType::class,
             array(
-                'data' => (new \DateTime)->format('Y-m-d'),
+                'data' => $today,
                 'attr' => array(
-                    'autocomplete' => 'off',
+                    'autocomplete'          => 'off',
+                    'class'                 => 'datepicker',
+                    'data-provide'          => 'datepicker',
+                    'data-date-format'      => 'd-mm-yyyy',
+                    'data-date-start-date'  => $today
                 )
             )
         );
 
         $builder->add('service',
             EntityType::class, array(
-                'class'   => 'AppBundle:Service',
-                'choice_label' => 'name',
-                'required' => false,
-                'placeholder'=>'Service',
+                'class'             => 'AppBundle:Service',
+                'choice_label'      => 'name',
+                'required'          => false,
+                'placeholder'       => false,
+                'attr'              => array('class' => 'text-capitalize')
             )
         );
         

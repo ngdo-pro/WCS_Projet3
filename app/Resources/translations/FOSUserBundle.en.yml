@@ -98,3 +98,4 @@ form:
     misses: 'Mrs.'
     checkbox: 'I agree to the Terms of Use.' #TODO add the cgu link
     picture: 'Profile picture'
+    send: 'Send'

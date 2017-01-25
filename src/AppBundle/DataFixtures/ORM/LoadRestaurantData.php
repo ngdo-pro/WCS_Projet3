@@ -39,7 +39,7 @@ class LoadRestaurantData extends AbstractFixture implements OrderedFixtureInterf
                 "email" => "wcs@email.com",
                 "slug" => "wild-restaurant",
                 "postalCode" => "69002",
-                "city" => "lyon",
+                "city" => "lyon 2eme",
                 "foodType" => "disruptive",
                 "userSlug" => "1-jean-michel-dupont"
             )
