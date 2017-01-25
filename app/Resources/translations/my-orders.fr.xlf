@@ -41,6 +41,10 @@
           ]1, Inf[ guestNumber personnes
         </target>
       </trans-unit>
+      <trans-unit id="8e29df679f8dd07cb5f9abc8ebddd745" resname="my_reservation.title">
+        <source>my_reservation.title</source>
+        <target>mes réservations</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
