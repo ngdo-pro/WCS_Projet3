@@ -8,4 +8,4 @@ app_baptism:
 
 app_restaurant:
     resource: "@AppBundle/Resources/config/routing/restaurant.yml"
-    prefix:   /restaurant
+    prefix:   /

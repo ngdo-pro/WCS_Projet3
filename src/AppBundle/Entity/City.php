@@ -20,7 +20,7 @@ class City
     /**
      * @var string
      */
-    private $postalCode;
+    private $zipCode;
 
 
     /**
@@ -64,9 +64,9 @@ class City
      *
      * @return City
      */
-    public function setPostalCode($postalCode)
+    public function setZipCode($zipCode)
     {
-        $this->postalCode = $postalCode;
+        $this->zipCode = $zipCode;
 
         return $this;
     }
@@ -76,8 +76,8 @@ class City
      *
      * @return string
      */
-    public function getPostalCode()
+    public function getZipCode()
     {
-        return $this->postalCode;
+        return $this->zipCode;
     }
 }

@@ -1,0 +1,23 @@
+{% trans_default_domain 'baptism_guest' %}
+{# Modal triggered by cancel when User is already a guest#}
+<div class="modal fade" id="validationModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                {{ 'cancel.text' |trans}}
+                <span id="guestNumberToValidate"></span>
+                {{ 'cancel_second_part.text' |trans({
+                    'restaurantName': baptism_has_user.baptism.restaurant.name,
+                    'date': baptism_has_user.baptism.date |date('d m Y')
+                    })
+                }}
+            </div>
+            <div class="modal-footer">
+                <span id="guestValidation">{{ form_row(form.confirm) }}</span>
+            </div>
+        </div>
+    </div>
+</div>

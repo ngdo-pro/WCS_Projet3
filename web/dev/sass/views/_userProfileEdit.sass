@@ -1,0 +1,56 @@
+@import "imports"
+#pictureUpload
+  position: relative
+  input[type=file]:not(old)
+    width: 0.1px
+    height: 0.1px
+    opacity: 0
+    overflow: hidden
+    position: absolute
+    z-index: -1
+  label
+    position: absolute
+    transform: translateX(-50%) translateY(10%)
+    left: 50%
+    bottom: 0
+    cursor: pointer
+    .glyphicon-camera
+      font-size: 2.5rem
+      color: $font-color5
+      &:hover
+        transform: translateY(11%)
+        font-size: 3rem
+        color: $btn-hover
+
+
+
+#profileEdit
+  font-family: $title-font2
+  color: $font-color2
+  font-size: 1.8rem
+  line-height: 3rem
+  h2
+    font-size: 3.3rem
+    color: $font-color3
+    line-height: 6rem
+    margin-bottom: 2.5rem
+    font-weight: bolder
+    border-bottom: $font-color3 solid 2px
+  .row
+    div
+      margin-top: 0.5rem
+      #app_user_profile_birth_date
+        margin-top: 0
+      input
+        width: 100%
+      input[type=radio]
+        width: 5%
+      label
+        font-weight: normal
+      button
+        margin-top: 3.5rem
+        width: 100%
+
+
+
+

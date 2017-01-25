@@ -1,5 +1,5 @@
-baptism_search:
-    path:       /recherche
+baptism_page:
+    path:       /
     defaults:   { _controller: AppBundle:Baptism:search }
 
 baptism_select:

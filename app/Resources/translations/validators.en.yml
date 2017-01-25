@@ -53,6 +53,8 @@ fos_user:
         short: 'The cell number is too short.'
         long: 'The cell number is too long.'
         type: 'The cell number is not valid.'
+    media:
+        type: 'The file is not valid.'
 fos_group:
     name:
         already_used: 'The name is already used.'

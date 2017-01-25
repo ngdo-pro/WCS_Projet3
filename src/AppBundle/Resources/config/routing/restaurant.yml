@@ -1,3 +1,7 @@
-restaurants_all:
-    path:       /
-    defaults:   { _controller: AppBundle:Restaurant:restaurantsList }
+our_restaurants:
+    path:       /nos-restaurants
+    defaults:   { _controller: AppBundle:Restaurant:list }
+
+restaurant:
+    path:       /restaurant/{slug}
+    defaults:   { _controller: AppBundle:Restaurant:show }

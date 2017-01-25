@@ -58,7 +58,7 @@ class BaptismHasUserRepository extends \Doctrine\ORM\EntityRepository
 
     /**
      * This function finds out if user is already participating to the baptism.
-     * If he is, it checks his role and sets $userRole to :
+     * If he is, it checks his role and sets $user["role"] to :
      *     -"baptised" if true
      *     -"guest" if false
      * Else, it sets ûserRole to "none"
@@ -83,14 +83,43 @@ class BaptismHasUserRepository extends \Doctrine\ORM\EntityRepository
             /** @var BaptismHasUser $baptismHasUser */
             $baptismHasUser = $result[0];
             if(true === $baptismHasUser->getRole()){
-                $userRole = 'baptised';
+                $currentUser["role"] = 'baptised';
             }else{
-                $userRole = 'guest';
+                $currentUser["role"] = 'guest';
+                $currentUser["baptismHasUser"] = $baptismHasUser;
             }
         }else{
-            $userRole = 'none';
+            $currentUser["role"] = 'none';
         }
 
-        return $userRole;
+        return $currentUser;
     }
+
+    public function findByUserAndRole(User $user, $role){
+        $baptismsHasUser = $this->createQueryBuilder('bhu')
+            ->select('bhu')
+            ->where('bhu.user = :user')
+            ->andWhere('bhu.role = :role')
+            ->innerJoin('bhu.baptism', 'b')
+            ->orderBy('b.date', 'DESC')
+            ->setParameter('user', $user)
+            ->setParameter('role', $role)
+            ->getQuery()
+            ->getResult();
+
+        $results = array();
+        $i = 0;
+
+        /** @var BaptismHasUser $baptismHasUser */
+        foreach ($baptismsHasUser as $baptismHasUser){
+            $results[$i] = array(
+                "baptismHasUser" => $baptismHasUser,
+                "guestNumber" => $this->findHowManyGuest($baptismHasUser->getBaptism())
+            );
+            $i++;
+        }
+
+        return $results;
+    }
+    
 }

@@ -1,9 +1,9 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: damien
- * Date: 19/01/17
- * Time: 11:54
+ * User: nicolas
+ * Date: 18/01/17
+ * Time: 13:08
  */
 
 namespace AppBundle\Controller;
@@ -13,15 +13,11 @@ use Ivory\GoogleMapBundle\Entity\Marker;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Ivory\GoogleMap\Base\Bound;
 use Ivory\GoogleMap\Base\Coordinate;
+use AppBundle\Entity\Restaurant;
 
 class RestaurantController extends Controller
 {
-    /**
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
-    public function restaurantsListAction ()
-    {
-
+    public function listAction(){
         $em = $this->getDoctrine()->getManager();
         $restaurants = $em->getRepository('AppBundle:Restaurant')->findAll();
 
@@ -43,7 +39,11 @@ class RestaurantController extends Controller
             'restaurants' => $restaurants,
             //'marqueurs' => $data_points,
             'map' => $map,
-            
+
         ));
+    }
+
+    public function showAction(Restaurant $restaurant){
+        return $this->render('app/main/index.html.twig');
     }
 }

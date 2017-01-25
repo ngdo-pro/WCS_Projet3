@@ -1,0 +1,75 @@
+@import "imports"
+
+.footer
+  font-family: $footer-font
+  background-color: $bg-color2
+  color: $font-color1
+  min-height: 125px
+  padding-bottom: 25px
+  padding-top: 40px
+  &.navbar
+    margin: 0
+  &-menu
+    text-align: center
+    margin-top: 40px
+    &--logoDesktop
+      text-align: center
+      margin-top: 20px
+      width: 150px
+    &--logoMobile
+      display: none
+  &-link
+    text-decoration: none
+    color: $font-color1
+    &:active, &:hover
+      color: $font-color3
+  &-img
+    width: 70px
+
+#become_restaurant
+  margin-left: 11%
+
+.hr--hidden
+  display: none
+
+#visit-blog
+  width: 100%
+  height: 150px
+  margin-bottom: 15px
+  background-image: url('../media/img/blogImage.jpg')
+  background-size: cover
+  text-align: center
+
+#blog-button
+  width: 40%
+  height: 40%
+  margin-top: 50px
+  background-color: $btn-color1
+  border: none
+  border-radius: 10px
+  font-size: 30px
+  font-family: $btn-font
+  color: $btn-color2
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)
+  &:hover
+    background-color: $btn-color2
+    color: $font-color1
+
+@media (max-width: 766px) //mobile
+  .hr--hidden
+    display: block
+  .footer-menu
+    margin-top: auto
+    &--logoDesktop
+      display: none
+    &--logoMobile
+      display: block
+      text-align: center
+      margin-top: 30px
+    &--bottom
+      margin-bottom: 30px
+  #blog-button
+    width: 70%
+    font-size: 20px
+  #become_restaurant
+    margin-left: auto

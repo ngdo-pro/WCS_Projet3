@@ -1,4 +1,4 @@
-{% extends 'app/baptism_has_user/layout.html.twig' %}
+{% extends 'app/layout.html.twig' %}
 {% trans_default_domain 'baptism_guest' %}
 {% block content %}
     <h2>Guest Part</h2>
@@ -13,8 +13,21 @@
     <p>{{ baptism_has_user.baptism.date |date('d m Y') }}</p>
     {# Number of guests #}
     <p>{{ guestCount }}</p>
+
+    {#
+        If User is authenticated :
+            - If he is not yet participating to the baptism as baptised or guest :
+                - He can add 1..4 guests to the baptism
+            - Else if he is already a guest :
+                - He can cancel reservation for 1..<number_of_reservation_he_made_before> people
+            - Else :
+                - He gets a message that he can't make reservation on his own baptism
+                - He gets a link to his profile where he will be able to invite contacts throught mail or fb
+        Else :
+            - SignUp/SignIn links are displayed
+    #}
     {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-        {% if currentUserRole == "none" %}
+        {% if baptism_has_current_user.role == "none" %}
             <p>{{ 'number_of_guest' |transchoice(guestCount, {"guestCount": guestCount}) }}</p>
             {{ form_start(form) }}
             {{ form_widget(form.guestCount) }}
@@ -29,10 +42,28 @@
             {% include 'app/baptism_has_user/modals/modal_guest_validation.html.twig' with {'baptism_has_user': baptism_has_user, 'form' : form} %}
 
             {{ form_end(form) }}
-        {% elseif currentUserRole == "guest" %}
+        {% elseif baptism_has_current_user.role == "guest" %}
             {# Here will be the button to self-remove from guests #}
+            <p>{{ 'number_of_guest_invited' |transchoice(baptism_has_current_user.baptismHasUser.guestCount, {"guestInvited": baptism_has_current_user.baptismHasUser.guestCount}) }}</p>
+            <p>{{ 'asking_for_removal.guest' |trans }}
+            {{ form_start(form) }}
+            {{ 'need_for_cancel' |trans }}
+            {{ form_widget(form.guestCount) }}
+            {{ 'guests_invited' | transchoice(baptism_has_current_user.baptismHasUser.guestCount, {"guestInvited": baptism_has_current_user.baptismHasUser.guestCount}) }}</p>
+            <button
+                    id="guestConfirm"
+                    name="confirm"
+                    type="button"
+                    data-toggle="modal"
+                    data-target="#validationModal">{{ 'confirm' |trans }}
+            </button>
+
+            {% include 'app/baptism_has_user/modals/modal_guest_cancel.html.twig' with {'baptism_has_user': baptism_has_user, 'form' : form} %}
+
+            {{ form_end(form) }}
         {% else %}
-            {# Here Baptised will be able to invite, share, etc... #}
+            <p>{{ 'baptised_text.guest' |trans}}</p>
+            <a href="#">{{ 'asking_for_invite.baptised' |trans }}</a> ?
         {% endif %}
 
     {% else %}

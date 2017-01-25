@@ -26,47 +26,47 @@ class LoadCityData extends AbstractFixture implements OrderedFixtureInterface
     {
         $cities = array(
             array(
-                "name" => "lyon",
-                "postalCode" => "69001"
+                "name" => "lyon 1er",
+                "zipCode" => "69001"
             ),
             array(
-                "name" => "lyon",
-                "postalCode" => "69002"
+                "name" => "lyon 2eme",
+                "zipCode" => "69002"
             ),
             array(
-                "name" => "lyon",
-                "postalCode" => "69003"
+                "name" => "lyon 3eme",
+                "zipCode" => "69003"
             ),
             array(
-                "name" => "lyon",
-                "postalCode" => "69004"
+                "name" => "lyon 4eme",
+                "zipCode" => "69004"
             ),
             array(
-                "name" => "lyon",
-                "postalCode" => "69005"
+                "name" => "lyon 5eme",
+                "zipCode" => "69005"
             ),
             array(
-                "name" => "lyon",
-                "postalCode" => "69006"
+                "name" => "lyon 6eme",
+                "zipCode" => "69006"
             ),
             array(
-                "name" => "lyon",
-                "postalCode" => "69007"
+                "name" => "lyon 7eme",
+                "zipCode" => "69007"
             ),
             array(
-                "name" => "lyon",
-                "postalCode" => "69008"
+                "name" => "lyon 8eme",
+                "zipCode" => "69008"
             ),
             array(
-                "name" => "lyon",
-                "postalCode" => "69009"
+                "name" => "lyon 9eme",
+                "zipCode" => "69009"
             )
         );
         
         foreach($cities as $city){
             $cityObj = new City();
             $cityObj->setName($city["name"]);
-            $cityObj->setPostalCode($city["postalCode"]);
+            $cityObj->setZipCode($city["zipCode"]);
             $manager->persist($cityObj);
         }
 

@@ -89,3 +89,5 @@ form:
     mister: 'M.'
     misses: 'Mme.'
     checkbox: 'J''accepte les Conditions Générales d''utilisation.' #TODO add the cgu link
+    picture: 'Photo de profil'
+    send: 'Envoyer'
