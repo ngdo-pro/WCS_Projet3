@@ -19,7 +19,11 @@
                     {% for baptism in baptisms %}
                         <div class="col-md-3 col-sm-12 card">
                             <h4 class="text-center">{{ 'baptism.card_title' |trans |upper}}</h4>
-                            <img src="{{ asset('assets/media/img/vivreunbaptemedechef.jpg') }}">
+                            {% for media in baptism.restaurantMedia %}
+                                {% if loop.first %}
+                                    <img src="{{ asset('uploads/restaurants/' ~ media.name) }}">
+                                {% endif %}
+                            {% endfor %}
                             <div class="card-content">
                                 <h5 class="text-center">{{ baptism.restaurantName |upper }}</h5>
                                 <p><span class="card-content--label">{{ 'date.card_label' |trans |capitalize }}</span> : {{ baptism.date |localizeddate('long', 'none') }}</p>

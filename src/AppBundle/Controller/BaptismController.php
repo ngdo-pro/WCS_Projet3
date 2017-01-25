@@ -61,6 +61,10 @@ class BaptismController extends Controller
             foreach($baptisms as $baptism){
 
                 if ($nbPlaces <= $baptism->getPlaces()) {
+                    $medias = array();
+                    foreach ($baptism->getRestaurant()->getMedias() as $media){
+                        $medias[] = $media;
+                    }
                     $results[$resultCount] = array(
                         "id" => $baptism->getId(),
                         "status" => $baptism->getStatus(),
@@ -68,6 +72,7 @@ class BaptismController extends Controller
                         "places" => $baptism->getPlaces(),
                         "serviceName" => $baptism->getService()->getName(),
                         "restaurantName" => $baptism->getRestaurant()->getName(),
+                        "restaurantMedia" => $medias,
                         "reference" => $resultCount
                     );
                     $resultCount++;
@@ -117,6 +122,10 @@ class BaptismController extends Controller
                 $test = array_search($restaurantEntity->getId(), $restaurantsWithBaptism,true);
 
                 if (($nbPlaces <= $nbSo) && ( $test === false)) {
+                    $medias = array();
+                    foreach ($serviceOpening->getRestaurant()->getMedias() as $media){
+                        $medias[] = $media;
+                    }
                     $results[$resultCount] = array(
                         "id" => 0,
                         "status" => "open",
@@ -124,6 +133,7 @@ class BaptismController extends Controller
                         "places" => $nbSo,
                         "serviceName" => $serviceOpening->getService()->getName(),
                         "restaurantName" => $serviceOpening->getRestaurant()->getName(),
+                        "restaurantMedia" => $medias,
                         "reference" => $resultCount ,
                     );
                     $resultCount++ ;
