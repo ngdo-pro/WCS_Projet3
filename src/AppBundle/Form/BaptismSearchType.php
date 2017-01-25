@@ -87,10 +87,10 @@ class BaptismSearchType extends AbstractType
 
         $builder->add('service',
             EntityType::class, array(
-                'class'   => 'AppBundle:Service',
-                'choice_label' => 'name',
-                'required' => false,
-                'placeholder' => false,
+                'class'             => 'AppBundle:Service',
+                'choice_label'      => 'name',
+                'required'          => false,
+                'placeholder'       => false,
                 'attr'              => array('class' => 'text-capitalize')
             )
         );
