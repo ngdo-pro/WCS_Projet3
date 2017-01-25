@@ -9,6 +9,10 @@
         <source>restaurant_mainTitle</source>
         <target>nos restaurants partenaires</target>
       </trans-unit>
+      <trans-unit id="7c34ddde4f09595abc9e9c4aed876367" resname="restaurant_searchBar">
+        <source>restaurant_searchBar</source>
+        <target>trouver un restaurant foodandyou</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

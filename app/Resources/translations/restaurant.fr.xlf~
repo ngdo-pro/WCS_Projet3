@@ -9,14 +9,6 @@
         <source>restaurant_mainTitle</source>
         <target>nos restaurants partenaires</target>
       </trans-unit>
-      <trans-unit id="f1c63d76c52dac62d759e975f18c3580" resname="home_intro">
-        <source>home_intro</source>
-        <target>__home_intro</target>
-      </trans-unit>
-      <trans-unit id="b357c089473198a61d450aa965f16f11" resname="home_buttonInfo">
-        <source>home_buttonInfo</source>
-        <target>__home_buttonInfo</target>
-      </trans-unit>
     </body>
   </file>
 </xliff>
