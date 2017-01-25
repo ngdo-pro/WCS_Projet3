@@ -121,15 +121,4 @@ class BaptismHasUserRepository extends \Doctrine\ORM\EntityRepository
 
         return $results;
     }
-
-    public function findGuestByBaptism(User $user){
-        return $this->createQueryBuilder('bhu')
-            ->select('bhu')
-            ->where('bhu.baptism = :user')
-            ->andWhere('bhu.role = 0')
-            ->setParameter('user', $user)
-            ->getQuery()
-            ->getResult();
-    }
-    
 }

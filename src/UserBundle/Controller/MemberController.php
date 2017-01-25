@@ -77,10 +77,10 @@ class MemberController extends Controller
         }
 
         return $this->render('user/member/my_orders.html.twig', array(
-            'user' => $user,
-            'ordersBaptised' => $ordersBaptised,
-            'form' => $form->createView(),
-            'avatar' => $userPicture,
+            'user'              => $user,
+            'ordersBaptised'    => $ordersBaptised,
+            'form'              => $form->createView(),
+            'avatar'            => $userPicture,
         ));
     }
 
@@ -168,9 +168,9 @@ class MemberController extends Controller
         }
 
         return $this->render('user/member/profile_edit.html.twig', array(
-            'form' => $form->createView(),
-            'error' => $error,
-            'avatar' => $userPicture,
+            'form'      => $form->createView(),
+            'error'     => $error,
+            'avatar'    => $userPicture,
         ));
     }
 
@@ -212,9 +212,9 @@ class MemberController extends Controller
         }
 
         return $this->render('user/member/public_profile.html.twig', array(
-            'user' => $user,
-            'baptisms' => $baptisms,
-            'avatar' => $userPicture,
+            'user'      => $user,
+            'baptisms'  => $baptisms,
+            'avatar'    => $userPicture,
         ));
 
     }
@@ -237,9 +237,9 @@ class MemberController extends Controller
         }
 
         return $this->render('user/member/my_reservation.html.twig', array(
-            'user' => $user,
+            'user'         => $user,
             'reservations' => $guestReservation,
-            'avatar' => $userPicture
+            'avatar'       => $userPicture
         ));
     }
 }
