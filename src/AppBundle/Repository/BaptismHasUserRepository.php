@@ -121,5 +121,4 @@ class BaptismHasUserRepository extends \Doctrine\ORM\EntityRepository
 
         return $results;
     }
-    
 }
