@@ -41,6 +41,10 @@
         <source>menu.goodBuy</source>
         <target>bons d'achat</target>
       </trans-unit>
+      <trans-unit id="e0caa932dfc96d0b41c6c5afd9ae4ce6" resname="myProfile">
+        <source>myProfile</source>
+        <target>mon profil</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
