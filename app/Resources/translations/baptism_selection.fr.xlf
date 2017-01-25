@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="fr" target-language="fr" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="b0d57131c9d540772b25cf5d7736d58d" resname="baptism.selection">
+        <source>baptism.selection</source>
+        <target>sélection de baptême de chef</target>
+      </trans-unit>
+      <trans-unit id="c1cf1b61febf4247b1dc5a4b257240a9" resname="search_result.title">
+        <source>search_result.title</source>
+        <target>résultat de la recherche</target>
+      </trans-unit>
+      <trans-unit id="7c94aa4a257438c51bd08d0cc6a412e4" resname="back_to_search">
+        <source>back_to_search</source>
+        <target>retour à la recherche</target>
+      </trans-unit>
+      <trans-unit id="942c37ac9b657b3dfc7f0bf098fe68fe" resname="no_baptism_found">
+        <source>no_baptism_found</source>
+        <target>aucun baptême correspondant à vos critères a été trouvé</target>
+      </trans-unit>
+      <trans-unit id="adf41829789cfab6c22248a936677871" resname="date.card_label">
+        <source>date.card_label</source>
+        <target>date</target>
+      </trans-unit>
+      <trans-unit id="6e8fd4f70efcb428178ae0ff7ca37d96" resname="service.card_label">
+        <source>service.card_label</source>
+        <target>service</target>
+      </trans-unit>
+      <trans-unit id="95754b31bca6a477ff54eb570a230ed5" resname="select.card">
+        <source>select.card</source>
+        <target>sélectionner</target>
+      </trans-unit>
+      <trans-unit id="34a348d8a727482576ea957e02ce4bd8" resname="baptism.card_title">
+        <source>baptism.card_title</source>
+        <target>baptême de chef</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

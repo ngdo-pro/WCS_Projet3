@@ -4,28 +4,34 @@
 {% block content %}
     <section id="baptismSelection">
         <header>
-            <h1>{{ 'baptism.selection' |trans |upper }}</h1>
+            <div class="header-title">
+                <h1>{{ 'baptism.selection' |trans |upper }}</h1>
+            </div>
         </header>
-        <h2>Select Part</h2>
-        <h3>Context: Visitor has searched for baptisms and here are displayed the matching ones</h3>
         <div class="container">
+            <h2 class="text-center">{{ 'search_result.title' |trans |capitalize }}</h2>
             <div class="row">
+                <a class="btn btn-default" href="{{ path('baptism_page') }}">{{ 'back_to_search' |trans }}</a>
                 {% if (nbBaptism==0) %}
-                    <h2>No available baptism found</h2>
+                    <h3 class="text-center">{{ 'no_baptism_found' |trans |capitalize }}</h3>
                 {% endif %}
-                {% for baptism in baptisms %}
-                    <div class="col-sm-4">
-                        <!-- Here are the datas you can use-->
-                        <p>Status : {{ baptism.status }}</p>
-                        <p>Places : {{ baptism.places }}</p>
-                        <p>Date : {{ baptism.date |date }}</p>
-                        <p>Service : {{ baptism.serviceName }}</p>
-                        <p>Restaurant : {{ baptism.restaurantName }}</p>
-                        <p>Reference : {{ baptism.reference }}</p>
-                        <!-- This button is here to select a baptism -->
-                        <a href="{{ path('baptism_purchase', {reference: baptism.reference}) }}">Select</a>
-                    </div>
-                {% endfor %}
+                <div class="row">
+                    {% for baptism in baptisms %}
+                        <div class="col-md-3 col-sm-12 card">
+                            <h4 class="text-center">{{ 'baptism.card_title' |trans |upper}}</h4>
+                            <img src="{{ asset('assets/media/img/vivreunbaptemedechef.jpg') }}">
+                            <div class="card-content">
+                                <h5 class="text-center">{{ baptism.restaurantName |upper }}</h5>
+                                <p><span class="card-content--label">{{ 'date.card_label' |trans |capitalize }}</span> : {{ baptism.date |localizeddate('long', 'none') }}</p>
+                                <p><span class="card-content--label">{{ 'service.card_label' |trans |capitalize }}</span> : {{ baptism.serviceName }}</p>
+                            </div>
+                            <!-- This button is here to select a baptism -->
+                            <div class="card-action text-center">
+                                <a class="btn btn-default" href="{{ path('baptism_purchase', {reference: baptism.reference}) }}">{{ 'select.card' |trans }}</a>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
             </div>
         </div>
     </section>
