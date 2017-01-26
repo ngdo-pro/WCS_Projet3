@@ -73,6 +73,7 @@ class BaptismController extends Controller
                         "serviceName" => $baptism->getService()->getName(),
                         "restaurantName" => $baptism->getRestaurant()->getName(),
                         "restaurantMedia" => $medias,
+                        "restaurantAddress" => $baptism->getRestaurant()->getAddress() . " " . $baptism->getRestaurant()->getPostalCode() . " " . $baptism->getRestaurant()->getCity(),
                         "reference" => $resultCount
                     );
                     $resultCount++;
@@ -134,6 +135,7 @@ class BaptismController extends Controller
                         "serviceName" => $serviceOpening->getService()->getName(),
                         "restaurantName" => $serviceOpening->getRestaurant()->getName(),
                         "restaurantMedia" => $medias,
+                        "restaurantAddress" => $serviceOpening->getRestaurant()->getAddress() . " " . $serviceOpening->getRestaurant()->getPostalCode() . " " . $serviceOpening->getRestaurant()->getCity(),
                         "reference" => $resultCount ,
                     );
                     $resultCount++ ;
@@ -187,7 +189,7 @@ class BaptismController extends Controller
 
         /** @var Form $form is created to generate the confirm button */
         $form = $this->createFormBuilder()
-            ->add("confirm", SubmitType::class)
+            ->add("Confirmer", SubmitType::class, array('attr' => array('class' => 'btn btn-default')))
             ->getForm();
         $form->handleRequest($request);
 
