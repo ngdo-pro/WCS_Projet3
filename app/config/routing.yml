@@ -17,3 +17,4 @@ sogenactif:
 user:
     resource: "@UserBundle/Resources/config/routing.yml"
     prefix: /membre
+
