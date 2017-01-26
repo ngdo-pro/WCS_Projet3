@@ -21,4 +21,13 @@ class RestaurantRepository extends \Doctrine\ORM\EntityRepository
 
        return $query->getResult();
     }
+
+    public function findSixthFirstRestaurants()
+    {
+        return $this->createQueryBuilder('r')
+            ->select('r')
+            ->setMaxResults(6)
+            ->getQuery()
+            ->getResult();
+    }
 }

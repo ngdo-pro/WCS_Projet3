@@ -14,8 +14,13 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class RestaurantController extends Controller
 {
-    public function listAction(){
-        return $this->render('app/main/index.html.twig');
+    public function listAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $restaurants = $em->getRepository(Restaurant::class)->findSixthFirstRestaurants();
+        return $this->render('app/restaurant/home.html.twig', array(
+            'restaurants' => $restaurants
+        ));
     }
 
     public function showAction(Restaurant $restaurant){

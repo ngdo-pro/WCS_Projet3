@@ -2,15 +2,16 @@ app_homepage:
     path:     /
     defaults: { _controller: AppBundle:Main:index }
 
+
 app_baptism:
     resource: "@AppBundle/Resources/config/routing/baptism.yml"
     prefix:   /bapteme-de-chef
 
 app_restaurant:
     resource: "@AppBundle/Resources/config/routing/restaurant.yml"
-    prefix:   /
+    prefix:   /nos-restaurants
+
 
 app_estimate:
     path: /privatiser-un-restaurant
     defaults: { _controller: AppBundle:Main:estimate }
-

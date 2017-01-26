@@ -15,8 +15,8 @@
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li class="navbar-menu"><a class="navbar-link" href="">{{ 'our_restaurants' |trans |upper}}</a></li>
-                    <li class="navbar-menu"><a class="navbar-link" href="">{{ 'reservation' |trans |upper}}</a></li>
+                    <li class="navbar-menu"><a class="navbar-link" href="{{ path('our_restaurants') }}">{{ 'restaurant' |trans |upper}}</a></li>
+                    <li class="navbar-menu"><a class="navbar-link" href="{{ path('baptism_page') }}">BAPTÊME DE CHEF</a></li>
                     <li class="navbar-menu"><a class="navbar-link" href="">{{ 'gift_cards' |trans |upper}}</a></li>
                     <li class="navbar-menu" id="brand-logo"><a class="navbar-link" href="{{ path('app_homepage') }}"><img class="navbar-img" src="{{ asset('img/logo-home.png') }}"></a></li>
                     <li class="navbar-menu"><a class="navbar-link" href="">{{ 'blog' |trans |upper}}</a> </li>
@@ -31,10 +31,10 @@
                                 <a href="{{ path('member_profile_edit') }}">{{ 'my_account' |trans |upper}}</a>
                             </li>
                             <li class="dropdown-menu--list">
-                                <a href="">{{ 'my_profile' |trans |upper}}</a>
+                                <a href="{{ path('member_orders') }}">MES COMMANDES</a>
                             </li>
                             <li class="dropdown-menu--list">
-                                <a href="">{{ 'disconnect' |trans |upper}}</a>
+                                <a href="{{ path('fos_user_security_logout') }}">{{ 'disconnect' |trans |upper}}</a>
                             </li>
                         </ul>
                     </li>

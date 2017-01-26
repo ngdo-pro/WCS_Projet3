@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="fr" target-language="fr" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="e8e8ee135b9508eacb78fce57c1cbd27" resname="restaurant_mainTitle">
+        <source>restaurant_mainTitle</source>
+        <target>nos restaurants partenaires</target>
+      </trans-unit>
+      <trans-unit id="7c34ddde4f09595abc9e9c4aed876367" resname="restaurant_searchBar">
+        <source>restaurant_searchBar</source>
+        <target>trouver un restaurant foodandyou</target>
+      </trans-unit>
+      <trans-unit id="666e48af914e1df2a2b1bd7d56ceda06" resname="restaurant_name">
+        <source>restaurant_name</source>
+        <target>due by maurizio</target>
+      </trans-unit>
+      <trans-unit id="d8802f69c11a98af0ec8f3368eb97016" resname="restaurant_restaurantButton">
+        <source>restaurant_restaurantButton</source>
+        <target>voir le restaurant</target>
+      </trans-unit>
+      <trans-unit id="18295e67cb9b4874c8c35fac4d1f408d" resname="restaurant_address">
+        <source>restaurant_address</source>
+        <target>8 rue jouffron, lyon</target>
+      </trans-unit>
+      <trans-unit id="5b54df0ab3d25ae75809d0e4c2ee9bc5" resname="restaurant_buttonMap_1">
+        <source>restaurant_buttonMap_1</source>
+        <target>tous</target>
+      </trans-unit>
+      <trans-unit id="7ea31df4c993894e110c6ce6852fa4ec" resname="restaurant_buttonMap_2">
+        <source>restaurant_buttonMap_2</source>
+        <target>je veux cuisiner</target>
+      </trans-unit>
+      <trans-unit id="efdf7522a38a91862cb19a23be6f6744" resname="restaurant_buttonMap_3">
+        <source>restaurant_buttonMap_3</source>
+        <target>je veux déguster</target>
+      </trans-unit>
+      <trans-unit id="a8677066b567afb5a65191b3c69c11a5" resname="restaurant_buttonCities">
+        <source>restaurant_buttonCities</source>
+        <target>__restaurant_buttonCities</target>
+      </trans-unit>
+      <trans-unit id="ae725f92ee549a056e944f7633871e98" resname="restaurant_buttonLyon">
+        <source>restaurant_buttonLyon</source>
+        <target>__restaurant_buttonLyon</target>
+      </trans-unit>
+      <trans-unit id="9a9c0c75ac2d215d54d3cab1b52eb803" resname="restaurant_buttonParis">
+        <source>restaurant_buttonParis</source>
+        <target>__restaurant_buttonParis</target>
+      </trans-unit>
+      <trans-unit id="d9b241ef80e50089ba54e21843c6d8fc" resname="restaurant_buttonMarseille">
+        <source>restaurant_buttonMarseille</source>
+        <target>__restaurant_buttonMarseille</target>
+      </trans-unit>
+      <trans-unit id="2bf274b872ae7b075d9a78fc8bd2acfe" resname="restaurant_buttonJapan">
+        <source>restaurant_buttonJapan</source>
+        <target>__restaurant_buttonJapan</target>
+      </trans-unit>
+      <trans-unit id="d95882765fe5521a6594822601c8d671" resname="restaurant_buttonFrench">
+        <source>restaurant_buttonFrench</source>
+        <target>__restaurant_buttonFrench</target>
+      </trans-unit>
+      <trans-unit id="c171d62cc100edb8adc3941be2b35144" resname="restaurant_buttonMediterranean">
+        <source>restaurant_buttonMediterranean</source>
+        <target>__restaurant_buttonMediterranean</target>
+      </trans-unit>
+      <trans-unit id="e655edf6ad48e1c6dc581c7573ef4a91" resname="restaurant_buttonGo">
+        <source>restaurant_buttonGo</source>
+        <target>__restaurant_buttonGo</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
