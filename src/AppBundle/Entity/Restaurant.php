@@ -114,6 +114,17 @@ class Restaurant
     private $user;
 
     /**
+     * @var float
+     */
+    private $latitude;
+
+    /**
+     * @var float
+     */
+    private $longitude;
+
+
+    /**
      * Constructor
      */
     public function __construct()
@@ -653,16 +664,6 @@ class Restaurant
     {
         return $this->user;
     }
-    /**
-     * @var float
-     */
-    private $latitude;
-
-    /**
-     * @var float
-     */
-    private $longitude;
-
 
     /**
      * Set latitude

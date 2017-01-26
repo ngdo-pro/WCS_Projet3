@@ -24,6 +24,9 @@ class RestaurantController extends Controller
         $map = new Map();
 
         $map->setAutoZoom(true);
+        // without this Option the size is limited 300px width and 300 px height
+        $map->setStylesheetOption('width', '100%');
+        $map->setStylesheetOption('height', '500px');
 
         foreach ($restaurants as $restaurant){
             $marker = new Marker();
@@ -37,7 +40,6 @@ class RestaurantController extends Controller
 
         return $this->render('app/restaurant/restaurants.html.twig', array(
             'restaurants' => $restaurants,
-            //'marqueurs' => $data_points,
             'map' => $map,
 
         ));
