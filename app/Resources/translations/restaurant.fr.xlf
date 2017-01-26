@@ -11,19 +11,11 @@
       </trans-unit>
       <trans-unit id="7c34ddde4f09595abc9e9c4aed876367" resname="restaurant_searchBar">
         <source>restaurant_searchBar</source>
-        <target>trouver un restaurant foodandyou</target>
-      </trans-unit>
-      <trans-unit id="666e48af914e1df2a2b1bd7d56ceda06" resname="restaurant_name">
-        <source>restaurant_name</source>
-        <target>due by maurizio</target>
+        <target>trouver un restaurant food&amp;you</target>
       </trans-unit>
       <trans-unit id="d8802f69c11a98af0ec8f3368eb97016" resname="restaurant_restaurantButton">
         <source>restaurant_restaurantButton</source>
         <target>voir le restaurant</target>
-      </trans-unit>
-      <trans-unit id="18295e67cb9b4874c8c35fac4d1f408d" resname="restaurant_address">
-        <source>restaurant_address</source>
-        <target>8 rue jouffron, lyon</target>
       </trans-unit>
       <trans-unit id="5b54df0ab3d25ae75809d0e4c2ee9bc5" resname="restaurant_buttonMap_1">
         <source>restaurant_buttonMap_1</source>
