@@ -1,29 +1,32 @@
 {% trans_default_domain 'loginModal' %}
 
 <div id="registerLoginModal" class="modal fade" role="dialog">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-lg">
 
         <!-- Modal content-->
-        <div class="modal-content">
+        <div class="modal-content loginRegisterModal">
             <div class="modal-body">
                 <div class="col-md-12">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
-                <div class="col-md-6">
-                    <h1>{{ 'modal.login.title' |trans |upper }}</h1>
-                    <p></p>
+                <div class="col-md-5" id="loginFormBlock">
+                    <div class="col-md-12" id="loginFormIntro">
+                        <h1>Déjà inscrit ?</h1>
+                        <p>Connectez vous</p>
+                    </div>
+                    <div class="col-md-12" id="loginFormModal">
+                        {{ render(controller('FOSUserBundle:Security:login')) }}
+                    </div>
                 </div>
-                <div class="col-md-6"></div>
-                    <h1>{{ 'modal.register.title' |trans |upper }}</h1>
+                <div class="col-md-7" id="fosRegisterForm">
+                    <div class="col-md-12" id="registerFormIntro">
+                        <h1>Pas encore de compte ?</h1>
+                        <p>Rejoignez la communauté des foodys !</p>
+                    </div>
+                    <div class="col-md-12" id="registerFormModal">
+                        {{ render(controller('FOSUserBundle:Registration:register')) }}
+                    </div>
                 </div>
-                <div class="col-md-6">
-                    {{ render(controller('FOSUserBundle:Security:login')) }}
-                </div>
-                <div class="col-md-6">
-                    {{ render(controller('FOSUserBundle:Registration:register')) }}
-                </div>
-            </div>
-            <div class="modal-footer">
             </div>
         </div>
     </div>
