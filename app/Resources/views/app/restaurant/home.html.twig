@@ -16,10 +16,35 @@
 
             <div class="col-md-6 restaurantSearch-block">
                 <h1>{{ 'restaurant_searchBar' |trans |upper }}</h1>
-                <!-- search bar goes here -->
+
+                <div id="buttonSearch">
+                    <div class="buttonSearch--buttonCity">
+                        <button class="btn btn-default btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            {{ 'restaurant_buttonCities' |trans }} <span class="glyphicon glyphicon-plus"></span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">{{ 'restaurant_buttonLyon' |trans }} 34 restaurants</a><li>
+                            <li> <a href="#">{{ 'restaurant_buttonParis' |trans }} 34 restaurants</a><li>
+                            <li><a href="#">{{ 'restaurant_buttonMarseille' |trans }} 34 restaurants</a><li>
+                        </ul>
+                    </div>
+                    <div class="buttonSearch--buttonType">
+                        <button class="btn btn-default btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            {{ 'restaurant_buttonCuisine' |trans }} <span class="glyphicon glyphicon-plus"></span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">{{ 'restaurant_buttonJapan' |trans }} 34 restaurants</a><li>
+                            <li> <a href="#">{{ 'restaurant_buttonFrench' |trans }} 34 restaurants</a><li>
+                            <li><a href="#">{{ 'restaurant_buttonMediterranean' |trans }} 34 restaurants</a><li>
+                        </ul>
+                    </div>
+                    <div class="buttonSearch--buttonGo">
+                        <button>{{ 'restaurant_buttonGo' |trans |upper }}</button>
+                    </div>
+                </div>
             </div>
             <div class="col-md-6 restaurantSearch-block">
-                <div class="restaurantSearch-block--button">
+                <div class="restaurantSearch-block--buttonMap">
                     <button>{{ 'restaurant_buttonMap_1' |trans |upper }}</button>
                     <button>{{ 'restaurant_buttonMap_2' |trans |upper }}</button>
                     <button>{{ 'restaurant_buttonMap_3' |trans |upper }}</button>

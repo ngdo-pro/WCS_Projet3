@@ -18,7 +18,7 @@
 #restaurantSearch
 
   .restaurantSearch-block
-    background: $bg-color1
+    background: $bg-color2
     height: 350px
     display: flex
     flex-direction: column
@@ -26,12 +26,36 @@
     text-align: center
     padding: 0
     border: solid white 2px
-    &--button
+
+    #buttonSearch
+      display: flex
+      flex-direction: row
+      justify-content: center
+      position: relative
+      .buttonSearch--buttonCity,
+      .buttonSearch--buttonType,
+      .buttonSearch--buttonGo
+        button
+          font: $btn-font
+          font-weight: bold
+          margin-left: 2px
+          font-size: 11px
+          width: 19rem
+          height: 3.8rem
+          border: none
+          border-radius: 1px
+          &:hover
+            background-color: $bg-color1
+            color: $font-color1
+      ul
+        margin: 0 auto
+        position: absolute
+    &--buttonMap
       z-index: 1
       position: absolute
       margin-top: 2%
       button
-        background-color: $bg-color1
+        background-color: $bg-color2
         font: $btn-font
         font-weight: bold
         color: $font-color1
@@ -42,7 +66,7 @@
         border-radius: 1px
         margin-left: 10px
         &:hover
-          background-color: $bg-color2
+          background-color: $bg-color1
     &--map
       filter: grayscale(100%)
       width: auto
@@ -51,6 +75,8 @@
       color: $font-color1
       font-family: $search_bar-font
       font-weight: bold
+      margin-bottom: 10%
+
   .restaurantSearch-mozaic
     background: url('../media/img/homeImage5.jpg') no-repeat center
     background-size: cover
@@ -77,7 +103,7 @@
         margin-bottom: 18%
       button
         color: $font-color1
-        background-color: $bg-color1
+        background-color: $bg-color2
         font: $btn-font
         font-size: 1.8rem
         border: none
