@@ -42,7 +42,6 @@ class LoadPostData extends AbstractFixture implements OrderedFixtureInterface
                 "last_update_at" => new \DateTime("2017-01-10"),
                 "category_name" => "vegan",
                 "tag_title" => "vegetable",
-                "reference" => "middle-cook"
             )
         );
 

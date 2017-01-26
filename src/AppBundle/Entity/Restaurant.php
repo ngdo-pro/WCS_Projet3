@@ -7,8 +7,9 @@ namespace AppBundle\Entity;
  */
 class Restaurant
 {
+
     /**
-     * @var int
+     * @var integer
      */
     private $id;
 
@@ -87,11 +88,46 @@ class Restaurant
      */
     private $foodType;
 
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $medias;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $serviceOpenings;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $serviceOpeningExceptions;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $baptisms;
+
+    /**
+     * @var \UserBundle\Entity\User
+     */
+    private $user;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->medias = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->serviceOpenings = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->serviceOpeningExceptions = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->baptisms = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Get id
      *
-     * @return int
+     * @return integer
      */
     public function getId()
     {
@@ -457,47 +493,6 @@ class Restaurant
     {
         return $this->foodType;
     }
-    /**
-     * @var \UserBundle\Entity\User
-     */
-    private $user;
-
-
-    /**
-     * Set user
-     *
-     * @param \UserBundle\Entity\User $user
-     *
-     * @return Restaurant
-     */
-    public function setUser(\UserBundle\Entity\User $user = null)
-    {
-        $this->user = $user;
-
-        return $this;
-    }
-
-    /**
-     * Get user
-     *
-     * @return \UserBundle\Entity\User
-     */
-    public function getUser()
-    {
-        return $this->user;
-    }
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
-    private $medias;
-
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->medias = new \Doctrine\Common\Collections\ArrayCollection();
-    }
 
     /**
      * Add media
@@ -532,16 +527,6 @@ class Restaurant
     {
         return $this->medias;
     }
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
-    private $serviceOpenings;
-
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
-    private $serviceOpeningExceptions;
-
 
     /**
      * Add serviceOpening
@@ -610,11 +595,6 @@ class Restaurant
     {
         return $this->serviceOpeningExceptions;
     }
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
-    private $baptisms;
-
 
     /**
      * Add baptism
@@ -648,5 +628,29 @@ class Restaurant
     public function getBaptisms()
     {
         return $this->baptisms;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \UserBundle\Entity\User $user
+     *
+     * @return Restaurant
+     */
+    public function setUser(\UserBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \UserBundle\Entity\User
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 }
