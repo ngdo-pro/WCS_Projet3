@@ -17,21 +17,23 @@
                 {% endif %}
                 <div class="row">
                     {% for baptism in baptisms %}
-                        <div class="col-md-3 col-sm-12 card">
-                            <h4 class="text-center">{{ 'baptism.card_title' |trans |upper}}</h4>
-                            {% for media in baptism.restaurantMedia %}
-                                {% if loop.first %}
-                                    <img src="{{ asset('uploads/restaurants/' ~ media.name) }}">
-                                {% endif %}
-                            {% endfor %}
-                            <div class="card-content">
-                                <h5 class="text-center">{{ baptism.restaurantName |upper }}</h5>
-                                <p><span class="card-content--label">{{ 'date.card_label' |trans |capitalize }}</span> : {{ baptism.date |localizeddate('long', 'none') }}</p>
-                                <p><span class="card-content--label">{{ 'service.card_label' |trans |capitalize }}</span> : {{ baptism.serviceName }}</p>
-                            </div>
-                            <!-- This button is here to select a baptism -->
-                            <div class="card-action text-center">
-                                <a class="btn btn-default" href="{{ path('baptism_purchase', {reference: baptism.reference}) }}">{{ 'select.card' |trans }}</a>
+                        <div class="col-md-3 col-sm-12">
+                            <div class="card">
+                                <h4 class="text-center">{{ 'baptism.card_title' |trans |upper}}</h4>
+                                {% for media in baptism.restaurantMedia %}
+                                    {% if loop.first %}
+                                        <div class="restaurant-primary-card"><img src="{{ asset('uploads/restaurants/' ~ media.name) }}"></div>
+                                    {% endif %}
+                                {% endfor %}
+                                <div class="card-content">
+                                    <h5 class="text-center">{{ baptism.restaurantName |upper }}</h5>
+                                    <p><span class="card-content--label">{{ 'date.card_label' |trans |capitalize }}</span> : {{ baptism.date |localizeddate('long', 'none') }}</p>
+                                    <p><span class="card-content--label">{{ 'service.card_label' |trans |capitalize }}</span> : {{ baptism.serviceName }}</p>
+                                </div>
+                                <!-- This button is here to select a baptism -->
+                                <div class="card-action text-center">
+                                    <a class="btn btn-default" href="{{ path('baptism_purchase', {reference: baptism.reference}) }}">{{ 'select.card' |trans }}</a>
+                                </div>
                             </div>
                         </div>
                     {% endfor %}

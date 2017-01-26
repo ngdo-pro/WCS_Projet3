@@ -13,8 +13,7 @@ AppBundle\Entity\Restaurant:
             type: string
             length: 255
         description:
-            type: string
-            length: 255
+            type: text
         openingDate:
             type: date
         address:
