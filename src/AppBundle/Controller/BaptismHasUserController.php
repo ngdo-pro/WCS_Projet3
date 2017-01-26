@@ -28,6 +28,8 @@ class BaptismHasUserController extends Controller
         $em = $this->getDoctrine()->getManager();
         $guestCount = $em->getRepository("AppBundle:BaptismHasUser")->findHowManyGuest($baptismHasUser->getBaptism());
 
+        $restoPicture = $baptismHasUser->getBaptism()->getRestaurant()->getMedias();
+
         $user = $baptismHasUser->getUser();
         $userPicture = null;
         if ($user->getMedia() != null) {
@@ -82,7 +84,8 @@ class BaptismHasUserController extends Controller
                 'guestCount'                => $guestCount,
                 'baptism_has_current_user'  => $baptismHasCurrentUser,
                 'form'                      => $form->createView(),
-                'avatar'                    => $userPicture
+                'avatar'                    => $userPicture,
+                'restoPicture'              => $restoPicture
             ));
         }elseif($baptismHasCurrentUser['role'] == 'guest'){
             /** @var BaptismHasUser $baptismHasGuest */
@@ -109,14 +112,16 @@ class BaptismHasUserController extends Controller
                 'guestCount'                => $guestCount,
                 'baptism_has_current_user'  => $baptismHasCurrentUser,
                 'form'                      => $form->createView(),
-                'avatar'                    => $userPicture
+                'avatar'                    => $userPicture,
+                'restoPicture'              => $restoPicture
             ));
         }else{
             return $this->render('app/baptism_has_user/guest/baptism_guest.html.twig', array(
                 'baptism_has_user'          => $baptismHasUser,
                 'guestCount'                => $guestCount,
                 'baptism_has_current_user'  => $baptismHasCurrentUser,
-                'avatar'                    => $userPicture
+                'avatar'                    => $userPicture,
+                'restoPicture'              => $restoPicture
             ));
         }
     }

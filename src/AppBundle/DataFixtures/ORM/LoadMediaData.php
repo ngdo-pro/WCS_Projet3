@@ -26,14 +26,6 @@ class LoadMediaData extends AbstractFixture implements OrderedFixtureInterface
     {
         $medias = array(
             array(
-                "name" => "jean-michel d.jpg",
-                "createdAt" => new \DateTime(),
-                "lastUpdatedAt" => new \DateTime(),
-                "context" => "user",
-                "type" => "img",
-                "userSlug" => "1-jean-michel-dupont"
-            ),
-            array(
                 "name" => "wild-restaurant.jpg",
                 "createdAt" => new \DateTime(),
                 "lastUpdatedAt" => new \DateTime(),

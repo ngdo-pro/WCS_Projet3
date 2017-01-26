@@ -15,14 +15,22 @@
 
 
         <h2>Baptême de {{ baptism_has_user.user.firstName |title ~ ' ' ~ baptism_has_user.user.lastName |title }}</h2>
+        {% for picture in restoPicture %}
+            {% if loop.first %}
+                <div id="retoImg" class="img-responsive">
+                    <img class="pull-right" src="{{ asset('uploads/restaurants/' ~ picture.name) }}"/>
+                </div>
+            {% endif %}
+        {% endfor %}
 
-        <p>{{ baptism_has_user.user.firstName }} {{ baptism_has_user.user.lastName }} {{ 'inviting_guest' |trans }}</p>
-        <p>{{ 'restaurant' |trans }} {{ baptism_has_user.baptism.restaurant.name|capitalize }}</p>
-        <p>{{ baptism_has_user.baptism.restaurant.address }}</p>
-        <p>{{ baptism_has_user.baptism.restaurant.postalCode }}</p>
-        <p>{{ baptism_has_user.baptism.restaurant.city }}</p>
-        <p>{{ baptism_has_user.baptism.service.name }}</p>
-        <p>{{ baptism_has_user.baptism.date |date('d m Y') }}</p>
+        <h3>{{ baptism_has_user.user.firstName |title ~ ' ' ~ baptism_has_user.user.lastName |title }} {{ 'inviting_guest' |trans }}</h3>
+        <table id="reserTable" class="table table-striped">
+        <tr><td>{{ baptism_has_user.baptism.restaurant.name|title }}</td></tr>
+        <tr><td>{{ baptism_has_user.baptism.restaurant.address }}</td></tr>
+        <tr><td>{{ baptism_has_user.baptism.restaurant.postalCode ~ ' ' ~ baptism_has_user.baptism.restaurant.city |title }}</td></tr>
+        <tr><td>{{ baptism_has_user.baptism.service.name }}</td></tr>
+        <tr><td>{{ baptism_has_user.baptism.date |date('d/m/Y') }}</td></tr>
+        </table>
         {# Number of guests #}
         <p>{{ guestCount }}</p>
 
