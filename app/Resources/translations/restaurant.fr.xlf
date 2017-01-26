@@ -25,6 +25,18 @@
         <source>restaurant_address</source>
         <target>8 rue jouffron, lyon</target>
       </trans-unit>
+      <trans-unit id="5b54df0ab3d25ae75809d0e4c2ee9bc5" resname="restaurant_buttonMap_1">
+        <source>restaurant_buttonMap_1</source>
+        <target>tous</target>
+      </trans-unit>
+      <trans-unit id="7ea31df4c993894e110c6ce6852fa4ec" resname="restaurant_buttonMap_2">
+        <source>restaurant_buttonMap_2</source>
+        <target>je veux cuisiner</target>
+      </trans-unit>
+      <trans-unit id="efdf7522a38a91862cb19a23be6f6744" resname="restaurant_buttonMap_3">
+        <source>restaurant_buttonMap_3</source>
+        <target>je veux déguster</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
