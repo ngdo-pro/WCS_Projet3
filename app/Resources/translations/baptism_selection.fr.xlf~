@@ -19,7 +19,7 @@
       </trans-unit>
       <trans-unit id="942c37ac9b657b3dfc7f0bf098fe68fe" resname="no_baptism_found">
         <source>no_baptism_found</source>
-        <target>aucun baptême correspondant à vos critères a été trouvé</target>
+        <target>aucun baptême correspondant à vos critères n'a été trouvé</target>
       </trans-unit>
       <trans-unit id="adf41829789cfab6c22248a936677871" resname="date.card_label">
         <source>date.card_label</source>
@@ -32,6 +32,10 @@
       <trans-unit id="95754b31bca6a477ff54eb570a230ed5" resname="select.card">
         <source>select.card</source>
         <target>sélectionner</target>
+      </trans-unit>
+      <trans-unit id="34a348d8a727482576ea957e02ce4bd8" resname="baptism.card_title">
+        <source>baptism.card_title</source>
+        <target>baptême de chef</target>
       </trans-unit>
     </body>
   </file>
