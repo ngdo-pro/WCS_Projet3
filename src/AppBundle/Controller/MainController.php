@@ -21,6 +21,11 @@ class MainController extends Controller
         return $this->render('app/main/index.html.twig');
     }
 
+    public function estimateAction()
+    {
+        return $this->render('app/main/estimate.html.twig');
+    }
+
     /**
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
