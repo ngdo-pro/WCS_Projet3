@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="fr" target-language="fr" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="0a55418e629309f2d7de50b7e8e03938" resname="baptism.purchase">
+        <source>baptism.purchase</source>
+        <target>acheter un baptême de chef</target>
+      </trans-unit>
+      <trans-unit id="52177d9e33f29f0c084db262605625b1" resname="baptism_chef.title">
+        <source>baptism_chef.title</source>
+        <target>bapteme de chef</target>
+      </trans-unit>
+      <trans-unit id="5fc732311905cb27e82d67f4f6511f7f" resname="date">
+        <source>date</source>
+        <target>se déroule le</target>
+      </trans-unit>
+      <trans-unit id="aaabf0d39951f3e6c3e8a7911df524c2" resname="service">
+        <source>service</source>
+        <target>au service du</target>
+      </trans-unit>
+      <trans-unit id="2e8a56189c164e2845e5c87e8fed8385" resname="need_to_connect">
+        <source>need_to_connect</source>
+        <target>vous devez vous connecter pour pouvoir acheter un baptême de chef</target>
+      </trans-unit>
+      <trans-unit id="7c94aa4a257438c51bd08d0cc6a412e4" resname="back_to_search">
+        <source>back_to_search</source>
+        <target>retour à la recherche</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
