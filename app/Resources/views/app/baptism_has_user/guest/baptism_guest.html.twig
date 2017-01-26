@@ -27,9 +27,9 @@
         {% endfor %}
         <div id="reserFlex">
             <div id="reserInfo">
-                <h3>{{ baptism_has_user.user.firstName |title ~ ' ' ~ baptism_has_user.user.lastName |title }} {{ 'inviting_guest' |trans }}</h3>
+                <h3>{{ baptism_has_user.user.firstName |title ~ ' ' ~ baptism_has_user.user.lastName |title }}<br/>{{ 'inviting_guest' |trans }}</h3>
                 <p>Rendez-vous le {{ baptism_has_user.baptism.date |date('d/m/Y') }}
-                    au {{ baptism_has_user.baptism.restaurant.name|title }}<br/>
+                    <br/>au {{ baptism_has_user.baptism.restaurant.name|title }}<br/>
                     pour le service du {{ baptism_has_user.baptism.service.name }}<br/>
                 </p>
                 {# Number of guests #}
@@ -94,10 +94,10 @@
 
                 {% endif %}
             </div>
-            <div class="reservMap">
+            <div id="reservMap">
                 <iframe
                          width="100%"
-                         height="300px"
+                         height="400px"
                          frameborder="0"
                          style="border:0;"
                          class="grayscale"
