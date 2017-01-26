@@ -11,6 +11,6 @@ app_restaurant:
     prefix:   /
 
 app_estimate:
-    path: /privatiser_un_restaurant
+    path: /privatiser-un-restaurant
     defaults: { _controller: AppBundle:Main:estimate }
 
