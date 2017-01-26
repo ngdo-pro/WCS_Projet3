@@ -34,7 +34,7 @@ class LoadMediaData extends AbstractFixture implements OrderedFixtureInterface
                 "userSlug" => "1-jean-michel-dupont"
             ),
             array(
-                "name" => "wild first floor",
+                "name" => "wild-restaurant.jpg",
                 "createdAt" => new \DateTime(),
                 "lastUpdatedAt" => new \DateTime(),
                 "context" => "restaurant",
@@ -42,12 +42,68 @@ class LoadMediaData extends AbstractFixture implements OrderedFixtureInterface
                 "restaurantSlug" => "wild-restaurant"
             ),
             array(
-                "name" => "middle west",
+                "name" => "136-avenue.jpeg",
                 "createdAt" => new \DateTime(),
                 "lastUpdatedAt" => new \DateTime(),
-                "context" => "cook",
+                "context" => "restaurant",
                 "type" => "img",
-                "postSlug" => "middle-cook"
+                "restaurantSlug" => "136-avenue"
+            ),
+            array(
+                "name" => "arsenic.jpeg",
+                "createdAt" => new \DateTime(),
+                "lastUpdatedAt" => new \DateTime(),
+                "context" => "restaurant",
+                "type" => "img",
+                "restaurantSlug" => "arsenic"
+            ),
+            array(
+                "name" => "au-pre-fleuri.jpeg",
+                "createdAt" => new \DateTime(),
+                "lastUpdatedAt" => new \DateTime(),
+                "context" => "restaurant",
+                "type" => "img",
+                "restaurantSlug" => "au-pre-fleuri"
+            ),
+            array(
+                "name" => "bistrot-gustave.jpeg",
+                "createdAt" => new \DateTime(),
+                "lastUpdatedAt" => new \DateTime(),
+                "context" => "restaurant",
+                "type" => "img",
+                "restaurantSlug" => "bistrot-gustave"
+            ),
+            array(
+                "name" => "bistrot-la-varenne.jpeg",
+                "createdAt" => new \DateTime(),
+                "lastUpdatedAt" => new \DateTime(),
+                "context" => "restaurant",
+                "type" => "img",
+                "restaurantSlug" => "bistrot-la-varenne"
+            ),
+            array(
+                "name" => "chez-augusto.jpeg",
+                "createdAt" => new \DateTime(),
+                "lastUpdatedAt" => new \DateTime(),
+                "context" => "restaurant",
+                "type" => "img",
+                "restaurantSlug" => "chez-augusto"
+            ),
+            array(
+                "name" => "got-milk.jpeg",
+                "createdAt" => new \DateTime(),
+                "lastUpdatedAt" => new \DateTime(),
+                "context" => "restaurant",
+                "type" => "img",
+                "restaurantSlug" => "got-milk"
+            ),
+            array(
+                "name" => "l-episens.jpeg",
+                "createdAt" => new \DateTime(),
+                "lastUpdatedAt" => new \DateTime(),
+                "context" => "restaurant",
+                "type" => "img",
+                "restaurantSlug" => "l-episens"
             )
         );
 

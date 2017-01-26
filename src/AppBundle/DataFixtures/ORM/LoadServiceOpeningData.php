@@ -46,6 +46,182 @@ class LoadServiceOpeningData extends AbstractFixture implements OrderedFixtureIn
                 "sunday" => 0,
                 "service" => "midi",
                 "restaurantSlug" => "wild-restaurant"
+            ),
+            array(
+                "monday" => 1,
+                "tuesday" => 1,
+                "wednesday" => 1,
+                "thursday" => 3,
+                "friday" => 2,
+                "saturday" => 1,
+                "sunday" => 0,
+                "service" => "midi",
+                "restaurantSlug" => "136-avenue"
+            ),
+            array(
+                "monday" => 0,
+                "tuesday" => 0,
+                "wednesday" => 0,
+                "thursday" => 0,
+                "friday" => 2,
+                "saturday" => 0,
+                "sunday" => 1,
+                "service" => "soir",
+                "restaurantSlug" => "136-avenue"
+            ),
+            array(
+                "monday" => 0,
+                "tuesday" => 1,
+                "wednesday" => 1,
+                "thursday" => 0,
+                "friday" => 0,
+                "saturday" => 1,
+                "sunday" => 0,
+                "service" => "midi",
+                "restaurantSlug" => "arsenic"
+            ),
+            array(
+                "monday" => 0,
+                "tuesday" => 1,
+                "wednesday" => 0,
+                "thursday" => 1,
+                "friday" => 0,
+                "saturday" => 0,
+                "sunday" => 1,
+                "service" => "soir",
+                "restaurantSlug" => "arsenic"
+            ),
+            array(
+                "monday" => 1,
+                "tuesday" => 1,
+                "wednesday" => 1,
+                "thursday" => 3,
+                "friday" => 2,
+                "saturday" => 1,
+                "sunday" => 0,
+                "service" => "midi",
+                "restaurantSlug" => "au-pre-fleuri"
+            ),
+            array(
+                "monday" => 2,
+                "tuesday" => 1,
+                "wednesday" => 1,
+                "thursday" => 1,
+                "friday" => 2,
+                "saturday" => 0,
+                "sunday" => 1,
+                "service" => "soir",
+                "restaurantSlug" => "au-pre-fleuri"
+            ),
+            array(
+                "monday" => 1,
+                "tuesday" => 1,
+                "wednesday" => 1,
+                "thursday" => 3,
+                "friday" => 2,
+                "saturday" => 1,
+                "sunday" => 0,
+                "service" => "midi",
+                "restaurantSlug" => "bistrot-gustave"
+            ),
+            array(
+                "monday" => 0,
+                "tuesday" => 0,
+                "wednesday" => 0,
+                "thursday" => 0,
+                "friday" => 2,
+                "saturday" => 2,
+                "sunday" => 1,
+                "service" => "soir",
+                "restaurantSlug" => "bistrot-gustave"
+            ),
+            array(
+                "monday" => 1,
+                "tuesday" => 1,
+                "wednesday" => 1,
+                "thursday" => 3,
+                "friday" => 2,
+                "saturday" => 1,
+                "sunday" => 0,
+                "service" => "midi",
+                "restaurantSlug" => "bistrot-la-varenne"
+            ),
+            array(
+                "monday" => 0,
+                "tuesday" => 0,
+                "wednesday" => 0,
+                "thursday" => 0,
+                "friday" => 2,
+                "saturday" => 0,
+                "sunday" => 1,
+                "service" => "soir",
+                "restaurantSlug" => "bistrot-la-varenne"
+            ),
+            array(
+                "monday" => 1,
+                "tuesday" => 1,
+                "wednesday" => 1,
+                "thursday" => 3,
+                "friday" => 2,
+                "saturday" => 1,
+                "sunday" => 0,
+                "service" => "midi",
+                "restaurantSlug" => "chez-augusto"
+            ),
+            array(
+                "monday" => 0,
+                "tuesday" => 0,
+                "wednesday" => 0,
+                "thursday" => 0,
+                "friday" => 2,
+                "saturday" => 0,
+                "sunday" => 1,
+                "service" => "soir",
+                "restaurantSlug" => "chez-augusto"
+            ),
+            array(
+                "monday" => 1,
+                "tuesday" => 1,
+                "wednesday" => 1,
+                "thursday" => 3,
+                "friday" => 2,
+                "saturday" => 1,
+                "sunday" => 0,
+                "service" => "midi",
+                "restaurantSlug" => "got-milk"
+            ),
+            array(
+                "monday" => 0,
+                "tuesday" => 0,
+                "wednesday" => 0,
+                "thursday" => 0,
+                "friday" => 2,
+                "saturday" => 0,
+                "sunday" => 1,
+                "service" => "soir",
+                "restaurantSlug" => "got-milk"
+            ),
+            array(
+                "monday" => 1,
+                "tuesday" => 1,
+                "wednesday" => 1,
+                "thursday" => 3,
+                "friday" => 2,
+                "saturday" => 1,
+                "sunday" => 0,
+                "service" => "midi",
+                "restaurantSlug" => "l-episens"
+            ),
+            array(
+                "monday" => 0,
+                "tuesday" => 0,
+                "wednesday" => 0,
+                "thursday" => 0,
+                "friday" => 2,
+                "saturday" => 0,
+                "sunday" => 1,
+                "service" => "soir",
+                "restaurantSlug" => "l-episens"
             )
         );
 
