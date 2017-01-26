@@ -2,6 +2,7 @@
 {% trans_default_domain "user" %}
 
 {% block body %}
+    <div id="headerBack" class="container-fluid"></div>
     <section id="userLayout">
         <div id="avatar">
         {% block avatar %}
@@ -24,7 +25,7 @@
                                     class="glyphicon glyphicon-euro pull-right"></span></li>
                         <ul>
                             <li><a href="{{ path('member_orders') }}">{{ "menu.baptem" |trans |capitalize }}</a></li>
-                            <li><a href="#">{{ "menu.reservation" |trans |capitalize }}</a></li>
+                            <li><a href="{{ path('member_reservation') }}">{{ "menu.reservation" |trans |capitalize }}</a></li>
                             <li><a href="#">{{ "menu.gift" |trans |capitalize }}</a></li>
                             <li><a href="#">{{ "menu.goodBuy" |trans |capitalize }}</a></li>
                         </ul>
