@@ -1,0 +1,106 @@
+{% extends 'app/layout.html.twig' %}
+
+{% trans_default_domain "restaurant" %}
+
+{% block content %}
+    <!-- header section -->
+    <section id="ourRestaurants">
+        <div class="headerBlur">
+            <h1>
+                {{ 'restaurant_mainTitle' |trans |upper }}
+            </h1>
+        </div>
+    </section>
+
+    <!-- first mozaic section including search bar and map -->
+    <section class="container-fluid" id="restaurantSearch">
+        <div class="row">
+
+            <div class="col-md-6 restaurantSearch-block">
+                <h1>{{ 'restaurant_searchBar' |trans |upper }}</h1>
+
+                <div id="buttonSearch">
+                    <div class="buttonSearch--buttonCity">
+                        <button class="btn btn-default btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            {{ 'restaurant_buttonCities' |trans }} <span class="glyphicon glyphicon-plus"></span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">{{ 'restaurant_buttonLyon' |trans }} 34 restaurants</a><li>
+                            <li> <a href="#">{{ 'restaurant_buttonParis' |trans }} 34 restaurants</a><li>
+                            <li><a href="#">{{ 'restaurant_buttonMarseille' |trans }} 34 restaurants</a><li>
+                        </ul>
+                    </div>
+                    <div class="buttonSearch--buttonType">
+                        <button class="btn btn-default btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            {{ 'restaurant_buttonCuisine' |trans }} <span class="glyphicon glyphicon-plus"></span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">{{ 'restaurant_buttonJapan' |trans }} 34 restaurants</a><li>
+                            <li> <a href="#">{{ 'restaurant_buttonFrench' |trans }} 34 restaurants</a><li>
+                            <li><a href="#">{{ 'restaurant_buttonMediterranean' |trans }} 34 restaurants</a><li>
+                        </ul>
+                    </div>
+                    <div class="buttonSearch--buttonGo">
+                        <button>{{ 'restaurant_buttonGo' |trans |upper }}</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 restaurantSearch-block">
+                <div class="restaurantSearch-block--buttonMap">
+                    <button>{{ 'restaurant_buttonMap_1' |trans |upper }}</button>
+                    <button>{{ 'restaurant_buttonMap_2' |trans |upper }}</button>
+                    <button>{{ 'restaurant_buttonMap_3' |trans |upper }}</button>
+                </div>
+                <iframe class="restaurantSearch-block--map"
+                        src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d22270.76906344167!2d4.8386187000000005!3d45.754230549999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sfr!2sfr!4v1485357546231"
+                        width="600"
+                        height="450"
+                        frameborder="0"
+                        style="border:0"
+                        allowfullscreen>
+                </iframe>
+            </div>
+            {% for restaurant in restaurants %}
+                {% for media in restaurant.medias %}
+                    {% if loop.first %}
+                        <div class="col-md-4 restaurantSearch-mozaic" style="background: url('{{ asset('uploads/restaurants/' ~ media.name) }}') no-repeat center; background-size: cover">
+                            <a href="{{ path('restaurant', {'slug': restaurant.slug}) }}">
+                                <div class="restaurantSearch-mozaic--inside">
+                                    <h2>{{ restaurant.name |upper }}</h2>
+                                    <p>{{ restaurant.address |capitalize ~ ' ' ~ restaurant.postalCode ~ ' ' ~ restaurant.city |upper }}</p>
+                                    <button>
+                                        {{ 'restaurant_restaurantButton' |trans |upper }}
+                                    </button>
+                                </div>
+                            </a>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            {% endfor %}
+        </div>
+    </section>
+
+    <section class="container-fluid" id="paginator">
+        <div class="row">
+            <nav class="navigation">
+                <ul class="pagination pagination-lg">
+                    <li>
+                        <a href="#" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    <li><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li>
+                    <li>
+                        <a href="#" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </section>
+{% endblock %}
