@@ -4,6 +4,8 @@
 
 {% block content %}
     <div class="container-fluid privatise" xmlns="http://www.w3.org/1999/html">
+    </div>
+    <div class="container-fluid estimatePresentation">
         <div class="row">
             <div class="col-lg-offset-2 col-lg-8 privatise-blockInfo">
                 <h1>{{ 'estimate_title' |trans |upper }}</h1>
@@ -11,18 +13,16 @@
             </div>
         </div>
     </div>
-    <div class="container-fluid estimatePresentation">
-        <div class="row">
-            <div class="col-md-12">
-                <h1>{{ 'estimate_intro' |trans |upper }}</h1>
-                <p>{{ 'estimate_presentation' |trans |upper }}</p>
-            </div>
-        </div>
-    </div>
     <form class="estimateForm">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-offset-2 col-md-8 estimateForm-center">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h1>{{ 'estimate_intro' |trans |upper }}</h1>
+                            <p id="estimatePresentation">{{ 'estimate_presentation' |trans }}</p>
+                        </div>
+                    </div>
                     <div class="col-md-offset-3 col-md-6 form-group">
                         <p class="estimateForm-center--font">{{ 'estimate_status' |trans |upper }}</p>
                         <div class="form-check">
@@ -51,36 +51,35 @@
                                 <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     {{ 'estimate_restaurantChoice' |trans |upper }}
                                 </button>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="#">Wild Restaurant</a>
-                                    <a class="dropdown-item" href="#">Un Monde Vegan</a>
-                                    <a class="dropdown-item" href="#">Un Monde Carnivore</a>
-                                </div>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a class="dropdown-item" href="#">Wild Restaurant</a></li>
+                                    <li><a class="dropdown-item" href="#">Un Monde Vegan</a></li>
+                                    <li><a class="dropdown-item" href="#">Un Monde Carnivore</a></li>
+                                </ul>
                             </div>
                             <input type="text" class="form-control" aria-label="Text input with dropdown button">
                         </div>
                     </div>
                     <div class="col-md-offset-3 col-md-6 estimateForm-center--labelOut">
-                        <label class="estimateForm-center--font" for="date">{{ 'estimate_date' |trans |upper }}</label>
+                        <label class="estimateForm-center--font" id="estimateDate" for="date">{{ 'estimate_date' |trans |upper }}</label>
                     </div>
-                    <div class='col-lg-offset-3 col-sm-6'>
+                    <div class='col-md-offset-3 col-md-6'>
                         <div class="form-group">
-                            <div class='input-group date' id='datetimepicker1'>
-                                <input type='text' class="form-control" />
+                            <div class='input-group date datepicker' id='datetimepicker1'>
+                                <input type='text' class="form-control datepicker" />
                                 <span class="input-group-addon">
-                                <span class="glyphicon glyphicon-calendar"></span>
-                            </span>
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </span>
                             </div>
                         </div>
                     </div>
-                    <script type="text/javascript">
-                        $(function () {
-                            $('#datetimepicker1').datetimepicker();
-                        });
-                    </script>
-                    <div class=" col-lg-offset-3 col-lg-6 form-group">
+                    <div class=" col-md-offset-3 col-md-6 form-group">
                         <label class="estimateForm-center--font" for="people">{{ 'estimate_numberPeople' |trans |upper }}</label>
                         <input type="number" class="form-control" id="num">
+                    </div>
+                    <div class="col-md-offset-3 col-md-6 form-group">
+                        <label for="comment">{{ 'estimate_comment' |trans |upper }}</label>
+                        <textarea class="form-control" rows="5" id="comment"></textarea>
                     </div>
                     <div class="col-lg-offset-3 col-lg-6 sendEstimate">
                         <button type="submit" class="btn btn-default">{{ 'estimate_send' |trans }}</button>

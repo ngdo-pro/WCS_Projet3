@@ -27,7 +27,7 @@
       </trans-unit>
       <trans-unit id="e931b326fb815143c66881934016a613" resname="estimate_restaurantChoice">
         <source>estimate_restaurantChoice</source>
-        <target>dans quel restaurant ?</target>
+        <target>liste de nos restaurants</target>
       </trans-unit>
       <trans-unit id="6976a3a8de684734dc3677c1fe30558e" resname="estimate_numberPeople">
         <source>estimate_numberPeople</source>
@@ -48,6 +48,14 @@
       <trans-unit id="ff7c9fd586a848efb0f0c9cd13e4ba89" resname="estimate_status">
         <source>estimate_status</source>
         <target>Êtes vous un particulier ou une entreprise ?</target>
+      </trans-unit>
+      <trans-unit id="4e68cc0f741ce463d2f20aea55cfda69" resname="estimate_restaurant">
+        <source>estimate_restaurant</source>
+        <target>Choisissez un restaurant</target>
+      </trans-unit>
+      <trans-unit id="bcf59fd855960fdf2c5e50c0bc0a8a21" resname="estimate_date">
+        <source>estimate_date</source>
+        <target>Et biensûr une date</target>
       </trans-unit>
     </body>
   </file>
