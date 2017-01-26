@@ -1,0 +1,91 @@
+{% extends 'app/layout.html.twig' %}
+
+{% trans_default_domain 'estimate' %}
+
+{% block content %}
+    <div class="container-fluid privatise" xmlns="http://www.w3.org/1999/html">
+    </div>
+    <div class="container-fluid estimatePresentation">
+        <div class="row">
+            <div class="col-lg-offset-2 col-lg-8 privatise-blockInfo">
+                <h1>{{ 'estimate_title' |trans |upper }}</h1>
+                <p>{{ 'estimate_text' |trans |upper }}</p>
+            </div>
+        </div>
+    </div>
+    <form class="estimateForm">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-offset-2 col-md-8 estimateForm-center">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h1>{{ 'estimate_intro' |trans |upper }}</h1>
+                            <p id="estimatePresentation">{{ 'estimate_presentation' |trans }}</p>
+                        </div>
+                    </div>
+                    <div class="col-md-offset-3 col-md-6 form-group">
+                        <p class="estimateForm-center--font">{{ 'estimate_status' |trans |upper }}</p>
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1">
+                                {{ 'estimate_status1' |trans |upper }}
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2">
+                                {{ 'estimate_status2' |trans |upper }}
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-md-offset-3 col-md-6 form-group">
+                        <label class="estimateForm-center--font" for="usr">{{ 'estimate_fullName' |trans |upper }}</label>
+                        <input type="text" class="form-control" id="usr">
+                    </div>
+                    <div class="col-md-offset-3 col-md-6" id="estimateRestaurant">
+                        <label class="estimateForm-center--font" for="rest">{{ 'estimate_restaurant' |trans |upper }}</label>
+                    </div>
+                    <div class="col-md-offset-3 col-md-6 estimateForm-center--labelOut">
+                        <div class="input-group">
+                            <div class="input-group-btn">
+                                <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    {{ 'estimate_restaurantChoice' |trans |upper }}
+                                </button>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a class="dropdown-item" href="#">Wild Restaurant</a></li>
+                                    <li><a class="dropdown-item" href="#">Un Monde Vegan</a></li>
+                                    <li><a class="dropdown-item" href="#">Un Monde Carnivore</a></li>
+                                </ul>
+                            </div>
+                            <input type="text" class="form-control" aria-label="Text input with dropdown button">
+                        </div>
+                    </div>
+                    <div class="col-md-offset-3 col-md-6 estimateForm-center--labelOut">
+                        <label class="estimateForm-center--font" id="estimateDate" for="date">{{ 'estimate_date' |trans |upper }}</label>
+                    </div>
+                    <div class='col-md-offset-3 col-md-6'>
+                        <div class="form-group">
+                            <div class='input-group date datepicker' id='datetimepicker1'>
+                                <input type='text' class="form-control datepicker" />
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class=" col-md-offset-3 col-md-6 form-group">
+                        <label class="estimateForm-center--font" for="people">{{ 'estimate_numberPeople' |trans |upper }}</label>
+                        <input type="number" class="form-control" id="num">
+                    </div>
+                    <div class="col-md-offset-3 col-md-6 form-group">
+                        <label for="comment">{{ 'estimate_comment' |trans |upper }}</label>
+                        <textarea class="form-control" rows="5" id="comment"></textarea>
+                    </div>
+                    <div class="col-lg-offset-3 col-lg-6 sendEstimate">
+                        <button type="submit" class="btn btn-default">{{ 'estimate_send' |trans }}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+{% endblock content %}
