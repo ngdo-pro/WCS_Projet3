@@ -11,7 +11,7 @@
       </trans-unit>
       <trans-unit id="7c34ddde4f09595abc9e9c4aed876367" resname="restaurant_searchBar">
         <source>restaurant_searchBar</source>
-        <target>trouver un restaurant food&amp;you</target>
+        <target><![CDATA[trouver un restaurant food&you]]></target>
       </trans-unit>
       <trans-unit id="d8802f69c11a98af0ec8f3368eb97016" resname="restaurant_restaurantButton">
         <source>restaurant_restaurantButton</source>
