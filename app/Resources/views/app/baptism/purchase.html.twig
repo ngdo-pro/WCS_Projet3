@@ -29,9 +29,13 @@
                                     <p>{{ 'service' |trans |capitalize }} {{ baptism.serviceName }}</p>
                                     <div class="text-center">
                                         {% if app.user %}
-                                            {{ form_start(form) }}
-                                            {{ form_widget(form) }}
-                                            {{ form_end(form) }}
+                                            <button
+                                                    id="paymentConfirm"
+                                                    name="confirm"
+                                                    type="button"
+                                                    data-toggle="modal"
+                                                    data-target="#paymentModal">{{ 'confirm' |trans }}
+                                            </button>
                                         {% else %}
                                             {{ 'need_to_connect' |trans }}
                                         {% endif %}
@@ -58,4 +62,5 @@
             </div>
         </div>
     </section>
+    {% include 'app/baptism/modals/modal_payment.html.twig' %}
 {% endblock %}
