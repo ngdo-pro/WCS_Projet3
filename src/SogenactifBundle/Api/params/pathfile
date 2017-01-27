@@ -20,13 +20,13 @@ D_LOGO!/logo_sogenactif_api/!
 #  Fichiers parametres lies a l'api sogenactif paiement
 # --------------------------------------------------------------------------
 # fichier des  parametres sogenactif
-F_DEFAULT!/home/kevin/Projets/food_and_you/src/SogenactifBundle/Api/params/parmcom.sogenactif!
+F_DEFAULT!/var/www/html/food_and_you/src/SogenactifBundle/Api/params/parmcom.sogenactif!
 #
 # fichier parametre commercant
-F_PARAM!/home/kevin/Projets/food_and_you/src/SogenactifBundle/Api/params/parmcom!
+F_PARAM!/var/www/html/food_and_you/src/SogenactifBundle/Api/params/parmcom!
 #
 # certificat du commercant
-F_CERTIFICATE!/home/kevin/Projets/food_and_you/src/SogenactifBundle/Api/params/certif!
+F_CERTIFICATE!/var/www/html/food_and_you/src/SogenactifBundle/Api/params/certif!
 F_CTYPE!php!
 #
 # --------------------------------------------------------------------------
