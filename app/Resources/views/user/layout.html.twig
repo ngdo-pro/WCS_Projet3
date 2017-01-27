@@ -25,7 +25,7 @@
                         {% endif %}
                     </div>
                 {% endfor %}
-                <div id="menuContent" class="col-md-3 col-md-offset-1">
+                <div id="menuContent" class="col-md-4 col-md-offset-1">
                     <h2>{{ "menu.title" |trans |upper }}</h2>
                     <ul>
                         <li><a href="{{ path('member_profile_edit') }}">{{ "menu.profile" |trans |capitalize }}
@@ -43,7 +43,7 @@
                             </a><span class="glyphicon glyphicon-off pull-right"></span></li>
                     </ul>
                 </div>
-                <div class="col-md-offset-1 col-md-6">
+                <div class="col-md-offset-1 col-md-5">
                     {% block content %}
                     {% endblock %}
                 </div>
