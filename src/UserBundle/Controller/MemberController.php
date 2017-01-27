@@ -51,7 +51,7 @@ class MemberController extends Controller
             $emails = $form->getData()['emails'];
             foreach ($emails as $email) {
                 $message = \Swift_Message::newInstance()
-                    ->setSubject('Hello Email')
+                    ->setSubject('Invitation à un baptême de chef Food&You')
                     ->setFrom('send@example.com')
                     ->setTo($email)
                     ->setBody(

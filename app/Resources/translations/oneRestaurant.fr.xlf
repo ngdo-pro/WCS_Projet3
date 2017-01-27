@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="fr" target-language="fr" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="e8e8ee135b9508eacb78fce57c1cbd27" resname="restaurant_mainTitle">
+        <source>restaurant_mainTitle</source>
+        <target>titre du restaurant</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

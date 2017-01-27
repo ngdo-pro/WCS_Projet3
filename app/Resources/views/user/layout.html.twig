@@ -16,7 +16,16 @@
 
         <div class="container-fluid">
             <div class="row">
-                <div id="menuContent" class="col-md-3 col-md-offset-1">
+                {% for flash_message in app.session.flashBag.get('transactionStatus') %}
+                    <div class="container">
+                        {% if flash_message == 'confirmed' %}
+                            <div class="alert alert-success text-center">Votre paiement a bien été pris en compte.</div>
+                        {% else %}
+                            <div class="alert alert-success">Votre paiement a échoué.</div>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+                <div id="menuContent" class="col-md-4 col-md-offset-1">
                     <h2>{{ "menu.title" |trans |upper }}</h2>
                     <ul>
                         <li><a href="{{ path('member_profile_edit') }}">{{ "menu.profile" |trans |capitalize }}
@@ -34,7 +43,7 @@
                             </a><span class="glyphicon glyphicon-off pull-right"></span></li>
                     </ul>
                 </div>
-                <div class="col-md-offset-1 col-md-6">
+                <div class="col-md-offset-1 col-md-5">
                     {% block content %}
                     {% endblock %}
                 </div>
