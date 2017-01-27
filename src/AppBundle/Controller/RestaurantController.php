@@ -17,9 +17,10 @@ use AppBundle\Entity\Restaurant;
 
 class RestaurantController extends Controller
 {
-    public function listAction(){
+    public function listAction()
+    {
         $em = $this->getDoctrine()->getManager();
-        $restaurants = $em->getRepository('AppBundle:Restaurant')->findAll();
+        $restaurants = $em->getRepository(Restaurant::class)->findSixthFirstRestaurants();
 
         $map = new Map();
 
@@ -38,7 +39,7 @@ class RestaurantController extends Controller
             $map->addMarker($marker);
         };
 
-        return $this->render('app/restaurant/restaurants.html.twig', array(
+        return $this->render('app/restaurant/home.html.twig', array(
             'restaurants' => $restaurants,
             'map' => $map,
 
