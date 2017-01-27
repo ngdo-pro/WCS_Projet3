@@ -173,7 +173,7 @@ class LoadRestaurantData extends AbstractFixture implements OrderedFixtureInterf
                 "name" => "l'épisens",
                 "description" => "Situé au cœur de la presqu'île de Lyon, l'Episens vous accueille avec une cuisine moderne et raffinée qui éveillera vos sens !",
                 "openingDate" => new \DateTime("2017-01-06"),
-                "address" => "6 rue Palais Grillet",
+                "address" => "8 rue Palais Grillet",
                 "status" => "validated",
                 "webUrl" => "www.wildcodeschool.fr",
                 "tripAdvisorUrl" => "none",
