@@ -29,10 +29,6 @@
         <source>back_to_search</source>
         <target>retour à la recherche</target>
       </trans-unit>
-      <trans-unit id="d0cf705f201ddc526f49ba2e62392e21" resname="confirm">
-        <source>confirm</source>
-        <target>confirmer</target>
-      </trans-unit>
     </body>
   </file>
 </xliff>
