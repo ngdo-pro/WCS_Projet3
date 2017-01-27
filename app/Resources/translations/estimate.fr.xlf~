@@ -57,6 +57,10 @@
         <source>estimate_date</source>
         <target>Et biensûr une date</target>
       </trans-unit>
+      <trans-unit id="e377a7b9ef6e522b8a9fdbe3a507c345" resname="estimate_comment">
+        <source>estimate_comment</source>
+        <target>Des précisions ? Des questions ?</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
