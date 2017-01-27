@@ -17,6 +17,7 @@ use AppBundle\Entity\Price;
 use AppBundle\Entity\ServiceOpening;
 use AppBundle\Form\BaptismSearchType;
 use SogenactifBundle\Entity\Transaction;
+use SogenactifBundle\Utils\Transact;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Form;
@@ -191,76 +192,84 @@ class BaptismController extends Controller
         $form = $this->createFormBuilder()
             ->add("Confirmer", SubmitType::class, array('attr' => array('class' => 'btn btn-default')))
             ->getForm();
-        $form->handleRequest($request);
 
-        /** if confirm button is pushed by User, meaning he confirm his wish to buy the selected baptism */
-        if($form->isSubmitted() && $form->isValid()){
+        $em = $this->getDoctrine()->getManager();
 
-            $em = $this->getDoctrine()->getManager();
+        $restaurant = $em->getRepository("AppBundle:Restaurant")->findOneBy(array("name" => $baptismParams["restaurantName"]));
+        $service = $em->getRepository("AppBundle:Service")->findOneBy(array("name" => $baptismParams["serviceName"]));
+        /** @var User $user */
+        $user = $this->getUser();
 
-            $restaurant = $em->getRepository("AppBundle:Restaurant")->findOneBy(array("name" => $baptismParams["restaurantName"]));
-            $service = $em->getRepository("AppBundle:Service")->findOneBy(array("name" => $baptismParams["serviceName"]));
-            /** @var User $user */
-            $user = $this->getUser();
-
-            /** if id=0, it means that it is a new Baptism, else, the Baptism already exist and is open */
-            if(0 === $baptismParams["id"]) {
-                $baptism = new Baptism();
-            }else{
-                $baptism = $em->getRepository("AppBundle:Baptism")->find($baptismParams["id"]);
-            }
-            $baptism->setRestaurant($restaurant);
-            $baptism->setService($service);
-            $baptism->setStatus($baptismParams["status"]);
-            $baptism->setDate($baptismParams["date"]);
-            $baptism->setPlaces($baptismParams["places"]-1);
-
-            $em->persist($baptism);
-
-            $baptismHasUser = new BaptismHasUser();
-            $baptismHasUser->setBaptism($baptism);
-            $baptismHasUser->setUser($user);
-            $baptismHasUser->setRole(true);
-            $em->persist($baptismHasUser);
-
-            $prices = $em->getRepository("AppBundle:Price")->findByProduct("bapteme");
-            /** @var Price $price */
-            $price = $prices[0];
-
-            $transaction = new Transaction();
-            $transaction->setAmount($price->getValue() * 100);
-            $transaction->setCreated(new \DateTime());
-            $transaction->setCurrencyCode(978);
-            $transaction->setCustomerEmail($user->getEmail());
-            $transaction->setCustomerId($user->getId());
-            $em->persist($transaction);
-
-            $payment = new Payment();
-            $payment->setFirstName($user->getFirstName());
-            $payment->setLastName($user->getLastName());
-            $payment->setProductName("baptism");
-            $payment->setStatus("pending");
-            $payment->setConfirmationSent(false);
-            $payment->setBaptismHasUser($baptismHasUser);
-            $payment->setUser($user);
-            $payment->setTransaction($transaction);
-            $em->persist($payment);
-
-            /**
-             * Baptism, BaptismHasUser, Transaction and Payment have been persisted
-             */
-            $em->flush();
-            $em->clear();
-
-            /** Transaction is being passed through session and User is redirected to sogenactif_sending route*/
-            $session->set('transaction', $transaction);
-            return $this->redirectToRoute("sogenactif_sending");
+        /** if id=0, it means that it is a new Baptism, else, the Baptism already exist and is open */
+        if(0 === $baptismParams["id"]) {
+            $baptism = new Baptism();
+        }else{
+            $baptism = $em->getRepository("AppBundle:Baptism")->find($baptismParams["id"]);
         }
+        $baptism->setRestaurant($restaurant);
+        $baptism->setService($service);
+        $baptism->setStatus($baptismParams["status"]);
+        $baptism->setDate($baptismParams["date"]);
+        $baptism->setPlaces($baptismParams["places"]-1);
+
+        $em->persist($baptism);
+
+        $baptismHasUser = new BaptismHasUser();
+        $baptismHasUser->setBaptism($baptism);
+        $baptismHasUser->setUser($user);
+        $baptismHasUser->setRole(true);
+        $em->persist($baptismHasUser);
+
+        $prices = $em->getRepository("AppBundle:Price")->findByProduct("bapteme");
+        /** @var Price $price */
+        $price = $prices[0];
+
+        $transaction = new Transaction();
+        $transaction->setAmount($price->getValue() * 100);
+        $transaction->setCreated(new \DateTime());
+        $transaction->setCurrencyCode(978);
+        $transaction->setCustomerEmail($user->getEmail());
+        $transaction->setCustomerId($user->getId());
+        $em->persist($transaction);
+
+        $payment = new Payment();
+        $payment->setFirstName($user->getFirstName());
+        $payment->setLastName($user->getLastName());
+        $payment->setProductName("baptism");
+        $payment->setStatus("pending");
+        $payment->setConfirmationSent(false);
+        $payment->setBaptismHasUser($baptismHasUser);
+        $payment->setUser($user);
+        $payment->setTransaction($transaction);
+        $em->persist($payment);
+
+        /**
+         * Baptism, BaptismHasUser, Transaction and Payment have been persisted
+         */
+        $em->flush();
+        $em->clear();
+
+        $requestParams = array();
+        $projectPath = $this->getParameter('project_path');
+        $requestParams['pathfilePath'] = $projectPath . 'src/SogenactifBundle/Api/params/pathfile';
+        $requestParams['requestPath'] = $projectPath . 'src/SogenactifBundle/Api/bin/request';
+        $requestParams['merchantId'] = $this->getParameter('merchant_id');
+        $requestParams['merchantCountry'] = $this->getParameter('merchant_country');
+        $requestParams['currencyCode'] = $this->getParameter('currency_code');
+        $requestParams['responseUrl'] = $this->generateUrl('sogenactif_response', array(), true);
+
+        $transact = new Transact();
+        $message = $transact->request($transaction, $requestParams);
+
+        /** Transaction is being passed through session and User is redirected to sogenactif_sending route*/
+        //$session->set('transaction', $transaction);
+        //return $this->redirectToRoute("sogenactif_sending");
 
         /** selected Baptism parameters are passed to the view to be displayed to the User and getting his confirmation */
         return $this->render('app/baptism/purchase.html.twig', array(
             'baptism' => $baptismParams,
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'message' => $message
         ));
     }
 }

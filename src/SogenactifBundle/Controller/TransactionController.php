@@ -213,8 +213,12 @@ class TransactionController extends Controller
 
         $em->flush();
 
-        return $this->render("sogenactif/transaction/response.html.twig", array(
-            'message'   => $transactionStatusMessage
-        ));
+        if($transactionStatusMessage){
+            $this->addFlash('transactionStatus', 'confirmed');
+        }else{
+            $this->addFlash('transactionStatus', 'cancelled');
+        }
+
+        return $this->redirectToRoute('member_orders');
     }
 }

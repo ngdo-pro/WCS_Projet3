@@ -16,6 +16,15 @@
 
         <div class="container-fluid">
             <div class="row">
+                {% for flash_message in app.session.flashBag.get('transactionStatus') %}
+                    <div class="container">
+                        {% if flash_message == 'confirmed' %}
+                            <div class="alert alert-success text-center">Votre paiement a bien été pris en compte.</div>
+                        {% else %}
+                            <div class="alert alert-success">Votre paiement a échoué.</div>
+                        {% endif %}
+                    </div>
+                {% endfor %}
                 <div id="menuContent" class="col-md-3 col-md-offset-1">
                     <h2>{{ "menu.title" |trans |upper }}</h2>
                     <ul>
