@@ -1,0 +1,56 @@
+{% extends 'app/layout.html.twig' %}
+
+{% trans_default_domain "oneRestaurant" %}
+
+{% block content %}
+<div class="body">
+    <section id="restaurantHeader">
+        {% for media in medias %}
+        <header style="background: url('{{ asset('uploads/restaurants/' ~ media.name) }}') no-repeat center; background-size: cover">
+            {% endfor %}
+            <div class="title">
+                <h1>
+
+                </h1>
+            </div>
+        </header>
+    </section>
+
+    <section class="container" id="restaurantDetails">
+        <div class="row">
+            <div class="pull-left col-md-12 headerTitle">
+
+                <span class="restaurant">Restaurant</span>
+                <h1>{{ restaurant.name }}</h1>
+            </div>
+
+            <div class="col-md-5">
+                <div class="block1">
+                    <h3>{{ restaurant.address }}</h3>
+                </div>
+                 <div class="block2">
+                    <h3>{{ restaurant.postalCode ~ ' ' ~ restaurant.city }}</h3>
+                </div>
+            </div>
+
+            <div class="col-md-7">
+                <p>{{ restaurant.description }}</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="container">
+            <div class="col-md-12 mapSize">
+                <iframe
+                        width="100%"
+                        height="300px"
+                        frameborder="0"
+                        style="border:0;"
+                        class="restaurant--map"
+                        src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA-rF-Vq2l82L91CVwjkQXVJSRGYeBczFo&q={{ restaurant.address }}%20France" allowfullscreen>
+                </iframe>
+            </div>
+    </section>
+</div>
+
+{% endblock%}

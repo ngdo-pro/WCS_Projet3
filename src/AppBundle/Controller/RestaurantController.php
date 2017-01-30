@@ -171,6 +171,11 @@ class RestaurantController extends Controller
     }
 
     public function showAction(Restaurant $restaurant){
-        return $this->render('app/main/index.html.twig');
+
+        $media = $restaurant->getMedias();
+        return $this->render('app/restaurant/restaurant.html.twig', array(
+            'restaurant' => $restaurant,
+            'medias'    => $media
+        ));
     }
 }
