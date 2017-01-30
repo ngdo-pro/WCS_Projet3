@@ -9,8 +9,10 @@ function addEmailForm($collectionHolder, $newLinkLi) {
 
     var index = $collectionHolder.data('index');
 
-    var newForm = prototype.replace(/__name__/g, index);
-
+    var newForm = "";
+    if (prototype !== undefined) {
+        prototype.replace(/__name__/g, index);
+    }
     $collectionHolder.data('index', index + 1);
 
     var $newFormLi = $('<li></li>').append(newForm);

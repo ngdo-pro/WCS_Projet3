@@ -88,3 +88,11 @@ services:
             class: Twig_Extensions_Extension_Intl
             tags:
                 - { name: twig.extension }
+
+ivory_google_map:
+    map:
+    # Your own map helper class
+        #helper_class: "My\Fucking\MapHelper"
+        #auto_zoom: true
+        language: "fr"
+        helper_class: "AppBundle\Helper\GoogleMapHelper"
